@@ -1,4 +1,8 @@
-*{
-  background-color: green;
-  margin-left: -25%;
+.card {
+  width: 20%;
+}
+
+input [type="text"] {
+  width: 100%;
+  box-sizing: border-box;
 }
