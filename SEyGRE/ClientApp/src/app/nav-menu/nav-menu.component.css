@@ -1,59 +1,109 @@
-li .glyphicon {
-    margin-right: 10px;
+/*
+*{
+ background-color: red;
 }
+*/
+
+li .glyphicon {
+    margin: 0;
+    padding: 0;
+}
+/*
+li.link-active a:hover {
+  transform: scale(1.5);
+  transition-duration: 1s;
+}
+*/
 
 /* Highlighting rules for nav menu items */
 li.link-active a,
 li.link-active a:hover,
 li.link-active a:focus {
-    background-color: #4189C7;
-    color: white;
+  /* background-color: orange; */
+  color: mediumspringgreen;
+  padding-left: 0;
+  margin-left: 0;
 }
 
+  li.link-active a:focus:not(.active) {
+    transform: scale(1.5);
+    transition-duration: 1s;
+  }
+
 /* Keep the nav menu independent of scrolling and on top of other items */
+/*
 .main-nav {
     position: fixed;
+    padding-right: 240px;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1;
 }
+*/
 
-@media (min-width: 768px) {
-    /* On small screens, convert the nav menu to a vertical sidebar */
-    .main-nav {
-        height: 100%;
-        width: calc(25% - 20px);
+/*@media (min-width: 768px) {*/
+
+  
+  .main-nav {
+    position: absolute;
+    left: 0;
+    
     }
+
     .navbar {
         border-radius: 0px;
         border-width: 0px;
-        height: 100%;
+        height: 10%;
+        left: 0;
     }
+    /*
     .navbar-header {
-        float: none;
+        float: right;
     }
+     */
+
+    /*
     .navbar-collapse {
-        border-top: 1px solid #444;
-        padding: 0px;
-    }
+        border-top: 5px solid;
+        border-color: dodgerblue;
+
+    }*/
+
     .navbar ul {
         float: none;
     }
+
     .navbar li {
-        float: none;
-        font-size: 15px;
-        margin: 6px;
+      float: none;
+      font-size: 20px;
+      margin: 15px;
+      margin-left: 0;
+      left: 0;
     }
+
     .navbar li a {
-        padding: 10px 16px;
-        border-radius: 4px;
+        padding: 10px 0px;
+        padding-left: 0;
+        margin-left: 0;
+        
     }
+
+    div ul li .active {
+      border-bottom: 5px solid;
+      border-color: orange;
+    }
+
+
     .navbar a {
-        /* If a menu item's text is too long, truncate it */
+        /* If a menu item's text is too long, truncate it */ 
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+
     }
-}
+
+/*
+  }
+
+*/

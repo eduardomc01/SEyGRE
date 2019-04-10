@@ -2,9 +2,15 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html'
+  selector: 'app-stats',
+  templateUrl: './stats.component.html',
+  styleUrls: ['./stats.component.css']
 })
+
+export class StatsComponent {
+
+}
+  /*
 export class FetchDataComponent {
   public forecasts: WeatherForecast[];
 
@@ -21,3 +27,4 @@ interface WeatherForecast {
   temperatureF: number;
   summary: string;
 }
+*/
