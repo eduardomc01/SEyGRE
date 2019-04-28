@@ -9,18 +9,14 @@ left: 0;
 
 .main-nav ul li {
 background-color: none;
-
 }
 
 .main-nav li {
 font-size: 25px;
 margin:20px 20px 0 0;
 padding: 20px 40px 0 0;
-list-style:none;
-
-      
+list-style:none;    
 }
-
 
 /***************/
 

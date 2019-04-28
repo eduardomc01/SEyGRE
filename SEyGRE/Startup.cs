@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using SEyGRE.Models;
+
 namespace SEyGRE
 {
     public class Startup
@@ -27,6 +29,15 @@ namespace SEyGRE
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+
+            /***************************** AGREGANDO EL SERVICIO ***************************************/
+
+            services.Add(new ServiceDescriptor(typeof(seygreContext), new seygreContext()));
+            
+            /********************************************************************/
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
