@@ -1,6 +1,11 @@
-*{
 
-  background-color: blue;
-  margin-left: -25%;
 
+
+video {
+  position: fixed;
+  left: 100px;
+  width: 100%;
+  filter: sepia(100%);
+  -webkit-filter: sepia(100%);
+  top: 0;
 }

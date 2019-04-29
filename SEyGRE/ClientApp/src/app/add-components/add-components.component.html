@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Agregar componentes </title>
+</head>
+<body>
+
+  <form (ngSubmit)="ObtenerDatos()">
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <h1> Registro de componentes </h1>
+
+      </div>
+
+      <div class="card-body">
+
+        <input class="form-control" type="text" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
+        <input class="form-control" type="number" placeholder=" Peso (kg)" step="0.01" [(ngModel)]="peso" name="peso" required />
+        <input class="form-control" type="number" placeholder=" Clasificación" [(ngModel)]="clasificacion" name="clasificacion" required />
+        <input class="form-control" type="date" placeholder=" Fecha de ingreso" [(ngModel)]="fecha" name="fecha" required />
+
+      </div>
+
+      <div class="card-footer">
+        <input type="submit" class="btn btn-success" value="Ingresar el componente" />
+      </div>
+
+    </div>
+
+  </form>
+
+</body>
+</html>

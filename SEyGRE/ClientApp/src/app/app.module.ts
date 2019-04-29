@@ -12,6 +12,7 @@ import { StatsComponent } from './stats/stats.component';
 import { InfoComponent } from './info/info.component';
 import { MapsComponent } from './maps/maps.component';
 import { UsersComponent } from './users/users.component';
+import { AddComponentsComponent } from './add-components/add-components.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UsersComponent } from './users/users.component';
     StatsComponent,
     InfoComponent,
     MapsComponent,
-    UsersComponent
+    UsersComponent,
+    AddComponentsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,6 +32,7 @@ import { UsersComponent } from './users/users.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'add-components', component: AddComponentsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },
       { path: 'stats', component: StatsComponent },
