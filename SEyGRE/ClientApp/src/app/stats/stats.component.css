@@ -1,6 +1,28 @@
-div .card {
 
-  margin-top: 50px;
-  margin-left: -10%;
+.card {
+  position: absolute;
+  text-align:center;
+  width: 35%;
+  margin-left: -23%;
+  margin-top: 2%;
 
 }
+
+
+.r2 {
+  position: absolute;
+  text-align: center;
+  width: 35%;
+  margin-left: 15%;
+  margin-top: 2%;
+}
+
+
+.r3 {
+  position: absolute;
+  text-align: center;
+  width: 35%;
+  margin-left: 53%;
+  margin-top: 2%;
+}
+
