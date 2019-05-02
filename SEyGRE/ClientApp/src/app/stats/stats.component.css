@@ -1,28 +1,72 @@
 
+h1 {
+  font-size: 25px;
+}
+
+.card {
+  text-align: center;
+  margin-bottom: 10%;
+}
+
 .card {
   position: absolute;
-  text-align:center;
   width: 35%;
   margin-left: -23%;
   margin-top: 2%;
-
 }
-
 
 .r2 {
   position: absolute;
-  text-align: center;
   width: 35%;
   margin-left: 15%;
   margin-top: 2%;
 }
 
-
 .r3 {
   position: absolute;
-  text-align: center;
   width: 35%;
   margin-left: 53%;
   margin-top: 2%;
 }
 
+
+.r4 {
+  position: absolute;
+  width: 111%;
+  margin-left: -23%;
+  margin-top: 30%;
+}
+
+
+
+
+
+
+@media screen and (max-width: 720px) {
+
+  .card {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 2%;
+
+  }
+
+  .r2 {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 75%;
+  }
+
+  .r3 {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 150%;
+  }
+
+  .r4 {
+    width: 90%;
+    margin-left: 2%;
+    margin-top: 223%;
+  }
+    
+}

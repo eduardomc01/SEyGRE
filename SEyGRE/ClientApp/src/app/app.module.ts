@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 
+
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -16,7 +18,7 @@ import { MapsComponent } from './maps/maps.component';
 import { UsersComponent } from './users/users.component';
 import { AddComponentsComponent } from './add-components/add-components.component';
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,

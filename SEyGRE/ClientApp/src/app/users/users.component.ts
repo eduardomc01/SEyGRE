@@ -12,6 +12,7 @@ export class UsersComponent {
 
   public _personal: personal[];
 
+
   constructor(private http: HttpClient, private router: Router) {
 
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
@@ -21,6 +22,7 @@ export class UsersComponent {
     });
 
   }
+
 
 
 }

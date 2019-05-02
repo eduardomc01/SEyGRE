@@ -3,59 +3,67 @@
 <head>
   <title> Registro </title>
 </head>
+
 <body>
 
   <div class="card">
     <div class="card-header"> <h1> Centro de Acopio </h1> </div>
-    
-      <div class="card-body">
-        <img src="../../assets/image/sin-foto.png" class="rounded-circle">
-        <input class="form-control" type="text" placeholder=" ID" readonly/>
-        <input class="form-control" type="text" placeholder=" Nombre"  readonly/>
-        <input class="form-control" type="text" placeholder=" Dirección"  readonly/>
-      </div>
+
+    <div class="card-body">
+      <img src="../../assets/image/sin-foto.png" class="rounded-circle">
+      <input class="form-control" type="text" placeholder=" ID" readonly />
+      <input class="form-control" type="text" placeholder=" Nombre" readonly />
+      <input class="form-control" type="text" placeholder=" Dirección" readonly />
+    </div>
     <div class="card-footer">
-      <input class="btn btn-success" type="button" value="Guardar personal" />
-    
+      <input class="btn btn-success" id="btn" type="button" (click)="prueba()" value="Guardar personal" />
+    </div>
+
   </div>
 
-</div>
 
-  
-    <div class=" right card">
-      <div class="card-header"> <h1> Personal </h1> </div>
-      <div class="card-body">
+  <div class=" right card">
+    <div class="card-header"> <h1> Personal </h1> </div>
+    <div class="card-body">
 
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col"> ID </th>
-                <th scope="col"> Nombre </th>
-                <th scope="col"> Apellidos </th>
-                <th scope="col"> Edad </th>
-                <th scope="col"> Dirección </th>
-                <th scope="col"> Cargo </th>
-                <th scope="col"> Centro </th>
-              </tr>
-            </thead>
-            <tbody>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col"> ID </th>
+            <th scope="col"> Nombre </th>
+            <th scope="col"> Apellidos </th>
+            <th scope="col"> Edad </th>
+            <th scope="col"> Dirección </th>
+            <th scope="col"> Cargo </th>
+            <th scope="col"> Centro </th>
+          </tr>
+        </thead>
+        <tbody>
 
-              <tr *ngFor="let info of _personal">
-                <td> {{info.id}} </td>
-                <td> {{info.nombre}} </td>
-                <td> {{info.apellidos}} </td>
-                <td> {{info.edad}} </td>
-                <td> {{info.direccion}} </td>
-                <td> {{info.idCargo}} </td>
-                <td> {{info.idCentro}} </td>
-              </tr>
-        
-            </tbody>
-          </table>
+          <tr *ngFor="let info of _personal">
+            <td> {{info.id}} </td>
+            <td> {{info.nombre}} </td>
+            <td> {{info.apellidos}} </td>
+            <td> {{info.edad}} </td>
+            <td> {{info.direccion}} </td>
+            <td> {{info.idCargo}} </td>
+            <td> {{info.idCentro}} </td>
+          </tr>
 
-      </div>
+        </tbody>
+      </table>
+
     </div>
- 
 
+  </div>
+<!--
+  <ngb-alert>
+    This alert's type is success and it's not dismissible because the config has been customized
+  </ngb-alert>
+    -->
 </body>
+
+
+
 </html>
+
