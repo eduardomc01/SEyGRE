@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { InfoComponent } from './info/info.component';
 import { MapsComponent } from './maps/maps.component';
 import { UsersComponent } from './users/users.component';
 import { AddComponentsComponent } from './add-components/add-components.component';
+
 
  
 @NgModule({
@@ -35,6 +36,7 @@ import { AddComponentsComponent } from './add-components/add-components.componen
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ChartsModule,
+    NgbModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM'

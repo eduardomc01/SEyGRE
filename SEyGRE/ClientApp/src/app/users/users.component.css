@@ -16,10 +16,7 @@ div [type="text"], [type="button"] {
   margin: auto;
 }
 
-#message {
-  display: none;
-  margin-top: 5%;
-}
+
 
 .card {
   padding: 10px 10px 10px 10px;
