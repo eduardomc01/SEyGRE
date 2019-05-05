@@ -1,40 +1,40 @@
 <div class='main-nav'>
 
-    <ul class="a">
+  <ul>
 
       <li [routerLinkActive]='["link-active"]'>
         <a class="active" [routerLink]='["/"]'>
-          <span class='glyphicon glyphicon-home'></span>
+          <span class='icon-home'></span>
         </a>
       </li>
-
-    </ul>
-
-    <ul>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/users"]' (click)='collapse()'>
-          <span class='glyphicon glyphicon-user'></span>
+          <span class='icon-user'></span>
         </a>
       </li>
+
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/edit"]' (click)='collapse()'>
-          <span class='glyphicon glyphicon-pencil'></span>
+          <span class='icon-power-cord'></span>
         </a>
       </li>
-      <li [routerLinkActive]='["link-active"]'>
+
+    <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/stats"]' (click)='collapse()'>
-          <span class='glyphicon glyphicon-stats'></span>
+          <span class='icon-stats-dots'></span>
         </a>
       </li>
-      <li [routerLinkActive]='["link-active"]'>
+
+    <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/maps"]' (click)='collapse()'>
-          <span class='glyphicon glyphicon-map-marker'></span>
+          <span class='icon-map'></span>
         </a>
       </li>
-      <li [routerLinkActive]='["link-active"]'>
+
+    <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/info"]' (click)='collapse()'>
-          <span class='glyphicon glyphicon-info-sign'></span>
+          <span class='p icon-info'></span>
         </a>
       </li>
 
