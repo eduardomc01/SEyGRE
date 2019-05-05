@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
-import { templateJitUrl } from '@angular/compiler';
 
 
 @Component({
@@ -14,7 +13,8 @@ import { templateJitUrl } from '@angular/compiler';
 
 export class UsersComponent{
 
-  public a;
+  public showSuccess: boolean;
+  public showDanger: boolean;
 
   public staticAlertClosed;
   public _personal: personal[];
@@ -24,27 +24,47 @@ export class UsersComponent{
 
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
 
-      this._personal = result;
+      try {
+
+        this._personal = result;
+
+          this.mensajesAlerts(result.length)
+
+      } catch (e) {
+
+        console.log(e);
+
+      }
 
     });
 
   }
 
-
-  public prueba() {
+  public mensajesAlerts(op: number) {
 
     this.staticAlertClosed = false;
-    this.a = 1;
+
+    if (op == 1) {
+
+      this.showSuccess = true;
+
+    } else {
+
+      this.showDanger = true;
+
+    }
 
   }
+  
+
 
   public close() {
 
     this.staticAlertClosed = true;
-    this.a = 0;
+    this.showSuccess = false;
+    this.showDanger = false;
 
   }
-
 
 
 

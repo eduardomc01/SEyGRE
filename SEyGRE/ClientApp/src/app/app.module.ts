@@ -16,6 +16,7 @@ import { InfoComponent } from './info/info.component';
 import { MapsComponent } from './maps/maps.component';
 import { UsersComponent } from './users/users.component';
 import { AddComponentsComponent } from './add-components/add-components.component';
+import { LoginComponent } from './login/login.component';
 
  
 @NgModule({
@@ -29,6 +30,7 @@ import { AddComponentsComponent } from './add-components/add-components.componen
     MapsComponent,
     UsersComponent,
     AddComponentsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,7 +42,8 @@ import { AddComponentsComponent } from './add-components/add-components.componen
       apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM'
     }),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },
@@ -49,7 +52,7 @@ import { AddComponentsComponent } from './add-components/add-components.componen
       { path: 'info', component: InfoComponent }
     ])
   ],
-  providers: [ThemeService], // imporante en la version (angular/common) 6.0.0 en adelante de angular en ng2-charts
+  providers: [ThemeService], // importante en la version (angular/common) 6.0.0 en adelante de angular en ng2-charts
   bootstrap: [AppComponent]
 })
 export class AppModule { }

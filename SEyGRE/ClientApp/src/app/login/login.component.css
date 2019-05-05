@@ -1,0 +1,23 @@
+*{
+ text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.card {
+  margin: 50px 10px 0 250px;
+  padding: 10px 10px 10px 10px;
+  width: 30%;
+}
+
+.card .card-body img {
+  width: 50%;
+  padding: 10px 10px 10px 10px;
+}
+
+
+div [type="text"], [type="password"], [type="button"] {
+  margin: 15px 0 15px 0;
+}

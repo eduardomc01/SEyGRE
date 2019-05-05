@@ -16,7 +16,7 @@
       <input class="form-control" type="text" placeholder=" Dirección" readonly />
     </div>
     <div class="card-footer">
-      <input class="btn btn-success" id="btn" type="button" (click)="prueba()" value="Guardar personal" />
+      <input class="btn btn-success" id="btn" type="button" value="Guardar personal" />
     </div>
 
   </div>
@@ -57,11 +57,18 @@
 
   </div>
 
-  <div *ngIf="a==1">
-    <ngb-alert *ngIf="!staticAlertClosed" type="success" (close)="close()">
-      !Exito¡ - Información guardada
+  <div *ngIf="showSuccess">
+    <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+      <strong> !Exito¡ </strong> Personal recuperado del centro
     </ngb-alert>
   </div>
+
+  <div *ngIf="showDanger">
+    <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
+      <strong> !Aviso¡ </strong> No cueta con personal
+    </ngb-alert>
+  </div>
+
 </body>
 
 
