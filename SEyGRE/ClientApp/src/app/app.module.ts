@@ -17,10 +17,11 @@ import { MapsComponent } from './maps/maps.component';
 import { UsersComponent } from './users/users.component';
 import { AddComponentsComponent } from './add-components/add-components.component';
 import { LoginComponent } from './login/login.component';
+import { AddCenterComponent } from './add-center/add-center.component';
+import { VerifyCenterComponent } from './verify-center/verify-center.component';
 
- 
 @NgModule({
-  declarations: [
+  declarations:[
     AppComponent,
     NavMenuComponent,
     HomeComponent,
@@ -31,6 +32,8 @@ import { LoginComponent } from './login/login.component';
     UsersComponent,
     AddComponentsComponent,
     LoginComponent,
+    AddCenterComponent,
+    VerifyCenterComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -39,11 +42,13 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM'
+      apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM',
     }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'add-center', component: AddCenterComponent },
+      { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },

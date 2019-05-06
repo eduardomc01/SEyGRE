@@ -10,5 +10,7 @@ namespace SEyGRE.Models
         public float? Peso { get; set; }
         public int? IdClasificacion { get; set; }
         public DateTime? Fecha { get; set; }
+
+        public Clasificacion IdClasificacionNavigation { get; set; }
     }
 }

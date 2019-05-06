@@ -5,9 +5,21 @@ namespace SEyGRE.Models
 {
     public partial class Centrosacopio
     {
+        public Centrosacopio()
+        {
+            Personal = new HashSet<Personal>();
+        }
+
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public string Usuario { get; set; }
+        public string Password { get; set; }
+        public string Imagen { get; set; }
         public double? Latitud { get; set; }
         public double? Longitud { get; set; }
+        public int? IdEstatus { get; set; }
+
+        public Estatus IdEstatusNavigation { get; set; }
+        public ICollection<Personal> Personal { get; set; }
     }
 }
