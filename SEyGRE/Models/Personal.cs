@@ -12,7 +12,5 @@ namespace SEyGRE.Models
         public string Direccion { get; set; }
         public int? IdCargo { get; set; }
         public int? IdCentro { get; set; }
-
-        public Centrosacopio IdCentroNavigation { get; set; }
     }
 }

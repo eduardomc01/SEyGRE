@@ -30,13 +30,31 @@
             <td> {{info.password}} </td>
             <td> {{info.imagen}} </td>
             <td> {{info.titulo}} </td>
-            <td> <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
-            <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" /></td>
+            <td>
+              <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
+              <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
+            </td>
           </tr>
         </tbody>
       </table>
 
     </div>
+
+
+
+    <div *ngIf="showSuccess">
+      <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+        <strong> !Exito¡ </strong> Cuentas esperando su respuesta !
+      </ngb-alert>
+    </div>
+
+    <div *ngIf="showDanger">
+      <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
+        <strong> !Aviso¡ </strong> No hay cuentas ha verificar !
+      </ngb-alert>
+    </div>
+
+
 
   </div>
 

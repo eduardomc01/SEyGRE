@@ -1,20 +1,39 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-verify-center',
   templateUrl: './verify-center.component.html',
-  styleUrls: ['./verify-center.component.css']
+  styleUrls: ['./verify-center.component.css'],
+  providers: [NgbAlertConfig]
 })
 export class VerifyCenterComponent{
+
+
+  public showSuccess: boolean;
+  public showDanger: boolean;
+  public staticAlertClosed;
 
   public _centro: centro[]
 
   constructor(private http: HttpClient) {
 
-    this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe( result => {
+    this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
 
-      this._centro = result;
+      try {
+
+        this._centro = result;
+
+        this.mensajesAlerts(result.length);
+
+      } catch (e) {
+
+        console.log(e);
+
+      }
+
+    
 
     });
 
@@ -37,6 +56,34 @@ export class VerifyCenterComponent{
     }
 
   }
+
+
+  public mensajesAlerts(op: number) {
+
+    this.staticAlertClosed = false;
+
+    if (op >= 1) {
+
+      this.showSuccess = true;
+
+    } else {
+
+      this.showDanger = true;
+
+    }
+
+  }
+
+
+  public close() {
+
+    this.staticAlertClosed = true;
+    this.showSuccess = false;
+    this.showDanger = false;
+
+  }
+
+  
 
 }
 

@@ -63,36 +63,3 @@ h1 {
 table tr th {
   text-align: center;
 }
-
-
-/**** MENSAJES BOOTSTRAP*****/
-
-div ngb-alert {
-  position: absolute;
-  top: 10px;
-  z-index: 1;
-
-}
-
-.movimiento {
-  animation-duration: 4s;
-  position: absolute;
-  animation-name: mymove;
-}
-
-@keyframes mymove {
-
-  from {
-    top: -70px;
-  }
-
-  to {
-    animation-delay: 10s;
-    top: 10px;
-  }
-
- 
-
-}
-
-/****** FIN MENSAJES ****/

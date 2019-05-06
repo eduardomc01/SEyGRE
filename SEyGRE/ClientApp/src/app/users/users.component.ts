@@ -24,15 +24,15 @@ export class UsersComponent{
 
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
 
-      try {
+    try {
 
-        this._personal = result;
+      this._personal = result;
 
-          this.mensajesAlerts(result.length)
+      this.mensajesAlerts(result.length);
 
       } catch (e) {
 
-        console.log(e);
+       console.log(e);
 
       }
 
@@ -44,7 +44,7 @@ export class UsersComponent{
 
     this.staticAlertClosed = false;
 
-    if (op == 1) {
+    if (op >= 1) {
 
       this.showSuccess = true;
 

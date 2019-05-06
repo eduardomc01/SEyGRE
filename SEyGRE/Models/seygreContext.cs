@@ -37,9 +37,6 @@ namespace SEyGRE.Models
             {
                 entity.ToTable("centrosacopio");
 
-                entity.HasIndex(e => e.IdEstatus)
-                    .HasName("fk_idEstatus_idx");
-
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
@@ -67,11 +64,6 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Usuario)
                     .HasColumnName("usuario")
                     .HasColumnType("varchar(45)");
-
-                entity.HasOne(d => d.IdEstatusNavigation)
-                    .WithMany(p => p.Centrosacopio)
-                    .HasForeignKey(d => d.IdEstatus)
-                    .HasConstraintName("fk_idEstatus_id");
             });
 
             modelBuilder.Entity<Clasificacion>(entity =>
@@ -131,9 +123,6 @@ namespace SEyGRE.Models
             {
                 entity.ToTable("personal");
 
-                entity.HasIndex(e => e.IdCentro)
-                    .HasName("fk_idCentro_id_idx");
-
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
@@ -161,19 +150,11 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Nombre)
                     .HasColumnName("nombre")
                     .HasColumnType("varchar(45)");
-
-                entity.HasOne(d => d.IdCentroNavigation)
-                    .WithMany(p => p.Personal)
-                    .HasForeignKey(d => d.IdCentro)
-                    .HasConstraintName("fk_idCentro_id");
             });
 
             modelBuilder.Entity<Residuos>(entity =>
             {
                 entity.ToTable("residuos");
-
-                entity.HasIndex(e => e.IdClasificacion)
-                    .HasName("fk_idClasificacion_id_idx");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
@@ -192,11 +173,6 @@ namespace SEyGRE.Models
                     .HasColumnType("varchar(45)");
 
                 entity.Property(e => e.Peso).HasColumnName("peso");
-
-                entity.HasOne(d => d.IdClasificacionNavigation)
-                    .WithMany(p => p.Residuos)
-                    .HasForeignKey(d => d.IdClasificacion)
-                    .HasConstraintName("fk_idClasificacion_id");
             });
         }
     }
