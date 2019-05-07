@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component  } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.css']
 })
-export class InfoComponent implements OnInit {
+export class InfoComponent {
 
-  constructor() { }
+  constructor(private router: Router) {
 
-  ngOnInit() {
+    if (sessionStorage.getItem("idUser") == null)
+      this.router.navigate(["/"]);
+
   }
 
+  
 }

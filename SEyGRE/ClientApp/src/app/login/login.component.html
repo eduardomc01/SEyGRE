@@ -8,23 +8,31 @@
   <form (ngSubmit)="ObtenerDatos()">
     <div class="card">
       <div class="card-header">
-      <h1> Login </h1> </div>
+        <h1> Login </h1>
+      </div>
 
       <div class="card-body">
         <img src="../../assets/image/sin-foto.png" class="rounded-circle">
-        <input class="form-control" type="text" [(ngModel)]="usuario" name="usuario" placeholder=" Usuario" required />
-        <input class="form-control" type="password" [(ngModel)]="password" name="password" placeholder=" Contraseña" required/>
+        <input class="form-control" type="text" [(ngModel)]="_usuario" name="_usuario" placeholder=" Usuario" required />
+        <input class="form-control" type="password" [(ngModel)]="_password" name="_password" placeholder=" Contraseña" required />
       </div>
 
       <div class="card-footer">
         <input class="btn btn-success" id="btn" type="submit" value="Ingresar" />
         <br />
-        <a href="/add-center"> ¿Eres un <b> centro de acopio en RE </b> nuevo? Forma parte </a>
+        <a href="/add-center"> <p> ¿Eres un <b> centro de acopio en RE </b> nuevo? Forma parte </p> </a>
       </div>
 
     </div>
-    </form>
-    
+  </form>
+
+  <div *ngIf="showDanger">
+    <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
+      <strong> !Datos incorrectos¡ </strong> Verifica tus datos e ingresalos de nuevo
+    </ngb-alert>
+  </div>
+
+
 
 
 </body>

@@ -12,6 +12,8 @@ footer {
 
   width: 100%;
   bottom: 0;
+
+  z-index: 1;
 }
 
 .ng-valid[required], .ng-valid.required {
@@ -34,7 +36,7 @@ div ngb-alert {
 }
 
 .movimiento {
-  animation-duration: 4s;
+  animation-duration: 2s;
   position: absolute;
   animation-name: mymove;
 }

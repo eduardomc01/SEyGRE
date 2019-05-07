@@ -21,3 +21,7 @@ h1 {
 div [type="text"], [type="password"], [type="button"] {
   margin: 15px 0 15px 0;
 }
+
+p {
+  margin-top: 10px;
+}

@@ -45,8 +45,8 @@ import { VerifyCenterComponent } from './verify-center/verify-center.component';
       apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM',
     }),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
+      { path: '', component: LoginComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'add-center', component: AddCenterComponent },
       { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'add-components', component: AddComponentsComponent },

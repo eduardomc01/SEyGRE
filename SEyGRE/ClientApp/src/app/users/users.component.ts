@@ -22,6 +22,9 @@ export class UsersComponent{
 
   constructor(private http: HttpClient, private router: Router) {
 
+    if (sessionStorage.getItem("idUser") == null)
+      this.router.navigate(["/"]);
+
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
 
     try {

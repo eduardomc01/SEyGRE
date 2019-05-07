@@ -33,7 +33,7 @@ namespace SEyGRE.Controllers
         }
 
         [HttpGet("[action]")]
-        public List<Prueba> ObtenerCentrosPendientes()
+        public List<RelacionCentrosAcopioEstatus> ObtenerCentrosPendientes()
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -42,7 +42,7 @@ namespace SEyGRE.Controllers
                         join l in context.Estatus
                         on e.IdEstatus equals l.Id
                         where e.IdEstatus == 3
-                        select new Prueba {
+                        select new RelacionCentrosAcopioEstatus {
 
                             Id = e.Id,
                             Nombre = e.Nombre,
@@ -56,6 +56,29 @@ namespace SEyGRE.Controllers
             return list;
 
         }
+
+
+        [HttpPost("[action]")]
+        public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r){
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Centrosacopio
+                        join l in context.Estatus
+                        on e.IdEstatus equals l.Id
+                        where e.Usuario == r.Usuario && e.Password == r.Password && l.Titulo == "activo"
+                        select new RelacionCentrosAcopioEstatus
+                        {
+
+                            Id = e.Id,
+                            Nombre = e.Nombre
+
+                        }).ToList();
+
+            return list;
+
+        }
+
 
 
 
@@ -73,7 +96,7 @@ namespace SEyGRE.Controllers
 
             context.SaveChanges();
 
-            return 4;
+            return 1;
 
         }
 
@@ -89,7 +112,7 @@ namespace SEyGRE.Controllers
 
             context.SaveChanges();
 
-            return 8;
+            return 1;
 
         }
 
@@ -101,21 +124,5 @@ namespace SEyGRE.Controllers
 }
 
 
-
-public partial class Prueba
-{
-
-    public int Id { get; set; }
-    public string Nombre { get; set; }
-    public string Usuario { get; set; }
-    public string Password { get; set; }
-    public string Imagen { get; set; }
-    public string Titulo { get; set; }
-
-}
-
-/* clase que me permite especificar lo que requiero de una consulta o insercion en
- * el controller 
-  */
 
 

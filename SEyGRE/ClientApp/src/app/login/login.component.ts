@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [NgbAlertConfig]
 })
+
 export class LoginComponent {
+
+  public _usuario: string;
+  public _password: string;
+
+  public showDanger: boolean;
+  public staticAlertClosed;
+
+
 
   constructor(private http: HttpClient, private router: Router) {
 
@@ -15,10 +26,62 @@ export class LoginComponent {
 
   }
 
-  public ObtenerDatos() {
-    alert("Eduardo");
+  public ObtenerDatos(_usuario: string, _password: string) {
+
+    let json = JSON.stringify({
+
+      Usuario: this._usuario,
+      Password: this._password
+      
+    });
+
+    this.http.post("api/CentrosAcopio/ObtenerUsuario",JSON.parse(json)).subscribe(result => {
+
+      try {
+
+      this.mensajesAlerts(result[0], result);
+
+      } catch (e) {
+
+        console.log("Error: ", e);
+
+      }
+      
+    });
+
+  }
+
+
+  public mensajesAlerts(op: string, obj: object) {
+
+    this.staticAlertClosed = false;
+
+    if (op != undefined) {
+
+      sessionStorage.setItem("idUser", obj[0].id);
+      sessionStorage.setItem("nombre", obj[0].nombre);
+      this.router.navigate(["/home"]);
+
+    } else {
+
+      this.showDanger = true;
+
+    }
+
+  }
+
+
+  public close() {
+
+    this.staticAlertClosed = true;
+    this.showDanger = false;
+
   }
 
 
 
+
+
 }
+
+

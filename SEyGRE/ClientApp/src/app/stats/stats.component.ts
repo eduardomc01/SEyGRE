@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,13 @@ import { Label, Color } from 'ng2-charts';
 
 
 export class StatsComponent {
+
+  constructor(private router: Router) {
+
+    if (sessionStorage.getItem("idUser") == null)
+      this.router.navigate(["/"]);
+
+  }
 
   public barChartLabels: Label[] = ['2018', '2019', '2020', '2021', '2022', '2023', '2024'];
   public barChartType: ChartType = 'bar';
