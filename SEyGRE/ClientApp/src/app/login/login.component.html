@@ -5,7 +5,7 @@
 </head>
 <body>
 
-  <form (ngSubmit)="ObtenerDatos()">
+  <form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
     <div class="card">
       <div class="card-header">
         <h1> Login </h1>
@@ -20,7 +20,7 @@
       <div class="card-footer">
         <input class="btn btn-success" id="btn" type="submit" value="Ingresar" />
         <br />
-        <a href="/add-center"> <p> ¿Eres un <b> centro de acopio en RE </b> nuevo? Forma parte </p> </a>
+        <p (click)="addCenter()"> ¿Eres un <b> centro de acopio en RE </b> nuevo? Forma parte </p>
       </div>
 
     </div>

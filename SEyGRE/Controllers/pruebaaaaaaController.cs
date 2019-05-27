@@ -42,5 +42,34 @@ namespace SEyGRE.Controllers
         public void Delete(int id)
         {
         }
+
+        public IActionResult query ()
+        {
+            return new JsonResult (new metalesResult ()
+            {
+                data = new metalesArray ()
+                {
+                    cobre = new series() { serieA = 10, serieB = 20 },
+                    aluminio  = new series() { serieA =  20, serieB = 20 }
+                }
+            });
+        }
     }
+}
+
+class metalesResult
+{
+    public metalesArray data;
+}
+
+class metalesArray
+{
+    public series cobre;
+    public series aluminio;
+}
+
+class series
+{
+    public int serieA;
+    public int serieB;
 }

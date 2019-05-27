@@ -6,6 +6,11 @@ h1 {
   font-size: 30px;
 }
 
+p:hover {
+  color:lightseagreen;
+  cursor: pointer;
+}
+
 .card {
   margin: 50px 10px 0 250px;
   padding: 10px 10px 10px 10px;

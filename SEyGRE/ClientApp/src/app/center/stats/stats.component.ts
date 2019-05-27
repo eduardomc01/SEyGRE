@@ -34,12 +34,12 @@ export class StatsComponent {
 
   /**** RADAR CHART  *****/
 
-  public radarChartLabels: Label[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+  public radarChartLabels: Label[] = ["Cobre","Aluminio","Oro","Plata","Estaño","Retardante de flama (RFB)"];
   public radarChartType: ChartType = 'radar';
 
   public radarChartData: ChartDataSets[] = [
-    { data: [65, 59, 90, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 96, 27, 100], label: 'Series B' }
+    { data: [65, 59, 90, 81, 56, 55], label: 'Series A' },
+    { data: [28, 48, 40, 19, 96, 27], label: 'Series B' }
   ];
 
 

@@ -20,6 +20,10 @@ div [type="text"], [type="button"], [type="number"] {
 }
 
 
+agm-map {
+  height: 500px;
+}
+
 
 .right {
   position: absolute;
@@ -31,9 +35,3 @@ div [type="text"], [type="button"], [type="number"] {
   z-index: 1;
 }
 
-
-agm-map {
-
-  height: 500px;
-
-}

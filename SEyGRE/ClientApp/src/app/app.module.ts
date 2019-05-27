@@ -8,17 +8,17 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { EditComponent } from './edit/edit.component';
-import { StatsComponent } from './stats/stats.component';
-import { InfoComponent } from './info/info.component';
-import { MapsComponent } from './maps/maps.component';
-import { UsersComponent } from './users/users.component';
-import { AddComponentsComponent } from './add-components/add-components.component';
+import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
+import { HomeComponent } from './center/home/home.component';
+import { EditComponent } from './center/edit/edit.component';
+import { StatsComponent } from './center/stats/stats.component';
+import { InfoComponent } from './center/info/info.component';
+import { MapsComponent } from './center/maps/maps.component';
+import { UsersComponent } from './center/users/users.component';
+import { AddComponentsComponent } from './center/add-components/add-components.component';
 import { LoginComponent } from './login/login.component';
-import { AddCenterComponent } from './add-center/add-center.component';
-import { VerifyCenterComponent } from './verify-center/verify-center.component';
+import { AddCenterComponent } from './center/add-center/add-center.component';
+import { VerifyCenterComponent } from './institution/verify-center/verify-center.component';
 
 @NgModule({
   declarations:[

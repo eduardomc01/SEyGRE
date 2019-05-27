@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Inicio </title>
+</head>
+<body>
+
+  <!-- el name es importante para completar el "OCULTAR LAS COSAS aunque no se utilice el nombre"
+
+
+  <label for="show"> Mostrar </label>
+  <input type="radio" id="show" name="a" />
+
+  <label for="hide"> Ocultar </label>
+  <input type="radio" id="hide" name="a" />
+
+    -->
+
+
+
+  <div class="panel-session">
+    <p> <span class="icon-star-empty"></span> Bienvenido: {{ nombre }} </p>
+    <p (click)='closeSession()'> <span class="icon-exit"></span> Cerrar sesión </p>
+  </div>
+
+
+
+  <video autoplay controls loop>
+    <source src="../../assets/videos/basura.mp4" type="video/mp4" />
+  </video>
+
+  <!--
+  <div *ngIf="showSuccess">
+    <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+      <strong> !Hola¡ </strong> Bienvenido {{nombre}}
+    </ngb-alert>
+  </div>
+  -->
+
+</body>
+</html>

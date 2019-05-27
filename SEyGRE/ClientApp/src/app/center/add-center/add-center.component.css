@@ -1,0 +1,45 @@
+body {
+  position: fixed;
+  float: left;
+  left: 100px;
+  padding: 20px 10px 0 50px;
+  text-align: center;
+}
+
+h1{
+  font-size: 30px;
+}
+
+p:hover {
+  color: lightseagreen;
+  cursor: pointer;
+}
+
+.card {
+
+  padding: 10px 10px 10px 10px;
+  width: 75%;
+
+}
+
+div [type="text"], [type="password"], [type="submit"], [type="number"] {
+  margin: 15px 0 15px 0;
+}
+
+
+agm-map {
+  height: 500px;
+}
+
+
+.right {
+
+  position: absolute;
+  float: right;
+  margin: 20px 0 0 350px;
+  padding-right: 0;
+  width: 200%;
+  top: 0;
+  z-index: 1;
+
+}

@@ -20,9 +20,10 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
+  /*
   close() {
     sessionStorage.clear();
   }
-
+  */
 
 }

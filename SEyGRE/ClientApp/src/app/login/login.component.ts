@@ -79,6 +79,11 @@ export class LoginComponent {
   }
 
 
+  public addCenter() {
+    this.router.navigate(["/add-center"]);
+  }
+
+
 
 
 
