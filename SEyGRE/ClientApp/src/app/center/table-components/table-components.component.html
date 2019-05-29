@@ -1,0 +1,49 @@
+<div class="down card">
+  <div class="card-header">
+    <h1> Tabla de componentes </h1>
+    <div>
+      <form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
+        <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" placeholder=" Busqueda" required />
+        <input type="submit" class="btn btn-success" value="Buscar" />
+      </form>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+
+          <th scope="col"> ID </th>
+          <th scope="col"> Componente </th>
+          <th scope="col"> Peso (Kg) </th>
+          <th scope="col"> Clasificado </th>
+          <th scope="col"> Fecha de ingreso </th>
+          <th scope="col"> Acciones </th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let info of _componentes">
+          <td> {{info.id}} </td>
+          <td> {{info.nombre}} </td>
+          <td> {{info.peso}} </td>
+          <td> {{info.clasificacion}} </td>
+          <td> {{info.fecha}} </td>
+          <td> <input type="button" class="btn btn-danger" value="Eliminar" (click)="ObtenerIdComponente(info.id)" /> </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<div *ngIf="showSuccess">
+  <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+    <strong> !Exito¡ </strong> Componente eliminado del sistema
+  </ngb-alert>
+</div>

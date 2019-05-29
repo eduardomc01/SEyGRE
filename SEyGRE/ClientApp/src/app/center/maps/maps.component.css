@@ -1,8 +1,6 @@
 body {
-  position: fixed;
-  left: 100px;
-  padding: 20px 12px 0 50px;
-  top: 0;
+  margin-top: 10px;
+  margin-left: -25%;
 }
 
 .card, .derecha card {
@@ -14,9 +12,8 @@ div [type="text"], [type="button"], [type="number"] {
 }
 
 .card {
-  padding: 10px 10px 10px 10px;
+
   width: 100%;
-  text-align: center;
 }
 
 
@@ -24,7 +21,7 @@ agm-map {
   height: 500px;
 }
 
-
+/*
 .right {
   position: absolute;
   float: right;
@@ -34,4 +31,5 @@ agm-map {
   top: 0;
   z-index: 1;
 }
+  */
 

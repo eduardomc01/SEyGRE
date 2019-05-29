@@ -19,6 +19,8 @@ import { AddComponentsComponent } from './center/add-components/add-components.c
 import { LoginComponent } from './login/login.component';
 import { AddCenterComponent } from './center/add-center/add-center.component';
 import { VerifyCenterComponent } from './institution/verify-center/verify-center.component';
+import { ActionsComponentsComponent } from './center/actions-components/actions-components.component';
+import { TableComponentsComponent } from './center/table-components/table-components.component';
 
 @NgModule({
   declarations:[
@@ -34,6 +36,8 @@ import { VerifyCenterComponent } from './institution/verify-center/verify-center
     LoginComponent,
     AddCenterComponent,
     VerifyCenterComponent,
+    ActionsComponentsComponent,
+    TableComponentsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,6 +54,8 @@ import { VerifyCenterComponent } from './institution/verify-center/verify-center
       { path: 'add-center', component: AddCenterComponent },
       { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'add-components', component: AddComponentsComponent },
+      { path: 'table-components', component: TableComponentsComponent },
+      { path: 'actions-components', component: ActionsComponentsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },
       { path: 'stats', component: StatsComponent },

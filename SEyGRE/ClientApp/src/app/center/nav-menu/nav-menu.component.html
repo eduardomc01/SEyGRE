@@ -28,7 +28,19 @@
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/edit"]' (click)='collapse()'>
-          <span class='icon-power-cord'> </span> <label> Editar </label>
+          <span class='icon-power-cord'> </span> <label> Residuos </label>
+        </a>
+      </li>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/edit"]' (click)='collapse()'>
+          <span class='icon-earth'> </span> <label> Estado de reciclaje </label>
+        </a>
+      </li>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/edit"]' (click)='collapse()'>
+          <span class='icon-calendar'> </span> <label> Fechas de reciclado </label>
         </a>
       </li>
 
@@ -45,12 +57,12 @@
       </li>
 
       <!--
-            <li [routerLinkActive]='["link-active"]'>
-              <a [routerLink]='["/"]' (click)='close()'>
-                <span class='p icon-exit'></span>
-              </a>
-            </li>
-      -->
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/"]' (click)='close()'>
+            <span class='p icon-exit'></span>
+          </a>
+        </li>
+  -->
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/info"]' (click)='collapse()'>

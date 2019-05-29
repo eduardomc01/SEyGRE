@@ -1,0 +1,24 @@
+
+<form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
+
+  <div class="right card">
+
+    <div class="card-header">
+
+      <h1> Acciones en consulta de residuos </h1>
+
+    </div>
+
+    <div class="card-body">
+
+      <input class="form-control" type="text" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
+    
+    </div>
+
+    <div class="card-footer">
+      <input type="submit" class="btn btn-success" value="Aceptar" />
+    </div>
+
+  </div>
+
+</form>

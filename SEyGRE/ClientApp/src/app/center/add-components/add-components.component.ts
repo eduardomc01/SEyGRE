@@ -14,23 +14,28 @@ export class AddComponentsComponent {
   peso: number;
   clasificacion: number;
   fecha: Date;
+  private idUser: string = sessionStorage.getItem("idUser");
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  ObtenerDatos() {
+  public ObtenerDatos() {
 
     let json = JSON.stringify({
 
       nombre: this.nombre,
       peso: this.peso,
       idClasificacion: this.clasificacion,
-      fecha: this.fecha
+      fecha: this.fecha,
+      idCentroAcopio: this.idUser
 
     });
 
-    this.http.post("api/Componentes/InsertarComponentes", JSON.parse(json)).subscribe(() => { });
+    this.http.post("api/Componentes/InsertarComponentes", JSON.parse(json)).subscribe(() => {
+
+    });
 
   }
+
 
 
 }

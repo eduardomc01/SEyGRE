@@ -1,6 +1,15 @@
 body {
-
-  margin-top: 20px;
   margin-left: -25%;
+}
 
+.left {
+
+}
+
+.right{
+  margin: -375px 0 0 700px;
+}
+
+.down {
+  margin-top: 150px;
 }

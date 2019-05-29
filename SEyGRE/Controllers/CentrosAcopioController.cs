@@ -57,6 +57,19 @@ namespace SEyGRE.Controllers
 
         }
 
+        /* modificando para obtener el centro */
+        [HttpPost("[action]")]
+        public List<Centrosacopio> ObtenerCentro([FromBody] Centrosacopio r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Centrosacopio where e.Id == r.Id select e).ToList();
+
+            return list;
+
+        }
+
 
         [HttpPost("[action]")]
         public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r){

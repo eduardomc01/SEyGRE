@@ -1,0 +1,11 @@
+
+.down {
+  margin: 10px 10px 10px 10px;
+  width: 95%;
+}
+
+
+div [type="text"] {
+  margin: 10px 0 10px 0;
+  width: 50%;
+}

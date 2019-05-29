@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,35 +11,47 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbAlertConfig]
 })
 
-export class UsersComponent{
+
+export class UsersComponent implements OnInit {
 
   public showSuccess: boolean;
   public showDanger: boolean;
-
   public staticAlertClosed;
-  public _personal: personal[];
   public _menssage: string;
+
+  public _personal: personal[];
+  public _centro: centro[];
+
+
+  private idUser: string = sessionStorage.getItem("idUser");
 
   constructor(private http: HttpClient, private router: Router) {
 
-    if (sessionStorage.getItem("idUser") == null)
+    if (this.idUser == null)
       this.router.navigate(["/"]);
 
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
-
-    try {
 
       this._personal = result;
 
       this.mensajesAlerts(result.length);
 
-      } catch (e) {
+    });
 
-       console.log(e);
+  }
 
-      }
+  ngOnInit() {     /* obteniendo al usuario o centro ngOnInit es parecido al constructor */
+
+    let json = JSON.stringify({
+      id: this.idUser
+    });
+    
+    this.http.post<centro[]>("api/CentrosAcopio/ObtenerCentro", JSON.parse(json)).subscribe(result => {
+
+      this._centro = result;
 
     });
+
 
   }
 
@@ -73,6 +85,14 @@ export class UsersComponent{
 
 }
 
+interface centro {
+
+  h: number;
+  i: string;
+  j: string;
+
+}
+
 interface personal {
 
   a: number;
@@ -84,3 +104,5 @@ interface personal {
   g: number;
   
 }
+
+

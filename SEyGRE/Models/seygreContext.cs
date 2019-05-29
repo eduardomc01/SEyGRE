@@ -19,7 +19,11 @@ namespace SEyGRE.Models
         public virtual DbSet<Clasificacion> Clasificacion { get; set; }
         public virtual DbSet<Elementos> Elementos { get; set; }
         public virtual DbSet<Estatus> Estatus { get; set; }
+        public virtual DbSet<Etapas> Etapas { get; set; }
+        public virtual DbSet<Eventos> Eventos { get; set; }
+        public virtual DbSet<Modificaciones> Modificaciones { get; set; }
         public virtual DbSet<Personal> Personal { get; set; }
+        public virtual DbSet<Procesoreciclado> Procesoreciclado { get; set; }
         public virtual DbSet<Residuos> Residuos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -76,11 +80,11 @@ namespace SEyGRE.Models
 
                 entity.Property(e => e.Descripccion)
                     .HasColumnName("descripccion")
-                    .HasColumnType("varchar(100)");
+                    .HasColumnType("varchar(500)");
 
                 entity.Property(e => e.Titulo)
                     .HasColumnName("titulo")
-                    .HasColumnType("varchar(45)");
+                    .HasColumnType("varchar(100)");
             });
 
             modelBuilder.Entity<Elementos>(entity =>
@@ -119,6 +123,77 @@ namespace SEyGRE.Models
                     .HasColumnType("varchar(45)");
             });
 
+            modelBuilder.Entity<Etapas>(entity =>
+            {
+                entity.ToTable("etapas");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Descripccion)
+                    .HasColumnName("descripccion")
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("nombre")
+                    .HasColumnType("varchar(45)");
+            });
+
+            modelBuilder.Entity<Eventos>(entity =>
+            {
+                entity.ToTable("eventos");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Horario)
+                    .HasColumnName("horario")
+                    .HasColumnType("time");
+
+                entity.Property(e => e.IdEstatus)
+                    .HasColumnName("idEstatus")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("nombre")
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Organizador)
+                    .HasColumnName("organizador")
+                    .HasColumnType("varchar(80)");
+            });
+
+            modelBuilder.Entity<Modificaciones>(entity =>
+            {
+                entity.ToTable("modificaciones");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Actividad)
+                    .HasColumnName("actividad")
+                    .HasColumnType("varchar(80)");
+
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.IdPersonal)
+                    .HasColumnName("idPersonal")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Usuario)
+                    .HasColumnName("usuario")
+                    .HasColumnType("varchar(45)");
+            });
+
             modelBuilder.Entity<Personal>(entity =>
             {
                 entity.ToTable("personal");
@@ -152,6 +227,31 @@ namespace SEyGRE.Models
                     .HasColumnType("varchar(45)");
             });
 
+            modelBuilder.Entity<Procesoreciclado>(entity =>
+            {
+                entity.ToTable("procesoreciclado");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Fecha)
+                    .HasColumnName("fecha")
+                    .HasColumnType("varchar(45)");
+
+                entity.Property(e => e.Idetapa)
+                    .HasColumnName("idetapa")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("nombre")
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Porcentaje)
+                    .HasColumnName("porcentaje")
+                    .HasColumnType("varchar(45)");
+            });
+
             modelBuilder.Entity<Residuos>(entity =>
             {
                 entity.ToTable("residuos");
@@ -163,6 +263,10 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Fecha)
                     .HasColumnName("fecha")
                     .HasColumnType("date");
+
+                entity.Property(e => e.IdCentroAcopio)
+                    .HasColumnName("idCentroAcopio")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.IdClasificacion)
                     .HasColumnName("idClasificacion")
