@@ -79,12 +79,15 @@ namespace SEyGRE.Controllers
             var list = (from e in context.Centrosacopio
                         join l in context.Estatus
                         on e.IdEstatus equals l.Id
+                        join f in context.Tipousuario
+                        on e.IdTipoUsuario equals f.Id
                         where e.Usuario == r.Usuario && e.Password == r.Password && l.Titulo == "activo"
                         select new RelacionCentrosAcopioEstatus
                         {
 
                             Id = e.Id,
-                            Nombre = e.Nombre
+                            Nombre = e.Nombre,
+                            TipoUsuario = f.Nombre
 
                         }).ToList();
 

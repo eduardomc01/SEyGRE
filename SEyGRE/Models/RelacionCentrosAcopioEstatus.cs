@@ -14,6 +14,7 @@ namespace SEyGRE.Models
         public string Password { get; set; }
         public string Imagen { get; set; }
         public string Titulo { get; set; }
+        public string TipoUsuario { get; set; }
 
     }
 }

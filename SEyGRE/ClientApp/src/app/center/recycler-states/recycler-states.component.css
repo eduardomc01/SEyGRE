@@ -1,0 +1,14 @@
+body {
+  margin-top: 10px;
+  margin-left: -24%;
+}
+
+.card {
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
+}
+
+p {
+ padding: 10px 0 0 10px; 
+}

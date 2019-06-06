@@ -13,6 +13,6 @@ namespace SEyGRE.Models
         public double? Latitud { get; set; }
         public double? Longitud { get; set; }
         public int? IdEstatus { get; set; }
-        public int? IdUsuarios { get; set; }
+        public int? IdTipoUsuario { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace SEyGRE.Controllers
             context = new seygreContext();
         }
 
-
+        /*
         [HttpPost("[action]")]
         public void InsertarUsuarios([FromBody] Usuarios r)
         {
@@ -33,7 +33,7 @@ namespace SEyGRE.Controllers
             context.SaveChanges();
 
         }
-
+        */
 
 
 

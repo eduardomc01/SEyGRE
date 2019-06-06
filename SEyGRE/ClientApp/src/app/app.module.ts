@@ -25,6 +25,8 @@ import { VerifyCenterComponent } from './institution/verify-center/verify-center
 import { ActionsComponentsComponent } from './center/actions-components/actions-components.component';
 import { TableComponentsComponent } from './center/table-components/table-components.component';
 import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
+import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
+import { EventsComponent } from './center/events/events.component';
 
 
 @NgModule({
@@ -45,9 +47,13 @@ import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
     VerifyCenterComponent,
     ActionsComponentsComponent,
     TableComponentsComponent,
+    RecyclerStatesComponent,
+    EventsComponent,
 
     IHomeComponent,
     IMapsComponent,
+    RecyclerStatesComponent,
+    EventsComponent,
     
   ],
   imports: [
@@ -66,6 +72,10 @@ import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'table-components', component: TableComponentsComponent },
       { path: 'actions-components', component: ActionsComponentsComponent },
+
+      { path: 'events', component: EventsComponent },
+      { path: 'recycler-states', component: RecyclerStatesComponent },
+
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },
       { path: 'stats', component: StatsComponent },

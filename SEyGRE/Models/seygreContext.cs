@@ -26,7 +26,6 @@ namespace SEyGRE.Models
         public virtual DbSet<Procesoreciclado> Procesoreciclado { get; set; }
         public virtual DbSet<Residuos> Residuos { get; set; }
         public virtual DbSet<Tipousuario> Tipousuario { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -51,8 +50,8 @@ namespace SEyGRE.Models
                     .HasColumnName("idEstatus")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.IdUsuarios)
-                    .HasColumnName("idUsuarios")
+                entity.Property(e => e.IdTipoUsuario)
+                    .HasColumnName("idTipoUsuario")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Imagen)
@@ -296,27 +295,6 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Descripccion)
                     .HasColumnName("descripccion")
                     .HasColumnType("varchar(100)");
-
-                entity.Property(e => e.Nombre)
-                    .HasColumnName("nombre")
-                    .HasColumnType("varchar(45)");
-            });
-
-            modelBuilder.Entity<Usuarios>(entity =>
-            {
-                entity.ToTable("usuarios");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.Contraseña)
-                    .HasColumnName("contraseña")
-                    .HasColumnType("varchar(45)");
-
-                entity.Property(e => e.IdTipoUsuario)
-                    .HasColumnName("idTipoUsuario")
-                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.Nombre)
                     .HasColumnName("nombre")

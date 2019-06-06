@@ -36,7 +36,8 @@ export class AddCenterComponent {
       password: this._password,
       latitud: this._lat,
       longitud: this._lng,
-      idEstatus: 3 /* porque comienzan como pendientes */
+      idEstatus: 3,    /* porque comienzan como pendientes */
+      idTipoUsuario: 2
 
     });
 
