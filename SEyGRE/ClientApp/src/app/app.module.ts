@@ -18,16 +18,18 @@ import { StatsComponent } from './center/stats/stats.component';
 import { InfoComponent } from './center/info/info.component';
 import { MapsComponent } from './center/maps/maps.component';
 import { UsersComponent } from './center/users/users.component';
-import { AddComponentsComponent } from './center/add-components/add-components.component';
+import { AddComponentsComponent } from './center/edit/modules/add-components/add-components.component';
 import { LoginComponent } from './login/login.component';
 import { AddCenterComponent } from './center/add-center/add-center.component';
 import { VerifyCenterComponent } from './institution/verify-center/verify-center.component';
-import { ActionsComponentsComponent } from './center/actions-components/actions-components.component';
-import { TableComponentsComponent } from './center/table-components/table-components.component';
+import { ActionsComponentsComponent } from './center/edit/modules/actions-components/actions-components.component';
+import { TableComponentsComponent } from './center/edit/modules/table-components/table-components.component';
 import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
 import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
 import { EventsComponent } from './center/events/events.component';
 
+import { ProfileComponent } from './center/users/modules/profile/profile.component';
+import { TableUsersComponent } from './center/users/modules/table-users/table-users.component';
 
 @NgModule({
   declarations:[
@@ -50,11 +52,15 @@ import { EventsComponent } from './center/events/events.component';
     RecyclerStatesComponent,
     EventsComponent,
 
+    ProfileComponent,
+    TableUsersComponent,
+
     IHomeComponent,
     IMapsComponent,
     RecyclerStatesComponent,
-    EventsComponent,
-    
+    EventsComponent
+
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -72,6 +78,10 @@ import { EventsComponent } from './center/events/events.component';
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'table-components', component: TableComponentsComponent },
       { path: 'actions-components', component: ActionsComponentsComponent },
+
+      { path: 'profile', component: ProfileComponent },
+      { path: 'table-users', component: TableUsersComponent },
+
 
       { path: 'events', component: EventsComponent },
       { path: 'recycler-states', component: RecyclerStatesComponent },

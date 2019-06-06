@@ -32,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\center\events\modules\" />
+    <Folder Include="ClientApp\src\app\center\stats\modules\" />
+    <Folder Include="ClientApp\src\app\center\users\modules\" />
     <Folder Include="ClientApp\src\app\citizen\" />
   </ItemGroup>
 

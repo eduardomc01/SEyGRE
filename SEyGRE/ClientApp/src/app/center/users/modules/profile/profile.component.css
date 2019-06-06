@@ -1,0 +1,27 @@
+* {
+  text-align: center;
+}
+
+div [type="text"], [type="button"] {
+  margin: 10px 0 10px 0;
+}
+
+
+.close {
+  margin: auto;
+}
+
+
+
+.card {
+
+  position: absolute;
+  margin: 0 0 0 10px;
+  width: 20%;
+
+}
+
+
+.card-body img {
+  width: 50%;
+}

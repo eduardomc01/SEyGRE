@@ -9,6 +9,9 @@
   border-radius: 10px;
   color: white;
   transition-duration: 1s;
+  border-left-style: solid;
+  border-left-width: 5px;
+  border-left-color: mediumseagreen;
   z-index: 1;
 }
 
