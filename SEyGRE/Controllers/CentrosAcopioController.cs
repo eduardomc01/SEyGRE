@@ -70,7 +70,7 @@ namespace SEyGRE.Controllers
 
         }
 
-
+        
         [HttpPost("[action]")]
         public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r){
 
@@ -91,7 +91,7 @@ namespace SEyGRE.Controllers
             return list;
 
         }
-
+        
 
 
 

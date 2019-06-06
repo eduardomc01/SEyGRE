@@ -5,14 +5,29 @@
 </head>
 <body>
 
-  <div class="left">
-  <app-add-components></app-add-components>
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-sm-3'>
+        <app-nav-menu></app-nav-menu>
+      </div>
+      <div class='col-sm-9 body-content'>
+
+        <div class="left">
+          <app-add-components></app-add-components>
+        </div>
+        <div class="right">
+          <app-actions-components></app-actions-components>
+        </div>
+        <div class="down">
+          <app-table-components></app-table-components>
+        </div>
+
+
+
+      </div>
+    </div>
   </div>
-  <div class="right">
-  <app-actions-components></app-actions-components>
-  </div>
-  <div class="down">
-  <app-table-components></app-table-components>
-  </div>
+
+
 </body>
 </html>

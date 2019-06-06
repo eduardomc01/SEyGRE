@@ -10,10 +10,11 @@ import { MouseEvent } from '@agm/core';
 })
 export class AddCenterComponent {
 
-  public _nombre: string;
   public _usuario: string;
-  public _imagen: string;
   public _password: string;
+
+  public _nombre: string;
+  public _imagen: string;
   public _direccion: string;
 
   public title: string = "CENTRO";
@@ -30,14 +31,24 @@ export class AddCenterComponent {
     let json = JSON.stringify({
 
       nombre: this._nombre,
+      imagen: this._imagen,
       usuario: this._usuario,
       password: this._password,
-      imagen: this._imagen,
       latitud: this._lat,
       longitud: this._lng,
       idEstatus: 3 /* porque comienzan como pendientes */
 
     });
+
+    /*
+    let json2 = JSON.stringify({
+
+      usuario: this._usuario,
+      contraseña: this._password,
+      idEstatus: 3 porque comienzan como pendientes 
+
+    }); */
+
 
     this.http.post("api/CentrosAcopio/InsertarCentros", JSON.parse(json)).subscribe(() => { });
 

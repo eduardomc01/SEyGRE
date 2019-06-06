@@ -2,7 +2,7 @@ body {
   position: fixed;
   float: left;
   left: 100px;
-  padding: 20px 10px 0 50px;
+  padding: 20px 10px 0 10px;
   text-align: center;
 }
 
@@ -16,10 +16,11 @@ p:hover {
 }
 
 .card {
-
+  border-top: solid;
+  border-top-color: rgb(26, 188, 156);
+  border-top-width: 5px;
   padding: 10px 10px 10px 10px;
   width: 75%;
-
 }
 
 div [type="text"], [type="password"], [type="submit"], [type="number"] {

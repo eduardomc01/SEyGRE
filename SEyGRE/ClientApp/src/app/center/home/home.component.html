@@ -5,37 +5,46 @@
 </head>
 <body>
 
-  <!-- el name es importante para completar el "OCULTAR LAS COSAS aunque no se utilice el nombre"
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-sm-3'>
+        <app-nav-menu></app-nav-menu>
+      </div>
+      <div class='col-sm-9 body-content'>
+
+        <!-- el name es importante para completar el "OCULTAR LAS COSAS aunque no se utilice el nombre"
+        <label for="show"> Mostrar </label>
+        <input type="radio" id="show" name="a" />
+
+        <label for="hide"> Ocultar </label>
+        <input type="radio" id="hide" name="a" />
+
+          -->
+
+        <div class="panel-session">
+          <p> <span class="icon-star-empty"></span> Bienvenido: {{ nombre }} </p>
+          <p (click)='closeSession()'> <span class="icon-exit"></span> Cerrar sesión </p>
+        </div>
 
 
-  <label for="show"> Mostrar </label>
-  <input type="radio" id="show" name="a" />
 
-  <label for="hide"> Ocultar </label>
-  <input type="radio" id="hide" name="a" />
+        <video autoplay controls loop>
+          <source src="../../assets/videos/basura.mp4" type="video/mp4" />
+        </video>
 
-    -->
+        <!--
+        <div *ngIf="showSuccess">
+          <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+            <strong> !Hola¡ </strong> Bienvenido {{nombre}}
+          </ngb-alert>
+        </div>
+        -->
 
 
-
-  <div class="panel-session">
-    <p> <span class="icon-star-empty"></span> Bienvenido: {{ nombre }} </p>
-    <p (click)='closeSession()'> <span class="icon-exit"></span> Cerrar sesión </p>
+      </div>
+    </div>
   </div>
 
-
-
-  <video autoplay controls loop>
-    <source src="../../assets/videos/basura.mp4" type="video/mp4" />
-  </video>
-
-  <!--
-  <div *ngIf="showSuccess">
-    <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
-      <strong> !Hola¡ </strong> Bienvenido {{nombre}}
-    </ngb-alert>
-  </div>
-  -->
 
 </body>
 </html>

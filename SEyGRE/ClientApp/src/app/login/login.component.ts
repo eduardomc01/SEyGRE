@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,9 @@ export class LoginComponent {
 
       try {
 
-      this.mensajesAlerts(result[0], result);
+        this.mensajesAlerts(result[0], result);
+
+        console.log(result[0])
 
       } catch (e) {
 
@@ -62,7 +65,9 @@ export class LoginComponent {
       sessionStorage.setItem("nombre", obj[0].nombre);
       this.router.navigate(["/home"]);
 
-    } else {
+    }
+
+    else {
 
       this.showDanger = true;
 

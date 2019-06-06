@@ -1,6 +1,6 @@
 body {
   margin-top: 10px;
-  margin-left: -25%;
+  margin-left: -24%;
 }
 
 .card, .derecha card {
@@ -8,7 +8,7 @@ body {
 }
 
 div [type="text"], [type="button"], [type="number"] {
-  margin: 15px 0 15px 0;
+  margin: 10px 0 10px 0;
 }
 
 .card {

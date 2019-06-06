@@ -1,5 +1,5 @@
-*{
- text-align: center;
+body {
+  text-align: center;
 }
 
 h1 {
@@ -12,13 +12,16 @@ p:hover {
 }
 
 .card {
-  margin: 50px 10px 0 250px;
+  margin: 5% 10% 0 40%;
   padding: 10px 10px 10px 10px;
-  width: 30%;
+  width: 250px;
+  border-top: solid;
+  border-top-color: rgb(26, 188, 156);
+  border-top-width: 5px;
 }
 
 .card .card-body img {
-  width: 50%;
+  width: 40%;
   padding: 10px 10px 10px 10px;
 }
 

@@ -5,57 +5,72 @@
 </head>
 <body>
 
-  <div class="card">
-    <div class="card-header"> <h1> Peticiones de los centros </h1> </div>
-    <div class="card-body">
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-sm-3'>
+        <app-nav-menu-institution></app-nav-menu-institution>
+      </div>
+      <div class='col-sm-9 body-content'>
 
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col"> ID </th>
-            <th scope="col"> Nombre </th>
-            <th scope="col"> Usuario </th>
-            <th scope="col"> Contraseña </th>
-            <th scope="col"> Documento de respaldo </th>
-            <th scope="col"> Estatus </th>
-            <th scope="col"> Acción </th>
-          </tr>
-        </thead>
-        <tbody>
 
-          <tr *ngFor="let info of _centro">
-            <td> {{info.id}} </td>
-            <td> {{info.nombre}} </td>
-            <td> {{info.usuario}} </td>
-            <td> {{info.password}} </td>
-            <td> {{info.imagen}} </td>
-            <td> {{info.titulo}} </td>
-            <td>
-              <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
-              <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
 
+
+
+        <div class="card">
+          <div class="card-header"> <h1> Peticiones de los centros </h1> </div>
+          <div class="card-body">
+
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"> ID </th>
+                  <th scope="col"> Nombre </th>
+                  <th scope="col"> Usuario </th>
+                  <th scope="col"> Contraseña </th>
+                  <th scope="col"> Documento de respaldo </th>
+                  <th scope="col"> Estatus </th>
+                  <th scope="col"> Acción </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let info of _centro">
+                  <td> {{info.id}} </td>
+                  <td> {{info.nombre}} </td>
+                  <td> {{info.usuario}} </td>
+                  <td> {{info.password}} </td>
+                  <td> {{info.imagen}} </td>
+                  <td> {{info.titulo}} </td>
+                  <td>
+                    <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
+                    <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+
+
+
+          <div *ngIf="showSuccess">
+            <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+              <strong> !Exito¡ </strong> Cuentas esperando su respuesta !
+            </ngb-alert>
+          </div>
+
+          <div *ngIf="showDanger">
+            <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
+              <strong> !Aviso¡ </strong> No hay cuentas ha verificar !
+            </ngb-alert>
+          </div>
+
+
+
+        </div>
+
+      </div>
     </div>
-
-
-
-    <div *ngIf="showSuccess">
-      <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
-        <strong> !Exito¡ </strong> Cuentas esperando su respuesta !
-      </ngb-alert>
-    </div>
-
-    <div *ngIf="showDanger">
-      <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
-        <strong> !Aviso¡ </strong> No hay cuentas ha verificar !
-      </ngb-alert>
-    </div>
-
-
-
   </div>
 
 </body>
