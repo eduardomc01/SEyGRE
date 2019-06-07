@@ -11,5 +11,6 @@ namespace SEyGRE.Models
         public TimeSpan? Horario { get; set; }
         public DateTime? Fecha { get; set; }
         public int? IdEstatus { get; set; }
+        public int? IdCentroAcopio { get; set; }
     }
 }

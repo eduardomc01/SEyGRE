@@ -36,9 +36,9 @@ export class LoginComponent {
       
     });
 
-    this.http.post("api/CentrosAcopio/ObtenerUsuario",JSON.parse(json)).subscribe(result => {
+    this.http.post("api/CentrosAcopio/ObtenerUsuario", JSON.parse(json)).subscribe(result => {
 
-        this.mensajesAlerts(result[0], result);
+      this.mensajesAlerts(result[0], result);
       
     });
 
@@ -63,7 +63,7 @@ export class LoginComponent {
 
     }
 
-    else if (obj[0].tipoUsuario == "centro") {
+    else if (obj[0].tipoUsuario == "centro de acopio") {
 
       sessionStorage.setItem("idUser", obj[0].id);
       sessionStorage.setItem("nombre", obj[0].nombre);

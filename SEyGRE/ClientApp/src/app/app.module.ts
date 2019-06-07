@@ -30,6 +30,8 @@ import { EventsComponent } from './center/events/events.component';
 
 import { ProfileComponent } from './center/users/modules/profile/profile.component';
 import { TableUsersComponent } from './center/users/modules/table-users/table-users.component';
+import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
+import { AddEventsComponent } from './center/events/modules/add-events/add-events.component';
 
 @NgModule({
   declarations:[
@@ -54,11 +56,14 @@ import { TableUsersComponent } from './center/users/modules/table-users/table-us
 
     ProfileComponent,
     TableUsersComponent,
+    TableEventsComponent,
+    AddEventsComponent,
 
     IHomeComponent,
     IMapsComponent,
     RecyclerStatesComponent,
     EventsComponent
+
 
 
   ],
@@ -81,7 +86,8 @@ import { TableUsersComponent } from './center/users/modules/table-users/table-us
 
       { path: 'profile', component: ProfileComponent },
       { path: 'table-users', component: TableUsersComponent },
-
+      { path: 'add-events', component: EventsComponent },
+      { path: 'table-events', component: TableEventsComponent },
 
       { path: 'events', component: EventsComponent },
       { path: 'recycler-states', component: RecyclerStatesComponent },

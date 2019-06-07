@@ -161,6 +161,10 @@ namespace SEyGRE.Models
                     .HasColumnName("horario")
                     .HasColumnType("time");
 
+                entity.Property(e => e.IdCentroAcopio)
+                    .HasColumnName("idCentroAcopio")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.IdEstatus)
                     .HasColumnName("idEstatus")
                     .HasColumnType("int(11)");
