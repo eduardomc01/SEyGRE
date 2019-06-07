@@ -3,10 +3,6 @@
 }
 
 
-div [type="text"], [type="button"] {
-  margin: 10px 0 10px 0;
-}
-
 
 .close {
   margin: auto;
@@ -17,5 +13,5 @@ div [type="text"], [type="button"] {
 .card {
   position: absolute;
   margin: 620px 0 0 10px;
-  width: 75%;
+  width: 96%;
 }

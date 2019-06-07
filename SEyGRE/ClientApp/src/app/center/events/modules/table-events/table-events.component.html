@@ -14,38 +14,37 @@
           <tr>
             <th scope="col"> ID </th>
             <th scope="col"> Evento </th>
+            <th scope="col"> Organizador </th>
+            <th scope="col"> Horario </th>
             <th scope="col"> Fecha </th>
             <th scope="col"> Acción </th>
 
           </tr>
         </thead>
         <tbody>
-          <!--
-          <tr *ngFor="let info of _personal">
+
+          <tr *ngFor="let info of _eventos">
             <td> {{info.id}} </td>
             <td> {{info.nombre}} </td>
-            <td> {{info.apellidos}} </td>
+            <td> {{info.organizador}} </td>
+            <td> {{info.horario}} </td>
+            <td> {{info.fecha}} </td>
+            <td> <input type="button" class="btn btn-danger" value="Eliminar" (click)="ObtenerIdEvento(info.id)" /> </td>
           </tr>
-          -->
+
         </tbody>
       </table>
 
     </div>
 
   </div>
-  <!--
+
   <div *ngIf="showSuccess">
     <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
-      <strong> !Exito¡ </strong> Personal recuperado del centro
+      <strong> !Exito¡ </strong> Componente eliminado del sistema
     </ngb-alert>
   </div>
 
-  <div *ngIf="showDanger">
-    <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
-      <strong> !Aviso¡ </strong> No hay personal !
-    </ngb-alert>
-  </div>
-      -->
 
 
 </body>

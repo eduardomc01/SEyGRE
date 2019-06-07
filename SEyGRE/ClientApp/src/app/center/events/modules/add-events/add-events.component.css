@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-div [type="number"], [type="submit"], [type="reset"], [type="text"] {
+div [type="number"], [type="submit"], [type="reset"], [type="text"], [type="time"], [type="date"] {
   margin: 10px 0 10px 0;
 }
 

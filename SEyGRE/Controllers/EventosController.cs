@@ -23,7 +23,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpPost("[action]")]
-        public void InsertarEventos([FromBody] Eventos r)
+        public void InsertarEvento([FromBody] Eventos r)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -35,6 +35,39 @@ namespace SEyGRE.Controllers
         }
 
 
+        [HttpGet("[action]")]
+        public List<Eventos> ObtenerEvento()
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Eventos select e).ToList();
+
+            return list;
+
+        }
+
+
+
+
+        [HttpPost("[action]")]
+        public int EliminarEvento([FromBody] int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var found = context.Eventos.Find(id);
+
+            context.Eventos.Remove(found);
+
+            context.SaveChanges();
+
+            return 1;
+
+        }
+
 
     }
+
+
 }

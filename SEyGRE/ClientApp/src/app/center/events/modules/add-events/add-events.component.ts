@@ -49,7 +49,7 @@ export class AddEventsComponent {
     console.log(json);
 
 
-    this.http.post("api/Eventos/InsertarEventos", JSON.parse(json)).subscribe(() => { });
+    this.http.post("api/Eventos/InsertarEvento", JSON.parse(json)).subscribe(() => { });
 
   }
 
