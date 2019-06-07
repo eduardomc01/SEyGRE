@@ -33,3 +33,11 @@ div [type="text"], [type="password"], [type="button"] {
 p {
   margin-top: 10px;
 }
+
+
+.regresar {
+
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+
+}

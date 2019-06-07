@@ -79,7 +79,7 @@ export class AddCenterComponent {
 
 
   public login() {
-    this.router.navigate(["/"]);
+    this.router.navigate(["/Login"]);
   }
 
 

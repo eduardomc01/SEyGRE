@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Menu citizens </title>
+</head>
+<body>
+
+  <label for="hide">
+    <span class='icon-eye'> </span>
+  </label>
+  <input type="checkbox" id="hide" checked />
+
+  <div id="main-nav">
+
+    <ul>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a class="active" [routerLink]='["/"]'>
+          <span class='icon-home'> <label> Principal </label> </span>
+        </a>
+      </li>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/cmaps"]' (click)='collapse()'>
+          <span class='icon-map'> </span> <label>  Mapa </label>
+        </a>
+      </li>
+
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/Login"]' (click)='collapse()' onclick="advertenciaLogin()">
+          <span class='icon-switch'> </span> <label> Sesión en centros </label>
+        </a>
+      </li>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/cinfo"]' (click)='collapse()'>
+          <span class='icon-info'> </span> <label> Info </label>
+        </a>
+      </li>
+
+
+
+    </ul>
+  </div>
+
+
+
+
+  <!-- <footer> <p> Sistema Estadistico y Gestion de Residuos Electronicos en la zona conurbada Veracruz, Boca del rio <sup> 2019 TM </sup> </p> </footer> -->
+
+
+
+</body>
+
+</html>
+
+
+

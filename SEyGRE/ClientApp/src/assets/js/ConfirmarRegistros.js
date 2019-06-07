@@ -22,7 +22,7 @@ function confirmarDatos() {
     return false
 
   }
-
-
+ 
+  
 
 }

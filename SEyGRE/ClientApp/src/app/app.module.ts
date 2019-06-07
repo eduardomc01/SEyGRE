@@ -33,22 +33,28 @@ import { TableUsersComponent } from './center/users/modules/table-users/table-us
 import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
 import { AddEventsComponent } from './center/events/modules/add-events/add-events.component';
 
+import { CHomeComponent } from './citizen/chome/chome.component';
+import { CMapsComponent } from './citizen/cmaps/cmaps.component';
+import { CInfoComponent } from './citizen/cinfo/cinfo.component';
+import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-citizen.component';
+
 @NgModule({
   declarations:[
     AppComponent,
 
+    LoginComponent,
+
     NavMenuComponent,
-    NavMenuInstitutionComponent,
     HomeComponent,
     EditComponent,
     StatsComponent,
     InfoComponent,
+    RecyclerStatesComponent,
     MapsComponent,
     UsersComponent,
     AddComponentsComponent,
-    LoginComponent,
     AddCenterComponent,
-    VerifyCenterComponent,
+
     ActionsComponentsComponent,
     TableComponentsComponent,
     RecyclerStatesComponent,
@@ -59,10 +65,17 @@ import { AddEventsComponent } from './center/events/modules/add-events/add-event
     TableEventsComponent,
     AddEventsComponent,
 
+    NavMenuInstitutionComponent,
     IHomeComponent,
     IMapsComponent,
-    RecyclerStatesComponent,
-    EventsComponent
+    VerifyCenterComponent,
+    EventsComponent,
+
+
+    CHomeComponent,
+    CMapsComponent,
+    CInfoComponent,
+    NavMenuCitizenComponent,
 
 
 
@@ -77,7 +90,7 @@ import { AddEventsComponent } from './center/events/modules/add-events/add-event
       apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM',
     }),
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
+      { path: 'Login', component: LoginComponent },
       { path: 'home', component: HomeComponent },
       { path: 'add-center', component: AddCenterComponent },
       { path: 'add-components', component: AddComponentsComponent },
@@ -101,6 +114,11 @@ import { AddEventsComponent } from './center/events/modules/add-events/add-event
       { path: 'ihome', component: IHomeComponent },
       { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'imaps', component: IMapsComponent },
+
+      { path: '', component: CHomeComponent },
+      { path: 'cmaps', component: CMapsComponent },
+      { path: 'cinfo', component: CInfoComponent },
+
     ])
   ],
   providers: [ThemeService], // importante en la version (angular/common) 6.0.0 en adelante de angular en ng2-charts

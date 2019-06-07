@@ -24,7 +24,7 @@ export class TableEventsComponent {
   constructor(private http: HttpClient, private router: Router) {
 
     if (sessionStorage.getItem("idUser") == null)
-      this.router.navigate(["/"]);
+      this.router.navigate(["/Login"]);
 
     this.http.get<eventos[]>("api/Eventos/ObtenerEvento").subscribe(result => {
 

@@ -57,7 +57,7 @@ namespace SEyGRE.Controllers
 
         }
 
-        /* modificando para obtener el centro */
+
         [HttpPost("[action]")]
         public List<Centrosacopio> ObtenerCentro([FromBody] Centrosacopio r)
         {

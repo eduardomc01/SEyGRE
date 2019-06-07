@@ -24,7 +24,7 @@ export class TableUsersComponent {
   constructor(private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
-      this.router.navigate(["/"]);
+      this.router.navigate(["/Login"]);
 
     this.http.get<personal[]>("api/Personal/GetPersonal").subscribe(result => {
 

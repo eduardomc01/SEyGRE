@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -84,6 +83,11 @@ export class LoginComponent {
 
   public addCenter() {
     this.router.navigate(["/add-center"]);
+  }
+
+
+  public returnCitizens() {
+    this.router.navigate(["/"]);
   }
 
 

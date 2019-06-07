@@ -11,7 +11,7 @@ export class InfoComponent {
   constructor(private router: Router) {
 
     if (sessionStorage.getItem("idUser") == null)
-      this.router.navigate(["/"]);
+      this.router.navigate(["/Login"]);
 
   }
 

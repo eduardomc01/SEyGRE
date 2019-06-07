@@ -9,7 +9,7 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./profile.component.css'],
   providers: [NgbAlertConfig]
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   public _centro: centro[];
 
@@ -18,8 +18,11 @@ export class ProfileComponent {
   constructor(private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
-      this.router.navigate(["/"]);
+      this.router.navigate(["/Login"]);
 
+  }
+
+  public ngOnInit():void {
 
     let json = JSON.stringify({
       id: this.idUser
@@ -31,7 +34,6 @@ export class ProfileComponent {
 
     });
 
-
   }
 
 
@@ -39,8 +41,8 @@ export class ProfileComponent {
 
 interface centro {
 
-  h: number;
-  i: string;
-  j: string;
+  a: number;
+  b: string;
+  c: string;
 
 }

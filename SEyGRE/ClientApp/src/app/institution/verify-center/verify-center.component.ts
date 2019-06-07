@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verify-center',
@@ -17,7 +18,10 @@ export class VerifyCenterComponent{
 
   public _centro: centro[]
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
+
+    if (sessionStorage.getItem("idUser") == null)
+      this.router.navigate(["/Login"]);
 
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
 
