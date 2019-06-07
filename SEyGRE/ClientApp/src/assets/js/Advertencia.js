@@ -1,10 +1,12 @@
 function advertenciaLogin() {
 
   swal({
+    html: true,
     title: "Aviso",
     icon: "warning",
-    text: "Se encuentra accediendo a un acceso al sistema, en caso de no ser un centro de acopio deberia dar la vuelta!... Gracias",
-    buttons: false,
+    button: true,
+    text: "Usted se encuentra accediendo al login del sistema, en caso de no contar con un centro de acopio o algun evento de la recolección de RE deberia regresar a la vista ciudadana! ",
+    button: "He leído",
   });
 
 

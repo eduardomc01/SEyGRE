@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 })
 export class IMapsComponent {
 
+  //19.205145, -96.191294
+  title: string = 'Centro de acopio Rio medio';
+  lat: number = 19.205145;
+  lng: number = -96.191294;
 
   constructor(private http: HttpClient, private router: Router) {
 

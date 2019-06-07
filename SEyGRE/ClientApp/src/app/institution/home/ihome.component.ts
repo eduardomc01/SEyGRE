@@ -29,7 +29,7 @@ export class IHomeComponent {
   public closeSession() {
 
     sessionStorage.clear();
-    this.router.navigate(["/"]);
+    this.router.navigate(["/Login"]);
 
   }
 

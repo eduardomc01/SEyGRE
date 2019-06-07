@@ -70,7 +70,19 @@ namespace SEyGRE.Controllers
 
         }
 
-        
+        [HttpGet("[action]")]
+        public List<Centrosacopio> ObtenerCentros()
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Centrosacopio select e).ToList();
+
+            return list;
+
+        }
+
+
         [HttpPost("[action]")]
         public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r){
 
