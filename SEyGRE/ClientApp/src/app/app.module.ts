@@ -103,6 +103,8 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDs17nH2r-DCdIvpqA1ahrzl1X97E55tvM',
+      language: 'en',
+      libraries: ['geometry', 'places']
     }),
     RouterModule.forRoot([
       { path: 'Login', component: LoginComponent },
