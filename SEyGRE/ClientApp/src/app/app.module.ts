@@ -7,9 +7,11 @@ import { AgmCoreModule } from '@agm/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 import { NavMenuInstitutionComponent } from './institution/nav-menu-institution/nav-menu-institution.component';
 import { IMapsComponent } from './institution/maps/imaps.component';
 import { IHomeComponent } from './institution/home/ihome.component';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './center/home/home.component';
@@ -28,22 +30,29 @@ import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
 import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
 import { EventsComponent } from './center/events/events.component';
 
+
 import { ProfileComponent } from './center/users/modules/profile/profile.component';
 import { TableUsersComponent } from './center/users/modules/table-users/table-users.component';
 import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
 import { AddEventsComponent } from './center/events/modules/add-events/add-events.component';
+
 
 import { CHomeComponent } from './citizen/chome/chome.component';
 import { CMapsComponent } from './citizen/cmaps/cmaps.component';
 import { CInfoComponent } from './citizen/cinfo/cinfo.component';
 import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-citizen.component';
 
+
+import { LineComponent } from './center/stats/modules/line/line.component';
+import { PieComponent } from './center/stats/modules/pie/pie.component';
+import { RadarComponent } from './center/stats/modules/radar/radar.component';
+import { BarsComponent } from './center/stats/modules/bars/bars.component';
+
+
 @NgModule({
   declarations:[
     AppComponent,
-
     LoginComponent,
-
     NavMenuComponent,
     HomeComponent,
     EditComponent,
@@ -76,6 +85,12 @@ import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-cit
     CMapsComponent,
     CInfoComponent,
     NavMenuCitizenComponent,
+
+
+    LineComponent,
+    PieComponent,
+    RadarComponent,
+    BarsComponent, 
 
 
 

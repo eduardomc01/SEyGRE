@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Estadisticas </title>
+</head>
+<body>
+
+
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-sm-9 body-content'>
+
+        <div class="r2 card">
+          <div class="card-header">
+            <h1> Cantidad de elementos acopiados </h1>
+          </div>
+
+          <div class="card-body">
+            <canvas baseChart
+                    [datasets]="radarChartData"
+                    [labels]="radarChartLabels"
+                    [colors]="ChartColorsTransparent"
+                    [chartType]="radarChartType"></canvas>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

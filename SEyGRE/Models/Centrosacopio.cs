@@ -9,6 +9,7 @@ namespace SEyGRE.Models
         public string Usuario { get; set; }
         public string Nombre { get; set; }
         public string Password { get; set; }
+        public string Correo { get; set; }
         public string Imagen { get; set; }
         public double? Latitud { get; set; }
         public double? Longitud { get; set; }

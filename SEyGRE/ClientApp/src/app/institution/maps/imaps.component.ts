@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class IMapsComponent {
 
   //19.205145, -96.191294
-  title: string = 'Centro de acopio Rio medio';
+//  title: string = 'Centro de acopio Rio medio';
   lat: number = 19.205145;
   lng: number = -96.191294;
+
+  public d: datas[];
 
   constructor(private http: HttpClient, private router: Router) {
 
@@ -22,5 +24,21 @@ export class IMapsComponent {
       this.router.navigate(["/Login"]);
 
 
+    this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
+
+      console.log(result);
+
+      this.d = result;
+
+
+    });
+
+  }
+
+
+}
+
+
+interface datas {
 
 }

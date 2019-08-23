@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Estadisticas </title>
+</head>
+<body>
+
+
+  <div class='container-fluid'>
+    <div class='row'>
+      <div class='col-sm-9 body-content'>
+
+        <div class="r4 card">
+          <div class="card-header">
+            <h1> Grafica 4 </h1>
+          </div>
+
+          <div class="card-body">
+            <canvas class="cav" baseChart
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

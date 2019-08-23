@@ -21,7 +21,7 @@ namespace SEyGRE.Controllers
         }
 
         [HttpPost("[action]")]
-        public void InsertarComponentes([FromBody] Residuos r){
+        public void InsertarComponentes([FromBody] Residuos r) {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
@@ -30,10 +30,10 @@ namespace SEyGRE.Controllers
             context.SaveChanges();
 
         }
-        
-        
+
+
         [HttpPost("[action]")]
-        public List<RelacionResiduosClasificacion> ObtenerResiduos([FromBody] RelacionResiduosClasificacion r){
+        public List<RelacionResiduosClasificacion> ObtenerResiduos([FromBody] RelacionResiduosClasificacion r) {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
@@ -50,7 +50,7 @@ namespace SEyGRE.Controllers
                             Peso = e.Peso,
                             Clasificacion = l.Titulo,
                             Fecha = e.Fecha
-                            
+
                         }).Take(3).ToList();
 
             return list;
@@ -101,5 +101,84 @@ namespace SEyGRE.Controllers
         }
 
 
+        //OBTENER STATS
+        [HttpPost("[action]")]
+        public List<int> ObtenerInformacionBarras([FromBody] Residuos r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            int max_year = (from e in context.Residuos select e.Fecha).Distinct().Count();
+
+            int[] year = { 2019, 2020, 2021, 2022, 2023 };
+            int[] datos = new int[5];
+            int i = 0;
+
+
+            foreach (var y in year)
+            {
+              
+                    datos[i] = (from e in context.Residuos where e.Fecha.Value.Year.Equals(y) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                    i += 1;                
+
+            }
+
+            return datos.ToList();
+
+        }
+
+        //OBTENER PIE
+       [HttpPost("[action]")]
+        public List<int> ObtenerInformacionCircular([FromBody] Residuos r)
+        {
+            int[] clasifi = { 1, 2, 3 };
+            int[] datos = new int[3];
+            int i = 0;
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            foreach (var c in clasifi)
+            {
+
+                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                i += 1;
+
+            }
+
+            return datos.ToList();
+
+        }
+
+
+
+        //OBTENER PIE
+        [HttpPost("[action]")]
+        public List<int> ObtenerInformacionRadar([FromBody] Residuos r)
+        {
+            int[] clasifi = { 1, 2, 3 };
+            int[] datos = new int[1];
+            int i = 0;
+            
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+         
+            datos[1] = (from e in context.Residuos select e.IdClasificacion.Value).Sum();
+
+            return datos.ToList();
+      
+
+           /* foreach (var c in clasifi)
+            {
+
+                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                i += 1;
+
+            }
+
+            return datos.ToList();
+            */
+        }
+
+
     }
+
 }

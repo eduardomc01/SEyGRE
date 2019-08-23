@@ -5,7 +5,6 @@
 </head>
 <body>
 
-
   <div class='container-fluid'>
     <div class='row'>
       <div class='col-sm-3'>
@@ -13,41 +12,29 @@
       </div>
       <div class='col-sm-9 body-content'>
 
-   
-                <!--
-            <form (ngSubmit)="ObtenerDatos()">
-              <div class="card">
-                <div class="card-header">
-                  <h1> Registro de centro </h1>
-                </div>
-                <div class="card-body">
-                  <input class="form-control" type="text" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
-                  <input class="form-control" type="number" placeholder=" Latitud" [(ngModel)]="longitud" name="longitud" required />
-                  <input class="form-control" type="number" placeholder=" Longitud" [(ngModel)]="latitud" name="latitud" required />
-                </div>
-                <div class="card-footer">
-                  <input type="submit" class="btn btn-success" value="Ingresa el centro" />
-                </div>
-              </div>
-            </form>
-              -->
-                <div class="card">
-                  <div class="card-header">
-                    <h1> Mapa de centros </h1>
-                  </div>
-                  <div class="card-body">
-                    <agm-map [latitude]="lat"
-                             [longitude]="lng">
 
-                      <agm-marker [latitude]="lat"
-                                  [longitude]="lng"
-                                  title="Eduardo">
-                      </agm-marker>
-                    </agm-map>
-                  </div>
-                </div>
+        <div class="card">
+          <div class="card-header">
+            <h1> Mapa de centros </h1>
+          </div>
+          <div class="card-body">
+            <agm-map  
+                     [latitude]="lat"
+                     [longitude]="lng">
 
-         
+              <agm-marker *ngFor="let info of d"
+                          [latitude]="info.latitud"
+                          [longitude]="info.longitud">
+
+
+                <agm-info-window> <strong>  info.nombre  </strong> </agm-info-window>
+
+
+              </agm-marker>
+            </agm-map>
+          </div>
+        </div>
+
 
       </div>
     </div>

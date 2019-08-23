@@ -8,10 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CMapsComponent {
 
-  //19.164664, -96.113745 recolectron
-  //19.161593, -96.109658 ilustre
-  //19.160326, -96.114990 mocambo
-
+  lat: number = 19.205145;
+  lng: number = -96.191294;
   public d: datas[];
 
   constructor(private http: HttpClient) {
@@ -28,4 +26,6 @@ export class CMapsComponent {
 
 }
 
-interface datas { }
+interface datas {
+
+}

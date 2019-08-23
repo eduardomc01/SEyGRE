@@ -27,9 +27,9 @@
                   <th scope="col"> Nombre </th>
                   <th scope="col"> Usuario </th>
                   <th scope="col"> Contraseña </th>
-                  <th scope="col"> Documento de respaldo </th>
-                  <th scope="col"> Estatus </th>
-                  <th scope="col"> Acción </th>
+                  <th scope="col"> Correo electronico </th>
+                  <th scope="col"> Documento(s) Adjunto </th>
+                  <th scope="col"> Acciónes </th>
                 </tr>
               </thead>
               <tbody>
@@ -39,12 +39,14 @@
                   <td> {{info.nombre}} </td>
                   <td> {{info.usuario}} </td>
                   <td> {{info.password}} </td>
-                  <td> {{info.imagen}} </td>
-                  <td> {{info.titulo}} </td>
+                  <td> {{info.correo}}</td>
+                  <td> <input type="button" class="btn btn-info" value="Verificar" /></td>
+
                   <td>
-                    <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
-                    <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
+                  <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
+                  <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
                   </td>
+
                 </tr>
               </tbody>
             </table>

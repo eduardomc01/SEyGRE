@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-div [type="text"], [type="button"] {
+div [type="text"], [type="submit"], [type="file"] {
   margin: 10px 0 10px 0;
 }
 
@@ -23,5 +23,5 @@ div [type="text"], [type="button"] {
 
 
 .card-body img {
-  width: 50%;
+  width: 80%;
 }

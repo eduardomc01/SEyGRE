@@ -14,69 +14,21 @@
       </div>
       <div class='col-sm-9 body-content'>
 
-        <div class="card">
-          <div class="card-header">
-            <h1> Residuos electronicos por año </h1>
-          </div>
+        <app-bars></app-bars>
 
-          <div class="card-body">
-            <canvas baseChart
-                    [datasets]="barChartData"
-                    [labels]="barChartLabels"
-                    [colors]="ChartColors"
-                    [legend]="barChartLegend"
-                    [chartType]="barChartType"></canvas>
-          </div>
-        </div>
+        <app-radar></app-radar>
 
+        <app-pie></app-pie>
 
-        <div class="r2 card">
-          <div class="card-header">
-            <h1> Grafica 2 </h1>
-          </div>
+        <!--
 
-          <div class="card-body">
-            <canvas baseChart
-                    [datasets]="radarChartData"
-                    [labels]="radarChartLabels"
-                    [colors]="ChartColorsTransparent"
-                    [chartType]="radarChartType"></canvas>
-          </div>
-        </div>
+            <app-line></app-line>
 
+        -->
 
-        <div class="r3 card">
-          <div class="card-header">
-            <h1> Grafica 3 </h1>
-          </div>
-
-          <div class="card-body">
-            <canvas baseChart
-                    [data]="pieChartData"
-                    [labels]="pieChartLabels"
-                    [chartType]="pieChartType"
-                    [legend]="pieChartLegend"></canvas>
-          </div>
-        </div>
-
-
-        <div class="r4 card">
-          <div class="card-header">
-            <h1> Grafica 4 </h1>
-          </div>
-
-          <div class="card-body">
-            <canvas class="cav" baseChart
-                    [datasets]="lineChartData"
-                    [labels]="lineChartLabels"
-                    [legend]="lineChartLegend"
-                    [chartType]="lineChartType"></canvas>
-          </div>
-        </div>
-
-        </div>
       </div>
     </div>
+  </div>
 
 </body>
 </html>

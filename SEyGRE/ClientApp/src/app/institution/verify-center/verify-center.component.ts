@@ -27,6 +27,8 @@ export class VerifyCenterComponent{
 
       try {
 
+        console.log(result)
+
         this._centro = result;
 
         this.mensajesAlerts(result.length);
@@ -99,4 +101,6 @@ interface centro {
   d: string;
   e: string;
   f: string;
+
+
 }

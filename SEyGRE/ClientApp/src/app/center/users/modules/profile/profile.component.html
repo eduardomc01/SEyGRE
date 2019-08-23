@@ -9,16 +9,44 @@
     <div class="card-header"> <h1> Centro de Acopio </h1> </div>
 
     <div *ngFor="let info of _centro" class="card-body">
-      <img src="../../assets/image/sin-foto.png" class="rounded-circle">
+
+      <!--
+      <img [src]="imgURL" height="180" *ngIf="imgURL" class="rounded-circle">
+
+
+  <img src="{{ prueba }}" class="rounded-circle">
+  <br />
+  <p> Path: {{ prueba }}</p>
+  <br />
+
+        -->
       <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" readonly />
       <input class="form-control" type="text" value="{{info.nombre}}" placeholder=" Nombre" readonly />
       <input class="form-control" type="text" value="{{info.password}}" placeholder=" Dirección" readonly />
     </div>
     <div class="card-footer">
-      <input class="btn btn-success" id="btn" type="button" value="Guardar personal" />
+
+      <!--
+      <input #file type="file" accept='image/*' (change)="CargarImagenes(file.files)" />
+      -->
+      
+      
+      <form (ngSubmit)="CargarImagen()"  ngNativeValidate>
+
+        <input class="form-control" type="file" (change)="SeleccionImagen($event)" enctype="multipart/form-data"  required/>
+        
+        <input class="btn btn-success" id="btn" type="submit" value="Actualizar imagen" />
+
+      </form>
+    
+
+
+
     </div>
 
   </div>
+
+
 
 </body>
 </html>

@@ -14,6 +14,8 @@ export class AddCenterComponent {
   public _password: string;
 
   public _nombre: string;
+  public _correo: string;
+
   public _imagen: string;
   public _direccion: string;
 
@@ -33,6 +35,7 @@ export class AddCenterComponent {
       nombre: this._nombre,
       imagen: this._imagen,
       usuario: this._usuario,
+      correo: this._correo,
       password: this._password,
       latitud: this._lat,
       longitud: this._lng,
