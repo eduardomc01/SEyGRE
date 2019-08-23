@@ -19,18 +19,39 @@
           </div>
           <div class="card-body">
 
-            <agm-map [latitude]="19.205145"
-                     [longitude]="-96.191294">
+            <div style="z-index: 2;position: fixed; margin-left: 10px; width: 30%">
+              <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Buscar dirección" autocorrect="off" autocapitalize="off" #search >
+            </div>
 
-              <agm-marker *ngFor="let info of d"
-                          [latitude]="info.latitud"
-                          [longitude]="info.longitud">
+            <agm-map [latitude]="latitude"
+                     [longitude]="longitude">
 
-
-                <agm-info-window> <strong>  {{ info.nombre }}  </strong> </agm-info-window>
+              <agm-marker [latitude]="latitude"
+                          [longitude]="longitude">
 
               </agm-marker>
+
             </agm-map>
+
+            <!--
+  <agm-map [latitude]="19.205145"
+           [longitude]="-96.191294">
+
+    <agm-marker *ngFor="let info of d"
+                [latitude]="info.latitud"
+                [longitude]="info.longitud"
+                [markerDraggable]="true"
+                (dragEnd)="markerDragEnd($event)">
+
+
+      <agm-info-window> <strong>  {{ info.nombre }}  </strong> </agm-info-window>
+
+    </agm-marker>
+  </agm-map>
+      -->
+            <h5>Address: {{address}}</h5>
+            <div>Latitude: {{latitude}}</div>
+            <div>Longitude: {{longitude}}</div>
 
 
 
