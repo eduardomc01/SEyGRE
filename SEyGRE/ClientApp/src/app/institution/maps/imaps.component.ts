@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 })
 export class IMapsComponent {
 
-  //19.205145, -96.191294
-//  title: string = 'Centro de acopio Rio medio';
   lat: number = 19.205145;
   lng: number = -96.191294;
 
@@ -25,11 +23,8 @@ export class IMapsComponent {
 
 
     this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
-
-      console.log(result);
-
+      
       this.d = result;
-
 
     });
 

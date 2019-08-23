@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MapsAPILoader, AgmMap } from '@agm/core';
+import { GoogleMapsAPIWrapper } from '@agm/core/services';
+
 
 @Component({
   selector: 'app-cmaps',
@@ -8,13 +11,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CMapsComponent {
 
-  lat: number = 19.205145;
-  lng: number = -96.191294;
   public d: datas[];
-
+  
   constructor(private http: HttpClient) {
 
-    this.http.get<datas[]>("api/CentrosAcopio/ObtenerCentros").subscribe(result => {
+    this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
 
       console.log(result);
 
@@ -29,3 +30,5 @@ export class CMapsComponent {
 interface datas {
 
 }
+
+

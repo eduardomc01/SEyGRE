@@ -125,7 +125,7 @@ namespace SEyGRE.Controllers
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var list = (from e in context.Centrosacopio
+            var list = (from e in context.Centrosacopio where e.IdEstatus.Equals(1)
                         select new Centrosacopio
                         {
 
