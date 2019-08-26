@@ -1,11 +1,15 @@
 function advertenciaLogin() {
 
+  var txt = document.createElement("txt");
+  txt.innerHTML = "Usted se encuentra accediendo al login del sistema, en caso de <b style='color:red;'> NO contar con un centro de acopio o algun evento de la recolección de RE </b> deberia regresar a la vista ciudadana! ";
+
+
   swal({
     html: true,
     title: "Aviso",
     icon: "warning",
     button: true,
-    text: "Usted se encuentra accediendo al login del sistema, en caso de no contar con un centro de acopio o algun evento de la recolección de RE deberia regresar a la vista ciudadana! ",
+    content: txt,
     button: "He leído",
   });
 

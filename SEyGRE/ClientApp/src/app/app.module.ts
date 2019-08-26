@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AgmCoreModule, MapsAPILoader } from '@agm/core';
+import { AgmCoreModule} from '@agm/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
@@ -138,7 +138,7 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
 
     ])
   ],
-  providers: [ThemeService, GoogleMapsAPIWrapper], // importante en la version (angular/common) 6.0.0 en adelante de angular en ng2-charts
+  providers: [ThemeService, GoogleMapsAPIWrapper], // importante en la version (angular/common) 6.0.0 en adelante de angular en ng2-charts (ThemeService)
   bootstrap: [AppComponent]
 })
 

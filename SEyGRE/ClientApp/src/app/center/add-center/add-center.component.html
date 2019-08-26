@@ -13,7 +13,7 @@
 
       <div class="card-body">
 
-        <input class="form-control" type="text" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del centro de acopio" required />
+        <input class="form-control" type="text" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del centro de acopio" autofocus required />
         <input class="form-control" type="text" [(ngModel)]="_usuario" name="_usuario" placeholder=" Usuario" required />
         <input class="form-control" type="file" [(ngModel)]="_imagen" name="_imagen" placeholder=" Imagen" required />
 
@@ -40,22 +40,53 @@
       <h1> Ubicar centro en el mapa </h1>
     </div>
 
-  <div class="card-body">
-    <agm-map [latitude]=19.205145
-             [longitude]=-96.191294
-             [zoom]="17"
-             (mapClick)="mapClicked($event)">
+    <div class="card-body">
 
-      <agm-marker *ngFor="let m of markers"
-                  [latitude]="m.lat"
-                  [longitude]="m.lng"
-                  (markerRightClick)="markerRightClick($event)">
+      <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
+        <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>
+      </div>
 
-      </agm-marker>
+      <agm-map [latitude]="latitude"
+               [longitude]="longitude"
+               [zoom]="17"
+               (mapClick)="mapClicked($event)">
 
 
-    </agm-map>
+        <agm-marker *ngFor="let m of markers"
+                    [latitude]="m.lat"
+                    [longitude]="m.lng"
+                    (markerRightClick)="markerRightClick($event)">
 
+        </agm-marker>
+
+        <agm-marker [latitude]="latitude"
+                    [longitude]="longitude"
+                    [iconUrl]="iconMapCurrent.iconUrl">
+
+          <agm-info-window><b>Estoy, aquí</b></agm-info-window>
+
+        </agm-marker>
+
+      </agm-map>
+
+
+      <!--
+
+  <agm-map [latitude]=19.205145
+           [longitude]=-96.191294
+           [zoom]="17"
+           (mapClick)="mapClicked($event)">
+
+    <agm-marker *ngFor="let m of markers"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                (markerRightClick)="markerRightClick($event)">
+
+    </agm-marker>
+
+
+  </agm-map>
+  -->
     </div>
   </div>
 

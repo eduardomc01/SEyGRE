@@ -39,10 +39,16 @@
     </div>
 
     <div class="card-body">
-      <agm-map [latitude]=19.205145
-               [longitude]=-96.191294
+
+      <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
+        <input type="text" class="form-control" placeholder="Buscar dirección" #search required>
+      </div>
+
+      <agm-map [latitude]="latitude"
+               [longitude]="longitude"
                [zoom]="17"
                (mapClick)="mapClicked($event)">
+
 
         <agm-marker *ngFor="let m of markers"
                     [latitude]="m.lat"
@@ -51,8 +57,32 @@
 
         </agm-marker>
 
+        <agm-marker [latitude]="latitude"
+                    [longitude]="longitude"
+                    [iconUrl]="iconMapCurrent.iconUrl">
+
+          <agm-info-window><b>Estoy, aquí</b></agm-info-window>
+
+        </agm-marker>
+
 
       </agm-map>
+
+      <!--
+  <agm-map [latitude]=19.205145
+           [longitude]=-96.191294
+           [zoom]="17"
+           (mapClick)="mapClicked($event)">
+
+    <agm-marker *ngFor="let m of markers"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                (markerRightClick)="markerRightClick($event)">
+
+    </agm-marker>
+
+  </agm-map>
+      -->
 
     </div>
   </div>

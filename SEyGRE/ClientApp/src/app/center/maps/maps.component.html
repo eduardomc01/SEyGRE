@@ -12,26 +12,52 @@
       </div>
       <div class='col-sm-9 body-content'>
 
-       
         <div class="card">
           <div class="card-header">
             <h1> Mapa de centros </h1>
           </div>
           <div class="card-body">
-            <agm-map [latitude]="lat"
-                     [longitude]="lng">
 
-              <agm-marker [latitude]="lat"
-                          [longitude]="lng"
-                          title="Eduardo">
+            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
+              <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>
+            </div>
+
+            <agm-map [latitude]="latitude"
+                     [longitude]="longitude"
+                     [zoom]="17">
+
+
+              <agm-marker *ngFor="let info of d"
+                          [latitude]="info.latitud"
+                          [longitude]="info.longitud"
+                          [iconUrl]="iconMap.iconUrl">
+
+                <agm-info-window> <strong>  {{ info.nombre }}  </strong> </agm-info-window>
+
               </agm-marker>
-            </agm-map>
-          </div>
-        </div>
 
+              <agm-marker [latitude]="latitude"
+                          [longitude]="longitude"
+                          [iconUrl]="iconMapCurrent.iconUrl">
+
+                <agm-info-window><b>Estoy, aquí</b></agm-info-window>
+
+              </agm-marker>
+
+              er
+               <
+
+            </agm-map>
+            <!--
+            <h5>Address: {{address}}</h5>
+            <div>Latitude: {{latitude}}</div>
+            <div>Longitude: {{longitude}}</div>
+                -->
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
 </body>
 </html>
