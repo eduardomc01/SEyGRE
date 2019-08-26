@@ -30,9 +30,9 @@ export class BarsComponent {
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    let json = JSON.stringify({ id: this.idUser });
+    //let json = JSON.stringify({ id: this.idUser });
 
-    this.http.post("api/Componentes/ObtenerInformacionBarras", JSON.parse(json)).subscribe(result => {
+    this.http.get("api/Componentes/ObtenerInformacionBarras?id=" + this.idUser).subscribe(result => {
 
       for (this.i = 0; this.i <= 5; this.i++) { this.B.push(result[this.i]) }
 

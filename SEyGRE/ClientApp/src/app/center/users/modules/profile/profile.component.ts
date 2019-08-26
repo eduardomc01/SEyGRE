@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
-import { toBase64String } from '@angular/compiler/src/output/source_map';
 
 @Component({
   selector: 'app-profile',
@@ -26,9 +25,8 @@ export class ProfileComponent {
     if (this.idUser == null)
       this.router.navigate(["/Login"]);
 
-    let json = JSON.stringify({ id: this.idUser });
 
-    this.http.post<centro[]>("api/CentrosAcopio/ObtenerCentro", JSON.parse(json)).subscribe(result => {
+    this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentro?id=" + this.idUser).subscribe(result => {
 
       this._centro = result;
 
@@ -36,6 +34,23 @@ export class ProfileComponent {
 
 
   }
+
+
+  public ObtenerPerfil() {
+
+    //let json = JSON.stringify({ id: this.idUser });
+
+    /*
+    this.http.post<centro[]>("api/CentrosAcopio/ObtenerCentro", JSON.parse(json)).subscribe(result => {
+
+      this._centro = result;
+
+    });
+    */
+
+
+  }
+
 
 
   public SeleccionImagen(event) {

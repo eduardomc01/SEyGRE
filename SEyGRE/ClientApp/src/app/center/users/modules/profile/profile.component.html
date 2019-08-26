@@ -6,47 +6,78 @@
 <body>
 
   <div class="card">
-    <div class="card-header"> <h1> Centro de Acopio </h1> </div>
+
+    <div class="card-header"> <h1> Perfil de C.A. </h1> </div>
 
     <div *ngFor="let info of _centro" class="card-body">
 
       <!--
+
       <img [src]="imgURL" height="180" *ngIf="imgURL" class="rounded-circle">
+      <img src="{{ prueba }}" class="rounded-circle">
+      <br />
+      <p> Path: {{ prueba }}</p>
+      <br />
+
+      -->
 
 
-  <img src="{{ prueba }}" class="rounded-circle">
-  <br />
-  <p> Path: {{ prueba }}</p>
-  <br />
-
-        -->
       <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" readonly />
       <input class="form-control" type="text" value="{{info.nombre}}" placeholder=" Nombre" readonly />
       <input class="form-control" type="text" value="{{info.password}}" placeholder=" Dirección" readonly />
+
     </div>
-    <div class="card-footer">
+
+    <div class="card-footer" id="multiCollapseExample1">
 
       <!--
       <input #file type="file" accept='image/*' (change)="CargarImagenes(file.files)" />
       -->
-      
-      
-      <form (ngSubmit)="CargarImagen()"  ngNativeValidate>
 
-        <input class="form-control" type="file" (change)="SeleccionImagen($event)" enctype="multipart/form-data"  required/>
-        
+
+      <form (ngSubmit)="CargarImagen()" ngNativeValidate>
+
+        <input class="form-control" type="file" (change)="SeleccionImagen($event)" enctype="multipart/form-data" required />
+
         <input class="btn btn-success" id="btn" type="submit" value="Actualizar imagen" />
 
       </form>
-    
-
-
 
     </div>
 
   </div>
+  <!--
+
+  <p style="z-index: 1; position:relative; float:right">
+    <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" (click)="ObtenerPerfil()" > Perfil </a>
+
+  <button  style="z-index: 1; position:relative; float:right" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="true" aria-controls="multiCollapseExample1"  (click)="ObtenerPerfil()"> Perfil 2</button>
 
 
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  </p>
+
+
+  <div class="row">
+
+    <div class="col">
+      <div class="collapse multi-collapse">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+  </div>
+        -->
 
 </body>
 </html>

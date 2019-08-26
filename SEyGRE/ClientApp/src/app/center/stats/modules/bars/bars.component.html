@@ -8,15 +8,17 @@
 
   <div class='container-fluid'>
     <div class='row'>
-     
+
       <div class='col-sm-9 body-content'>
 
         <div class="card">
           <div class="card-header">
-            <h1> Residuos electronicos por año </h1>
+            <label> <h1> Residuos electronicos por año </h1> </label>
+            <button style="float: right; margin-top:3%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" > Actualizar </button>
+
           </div>
 
-          <div class="card-body">
+          <div class="card-body" id="multiCollapseExample1">
             <canvas baseChart
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
@@ -32,3 +34,38 @@
 
 </body>
 </html>
+
+
+
+<!--
+
+  <p style="z-index: 1; position:relative; float:right">
+    <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" (click)="ObtenerPerfil()" > Perfil </a>
+
+  <button  style="z-index: 1; position:relative; float:right" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" aria-expanded="true" aria-controls="multiCollapseExample1"  (click)="ObtenerPerfil()"> Perfil 2</button>
+
+
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
+  </p>
+
+
+  <div class="row">
+
+    <div class="col">
+      <div class="collapse multi-collapse">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+    <!--
+    <div class="col">
+      <div class="collapse multi-collapse" id="multiCollapseExample2">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+    </div>
+
+  </div>
+        -->

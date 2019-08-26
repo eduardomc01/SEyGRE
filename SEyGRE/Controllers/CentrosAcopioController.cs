@@ -107,13 +107,13 @@ namespace SEyGRE.Controllers
         }
 
 
-        [HttpPost("[action]")]
-        public List<Centrosacopio> ObtenerCentro([FromBody] Centrosacopio r)
+        [HttpGet("[action]")]
+        public List<Centrosacopio> ObtenerCentro(int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var list = (from e in context.Centrosacopio where e.Id == r.Id select e).ToList();
+            var list = (from e in context.Centrosacopio where e.Id == id select e).ToList();
             
             return list;
 

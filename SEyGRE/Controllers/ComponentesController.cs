@@ -102,8 +102,8 @@ namespace SEyGRE.Controllers
 
 
         //OBTENER STATS
-        [HttpPost("[action]")]
-        public List<int> ObtenerInformacionBarras([FromBody] Residuos r)
+        [HttpGet("[action]")]
+        public List<int> ObtenerInformacionBarras(int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -118,7 +118,7 @@ namespace SEyGRE.Controllers
             foreach (var y in year)
             {
               
-                    datos[i] = (from e in context.Residuos where e.Fecha.Value.Year.Equals(y) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                    datos[i] = (from e in context.Residuos where e.Fecha.Value.Year.Equals(y) && e.IdCentroAcopio.Equals(id) select e).Count();
                     i += 1;                
 
             }
@@ -128,8 +128,8 @@ namespace SEyGRE.Controllers
         }
 
         //OBTENER PIE
-       [HttpPost("[action]")]
-        public List<int> ObtenerInformacionCircular([FromBody] Residuos r)
+       [HttpGet("[action]")]
+        public List<int> ObtenerInformacionCircular(int id)
         {
             int[] clasifi = { 1, 2, 3 };
             int[] datos = new int[3];
@@ -140,7 +140,7 @@ namespace SEyGRE.Controllers
             foreach (var c in clasifi)
             {
 
-                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(id) select e).Count();
                 i += 1;
 
             }
@@ -152,8 +152,8 @@ namespace SEyGRE.Controllers
 
 
         //OBTENER PIE
-        [HttpPost("[action]")]
-        public List<int> ObtenerInformacionRadar([FromBody] Residuos r)
+        [HttpGet("[action]")]
+        public List<int> ObtenerInformacionRadar(int id)
         {
             int[] clasifi = { 1, 2, 3 };
             int[] datos = new int[1];

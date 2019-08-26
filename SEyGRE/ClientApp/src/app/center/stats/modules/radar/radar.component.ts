@@ -27,10 +27,9 @@ export class RadarComponent {
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
+    //let json = JSON.stringify({ id: this.idUser });
 
-    let json = JSON.stringify({ id: this.idUser });
-
-    this.http.post("api/Componentes/ObtenerInformacionRadar", JSON.parse(json)).subscribe(result => {
+    this.http.get("api/Componentes/ObtenerInformacionRadar?id=" + this.idUser).subscribe(result => {
 
      // for (this.i = 0; this.i <= 6; this.i++) { this.R.push(result[this.i]) }
 

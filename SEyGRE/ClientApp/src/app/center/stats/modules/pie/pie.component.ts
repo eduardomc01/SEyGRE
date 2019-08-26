@@ -30,9 +30,9 @@ export class PieComponent {
       this.router.navigate(["/Login"]);
 
 
-    let json = JSON.stringify({ id: this.idUser });
+    //let json = JSON.stringify({ id: this.idUser });
 
-    this.http.post("api/Componentes/ObtenerInformacionCircular", JSON.parse(json)).subscribe(result => {
+    this.http.get("api/Componentes/ObtenerInformacionCircular?id=" + this.idUser).subscribe(result => {
 
       for (this.i = 0; this.i <= 3; this.i++) { this.C.push(result[this.i]) }
 

@@ -73,6 +73,7 @@ namespace SEyGRE
 
                 if (env.IsDevelopment())
                 {
+                    spa.Options.StartupTimeout = new System.TimeSpan(0, 0, 90); /* OJO: Agregar este codigo para que el tiempo de espera a umente a 90 seg */
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
