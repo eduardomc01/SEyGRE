@@ -41,7 +41,7 @@ namespace SEyGRE.Controllers
                         join l in context.Clasificacion
                         on e.IdClasificacion equals l.Id
                         where e.IdCentroAcopio == r.Id
-                        orderby e.Id descending
+                        orderby e.Id ascending
                         select new RelacionResiduosClasificacion
                         {
 
@@ -58,6 +58,35 @@ namespace SEyGRE.Controllers
         }
 
 
+
+
+        [HttpGet("[action]")]
+        public List<RelacionResiduosClasificacion> ObtenerTopResiduos(int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Residuos
+                        join l in context.Clasificacion
+                        on e.IdClasificacion equals l.Id
+                        where e.IdCentroAcopio == id
+                        orderby e.Id descending
+                        select new RelacionResiduosClasificacion
+                        {
+
+                            Id = e.Id,
+                            Nombre = e.Nombre,
+                            Peso = e.Peso,
+                            Clasificacion = l.Titulo,
+                            Fecha = e.Fecha
+
+                        }).Take(5).ToList();
+
+            return list;
+
+        }
+
+
         [HttpPost("[action]")]
         public List<RelacionResiduosClasificacion> ObtenerBusquedaPersonalizada([FromBody] RelacionResiduosClasificacion r)
         {
@@ -67,7 +96,8 @@ namespace SEyGRE.Controllers
             var list = (from e in context.Residuos
                         join l in context.Clasificacion
                         on e.IdClasificacion equals l.Id
-                        where e.Nombre.Contains(r.Nombre)
+                        where (e.Nombre.Contains(r.Busqueda) || e.Peso.ToString().Contains(r.Busqueda) || e.Fecha.ToString().Contains(r.Busqueda) || l.Titulo.Contains(r.Busqueda)) && e.IdCentroAcopio.Equals(r.Id)
+
                         select new RelacionResiduosClasificacion
                         {
 
@@ -103,15 +133,15 @@ namespace SEyGRE.Controllers
 
         //OBTENER STATS
         [HttpGet("[action]")]
-        public List<int> ObtenerInformacionBarras(int id)
+        public int [] ObtenerInformacionBarras(int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            int max_year = (from e in context.Residuos select e.Fecha).Distinct().Count();
+            //int max_year = (from e in context.Residuos select e.Fecha).Distinct().Count();
 
-            int[] year = { 2019, 2020, 2021, 2022, 2023 };
-            int[] datos = new int[5];
+            int[] year = { 2019, 2020, 2021, 2022, 2023, 2024, 2025 };
+            int[] datos = new int[7];
             int i = 0;
 
 
@@ -123,13 +153,13 @@ namespace SEyGRE.Controllers
 
             }
 
-            return datos.ToList();
+            return datos;
 
         }
 
         //OBTENER PIE
-       [HttpGet("[action]")]
-        public List<int> ObtenerInformacionCircular(int id)
+        [HttpGet("[action]")]
+        public int [] ObtenerInformacionCircular(int id)
         {
             int[] clasifi = { 1, 2, 3 };
             int[] datos = new int[3];
@@ -145,14 +175,14 @@ namespace SEyGRE.Controllers
 
             }
 
-            return datos.ToList();
+            return datos;
 
         }
 
 
 
         //OBTENER PIE
-        [HttpGet("[action]")]
+        [HttpGet("[action]")] /* la grafica mas dificl HP xD*/
         public List<int> ObtenerInformacionRadar(int id)
         {
             int[] clasifi = { 1, 2, 3 };

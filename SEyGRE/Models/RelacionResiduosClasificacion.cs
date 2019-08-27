@@ -12,5 +12,8 @@ namespace SEyGRE.Models
         public float? Peso { get; set; }
         public string Clasificacion { get; set; }
         public DateTime? Fecha { get; set; }
+
+        public string Busqueda { get; set; } /*funcionara ?*/
+
     }
 }

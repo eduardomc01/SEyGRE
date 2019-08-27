@@ -13,42 +13,52 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class TableComponentsComponent {
 
-  public _componentes: componentes[];
+  public _componentes: componentes[] = [];
   public _busqueda: string;
 
   public showSuccess: boolean;
   public staticAlertClosed;
 
-  private idUser:string = sessionStorage.getItem("idUser");
+
+  public consulta: boolean;
+  public inexistente: boolean;
+
+  public idUser:string = sessionStorage.getItem("idUser");
 
   constructor(private http: HttpClient, private router: Router) {
-
-    let json = JSON.stringify({
-      id: this.idUser
-    });
-
-    this.http.post<componentes[]>("api/Componentes/ObtenerResiduos",JSON.parse(json)).subscribe(result => {
-
-      this._componentes = result;
-
-    });
-
+    this.inexistente = true;
+    this.consulta = true;
   }
 
-  public ObtenerDatos() {
+
+  public ObtenerDatos(): void {
 
     let json = JSON.stringify({
-      nombre: this._busqueda
+
+      id: this.idUser,
+      busqueda: this._busqueda
+
     });
 
     this.http.post<componentes[]>("api/Componentes/ObtenerBusquedaPersonalizada", JSON.parse(json)).subscribe(result => {
 
-      this._componentes = result;
+        if (result.length != 0) {
 
+          this._componentes = result;
+          this.inexistente = true;
+          this.consulta = false;
+
+
+        } else {
+
+          this.inexistente = false;
+          this.consulta = false;
+        }
+        
     });
   }
 
-  public ObtenerIdComponente(id: number) {
+  public ObtenerIdComponente(id: number):void {
 
     this.http.post("api/Componentes/EliminarComponente", id).subscribe(result => {
 

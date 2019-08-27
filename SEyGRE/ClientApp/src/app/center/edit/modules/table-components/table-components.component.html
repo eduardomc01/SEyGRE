@@ -1,49 +1,75 @@
-<div class="down card">
-  <div class="card-header">
-    <h1> Tabla de componentes </h1>
-    <div>
-      <form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
-        <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" placeholder=" Busqueda" required />
-        <input type="submit" class="btn btn-success" value="Buscar" />
-      </form>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <div class="card" ngNativeValidate>
+    <div class="card-header">
+      <h1> Consulta de residuos electrónicos </h1>
+    </div>
+
+    <div class="card-body">
+
+      <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" placeholder="Busqueda" (change)="ObtenerDatos()" required />
+
+
+      <table class="table">
+
+        <thead class="thead-dark">
+
+          <tr>
+
+            <th scope="col"> ID </th>
+            <th scope="col"> Componente </th>
+            <th scope="col"> Peso (Kg) </th>
+            <th scope="col"> Clasificación </th>
+            <th scope="col"> Fecha de ingreso </th>
+            <th scope="col"> Acciones </th>
+
+          </tr>
+        </thead>
+
+        <tbody *ngIf="inexistente">
+
+          <tr *ngFor="let info of _componentes">
+
+            <td> {{info.id}} </td>
+            <td> {{info.nombre}} </td>
+            <td> {{info.peso}} </td>
+            <td> {{info.clasificacion}} </td>
+            <td> {{info.fecha}} </td>
+            <td> <input type="button" class="btn btn-danger" value="Eliminar" (click)="ObtenerIdComponente(info.id)" /> </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+
+
+      <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-search'> </span>  !Sin consultas aún¡
+      </p>
+
+      <p *ngIf="!inexistente" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-cross'> </span>  !Residuo electrónico inexistente¡
+      </p>
+
     </div>
   </div>
-  <div class="card-body">
 
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
 
-          <th scope="col"> ID </th>
-          <th scope="col"> Componente </th>
-          <th scope="col"> Peso (Kg) </th>
-          <th scope="col"> Clasificado </th>
-          <th scope="col"> Fecha de ingreso </th>
-          <th scope="col"> Acciones </th>
 
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr *ngFor="let info of _componentes">
-          <td> {{info.id}} </td>
-          <td> {{info.nombre}} </td>
-          <td> {{info.peso}} </td>
-          <td> {{info.clasificacion}} </td>
-          <td> {{info.fecha}} </td>
-          <td> <input type="button" class="btn btn-danger" value="Eliminar" (click)="ObtenerIdComponente(info.id)" /> </td>
-
-        </tr>
-
-      </tbody>
-    </table>
-
+  <!--
+  <div *ngIf="showSuccess">
+    <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+      <strong> !Exito¡ </strong> Componente eliminado del sistema
+    </ngb-alert>
   </div>
+  -->
 
-</div>
 
-<div *ngIf="showSuccess">
-  <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
-    <strong> !Exito¡ </strong> Componente eliminado del sistema
-  </ngb-alert>
-</div>
+
+</body>
+</html>

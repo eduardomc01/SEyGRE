@@ -1,14 +1,17 @@
 
 .card {
+  position: absolute;
   text-align: center;
-  margin: 10px 10px 10px 10px;
-  width: 90%;
-}
-
-.card-body {
-  margin: 0 10% 0 10%;
+  margin: 1% 0 0 17%;
+  padding-bottom: 2%;
+  width: 80%;
+  
 }
 
 input {
   margin: 10px 0 10px 0;
+}
+
+table thead tr th {
+  text-align: center;
 }

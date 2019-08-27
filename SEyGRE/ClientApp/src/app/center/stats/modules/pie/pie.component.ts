@@ -13,12 +13,10 @@ import { HttpClient } from '@angular/common/http';
 
 export class PieComponent {
 
-  public i: number;
-  public C: number[] = [];
   private idUser: string = sessionStorage.getItem("idUser");
 
-  public pieChartLabels: Label[];
-  public pieChartData: Number[];
+  public pieChartLabels: Label[] = [];
+  public pieChartData: number[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartColors = [{ backgroundColor: ['rgba(40,180,99,.9)', 'rgba(52, 152, 219,.9)', 'rgba(231, 76, 60,.9)'] }];
@@ -29,22 +27,29 @@ export class PieComponent {
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
+    try {
 
-    //let json = JSON.stringify({ id: this.idUser });
+      this.getPastel()
 
-    this.http.get("api/Componentes/ObtenerInformacionCircular?id=" + this.idUser).subscribe(result => {
+    } catch (e) {
 
-      for (this.i = 0; this.i <= 3; this.i++) { this.C.push(result[this.i]) }
+      console.log("error " + e);
 
-      console.log("pie --> " + result);
+    }
+
+  }
+
+
+  public getPastel(): void {
+
+    this.http.get<number[]>("api/Componentes/ObtenerInformacionCircular?id=" + this.idUser).subscribe(result => {
+
+      this.pieChartLabels = ["Equipos de informática y telecomunicaciones", "Aparatos electrónicos de bajo consumo", "Juguetes o equipos deportivos y de tiempo libre"];
+      this.pieChartData = result;
+
 
     });
-
-
-  this.pieChartLabels = ["Equipos de informática y telecomunicaciones", "Aparatos electrónicos de consumo", "Juguetes o equipos deportivos y de tiempo libre"];
-  this.pieChartData = this.C;
-
-
+  
   }
 
 }

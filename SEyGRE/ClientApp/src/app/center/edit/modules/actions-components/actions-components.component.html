@@ -1,24 +1,44 @@
+<div class="card" ngNativeValidate>
+  <div class="card-header">
+    <h1> Últimos 5 componentes </h1>
+  </div>
 
-<form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
+  <div class="card-body">
 
-  <div class="right card">
+    <table class="table">
 
-    <div class="card-header">
 
-      <h1> Acciones en consulta de residuos </h1>
+      <thead class="thead-dark">
 
-    </div>
+        <tr>
 
-    <div class="card-body">
+          <th scope="col"> ID </th>
+          <th scope="col"> Componente </th>
+          <th scope="col"> Peso (Kg) </th>
+          <th scope="col"> Clasificación </th>
+          <th scope="col"> Fecha de ingreso </th>
 
-      <input class="form-control" type="text" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
-    
-    </div>
 
-    <div class="card-footer">
-      <input type="submit" class="btn btn-success" value="Aceptar" />
-    </div>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let info of _componentes">
+
+          <td> {{info.id}} </td>
+          <td> {{info.nombre}} </td>
+          <td> {{info.peso}} </td>
+          <td> {{info.clasificacion}} </td>
+          <td> {{info.fecha}} </td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
 
   </div>
 
-</form>
+</div>
+
+

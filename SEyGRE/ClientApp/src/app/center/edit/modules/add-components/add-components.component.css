@@ -1,15 +1,11 @@
 
 .card {
   text-align: center;
-  margin: 10px 10px 10px 10px;
-  width: 45%;
+  position: absolute;
+  width: 40%;
+  margin: 1% 0 0 -24%;
 }
 
-.card-body {
-
-  margin: 0 10% 0 10%;
-
-}
 
 input {
 

@@ -14,13 +14,11 @@
 
         <div class="card r3">
           <div class="card-header">
-           <label> <h1> Clasificación de residuos </h1> </label>
-
-            <button style="float: right; margin-top:3%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2"> Actualizar </button>
+            <h1> Clasificación de residuos </h1>
 
           </div>
 
-          <div class="card-body" id="multiCollapseExample2">
+          <div class="card-body" id="pie">
             <canvas baseChart
                     [data]="pieChartData"
                     [labels]="pieChartLabels"
@@ -28,9 +26,14 @@
                     [colors]="pieChartColors"
                     [legend]="pieChartLegend"></canvas>
           </div>
+
+          <div class="card-footer">
+
+            <button style="float: right; margin:2%;" class="btn btn-danger" type="button"> Exportar PDF </button>
+            <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getPastel()"> Obtener datos </button>
+          </div>
+
         </div>
-
-
       </div>
     </div>
   </div>

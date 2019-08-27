@@ -13,19 +13,26 @@
 
         <div class="r2 card">
           <div class="card-header">
-            <label> <h1> Cantidad de elementos acopiados </h1> </label>
-
-            <button style="float: right; margin-top:3%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample3"> Actualizar </button>
+            <h1> Cantidad de elementos acopiados </h1>
 
           </div>
 
-          <div class="card-body" id="multiCollapseExample3">
+          <div class="card-body" id="radar">
             <canvas baseChart
                     [datasets]="radarChartData"
                     [labels]="radarChartLabels"
                     [colors]="ChartColorsTransparent"
                     [chartType]="radarChartType"></canvas>
           </div>
+
+
+          <div class="card-footer">
+
+            <button style="float: right; margin:2%;" class="btn btn-danger" type="button"> Exportar PDF </button>
+            <button style="float: right; margin:2%" class="btn btn-primary" type="button"> Obtener datos </button>
+          </div>
+
+
         </div>
 
 

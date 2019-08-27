@@ -13,12 +13,10 @@
 
         <div class="card">
           <div class="card-header">
-            <label> <h1> Residuos electronicos por año </h1> </label>
-            <button style="float: right; margin-top:3%;" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample1" > Actualizar </button>
-
+            <h1> Residuos electronicos por año </h1>
           </div>
 
-          <div class="card-body" id="multiCollapseExample1">
+          <div class="card-body" id="bars">
             <canvas baseChart
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
@@ -26,8 +24,13 @@
                     [legend]="barChartLegend"
                     [chartType]="barChartType"></canvas>
           </div>
-        </div>
 
+          <div class="card-footer">
+
+            <button style="float: right; margin:2%;" class="btn btn-danger" type="button" > Exportar PDF </button>
+            <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getBarras()"> Obtener datos </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
