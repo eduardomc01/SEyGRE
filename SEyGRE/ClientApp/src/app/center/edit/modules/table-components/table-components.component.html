@@ -11,9 +11,8 @@
     </div>
 
     <div class="card-body">
-
-      <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" placeholder="Busqueda" (change)="ObtenerDatos()" required />
-
+       
+     <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" id="_busqueda" placeholder="Busqueda universal" (change)="ObtenerDatos()" required/>
 
       <table class="table">
 
@@ -47,7 +46,7 @@
         </tbody>
       </table>
 
-
+      
       <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
         <span class='icon-search'> </span>  !Sin consultas aún¡
       </p>

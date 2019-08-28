@@ -12,7 +12,6 @@ import { NavMenuInstitutionComponent } from './institution/nav-menu-institution/
 import { IMapsComponent } from './institution/maps/imaps.component';
 import { IHomeComponent } from './institution/home/ihome.component';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './center/home/home.component';
 import { EditComponent } from './center/edit/edit.component';
@@ -127,7 +126,7 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
       { path: 'stats', component: StatsComponent },
       { path: 'maps', component: MapsComponent },
       { path: 'info', component: InfoComponent },
-
+       
       { path: 'ihome', component: IHomeComponent },
       { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'imaps', component: IMapsComponent },

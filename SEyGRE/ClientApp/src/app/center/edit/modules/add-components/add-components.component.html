@@ -17,15 +17,20 @@
 
       <div class="card-body">
 
-        <input class="form-control" type="text" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
-        <input class="form-control" type="number" placeholder=" Peso (kg)" step="0.01" [(ngModel)]="peso" name="peso" required />
-        <input class="form-control" type="number" placeholder=" Clasificación" [(ngModel)]="clasificacion" name="clasificacion" required />
-        <input class="form-control" type="date" placeholder=" Fecha de ingreso" [(ngModel)]="fecha" name="fecha" required />
+        <input class="form-control" type="text" id="nombre" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required/>
+        <input class="form-control" type="number" id="peso" placeholder=" Peso (kg)" step="0.01" [(ngModel)]="peso" name="peso" required/>
+        <input class="form-control" type="number" id="clasificacion" placeholder=" Clasificación" [(ngModel)]="clasificacion" name="clasificacion" required/>
+        <input class="form-control" type="date" id="fecha" placeholder=" Fecha de ingreso" [(ngModel)]="fecha" name="fecha" required/>
 
       </div>
 
       <div class="card-footer">
-        <input type="submit" class="btn btn-success" onclick="return confirmarDatos()" value="Ingresar el componente" />
+
+        <input type="submit" class="btn btn-success" onclick="return faltanDatosComponentes()" value="Ingresar el componente" />
+
+        <!--
+  <input type="submit" class="btn btn-success" onclick="return confirmarDatos()" value="Ingresar el componente" />
+      -->
       </div>
 
     </div>

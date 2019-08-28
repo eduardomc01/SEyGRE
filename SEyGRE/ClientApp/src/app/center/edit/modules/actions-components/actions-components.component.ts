@@ -20,11 +20,20 @@ export class ActionsComponentsComponent {
 
   constructor(private http: HttpClient, private router: Router) {
 
+    this.ObtenerTop();
+
+  }
+
+
+
+  public ObtenerTop(): void {
+
     this.http.get<componentes[]>("api/Componentes/ObtenerTopResiduos?id=" + this.idUser).subscribe(result => {
 
       this._componentes = result;
 
     });
+
 
   }
 

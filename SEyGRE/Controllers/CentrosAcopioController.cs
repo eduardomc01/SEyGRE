@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.Reflection.Metadata;
 using System.Net.Mail;
 using System.Net;
+using System.Web;
 
 namespace SEyGRE.Controllers
 {
@@ -283,62 +284,52 @@ namespace SEyGRE.Controllers
 
       
         [HttpPost("[action]")]
-        public IEnumerable<string> GuardarImagenes([FromBody] DatosImagenesUsuarios r){
+        public async Task<IActionResult> GuardarImagenes(int id, IFormFile i)
+        {
 
-            try
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp" 
+                                               + Path.DirectorySeparatorChar + "src"
+                                               + Path.DirectorySeparatorChar + "assets" 
+                                               + Path.DirectorySeparatorChar + "imagenesPerfiles";
+
+
+            //var pathCompleto = Path.Combine(path, i.IFile.FileName);
+
+            if (!(Directory.Exists(path + Path.DirectorySeparatorChar + i.FileName)))
             {
-                context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
-
-                string pathP = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp" + Path.DirectorySeparatorChar + "src"
-                                                    + Path.DirectorySeparatorChar + "assets" + Path.DirectorySeparatorChar + "imagenesPerfiles";
-
-                if (Directory.Exists(pathP + Path.DirectorySeparatorChar + r.Id))
-                {
-
-
-                    
-
-                    return new string[] { "ya existe" };
-
-
-                }
-                else
-                {
-
-                    string path = Path.Combine(pathP, r.Id);
-                    Directory.CreateDirectory(path);
-
-
-                    return new string[] { "se agrego bien" };
-
-                }
-
+                Directory.CreateDirectory(Path.Combine(path, id.ToString())); /* se crea carpeta por primera vez para ser guardada ahi la imagen */
             }
 
-            catch (Exception)
-            {
 
-                throw;
+            if (i.Length > 0)
+            {
+                using (var stream = new FileStream(path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + i.FileName, FileMode.Create))
+                {
+                    await i.CopyToAsync(stream);
+                }
             }
-        
+
+            //var found = (from e in context.Centrosacopio where e.Id.Equals(id) select e).FirstOrDefault();
+
+            var found = context.Centrosacopio.Find(id);
+
+            found.Imagen = i.FileName;
+
+            context.Update(found);
+
+            context.SaveChanges();
+
+            return Ok();
+
+            
 
         }
-
-        
 
     }
 
 }
-
-public partial class DatosImagenesUsuarios
-{
-
-    public string Id { get; set; }
-    public string NombreArchivo { get; set; }
-    public Blob File { get; set; }
-    
-}
-
 
 
 

@@ -12,55 +12,75 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class ProfileComponent {
 
-  public _centro: centro[];
-  public imgURL: any;
-  public prueba: string;
-  public reader = new FileReader();
+  public fotoDefault: boolean = true;
+  public perfil: string = "image/sin-foto.png";
+
+  //public _centro: centro[];
+  
   private idUser: string = sessionStorage.getItem("idUser");
-
-  public imagenSeleccionada: File = null;
-
+  
   constructor(private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
       this.router.navigate(["/Login"]);
 
-
-    this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentro?id=" + this.idUser).subscribe(result => {
+    
+    this.http.get<any>("api/CentrosAcopio/ObtenerCentro?id=" + this.idUser).subscribe(result => {
 
       this._centro = result;
 
-    });
+      this.perfil = "imagenesPerfiles/" + this.idUser + "/" + result[0].imagen;
+      
 
+    });
+    
 
   }
 
 
-  public ObtenerPerfil() {
+  public ObtenerImagen(event) {
+    
+    var fileList: FileList = event.target.files;
 
-    //let json = JSON.stringify({ id: this.idUser });
+    if (fileList.length > 0) {
 
-    /*
-    this.http.post<centro[]>("api/CentrosAcopio/ObtenerCentro", JSON.parse(json)).subscribe(result => {
+      let _file: File = fileList[0];
+      
+      let formData: FormData = new FormData();
 
-      this._centro = result;
+      formData.append("i", _file, _file.name);
 
-    });
-    */
+      this.http.post("api/CentrosAcopio/GuardarImagenes?id=" + this.idUser, formData).subscribe(result => {
 
+      });
+
+    }
 
   }
 
 
+}
 
-  public SeleccionImagen(event) {
+
+
+/*
+interface centro {
+
+  a: number;
+  b: string;
+  c: string;
+  imagen: string;
+
+}
+
+
+public SeleccionImagen(event) {
 
     this.imagenSeleccionada = <File>event.target.files[0];
 
-
   }
 
-
+    
   public CargarImagen() {
 
     let json = JSON.stringify({ Id: this.idUser, NombreArchivo: this.imagenSeleccionada.name, File: this.imagenSeleccionada });
@@ -74,7 +94,7 @@ export class ProfileComponent {
   });
 
 
-    /*
+ 
     let json = JSON.stringify({ Id: this.idUser, NombreArchivo: files[0].name, _File: files });
 
     files.
@@ -94,20 +114,6 @@ export class ProfileComponent {
     this.reader.readAsDataURL(files[0]);    
 
     this.reader.onload = (Event) => { this.imgURL = this.reader.result; }
-    */
-
-  }
-  
 
 
-}
-
-interface centro {
-
-  a: number;
-  b: string;
-  c: string;
-
-}
-
-
+*/

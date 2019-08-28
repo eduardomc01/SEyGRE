@@ -3,13 +3,13 @@
   position: absolute;
   text-align: center;
   margin: 1% 0 0 17%;
-  padding-bottom: 2%;
-  width: 80%;
+  width: 75%;
   
 }
 
 input {
-  margin: 10px 0 10px 0;
+  margin: -10px 35px 0 0;
+  float: right;
 }
 
 table thead tr th {

@@ -40,7 +40,9 @@ export class TableComponentsComponent {
 
     });
 
+   
     this.http.post<componentes[]>("api/Componentes/ObtenerBusquedaPersonalizada", JSON.parse(json)).subscribe(result => {
+
 
         if (result.length != 0) {
 
@@ -80,6 +82,8 @@ export class TableComponentsComponent {
     }
 
   }
+
+
 
 
 

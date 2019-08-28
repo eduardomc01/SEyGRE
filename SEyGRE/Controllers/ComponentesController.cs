@@ -88,8 +88,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpPost("[action]")]
-        public List<RelacionResiduosClasificacion> ObtenerBusquedaPersonalizada([FromBody] RelacionResiduosClasificacion r)
-        {
+        public List<RelacionResiduosClasificacion> ObtenerBusquedaPersonalizada([FromBody] RelacionResiduosClasificacion r){
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
