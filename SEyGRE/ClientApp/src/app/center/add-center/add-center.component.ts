@@ -8,6 +8,7 @@ import { MouseEvent, MapsAPILoader } from '@agm/core';
   templateUrl: './add-center.component.html',
   styleUrls: ['./add-center.component.css']
 })
+
 export class AddCenterComponent implements OnInit {
 
   public _usuario: string;
@@ -16,13 +17,14 @@ export class AddCenterComponent implements OnInit {
   public _nombre: string;
   public _correo: string;
 
-  public _imagen: string;
   public _direccion: string;
 
   public title: string = "CENTRO";
-  public _lat: DoubleRange;
-  public _lng: DoubleRange;
+  public _lat: Number;
+  public _lng: Number;
   public markers: marker[] = [];
+
+  public idUser: string;
 
   latitude: number;
   longitude: number;
@@ -36,26 +38,50 @@ export class AddCenterComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {  }
 
 
-  ObtenerDatos() {
 
-    let json = JSON.stringify({
+  public ObtenerDatos(event) {
 
-      nombre: this._nombre,
-      imagen: this._imagen,
-      usuario: this._usuario,
-      correo: this._correo,
-      password: this._password,
-      latitud: this._lat,
-      longitud: this._lng,
-      idEstatus: 3, //porque comienzan como pendientes 
-      idTipoUsuario: 2
+    let fileList: FileList = event.target[4].files;
 
-    });
+    if (fileList.length > 0) {
+
+      let file: File = fileList[0];
+
+      let formData: FormData = new FormData();
+
+      formData.append("document", file, file.name);
+
+      let json = JSON.stringify({
+
+        nombre: this._nombre,
+        documento: file.name,
+        usuario: this._usuario,
+        correo: this._correo,
+        password: this._password,
+        latitud: this._lat,
+        longitud: this._lng,
+        idEstatus: 3,           //porque comienzan como pendientes 
+        idTipoUsuario: 2
+
+      });
+        
+      this.http.post("api/CentrosAcopio/InsertarCentros", JSON.parse(json)).subscribe(() => {
+
+        this.http.post("api/CentrosAcopio/GuardarDocumento", formData).subscribe(() => {
+
+          console.log("Ok");
+
+        });
+
+      });
 
 
-    this.http.post("api/CentrosAcopio/InsertarCentros", JSON.parse(json)).subscribe(() => { });
+
+    }
 
   }
+
+
 
   public mapClicked($event: MouseEvent) {
     this.markers.push({
@@ -73,8 +99,8 @@ export class AddCenterComponent implements OnInit {
 
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = 0.0;
-    this._lng = 0.0;
+    this._lat = null;
+    this._lng = null;
 
   }
 

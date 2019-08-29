@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Query } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
@@ -12,25 +12,27 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class ProfileComponent {
 
-  public fotoDefault: boolean = true;
-  public perfil: string = "image/sin-foto.png";
 
-  //public _centro: centro[];
+  public _centro: centro[] = [];
   
   private idUser: string = sessionStorage.getItem("idUser");
-  
+
+  public imagenSRC: string = "";
+
+
   constructor(private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
       this.router.navigate(["/Login"]);
 
-    
-    this.http.get<any>("api/CentrosAcopio/ObtenerCentro?id=" + this.idUser).subscribe(result => {
+
+    this.http.get<centro[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
+
+      //console.log(result[0]);
 
       this._centro = result;
 
-      this.perfil = "imagenesPerfiles/" + this.idUser + "/" + result[0].imagen;
-      
+      this.imagenSRC = result[0].imagen;
 
     });
     
@@ -38,9 +40,12 @@ export class ProfileComponent {
   }
 
 
+
   public ObtenerImagen(event) {
-    
-    var fileList: FileList = event.target.files;
+
+    //console.log(event);
+
+    let fileList: FileList = event.target[0].files;
 
     if (fileList.length > 0) {
 
@@ -48,9 +53,19 @@ export class ProfileComponent {
       
       let formData: FormData = new FormData();
 
-      formData.append("i", _file, _file.name);
+      formData.append("file", _file, _file.name);
 
-      this.http.post("api/CentrosAcopio/GuardarImagenes?id=" + this.idUser, formData).subscribe(result => {
+
+      this.http.post<any>("api/CentrosAcopio/GuardarImagenes?id=" + this.idUser, formData).subscribe(result => {
+
+        //console.log(result)
+
+       //this.router.navigate(["/"]);
+
+       // console.log("---->" + result);
+
+       //this.imagenSRC = result;
+
 
       });
 
@@ -61,19 +76,19 @@ export class ProfileComponent {
 
 }
 
+//C:\Users\eduar\SEyGRE\SEyGRE\ClientApp\src\assets\imagenesPerfiles\2\re4.png
 
 
-/*
 interface centro {
 
-  a: number;
-  b: string;
-  c: string;
+  id: number;
+  nombre: string;
+  password: string;
   imagen: string;
 
 }
 
-
+/*
 public SeleccionImagen(event) {
 
     this.imagenSeleccionada = <File>event.target.files[0];

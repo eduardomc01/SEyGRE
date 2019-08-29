@@ -50,6 +50,10 @@ namespace SEyGRE.Models
                     .HasColumnName("correo")
                     .HasColumnType("varchar(45)");
 
+                entity.Property(e => e.Documento)
+                    .HasColumnName("documento")
+                    .HasColumnType("varchar(100)");
+
                 entity.Property(e => e.IdEstatus)
                     .HasColumnName("idEstatus")
                     .HasColumnType("int(11)");

@@ -56,3 +56,14 @@ div ngb-alert {
 }
 
 /****** FIN MENSAJES ****/
+
+
+/*****  LINEA VERDE SUPERIOR EN LOS CARDS *******/
+/*
+.card {
+  border-top: solid;
+  border-top-color: rgb(26, 188, 156);
+  
+  border-top-width: 5px;
+}
+  */

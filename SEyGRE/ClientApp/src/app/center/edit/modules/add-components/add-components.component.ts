@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
- 
+//import { ActionsComponentsComponent } from '../actions-components/actions-components.component';
+
 @Component({
   selector: 'app-add-components',
   templateUrl: './add-components.component.html',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
 })
 
 export class AddComponentsComponent {
+
+  //@ViewChild(ActionsComponentsComponent) component: ActionsComponentsComponent;
 
   nombre: string;
   peso: number;
@@ -18,7 +21,7 @@ export class AddComponentsComponent {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  public ObtenerDatos() {
+  public ObtenerDatos():void {
 
     let json = JSON.stringify({
 
@@ -30,10 +33,13 @@ export class AddComponentsComponent {
 
     });
 
-    this.http.post("api/Componentes/InsertarComponentes", JSON.parse(json)).subscribe(() => {
+    this.http.post("api/Componentes/InsertarComponentes", JSON.parse(json)).subscribe(result => {
+
+     
 
     });
 
+    
   }
 
 

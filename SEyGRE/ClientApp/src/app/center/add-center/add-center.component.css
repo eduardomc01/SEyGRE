@@ -16,9 +16,7 @@ p:hover {
 }
 
 .card {
-  border-top: solid;
-  border-top-color: rgb(26, 188, 156);
-  border-top-width: 5px;
+
   padding: 10px 10px 10px 10px;
   width: 75%;
 }

@@ -5,7 +5,7 @@
 </head>
 <body>
 
-  <form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
+  <form (ngSubmit)="ObtenerDatos($event)" ngNativeValidate>
     <div class="card">
       <div class="card-header">
         <h1> Registro de centros de Acopio </h1>
@@ -13,23 +13,28 @@
 
       <div class="card-body">
 
-        <input class="form-control" type="text" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del centro de acopio" autofocus required />
-        <input class="form-control" type="text" [(ngModel)]="_usuario" name="_usuario" placeholder=" Usuario" required />
-        <input class="form-control" type="file" [(ngModel)]="_imagen" name="_imagen" placeholder=" Imagen" required />
+        <input class="form-control" id="nombre"  type="text"      [(ngModel)]="_nombre"   name="_nombre"    placeholder=" Nombre del centro de acopio" required />
+        <input class="form-control" id="usuario" type="text"      [(ngModel)]="_usuario"  name="_usuario"   placeholder=" Usuario" required />
+        <input class="form-control" id="correo"  type="text"      [(ngModel)]="_correo"   name="_correo"    placeholder=" Correo electronico" required />
+        <input class="form-control" id="pass"    type="password"  [(ngModel)]="_password" name="_password"  placeholder=" Contraseña" required />
 
-        <input class="form-control" type="text" [(ngModel)]="_correo" name="_correo" placeholder=" Correo electronico" required />
-        <input class="form-control" type="password" [(ngModel)]="_password" name="_password" placeholder=" Contraseña" required />
-        <input class="form-control" type="text" [(ngModel)]="_password" name="password" placeholder=" Contraseña visual" disabled required />
+        <input class="form-control" id="file" type="file" name="file" accept=".pdf,.docx,.doc" formenctype="multipart/form-data" required />
 
-        <input class="form-control" type="number" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" disabled required />
-        <input class="form-control" type="number" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" disabled required />
+        <!-- <input class="form-control" type="text" [(ngModel)]="_password" name="password" placeholder=" Contraseña visual" disabled required/>-->
+
+        <input class="form-control" id="lat" type="number" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" disabled required />
+        <input class="form-control" id="long" type="number" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" disabled  required />
+
       </div>
 
       <div class="card-footer">
-        <input class="btn btn-success" type="submit" onclick="return confirmarDatos()" value="Enviar datos" />
+        <input class="btn btn-success" type="submit" onclick="return faltanDatosAgregarCentro()" value="Enviar datos" />
         <input class="btn btn-danger" type="reset" value="Cancelar" />
+
         <br />
-        <p (click)="login()"> Regresar </p>
+
+         <p (click)="login()"> <span class="icon-switch"></span> <b> Regresar </b> </p>
+        
       </div>
 
     </div>

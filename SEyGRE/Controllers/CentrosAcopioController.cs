@@ -41,6 +41,8 @@ namespace SEyGRE.Controllers
             context.Centrosacopio.Add(r);
 
             context.SaveChanges();
+            
+
             /*
             string origen = "seygre.veracruz@gmail.com";
             string destino = "seygre.veracruz@gmail.com";
@@ -97,7 +99,7 @@ namespace SEyGRE.Controllers
                             Nombre = e.Nombre,
                             Usuario = e.Usuario,
                             Password = e.Password,
-                            Imagen = e.Imagen,
+                            Documento = e.Documento,
                             Titulo = l.Titulo,
                             Correo = e.Correo
 
@@ -119,6 +121,27 @@ namespace SEyGRE.Controllers
             return list;
 
         }
+
+
+        [HttpGet("[action]")]
+        public IQueryable<Centrosacopio> ObtenerPerfil(int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Centrosacopio where e.Id == id
+                        select new Centrosacopio
+                        {
+                            Id = e.Id,
+                            Nombre = e.Nombre,
+                            Password = e.Password,
+                            Imagen = e.Imagen
+                        });
+
+            return list;
+
+        }
+
 
         [HttpGet("[action]")]
         public List<Centrosacopio> ObtenerUbicacionCentros()
@@ -282,9 +305,54 @@ namespace SEyGRE.Controllers
 
         }
 
-      
+
+
+
         [HttpPost("[action]")]
-        public async Task<IActionResult> GuardarImagenes(int id, IFormFile i)
+        public async Task<IActionResult> GuardarDocumento(IFormFile document)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp"
+                                               + Path.DirectorySeparatorChar + "src"
+                                               + Path.DirectorySeparatorChar + "assets"
+                                               + Path.DirectorySeparatorChar + "documentosCentros";
+
+
+            //var pathCompleto = Path.Combine(path, i.IFile.FileName);
+
+            //if (!(Directory.Exists(path + Path.DirectorySeparatorChar + i.FileName)))
+           // {
+             //   Directory.CreateDirectory(Path.Combine(path, id.ToString())); /* se crea carpeta por primera vez para ser guardada ahi la imagen */
+           // }
+
+
+            if (document.Length > 0)
+            {
+                using (var stream = new FileStream(path + Path.DirectorySeparatorChar + document.FileName, FileMode.Create))
+                {
+                    await document.CopyToAsync(stream);
+                }
+            }
+
+            var found = (from e in context.Centrosacopio where e.Documento.Equals(document.FileName) select e).LastOrDefault();
+
+            //var found = context.Centrosacopio.Find(document.FileName);
+            
+            found.Documento = "assets/documentosCentros/" + document.FileName;
+
+            context.Update(found);
+
+            context.SaveChanges();
+
+            return Ok();
+
+        }
+
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> GuardarImagenes(IFormFile file, int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -297,17 +365,17 @@ namespace SEyGRE.Controllers
 
             //var pathCompleto = Path.Combine(path, i.IFile.FileName);
 
-            if (!(Directory.Exists(path + Path.DirectorySeparatorChar + i.FileName)))
+            if (!(Directory.Exists(path + Path.DirectorySeparatorChar + file.FileName)))
             {
                 Directory.CreateDirectory(Path.Combine(path, id.ToString())); /* se crea carpeta por primera vez para ser guardada ahi la imagen */
             }
 
 
-            if (i.Length > 0)
+            if (file.Length > 0)
             {
-                using (var stream = new FileStream(path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + i.FileName, FileMode.Create))
+                using (var stream = new FileStream(path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + file.FileName, FileMode.Create))
                 {
-                    await i.CopyToAsync(stream);
+                    await file.CopyToAsync(stream);
                 }
             }
 
@@ -315,7 +383,9 @@ namespace SEyGRE.Controllers
 
             var found = context.Centrosacopio.Find(id);
 
-            found.Imagen = i.FileName;
+            //found.Imagen = path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + file.FileName;
+
+            found.Imagen = "assets/imagenesPerfiles/" + id.ToString() + "/" + file.FileName;
 
             context.Update(found);
 
@@ -330,6 +400,7 @@ namespace SEyGRE.Controllers
     }
 
 }
+
 
 
 

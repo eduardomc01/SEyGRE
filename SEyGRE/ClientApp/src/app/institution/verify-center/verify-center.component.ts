@@ -101,6 +101,7 @@ interface centro {
   d: string;
   e: string;
   f: string;
+  g: string;
 
 
 }

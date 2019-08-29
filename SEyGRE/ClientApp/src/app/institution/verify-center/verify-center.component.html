@@ -40,7 +40,7 @@
                   <td> {{info.usuario}} </td>
                   <td> {{info.password}} </td>
                   <td> {{info.correo}}</td>
-                  <td> <input type="button" class="btn btn-info" value="Verificar" /></td>
+                  <td> <a href="../../../{{info.documento}}" target="_blank"> <input type="button" class="btn btn-info" value="Verificar" /> </a></td>
 
                   <td>
                   <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />

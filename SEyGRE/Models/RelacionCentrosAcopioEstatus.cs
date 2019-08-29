@@ -13,7 +13,7 @@ namespace SEyGRE.Models
         public string Usuario { get; set; }
         public string Password { get; set; }
         public string Correo { get; set; }
-        public string Imagen { get; set; }
+        public string Documento { get; set; }
         public string Titulo { get; set; }
         public string TipoUsuario { get; set; }
 
