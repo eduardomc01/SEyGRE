@@ -259,10 +259,12 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/bit bn.jpg
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/gif1.gif
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/imagen10.gif
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/imagen1.jpg
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/imagen2.jpg
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/bit-color.png
-/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/imagen4.jpg
+
+/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/re3.jpg
+/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/re2.jpg
+/SEyGRE/ClientApp/src/assets/imagenesPerfiles/2/re1.jpg
+/SEyGRE/ClientApp/src/assets/documentosCentros/zcvvaj.docx
+/SEyGRE/ClientApp/src/assets/documentosCentros/MOLF581027HVZRZR05.pdf
+/SEyGRE/ClientApp/src/assets/documentosCentros/docEval(EDUARDO).pdf
+/SEyGRE/ClientApp/src/assets/documentosCentros/CAMR591007MVZNRS00.pdf
+/SEyGRE/ClientApp/src/assets/documentosCentros/Bisabuelo.docx

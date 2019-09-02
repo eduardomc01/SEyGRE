@@ -7,7 +7,8 @@ namespace SEyGRE.Models
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public float? Porcentaje { get; set; }
+        public float Cantidad { get; set; }
+        public float Porcentaje { get; set; }
         public string Descripccion { get; set; }
     }
 }

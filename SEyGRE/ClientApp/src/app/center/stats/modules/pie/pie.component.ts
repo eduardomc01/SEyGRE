@@ -19,7 +19,7 @@ export class PieComponent {
   public pieChartData: number[] = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
-  public pieChartColors = [{ backgroundColor: ['rgba(40,180,99,.9)', 'rgba(52, 152, 219,.9)', 'rgba(231, 76, 60,.9)'] }];
+  public pieChartColors = [{ backgroundColor: ['rgba(40,180,99,.6)', 'rgba(52, 152, 219,.6)', 'rgba(231, 76, 60,.6)'] }];
 
 
   constructor(private router: Router, private http: HttpClient) {
@@ -39,6 +39,8 @@ export class PieComponent {
 
   }
 
+  //"Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio", "Oro", "Plata", "Paladio"
+  //"api/Componentes/ObtenerInformacionRadar"
 
   public getPastel(): void {
 
@@ -51,5 +53,13 @@ export class PieComponent {
     });
   
   }
+
+
+  public Maximizar(): void {
+
+    this.router.navigate(["/pie"]);
+
+  }
+
 
 }

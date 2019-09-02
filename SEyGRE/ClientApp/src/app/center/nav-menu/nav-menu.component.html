@@ -2,6 +2,10 @@
 <html>
 <head>
   <title> Menu </title>
+
+
+
+
 </head>
 <body>
 
@@ -16,43 +20,43 @@
 
       <li [routerLinkActive]='["link-active"]'>
         <a class="active" [routerLink]='["/home"]'>
-          <span class='icon-home'> <label> Principal </label> </span>
+          <span class='icon-home' data-toggle="tooltip" data-placement="right" > </span> <label> Principal </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/users"]' (click)='collapse()'>
-          <span class='icon-user'> </span> <label>  Usuarios </label>
+          <span class='icon-user'  data-toggle="tooltip" data-placement="right"> </span> <label>  Usuarios </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/edit"]' (click)='collapse()'>
-          <span class='icon-power-cord'> </span> <label> Residuos </label>
+          <span class='icon-power-cord'  data-toggle="tooltip" data-placement="right"> </span> <label> Residuos </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/recycler-states"]' (click)='collapse()'>
-          <span class='icon-earth'> </span> <label> Estado de reciclaje </label>
+          <span class='icon-earth'  data-toggle="tooltip" data-placement="right" > </span> <label> Estado de reciclaje </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/events"]' (click)='collapse()'>
-          <span class='icon-calendar'> </span> <label> Fechas de reciclado </label>
+          <span class='icon-calendar'  data-toggle="tooltip" data-placement="right" > </span> <label> Fechas de reciclado </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/stats"]' (click)='collapse()'>
-          <span class='icon-stats-dots'> </span> <label> Estadisticas </label>
+          <span class='icon-stats-dots'  data-toggle="tooltip" data-placement="right" > </span> <label> Estadisticas </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/maps"]' (click)='collapse()'>
-          <span class='icon-map'> </span> <label> Mapa </label>
+          <span class='icon-map'  data-toggle="tooltip" data-placement="right" > </span> <label> Mapa </label>
         </a>
       </li>
 
@@ -66,7 +70,7 @@
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/info"]' (click)='collapse()'>
-          <span class='icon-info'> </span> <label> Información </label>
+          <span class='icon-info'  data-toggle="tooltip" data-placement="right" > </span> <label> Información </label>
         </a>
       </li>
 

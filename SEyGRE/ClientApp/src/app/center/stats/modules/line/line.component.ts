@@ -11,23 +11,37 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LineComponent {
 
+  public lineChartLabels: Label[] = [];
+  public lineChartLegend = true;
+  public lineChartType = 'line';
+  public lineChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
+
+
+  public lineChartData: ChartDataSets[] = [{ data: [], label: ""}]
+
+  public idUser: string = sessionStorage.getItem("idUser");
+
   constructor(private router: Router, private http: HttpClient) {
 
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
+    this.getLine();
+
   }
 
 
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [56, 39, 20, 51, 16, 25, 90], label: 'Series B' },
-    { data: [11, 23, 30, 41, 26, 15, 100], label: 'Series C' }];
+  public getLine(): void {
 
+    this.http.get<number[]>("api/Componentes/ObtenerInformacionLinear?id=" + this.idUser).subscribe(result => {
 
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
+      console.log(result);
+
+      this.lineChartLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octrubre", "Noviembre", "Diciembre"];
+      this.lineChartData = [{ data: result, label: this.idUser }];
+    });
+
+  }
 
 
 }

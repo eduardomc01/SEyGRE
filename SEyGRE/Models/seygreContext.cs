@@ -108,6 +108,8 @@ namespace SEyGRE.Models
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Cantidad).HasColumnName("cantidad");
+
                 entity.Property(e => e.Descripccion)
                     .HasColumnName("descripccion")
                     .HasColumnType("varchar(100)");

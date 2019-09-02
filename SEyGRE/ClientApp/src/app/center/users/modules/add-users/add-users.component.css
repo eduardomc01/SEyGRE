@@ -1,0 +1,19 @@
+
+*{
+  text-align: center;
+}
+
+.card {
+  position: absolute;
+  margin: 550px 0 0 0;
+  width: 20%;
+}
+
+div [type="text"], [type="button"], [type="submit"], [type="number"] {
+  margin: 10px 0 10px 0;
+}
+
+
+table thead tr th {
+  text-align: center;
+}

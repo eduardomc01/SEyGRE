@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { ChartType, ChartDataSets } from 'chart.js';
-import { Label, Color } from 'ng2-charts';
+import { SingleDataSet, Label, Color } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,34 +12,51 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RadarComponent {
 
-  public i: number;
-  public R: number[] = [];
-
   private idUser: string = sessionStorage.getItem("idUser");
-
-  public radarChartLabels: Label[] = ["Cobre", "Aluminio", "Oro", "Plata", "Estaño", "Retardante de flama (RFB)"];
+  /*
+  public radarChartLabels: Label[] = [];
   public radarChartType: ChartType = 'radar';
-  public ChartColorsTransparent: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .2)', borderColor: 'rgb(40, 180, 99)' }]
-  public radarChartData: ChartDataSets[];
+  public ChartColorsTransparent: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .1)', borderColor: 'rgb(40, 180, 99)' }]
+  public radarChartData: ChartDataSets[] = [{ data: [], label: ""}];
+  */
+
+  public polarAreaChartLabels: Label[] = [];
+  public polarAreaChartData: SingleDataSet = [];
+  public polarAreaLegend = true;
+  public polarAreaColors = [{ backgroundColor: ['rgba(40,180,99,.6)', 'rgba(52, 152, 219,.6)', 'rgba(231, 76, 60,.6)', 'rgba(149, 61, 231,.6)', 'rgba(0, 253, 146,.6)', 'rgba(231, 61, 159,.6)', 'rgba(242, 253, 0,.6)', 'rgba(165, 180, 174,.6)','rgba(71, 3, 189,.6)']}];
+
+  public polarAreaChartType: ChartType = 'polarArea';
+
 
   constructor(private router: Router, private http: HttpClient) {
 
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    //let json = JSON.stringify({ id: this.idUser });
+      //let json = JSON.stringify({ id: this.idUser });
 
-    this.http.get("api/Componentes/ObtenerInformacionRadar?id=" + this.idUser).subscribe(result => {
 
-     // for (this.i = 0; this.i <= 6; this.i++) { this.R.push(result[this.i]) }
 
-      console.log("radar --> " + result);
+      this.getRadar();
+
+  }
+
+
+  public getRadar(): void {
+
+    this.http.get<number[]>("api/Componentes/ObtenerInformacionRadar").subscribe(result => {
+
+      this.polarAreaChartLabels = ["Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio","Oro","Plata","Paladio"];
+      this.polarAreaChartData = result;
+
+      /*
+      this.radarChartLabels = ["Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio", "Oro", "Plata", "Paladio"];
+      this.radarChartData = [{ data: result, label: "Elemento" }];
+      */
 
     });
 
-    this.radarChartData = [{ data: [.2, .5, .4, 1.7, .8, 2.2], label: "Elemento" }];
-
-   }
+  }
 
 
  

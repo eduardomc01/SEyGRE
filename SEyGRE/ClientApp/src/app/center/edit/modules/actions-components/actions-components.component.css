@@ -15,3 +15,7 @@ input {
 table thead tr th {
   text-align: center;
 }
+
+div [type="text"], [type="button"], [type="number"] {
+  margin: 10px 0 10px 0;
+}

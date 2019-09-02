@@ -62,7 +62,7 @@ export class TableComponentsComponent {
 
   public ObtenerIdComponente(id: number):void {
 
-    this.http.post("api/Componentes/EliminarComponente", id).subscribe(result => {
+    this.http.post<number>("api/Componentes/EliminarComponente", id).subscribe(result => {
 
       this.mensajesAlerts(result);
 

@@ -20,7 +20,7 @@ export class BarsComponent {
   public barChartLegend = true;
   public barChartType = 'bar';
   public barChartData: ChartDataSets[] = [{ data: [], label: "" }];;
-  public ChartColors: Color[] = [{ backgroundColor: 'rgb(40, 180, 99)' }]
+  public ChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
  
   constructor (private router: Router, private http: HttpClient) {
 
@@ -49,8 +49,6 @@ export class BarsComponent {
 
       this.barChartLabels = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"];
       this.barChartData = [{ data: result, label: 'Residuos por año' }];
-
-      //    for (this.i = 0; this.i <= 4; this.i++) { this.B.push(result[this.i]) }
 
     });
 

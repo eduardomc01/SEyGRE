@@ -16,8 +16,8 @@ export class AddEventsComponent implements OnInit {
   public _fecha: Date;
   public _hora: Time;
 
-  public _lat: DoubleRange;
-  public _lng: DoubleRange;
+  public _lat: Number;
+  public _lng: Number;
 
   public markers: marker[] = [];
 
@@ -37,7 +37,7 @@ export class AddEventsComponent implements OnInit {
     if (this.idUser == null)
       this.router.navigate(["/"]);
 
-  });
+  };
 
 
   public mapClicked($event: MouseEvent) {
@@ -56,8 +56,8 @@ export class AddEventsComponent implements OnInit {
 
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = 0.0;
-    this._lng = 0.0;
+    this._lat = null;
+    this._lng = null;
 
   }
 

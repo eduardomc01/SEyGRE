@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
 import { AgmCoreModule} from '@agm/core';
 import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,7 +30,6 @@ import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
 import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
 import { EventsComponent } from './center/events/events.component';
 
-
 import { ProfileComponent } from './center/users/modules/profile/profile.component';
 import { TableUsersComponent } from './center/users/modules/table-users/table-users.component';
 import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
@@ -46,6 +46,7 @@ import { LineComponent } from './center/stats/modules/line/line.component';
 import { PieComponent } from './center/stats/modules/pie/pie.component';
 import { RadarComponent } from './center/stats/modules/radar/radar.component';
 import { BarsComponent } from './center/stats/modules/bars/bars.component';
+import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
     LineComponent,
     PieComponent,
     RadarComponent,
-    BarsComponent, 
+    BarsComponent,
+    AddUsersComponent, 
 
 
 
@@ -109,6 +111,9 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
       { path: 'Login', component: LoginComponent },
       { path: 'home', component: HomeComponent },
       { path: 'add-center', component: AddCenterComponent },
+
+      { path: 'add-users', component: AddUsersComponent },
+
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'table-components', component: TableComponentsComponent },
       { path: 'actions-components', component: ActionsComponentsComponent },
@@ -124,6 +129,14 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
       { path: 'users', component: UsersComponent },
       { path: 'edit', component: EditComponent },
       { path: 'stats', component: StatsComponent },
+
+      { path: 'bars', component: BarsComponent },
+      { path: 'pie', component: PieComponent },
+      { path: 'radar', component: RadarComponent },
+      { path: 'line', component: LineComponent },
+
+
+
       { path: 'maps', component: MapsComponent },
       { path: 'info', component: InfoComponent },
        
@@ -131,7 +144,7 @@ import { BarsComponent } from './center/stats/modules/bars/bars.component';
       { path: 'verify-center', component: VerifyCenterComponent },
       { path: 'imaps', component: IMapsComponent },
 
-      { path: '', component: CHomeComponent },
+      { path: '', component: CHomeComponent, pathMatch: 'full' },
       { path: 'cmaps', component: CMapsComponent },
       { path: 'cinfo', component: CInfoComponent },
 

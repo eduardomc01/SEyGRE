@@ -15,9 +15,9 @@ namespace SEyGRE.Controllers
     {
         private seygreContext context;
 
-        public ComponentesController()
+        public ComponentesController(seygreContext _context)
         {
-            context = new seygreContext();
+            context = _context;
         }
 
         [HttpPost("[action]")]
@@ -88,7 +88,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpPost("[action]")]
-        public List<RelacionResiduosClasificacion> ObtenerBusquedaPersonalizada([FromBody] RelacionResiduosClasificacion r){
+        public List<RelacionResiduosClasificacion> ObtenerBusquedaPersonalizada([FromBody] RelacionResiduosClasificacion r) {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
@@ -132,7 +132,7 @@ namespace SEyGRE.Controllers
 
         //OBTENER STATS
         [HttpGet("[action]")]
-        public int [] ObtenerInformacionBarras(int id)
+        public async Task<float[]> ObtenerInformacionBarras(int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -140,17 +140,32 @@ namespace SEyGRE.Controllers
             //int max_year = (from e in context.Residuos select e.Fecha).Distinct().Count();
 
             int[] year = { 2019, 2020, 2021, 2022, 2023, 2024, 2025 };
-            int[] datos = new int[7];
+            float[] datos = new float[7];
             int i = 0;
+
+  
+            var result = await Task.Run(() =>
+            {
+                return ((from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e));
+            });
 
 
             foreach (var y in year)
             {
-              
-                    datos[i] = (from e in context.Residuos where e.Fecha.Value.Year.Equals(y) && e.IdCentroAcopio.Equals(id) select e).Count();
-                    i += 1;                
+                foreach (var r in result)
+                {
+
+                    if (r.Fecha.Value.Year.Equals(y))
+                    {
+                        datos[i] += r.Peso;
+                    }
+
+                }
+
+                i += 1;
 
             }
+
 
             return datos;
 
@@ -158,8 +173,9 @@ namespace SEyGRE.Controllers
 
         //OBTENER PIE
         [HttpGet("[action]")]
-        public int [] ObtenerInformacionCircular(int id)
+        public async Task<int[]> ObtenerInformacionCircular(int id)
         {
+
             int[] clasifi = { 1, 2, 3 };
             int[] datos = new int[3];
             int i = 0;
@@ -169,7 +185,11 @@ namespace SEyGRE.Controllers
             foreach (var c in clasifi)
             {
 
-                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(id) select e).Count();
+                datos[i] = await Task.Run(() =>
+                {
+                    return ((from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(id) select e).Count());
+                });
+
                 i += 1;
 
             }
@@ -180,34 +200,68 @@ namespace SEyGRE.Controllers
 
 
 
-        //OBTENER PIE
-        [HttpGet("[action]")] /* la grafica mas dificl HP xD*/
-        public List<int> ObtenerInformacionRadar(int id)
+        //OBTENER POLAR
+        [HttpGet("[action]")]
+        public async Task<List<float>> ObtenerInformacionRadar()
         {
-            int[] clasifi = { 1, 2, 3 };
-            int[] datos = new int[1];
-            int i = 0;
-            
+
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
-         
-            datos[1] = (from e in context.Residuos select e.IdClasificacion.Value).Sum();
+
+
+            var datos = await Task.Run(() => {
+
+                return (from e in context.Elementos select e.Porcentaje);
+
+            });
 
             return datos.ToList();
+
+        }
+
+
+        //OBTENER LINEAR
+        [HttpGet("[action]")]
+        public async Task<float[]> ObtenerInformacionLinear(int id)
+        {
+            int[] month = { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 };
+            float[] datos = new float[13];
+           
+            int i = 0;
       
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-           /* foreach (var c in clasifi)
+            var result = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);
+
+            //e.Fecha.Value.Month.Equals(m)
+
+            foreach (var m in month)
             {
+                foreach (var r in result)
+                {
 
-                datos[i] = (from e in context.Residuos where e.IdClasificacion.Equals(c) && e.IdCentroAcopio.Equals(r.Id) select e).Count();
+                    if (r.Fecha.Value.Month.Equals(m))
+                    {
+                        datos[i] += r.Peso;
+                    }           
+
+                }
+
                 i += 1;
 
             }
+            
 
-            return datos.ToList();
-            */
+
+
+
+
+            return datos;
+
         }
+
 
 
     }
 
 }
+
