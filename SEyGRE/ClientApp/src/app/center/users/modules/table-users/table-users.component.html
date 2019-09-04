@@ -49,7 +49,7 @@
               </select>
             </td>
 
-            <td> <button *ngIf="showSave" type="button" class="btn btn-warning" onclick="confirmarDatos()" (click)="modificarPersonal(info.id,box1.value,box2.value,box3.value,box4.value,box5.value)"><span class="icon-floppy-disk"></span></button> </td>
+            <td> <button *ngIf="showSave" type="button" class="btn btn-success" onclick="confirmarDatos()" (click)="modificarPersonal(info.id,box1.value,box2.value,box3.value,box4.value,box5.value)"><span class="icon-floppy-disk"></span></button> </td>
             <td> <button type="button" class="btn btn-success" id={{info.id}} onclick="editarPersonal(this.id)"><span class="icon-pencil2"></span></button> </td>
             <td> <button type="button" class="btn btn-danger" id="btn-delete" onclick="eliminarRegistro()" (click)="eliminarPersonal(info.id)"><span class="icon-cross"></span></button> </td>
 

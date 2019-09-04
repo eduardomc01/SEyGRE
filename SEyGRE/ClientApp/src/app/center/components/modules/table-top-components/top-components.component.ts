@@ -5,11 +5,11 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-actions-components',
-  templateUrl: './actions-components.component.html',
-  styleUrls: ['./actions-components.component.css']
+  selector: 'app-top-table-components',
+  templateUrl: './top-components.component.html',
+  styleUrls: ['./top-components.component.css']
 })
-export class ActionsComponentsComponent {
+export class TopComponentsComponent {
 
   public _componentes: componentes[] = [];
   public _busqueda: string;

@@ -13,18 +13,18 @@
 
       <div class="card-body">
 
-        <input class="form-control" type="text" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del evento" required />
-        <input class="form-control" type="text" [(ngModel)]="_organizador" name="_organizador" placeholder=" Organizador(es)" required />
-        <input class="form-control" type="date" [(ngModel)]="_fecha" name="_fecha" required />
-        <input class="form-control" type="time" [(ngModel)]="_hora" name="_hora" required />
-        <input class="form-control" type="number" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" disabled required />
-        <input class="form-control" type="number" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" disabled required />
+        <input class="form-control" type="text" id="nombre" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del evento" required />
+        <input class="form-control" type="text" id="organizador" [(ngModel)]="_organizador" name="_organizador" placeholder=" Organizador(es)" required />
+        <input class="form-control" type="date" id="fecha" [(ngModel)]="_fecha" name="_fecha" required />
+        <input class="form-control" type="time" id="hora" [(ngModel)]="_hora" name="_hora" required />
+        <input class="form-control" type="number" id="lat" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" disabled required />
+        <input class="form-control" type="number" id="long" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" disabled required />
 
       </div>
 
       <div class="card-footer">
 
-        <input class="btn btn-success" type="submit" onclick="return confirmarDatos()" value="Agregar evento" />
+        <input class="btn btn-success" type="submit" onclick="faltanDatosAgregarEvento()" value="Agregar evento" />
         <input class="btn btn-danger" type="reset" value="Cancelar" />
 
       </div>

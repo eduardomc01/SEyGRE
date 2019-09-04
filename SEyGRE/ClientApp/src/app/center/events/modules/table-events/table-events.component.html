@@ -9,42 +9,91 @@
     <div class="card-header"> <h1> Eventos registrados </h1> </div>
     <div class="card-body">
 
+      <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" id="_busqueda" placeholder="Busqueda universal" (keyup)="obtenerEventoPersonalizado()" required />
+
+
+      <!--
+  <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px; margin: -33px 0 15px 200px; "> //medidas recordar por si acaso
+    <span class='icon-search'> </span>  !Sin consultas aún¡
+  </p>
+
+
+      -->
+
+
       <table class="table">
+
         <thead class="thead-dark">
+
           <tr>
             <th scope="col"> ID </th>
             <th scope="col"> Evento </th>
             <th scope="col"> Organizador </th>
             <th scope="col"> Horario </th>
             <th scope="col"> Fecha </th>
-            <th scope="col"> Acción </th>
+            <th scope="col"> Estado </th>
+            <th scope="col" colspan="3"> Acción </th>
 
           </tr>
         </thead>
-        <tbody>
+
+        <tbody *ngIf="inexistente">
 
           <tr *ngFor="let info of _eventos">
-            <td> {{info.id}} </td>
-            <td> {{info.nombre}} </td>
-            <td> {{info.organizador}} </td>
-            <td> {{info.horario}} </td>
-            <td> {{info.fecha}} </td>
-            <td> <input type="button" class="btn btn-danger" value="Eliminar" (click)="ObtenerIdEvento(info.id)" /> </td>
+
+
+            <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
+            <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled />  </td>
+            <td> <input type="text" class="form-control" id="Organizador{{info.id}}" value={{info.organizador}} #box2 disabled />  </td>
+            <td> <input type="time" class="form-control" id="Horario{{info.id}}" value={{info.horario}} #box3 disabled /> </td>
+            <td> <input type="date" class="form-control" id="Fecha{{info.id}}" value={{info.fecha}} #box4 disabled /> </td>
+
+            <td>
+              <select class="form-control" id="Estatus{{info.id}}" #box5 disabled>
+                <option value="{{info.idEstatus}}" selected disabled> {{ info.estatus }} </option>
+                <option value="1"> Activo </option>
+                <option value="2"> Desactivado  </option>
+              </select>
+            </td>
+
+            <td> <button *ngIf="showSave" type="button" class="btn btn-success" onclick="confirmarDatos()" (click)="modificarEvento(info.id, box1.value, box2.value, box3.value, box4.value, box5.value)"><span class="icon-floppy-disk"></span></button> </td>
+            <td> <button type="button" class="btn btn-success" id={{info.id}} onclick="editarEvento(this.id)"><span class="icon-pencil2"></span></button> </td>
+            <td> <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="eliminarEvento(info.id)"><span class="icon-cross"></span></button> </td>
+
+
           </tr>
 
         </tbody>
       </table>
 
+
+      <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-search'> </span>  !Sin consultas aún¡
+      </p>
+
+
+      <p *ngIf="!inexistente" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-cross'> </span>  !Evento inexistente¡
+      </p>
+
+
+
     </div>
 
   </div>
 
+
+
+
+
+
+  <!--
   <div *ngIf="showSuccess">
     <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
       <strong> !Exito¡ </strong> Componente eliminado del sistema
     </ngb-alert>
   </div>
-
+  -->
 
 
 </body>

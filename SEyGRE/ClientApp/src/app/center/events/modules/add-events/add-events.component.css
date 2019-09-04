@@ -9,7 +9,7 @@ div [type="number"], [type="submit"], [type="reset"], [type="text"], [type="time
 
 .card {
   position: absolute;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0;
   width: 20%;
 }
 
@@ -25,6 +25,6 @@ agm-map {
   float: right;
   margin: 0 0 0 300px;
   width: 75%;
-  z-index: 1;
+  z-index: -1;
 
 }

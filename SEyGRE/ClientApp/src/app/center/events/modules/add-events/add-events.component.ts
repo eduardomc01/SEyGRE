@@ -32,12 +32,13 @@ export class AddEventsComponent implements OnInit {
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
+
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
       this.router.navigate(["/"]);
 
-  };
+  }
 
 
   public mapClicked($event: MouseEvent) {
@@ -61,7 +62,7 @@ export class AddEventsComponent implements OnInit {
 
   }
 
-  ObtenerDatos() {
+  public ObtenerDatos():void {
 
     let json = JSON.stringify({
 
@@ -71,15 +72,15 @@ export class AddEventsComponent implements OnInit {
       horario: this._hora,
       latitud: this._lat,
       longitud: this._lng,
-      idCentroAcopio: this.idUser
-
+      idCentroAcopio: this.idUser,
+      idEstatus: 2 /* el evento comienza desactivado por seguridad */
 
     });
 
-    console.log(json);
+    //console.log(json);
 
 
-    this.http.post("api/Eventos/InsertarEvento", JSON.parse(json)).subscribe(() => { });
+    this.http.post<any>("api/Eventos/InsertarEvento", JSON.parse(json)).subscribe(() => { });
 
   }
 
@@ -144,7 +145,7 @@ export class AddEventsComponent implements OnInit {
         if (results[0]) {
           this.address = results[0].formatted_address;
         } else {
-          console.log("No se encontrador resultados");
+          console.log("No se ha encontrado resultados");
         }
       } else {
         console.log("Geocodificacion fallo: " + status);
@@ -160,15 +161,21 @@ export class AddEventsComponent implements OnInit {
 
   iconMap = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/paddle/grn-stars.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/recycle.png",
+    iconHeigh: 100
   }
 
+  /* no olvides publicar su doble slash */
+   /*
+    * http:''maps.google.com/mapfiles/ms/micons/grn-pushpin.png    (es el pin de color verde)
+    *http:''maps.google.com/mapfiles/ms/micons/recycle.png         (es el logo de reciclar)
+    * http:''maps.google.com/mapfiles/ms/micons/rangerstation.png  (es una casa con bandera chiquita)
+    */
 
   iconMapCurrent = {
 
-    iconUrl: "http://labs.google.com/ridefinder/images/mm_20_red.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
+    iconHeigh: 100
   }
 
 

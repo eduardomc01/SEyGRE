@@ -88,6 +88,33 @@ function faltanDatosAgregarCentro() {
 
 
 
+function faltanDatosAgregarEvento() {
+
+  if ($('#nombre').val().length === 0 || $('#organizador').val().length === 0 || $('#fecha').val().length === 0 || $('#hora').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
+
+    alertify.error("Faltan datos");
+
+    return false;
+
+  } else {
+
+    alertify.success("Registro completo");
+
+    /*
+      document.getElementById("nombre").value = "";
+      document.getElementById("usuario").value = "";
+      document.getElementById("correo").value = "";
+      document.getElementById("file").value = null;
+      document.getElementById("pass").value = "";
+      document.getElementById("lat").value = null;
+      document.getElementById("long").value = null;
+      */
+  }
+
+}
+
+
+
 
 function eliminarRegistro() {
 

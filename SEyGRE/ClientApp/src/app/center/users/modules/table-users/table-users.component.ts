@@ -70,7 +70,7 @@ export class TableUsersComponent {
 
       //this.mensajesAlerts(result);
 
-      this.obtenerPersonal();
+      this.obtenerEspecificoPersonal();
 
     });
 

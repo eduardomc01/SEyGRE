@@ -15,17 +15,17 @@ import { IHomeComponent } from './institution/home/ihome.component';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './center/home/home.component';
-import { EditComponent } from './center/edit/edit.component';
+import { ComponentsComponent } from './center/components/components.component';
 import { StatsComponent } from './center/stats/stats.component';
 import { InfoComponent } from './center/info/info.component';
 import { MapsComponent } from './center/maps/maps.component';
 import { UsersComponent } from './center/users/users.component';
-import { AddComponentsComponent } from './center/edit/modules/add-components/add-components.component';
+import { AddComponentsComponent } from './center/components/modules/add-components/add-components.component';
 import { LoginComponent } from './login/login.component';
 import { AddCenterComponent } from './center/add-center/add-center.component';
 import { VerifyCenterComponent } from './institution/verify-center/verify-center.component';
-import { ActionsComponentsComponent } from './center/edit/modules/actions-components/actions-components.component';
-import { TableComponentsComponent } from './center/edit/modules/table-components/table-components.component';
+import { TopComponentsComponent } from './center/components/modules/table-top-components/top-components.component';
+import { TableComponentsComponent } from './center/components/modules/table-components/table-components.component';
 import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
 import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
 import { EventsComponent } from './center/events/events.component';
@@ -64,7 +64,7 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
     LoginComponent,
     NavMenuComponent,
     HomeComponent,
-    EditComponent,
+    ComponentsComponent,
     StatsComponent,
     InfoComponent,
     RecyclerStatesComponent,
@@ -73,7 +73,7 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
     AddComponentsComponent,
     AddCenterComponent,
 
-    ActionsComponentsComponent,
+    TopComponentsComponent,
     TableComponentsComponent,
     RecyclerStatesComponent,
     EventsComponent,
@@ -130,7 +130,7 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
 
       { path: 'add-components', component: AddComponentsComponent },
       { path: 'table-components', component: TableComponentsComponent },
-      { path: 'actions-components', component: ActionsComponentsComponent },
+      { path: 'table-top-components', component: TopComponentsComponent },
 
       { path: 'profile', component: ProfileComponent },
       { path: 'table-users', component: TableUsersComponent },
@@ -141,7 +141,7 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
       { path: 'recycler-states', component: RecyclerStatesComponent },
 
       { path: 'users', component: UsersComponent },
-      { path: 'edit', component: EditComponent },
+      { path: 'components', component: ComponentsComponent },
       { path: 'stats', component: StatsComponent },
 
       { path: 'bars', component: BarsComponent },

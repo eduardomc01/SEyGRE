@@ -20,3 +20,9 @@ div table thead tr th{
   text-align: center;
 }
 
+
+
+div #_busqueda {
+  margin: 0 0 10px 0;
+  width: 50%;
+}

@@ -50,7 +50,7 @@
 
             <td> <input type="date" class="form-control" id="Fecha{{info.id}}" name="date" value={{info.fecha}} #box4 disabled /> </td>
 
-            <td> <button *ngIf="showSave" type="button" class="btn btn-warning" onclick="confirmarDatos()" (click)="modificarPersonal(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button> </td>
+            <td> <button *ngIf="showSave" type="button" class="btn btn-success" onclick="confirmarDatos()" (click)="modificarPersonal(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button> </td>
             <td> <button type="button" class="btn btn-success" id={{info.id}} onclick="editarComponente(this.id)"><span class="icon-pencil2"></span></button> </td>
             <td> <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="eliminarComponente(info.id)"><span class="icon-cross"></span></button> </td>
 

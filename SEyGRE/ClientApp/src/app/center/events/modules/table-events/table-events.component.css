@@ -3,7 +3,6 @@
 }
 
 
-
 .close {
   margin: auto;
 }
@@ -12,6 +11,14 @@
 
 .card {
   position: absolute;
-  margin: 620px 0 0 10px;
-  width: 96%;
+  margin: 620px 0 0 0;
+  width: 94%;
+  margin-bottom: 30px;
+}
+
+
+
+div #_busqueda {
+  margin: 0 0 10px 0;
+  width: 50%;
 }

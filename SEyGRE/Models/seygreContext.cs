@@ -197,6 +197,10 @@ namespace SEyGRE.Models
                     .HasColumnName("idEstatus")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Latitud).HasColumnName("latitud");
+
+                entity.Property(e => e.Longitud).HasColumnName("longitud");
+
                 entity.Property(e => e.Nombre)
                     .HasColumnName("nombre")
                     .HasColumnType("varchar(100)");

@@ -36,16 +36,109 @@ namespace SEyGRE.Controllers
 
 
         [HttpGet("[action]")]
-        public List<Eventos> ObtenerEvento()
+        public List<RelacionEventosEstatusCentro> ObtenerEvento(int id)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var list = (from e in context.Eventos select e).ToList();
+            var list = (from e in context.Eventos
+                        join l in context.Estatus
+                        on e.IdEstatus equals l.Id
+                        where e.IdCentroAcopio == id
+                        orderby e.Id descending
+                        select new RelacionEventosEstatusCentro
+                        {
+
+                            Id = e.Id,
+                            Nombre = e.Nombre,
+                            Organizador = e.Organizador,
+                            Horario = e.Horario,
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
+                            Estatus= l.Titulo,
+                            IdEstatus = e.IdEstatus
+                            
+
+                        }).Take(10).ToList();
 
             return list;
 
         }
+
+
+        /****************************************************/
+
+
+        [HttpPost("[action]")]
+        public List<RelacionEventosEstatusCentro> ObtenerBusquedaPersonalizada([FromBody] RelacionEventosEstatusCentro r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Eventos
+                        join l in context.Estatus
+                        on e.IdEstatus equals l.Id
+                        where (e.Nombre.Contains(r.Busqueda) || e.Organizador.Contains(r.Busqueda) || e.Fecha.ToString().Contains(r.Busqueda) || e.Horario.ToString().Contains(r.Busqueda) || l.Titulo.Contains(r.Busqueda)) && e.IdCentroAcopio.Equals(r.Id)
+
+                        select new RelacionEventosEstatusCentro
+                        {
+                            Id = e.Id,
+                            Nombre = e.Nombre,
+                            Organizador = e.Organizador,
+                            Horario = e.Horario,
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
+                            Estatus = l.Titulo,
+                            IdEstatus = e.IdEstatus
+
+                        }).Take(30).ToList();
+
+            return list;
+
+        }
+
+
+
+        [HttpPost("[action]")]
+        public void ModificarEvento([FromBody] Eventos r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            //var found = (from e in context.Personal where e.Id.Equals(r.Id) select e).ToList();
+            var found = context.Eventos.Find(r.Id);
+
+            if (r.Nombre != null)
+            {
+                found.Nombre = r.Nombre;
+            }
+            if (r.Organizador != null)
+            {
+                found.Organizador = r.Organizador;
+            }
+            if (r.Horario != null)
+            {
+                found.Horario = r.Horario;
+            }
+            if (r.Fecha != null)
+            {
+                found.Fecha = r.Fecha;
+            }
+            if(found.IdEstatus != null) {
+
+                found.IdEstatus = r.IdEstatus;
+            }
+
+
+
+            context.Update(found);
+
+            context.SaveChanges();
+
+
+
+        }
+
+
+        /********************************************/
 
 
 

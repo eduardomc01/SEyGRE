@@ -19,6 +19,17 @@ function editarComponente(id) {
 
 }
 
+function editarEvento(id) {
+
+  $("#Nombre" + id).prop('disabled', false);
+  $("#Organizador" + id).prop('disabled', false);
+  $("#Horario" + id).prop('disabled', false);
+  $("#Fecha" + id).prop('disabled', false);
+  $("#Estatus" + id).prop('disabled', false);
+}
+
+
+
 /*
 $("input").prop('disabled', true);
 $("input").prop('disabled', false);
