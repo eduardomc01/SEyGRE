@@ -16,9 +16,9 @@ namespace SEyGRE.Controllers
 
         private seygreContext context;
 
-        public EventosController()
+        public EventosController(seygreContext _context)
         {
-            context = new seygreContext();
+            context = _context;
         }
 
 

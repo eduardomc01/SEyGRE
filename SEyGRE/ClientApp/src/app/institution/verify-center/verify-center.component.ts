@@ -23,23 +23,17 @@ export class VerifyCenterComponent{
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
+    this.obtenerPeticiones();
+
+  }
+
+
+  public obtenerPeticiones(): void {
+
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
 
-      try {
-
-        console.log(result)
-
         this._centro = result;
-
         this.mensajesAlerts(result.length);
-
-      } catch (e) {
-
-        console.log(e);
-
-      }
-
-    
 
     });
 
@@ -51,13 +45,21 @@ export class VerifyCenterComponent{
 
       console.log(id);
 
-      this.http.post("api/CentrosAcopio/AceptarPeticionCentro",id).subscribe();
+      this.http.post("api/CentrosAcopio/AceptarPeticionCentro", id).subscribe(() => {
+
+        this.obtenerPeticiones();
+
+      });
       
     } else {
 
       console.log(id);
 
-      this.http.post("api/CentrosAcopio/EliminarPeticionCentro",id).subscribe();
+      this.http.post("api/CentrosAcopio/EliminarPeticionCentro", id).subscribe(() => {
+
+        this.obtenerPeticiones();
+
+      });
 
     }
 

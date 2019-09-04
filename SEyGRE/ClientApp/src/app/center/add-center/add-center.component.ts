@@ -41,7 +41,7 @@ export class AddCenterComponent implements OnInit {
 
   public ObtenerDatos(event) {
 
-    let fileList: FileList = event.target[4].files;
+    let fileList: FileList = event.target[4].files; /* se encuentra en la posicion 4 del form OJO*/
 
     if (fileList.length > 0) {
 
@@ -60,18 +60,33 @@ export class AddCenterComponent implements OnInit {
         password: this._password,
         latitud: this._lat,
         longitud: this._lng,
-        idEstatus: 3,           //porque comienzan como pendientes 
+        idEstatus: 3,   //empiezan como PENDIENTES POR REVISAR
         idTipoUsuario: 2
 
       });
         
-      this.http.post("api/CentrosAcopio/InsertarCentros", JSON.parse(json)).subscribe(() => {
+      this.http.post<any>("api/CentrosAcopio/InsertarCentros", JSON.parse(json)).subscribe(result => {
 
-        this.http.post("api/CentrosAcopio/GuardarDocumento", formData).subscribe(() => {
+        console.log(result);
 
-          console.log("Ok");
+        if (result == 1) {
 
-        });
+          console.log("Todo bien registro! ok");
+
+          
+          this.http.post("api/CentrosAcopio/GuardarDocumento", formData).subscribe(() => {
+
+
+          });
+          
+
+
+        } else {
+
+          console.log("Campos repetidos");
+
+        }
+
 
       });
 

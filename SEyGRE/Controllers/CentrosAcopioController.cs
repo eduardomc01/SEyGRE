@@ -33,15 +33,36 @@ namespace SEyGRE.Controllers
         }
 
         [HttpPost("[action]")]
-        public void InsertarCentros([FromBody] Centrosacopio r)
+        public int InsertarCentros([FromBody] Centrosacopio r)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
+            var register = (from e in context.Centrosacopio select e).ToList();
+            /*
+            foreach (var list in register)
+            {
+                if (list.Nombre.Contains(r.Usuario) == true)
+                {
+                    return 0;
+                }
+                else if (list.Nombre.Contains(r.Nombre) == true)
+                {
+                    return 0;
+                }
+                else if (list.Correo.Contains(r.Correo) == true) {
+                    return 0;
+                }
+                else if(list.Password.Contains(r.Password) == true)
+                {
+                    return 0;
+                }
+            }*/
+
             context.Centrosacopio.Add(r);
 
             context.SaveChanges();
-            
+
 
             /*
             string origen = "seygre.veracruz@gmail.com";
@@ -80,6 +101,7 @@ namespace SEyGRE.Controllers
             }
             */
 
+            return 1;
         }
 
         [HttpGet("[action]")]
@@ -218,7 +240,7 @@ namespace SEyGRE.Controllers
 
             found.IdEstatus = 1;
 
-            context.Update(found);
+            context.Centrosacopio.Update(found);
 
             //destino = found.Correo;
 
@@ -342,7 +364,7 @@ namespace SEyGRE.Controllers
             
             found.Documento = "assets/documentosCentros/" + document.FileName;
 
-            context.Update(found);
+            context.Centrosacopio.Update(found);
 
             context.SaveChanges();
 
@@ -387,7 +409,7 @@ namespace SEyGRE.Controllers
 
             found.Imagen = "assets/imagenesPerfiles/" + id.ToString() + "/" + file.FileName;
 
-            context.Update(found);
+            context.Centrosacopio.Update(found);
 
             context.SaveChanges();
 

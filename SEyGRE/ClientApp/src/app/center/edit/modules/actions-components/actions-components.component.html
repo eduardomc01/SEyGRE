@@ -1,4 +1,6 @@
-<div class="card" ngNativeValidate>
+
+
+<div class="card"  (mouseout)="ObtenerTop()" ngNativeValidate>
   <div class="card-header">
     <h1> Últimos 5 componentes </h1>
   </div>
@@ -38,7 +40,7 @@
     </table>
 
 
-    <input type="button" class="btn btn-primary" value="Actualizar" (click)="ObtenerTop()"/>
+    <input type="button" class="btn btn-primary" value="Actualizar" />
 
 
   </div>

@@ -31,7 +31,7 @@ namespace SEyGRE.Controllers
 
         }
 
-
+        /*
         [HttpPost("[action]")]
         public List<RelacionResiduosClasificacion> ObtenerResiduos([FromBody] RelacionResiduosClasificacion r) {
 
@@ -49,14 +49,15 @@ namespace SEyGRE.Controllers
                             Nombre = e.Nombre,
                             Peso = e.Peso,
                             Clasificacion = l.Titulo,
-                            Fecha = e.Fecha
+                            IdClasificacion = e.IdClasificacion,
+                            Fecha = e.Fecha.Value.Date
 
                         }).Take(3).ToList();
 
             return list;
 
         }
-
+        */
 
 
 
@@ -78,7 +79,8 @@ namespace SEyGRE.Controllers
                             Nombre = e.Nombre,
                             Peso = e.Peso,
                             Clasificacion = l.Titulo,
-                            Fecha = e.Fecha
+                            IdClasificacion = e.IdClasificacion,
+                            Fecha = e.Fecha.Value.ToString("dd/MM/yyyy")
 
                         }).Take(5).ToList();
 
@@ -104,9 +106,10 @@ namespace SEyGRE.Controllers
                             Nombre = e.Nombre,
                             Peso = e.Peso,
                             Clasificacion = l.Titulo,
-                            Fecha = e.Fecha
+                            IdClasificacion = e.IdClasificacion,
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd") /* verificando la fecha para el date en el html */
 
-                        }).ToList();
+                        }).Take(30).ToList();
 
             return list;
 
@@ -202,7 +205,7 @@ namespace SEyGRE.Controllers
 
         //OBTENER POLAR
         [HttpGet("[action]")]
-        public async Task<List<float>> ObtenerInformacionRadar()
+        public async Task<List<float>> ObtenerInformacionPolar()
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -225,12 +228,16 @@ namespace SEyGRE.Controllers
         {
             int[] month = { 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12 };
             float[] datos = new float[13];
-           
             int i = 0;
       
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var result = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);
+
+            var result = await Task.Run(() => {
+
+                return (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);
+
+            });
 
             //e.Fecha.Value.Month.Equals(m)
 
@@ -251,17 +258,53 @@ namespace SEyGRE.Controllers
             }
             
 
-
-
-
-
             return datos;
 
         }
 
 
 
+
+
+        [HttpPost("[action]")]
+        public void ModificarComponente([FromBody] Residuos r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            //var found = (from e in context.Personal where e.Id.Equals(r.Id) select e).ToList();
+            var found = context.Residuos.Find(r.Id);
+
+            if (r.Nombre != null)
+            {
+                found.Nombre = r.Nombre;
+            }
+            if (r.Peso != 0.0)
+            {
+                found.Peso = r.Peso;
+            }
+            if (r.IdClasificacion != null)
+            {
+                found.IdClasificacion = r.IdClasificacion;
+            }
+            if (r.Fecha != null)
+            {
+                found.Fecha = r.Fecha.Value.Date;
+            }
+
+
+            context.Update(found);
+
+            context.SaveChanges();
+
+
+
+        }
+
     }
 
+
 }
+
+
 

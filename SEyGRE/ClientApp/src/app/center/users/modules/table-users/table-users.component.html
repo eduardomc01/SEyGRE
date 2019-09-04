@@ -2,14 +2,22 @@
 <html>
 <head>
   <title> Tabla de los usuarios en el centro </title>
+  <!--<script type="text/javascript" src="../../../../../assets/js/EditarInputs.js"></script>-->
 </head>
 <body>
 
   <div class="card">
-    <div class="card-header"> <h1> Personal </h1> </div>
+    <div class="card-header">
+      <h1> Personal </h1>
+      <input style="margin: -25px 10px 0 0; float: right; position:page" type="button" class="btn btn-primary" (click)="obtenerPersonal()" value="Actualizar" />
+    </div>
+
     <div class="card-body">
 
+      <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" id="_busqueda" placeholder="Busqueda universal" (keyup)="obtenerEspecificoPersonal()" required />
+
       <table class="table">
+
         <thead class="thead-dark">
           <tr>
             <th scope="col"> ID </th>
@@ -17,24 +25,51 @@
             <th scope="col"> Apellidos </th>
             <th scope="col"> Edad </th>
             <th scope="col"> Dirección </th>
-            <th scope="col"> Cargo </th>
-           <!-- <th scope="col"> Centro </th> -->
+            <th scope="col" colspan="1"> Cargo </th>
+            <th scope="col" colspan="3"> Acción </th>
+            <!-- <th scope="col"> Centro </th> -->
           </tr>
         </thead>
-        <tbody>
+
+        <tbody *ngIf="inexistente">
 
           <tr *ngFor="let info of _personal">
-            <td> {{info.id}} </td>
-            <td> {{info.nombre}} </td>
-            <td> {{info.apellidos}} </td>
-            <td> {{info.edad}} </td>
-            <td> {{info.direccion}} </td>
-            <td> {{info.idCargo}} </td>
-           <!-- <td> {{info.idCentro}} </td> -->
+
+            <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
+            <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled /> </td>
+            <td> <input type="text" class="form-control" id="Apellidos{{info.id}}" value={{info.apellidos}} #box2 disabled /> </td>
+            <td> <input type="number" class="form-control" id="Edad{{info.id}}" value={{info.edad}} #box3 disabled /> </td>
+            <td> <input type="text" class="form-control" id="Direccion{{info.id}}" value={{info.direccion}} #box4 disabled /> </td>
+            <td>
+              <select class="form-control" id="Cargo{{info.id}}" name="_cargo" #box5 disabled>
+                <option value="{{info.idCargo}}" selected disabled> {{ info.cargo }} </option>
+                <option value="1"> Administrador </option>
+                <option value="2"> Trabajador </option>
+                <option value="3"> Voluntario </option>
+              </select>
+            </td>
+
+            <td> <button *ngIf="showSave" type="button" class="btn btn-warning" onclick="confirmarDatos()" (click)="modificarPersonal(info.id,box1.value,box2.value,box3.value,box4.value,box5.value)"><span class="icon-floppy-disk"></span></button> </td>
+            <td> <button type="button" class="btn btn-success" id={{info.id}} onclick="editarPersonal(this.id)"><span class="icon-pencil2"></span></button> </td>
+            <td> <button type="button" class="btn btn-danger" id="btn-delete" onclick="eliminarRegistro()" (click)="eliminarPersonal(info.id)"><span class="icon-cross"></span></button> </td>
+
+            <!-- <td> {{info.idCentro}} </td> -->
+
           </tr>
 
         </tbody>
       </table>
+
+      <!--
+      <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-search'> </span>  !Sin consultas aún¡
+      </p>
+      -->
+
+      <p *ngIf="!inexistente" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+        <span class='icon-cross'> </span>  !Personal inexistente¡
+      </p>
+
 
     </div>
 

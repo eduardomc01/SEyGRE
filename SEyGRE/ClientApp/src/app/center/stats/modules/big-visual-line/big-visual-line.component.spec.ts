@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MapsComponent } from './maps.component';
+import { BigVisualLineComponent } from './big-visual-line.component';
 
-describe('MapsComponent', () => {
-  let component: MapsComponent;
-  let fixture: ComponentFixture<MapsComponent>;
+describe('BigVisualLineComponent', () => {
+  let component: BigVisualLineComponent;
+  let fixture: ComponentFixture<BigVisualLineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MapsComponent ]
+      declarations: [ BigVisualLineComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapsComponent);
+    fixture = TestBed.createComponent(BigVisualLineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

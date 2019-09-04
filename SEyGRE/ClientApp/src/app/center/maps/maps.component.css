@@ -19,6 +19,7 @@ div [type="text"], [type="button"], [type="number"] {
 
 agm-map {
   height: 500px;
+  z-index: -1;
 }
 
 /*

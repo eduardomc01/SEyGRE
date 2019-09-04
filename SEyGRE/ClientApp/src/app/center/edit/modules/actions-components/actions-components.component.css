@@ -2,13 +2,13 @@
 .card {
   position: absolute;
   text-align: center;
-  margin: 1% 0 0 17%;
-  width: 75%;
+  margin: 0 0 0 430px;
+  width: 65%;
   
 }
 
-input {
-  margin: -10px 35px 0 0;
+div [type="button"] {
+  margin: -10px 15px 0 0;
   float: right;
 }
 
@@ -16,6 +16,3 @@ table thead tr th {
   text-align: center;
 }
 
-div [type="text"], [type="button"], [type="number"] {
-  margin: 10px 0 10px 0;
-}

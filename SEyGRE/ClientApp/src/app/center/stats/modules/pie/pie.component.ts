@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild, OnInit} from '@angular/core';
 import { ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-pie',
@@ -11,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./pie.component.css']
 })
 
-export class PieComponent {
+export class PieComponent implements OnInit {
 
   private idUser: string = sessionStorage.getItem("idUser");
 
@@ -21,21 +20,25 @@ export class PieComponent {
   public pieChartLegend = true;
   public pieChartColors = [{ backgroundColor: ['rgba(40,180,99,.6)', 'rgba(52, 152, 219,.6)', 'rgba(231, 76, 60,.6)'] }];
 
+  public show: boolean;
 
   constructor(private router: Router, private http: HttpClient) {
+
+    this.show = false;
 
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    try {
 
-      this.getPastel()
+    this.getPastel();
 
-    } catch (e) {
 
-      console.log("error " + e);
+  }
 
-    }
+
+  public ngOnInit(): void {
+
+  //  this.getPastel();
 
   }
 
@@ -57,7 +60,13 @@ export class PieComponent {
 
   public Maximizar(): void {
 
-    this.router.navigate(["/pie"]);
+    this.router.navigate(["/big-visual"]);
+
+  }
+
+  public Regresar(): void {
+
+    this.router.navigate(["/stats"]);
 
   }
 

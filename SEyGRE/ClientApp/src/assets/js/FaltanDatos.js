@@ -37,6 +37,30 @@ function faltanDatosComponentes() {
 }
 
 
+function faltanDatosPersonal() {
+
+  if ($('#nombre').val().length === 0 || $('#apellidos').val().length === 0 || $('#edad').val().length === 0 || $('#direccion').val().length === 0 || $('#cargo').val().length === 0) {
+
+    alertify.error("Faltan datos");
+
+    return false;
+
+  } else {
+
+    alertify.success("Registro completo");
+
+    /*
+    document.getElementById("nombre").value = "";
+    document.getElementById("peso").value = "";
+    document.getElementById("clasificacion").value = "";
+    document.getElementById("fecha").value = "";
+    */
+
+  }
+
+}
+
+
 function faltanDatosAgregarCentro() {
 
   if ($('#nombre').val().length === 0 || $('#usuario').val().length === 0 || $('#correo').val().length === 0 || $('#file').val().length === 0 || $('#pass').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
@@ -62,3 +86,18 @@ function faltanDatosAgregarCentro() {
 
   }
 
+
+
+
+function eliminarRegistro() {
+
+  alertify.error("Registro eliminado");
+
+}
+
+
+function aceptarRegistro() {
+
+  alertify.success("Registro aceptado");
+
+}

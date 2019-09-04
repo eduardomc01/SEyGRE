@@ -1,4 +1,4 @@
 
 $(document).ready(function () {
-  $('[data-toggle="tooltip"]').tooltip().animate();
+  $('[data-toggle="tooltip"]').tooltip();
   });

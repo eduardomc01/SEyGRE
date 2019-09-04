@@ -7,11 +7,28 @@
   margin: auto;
 }
 
+div #_busqueda {
+  margin: 0 0 10px 0;
+  width: 50%;
+}
+
+
+div table thead tr th {
+  text-align: center;
+}
 
 
 .card {
   position: absolute;
-  margin: 0 0 0 450px;
+  margin: 0 0 0 320px;
   width: 70%;
   top: 0;
 }
+
+/*
+div [name="_cargo"] {
+
+  width: 130%;
+
+}
+  */

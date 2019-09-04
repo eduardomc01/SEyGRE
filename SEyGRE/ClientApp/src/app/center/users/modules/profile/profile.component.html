@@ -11,24 +11,37 @@
 
     <div *ngFor="let info of _centro" class="card-body">
 
-      <img src={{imagenSRC}} height="160" class="rounded-circle">
+      <img src="{{imagenSRC}}" height="160" class="rounded-circle" style=" border:solid 5px"/> 
+      <div>
+        <span style=" position:absolute; margin: 10px 0 0 -110px;" class="icon-leaf"></span>
+      </div>
+       <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" disabled />
 
-      <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" disabled />
-      <input class="form-control" type="text" value="{{info.nombre}}" placeholder=" Nombre" disabled />
-      <input class="form-control" type="text" value="{{info.password}}" placeholder=" Dirección" disabled />
+
+       <div>
+         <span style=" position:absolute; margin: 10px 0 0 -110px;" class="icon-user"></span>
+       </div>
+        <input class="form-control" type="text" value="{{info.nombre}}" placeholder=" Nombre" disabled />
+
+
+        <div>
+          <span style=" position:absolute; margin: 10px 0 0 -110px;" class="icon-key"></span>
+        </div>
+        <input class="form-control" type="text" value="{{info.password}}" placeholder=" Contraseña" disabled/>
+      
+      </div>
+
+
+      <div class="card-footer">
+
+        <form (ngSubmit)="ObtenerImagen($event)">
+          <input type="file" class="form-control" formenctype="multipart/form-data" accept=".jpg,.png,.jpeg,.gif" required />
+          <input type="submit" class="btn btn-success" value="Actualizar imagen" />
+        </form>
+
+      </div>
 
     </div>
-
-    <div class="card-footer">
-
-      <form (ngSubmit)="ObtenerImagen($event)">
-        <input type="file" class="form-control" formenctype="multipart/form-data" accept=".jpg,.png,.jpeg,.gif" required />
-        <input type="submit" class="btn btn-success" value="Actualizar imagen"/>
-      </form>
-
-    </div>
-
-  </div>
 
   <!--
 

@@ -6,7 +6,6 @@
 </head>
 <body>
 
-
   <div class='container-fluid'>
     <div class='row'>
       <div class='col-sm-9 body-content'>
@@ -28,6 +27,11 @@
 
             <button style="float: right; margin:2%;" class="btn btn-danger" type="button"><span class="icon-file-pdf"></span> Exportar PDF </button>
             <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getLine()"><span class="icon-search"></span> Obtener datos </button>
+            <button style="float: right; margin:2%;" class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> Maximizar </button>
+
+
+            <button *ngIf="show" style="float: right; margin:2%;" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> Regresar </button>
+
 
           </div>
         </div>

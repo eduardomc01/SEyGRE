@@ -37,11 +37,11 @@
                   <td> {{info.usuario}} </td>
                   <td> {{info.password}} </td>
                   <td> {{info.correo}}</td>
-                  <td> <a href="../../../{{info.documento}}" target="_blank"> <input type="button" class="btn btn-info" value="Verificar" /> </a></td>
+                  <td> <a href="../../../{{info.documento}}" target="_blank"> <p class="btn btn-info"> <span class="icon-download"></span> Aceptar </p> </a></td>
 
                   <td>
-                  <input type="submit" class="btn btn-success" (click)="seleccionarCentro(info.id, true)" value="Aceptar" />
-                  <input type="submit" class="btn btn-danger" (click)="seleccionarCentro(info.id, false)" value="Eliminar" />
+                  <button class="btn btn-success" onclick="aceptarRegistro()" (click)="seleccionarCentro(info.id, true)" > <span class="icon-checkmark"></span> Aceptar </button>
+                  <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="seleccionarCentro(info.id, false)" > <span class="icon-cross"> </span> Eliminar </button>
                   </td>
 
                 </tr>

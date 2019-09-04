@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
-
 @Component({
   selector: 'app-table-components',
   templateUrl: './table-components.component.html',
@@ -24,14 +23,16 @@ export class TableComponentsComponent {
   public inexistente: boolean;
 
   public idUser:string = sessionStorage.getItem("idUser");
+  public showSave: boolean = true;
 
   constructor(private http: HttpClient, private router: Router) {
     this.inexistente = true;
     this.consulta = true;
+
   }
 
 
-  public ObtenerDatos(): void {
+  public obtenerComponentes(): void {
 
     let json = JSON.stringify({
 
@@ -43,6 +44,7 @@ export class TableComponentsComponent {
    
     this.http.post<componentes[]>("api/Componentes/ObtenerBusquedaPersonalizada", JSON.parse(json)).subscribe(result => {
 
+      console.log(result);
 
         if (result.length != 0) {
 
@@ -60,16 +62,38 @@ export class TableComponentsComponent {
     });
   }
 
-  public ObtenerIdComponente(id: number):void {
+  public eliminarComponente(id: number):void {
 
     this.http.post<number>("api/Componentes/EliminarComponente", id).subscribe(result => {
 
+      this.obtenerComponentes();
       this.mensajesAlerts(result);
 
     });
 
   }
 
+  public modificarPersonal(_id: number, nombre: string, peso: number, clasificacion: number, fecha: Date): void {
+
+    var json = JSON.stringify({
+
+      Id: _id,
+      Nombre: nombre,
+      Peso: peso,
+      IdClasificacion: clasificacion,
+      Fecha: fecha,
+      
+    });
+
+    this.http.post<componentes[]>("api/Componentes/ModificarComponente", JSON.parse(json)).subscribe(result => {
+
+      //this._personal = result;
+      //this.obtenerPersonal();
+
+    });
+
+
+  }
 
   public mensajesAlerts(op: number) {
 
@@ -82,10 +106,6 @@ export class TableComponentsComponent {
     }
 
   }
-
-
-
-
 
   public close() {
 
@@ -102,7 +122,9 @@ interface componentes {
   a: number;
   b: string;
   c: number;
-  d: string;
-  e: string;
+  d: number;
+  e: string; /*este era date por la fecha*/
+  f: number;
+  g: string;
 
 }

@@ -15,6 +15,7 @@ namespace SEyGRE.Models
         {
         }
 
+        public virtual DbSet<Cargo> Cargo { get; set; }
         public virtual DbSet<Centrosacopio> Centrosacopio { get; set; }
         public virtual DbSet<Clasificacion> Clasificacion { get; set; }
         public virtual DbSet<Elementos> Elementos { get; set; }
@@ -38,6 +39,23 @@ namespace SEyGRE.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Cargo>(entity =>
+            {
+                entity.ToTable("cargo");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Descripccion)
+                    .HasColumnName("descripccion")
+                    .HasColumnType("varchar(100)");
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("nombre")
+                    .HasColumnType("varchar(45)");
+            });
+
             modelBuilder.Entity<Centrosacopio>(entity =>
             {
                 entity.ToTable("centrosacopio");
@@ -243,7 +261,7 @@ namespace SEyGRE.Models
 
                 entity.Property(e => e.Nombre)
                     .HasColumnName("nombre")
-                    .HasColumnType("varchar(45)");
+                    .HasColumnType("varchar(80)");
             });
 
             modelBuilder.Entity<Procesoreciclado>(entity =>

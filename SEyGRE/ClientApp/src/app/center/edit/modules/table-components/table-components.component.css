@@ -1,15 +1,19 @@
 
+* {
+  text-align: center;
+}
+
 .card  {
-  margin: 35% 0 0 -24%;
+  margin: 420px 0 0 0;
   position: absolute;
-  width: 117%;
+  width: 96%;
   text-align: center;
 }
 
 
 div [type="text"] {
   margin: 0 0 10px 0;
-  width: 50%;
+  text-align: center;
 }
 
 div table thead tr th{

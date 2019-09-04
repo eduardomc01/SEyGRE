@@ -34,6 +34,7 @@ footer {
 div ngb-alert {
   position: absolute;
   top: 10px;
+  left: 15px;
   z-index: 1;
 }
 

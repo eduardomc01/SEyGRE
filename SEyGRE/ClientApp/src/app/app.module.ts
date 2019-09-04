@@ -44,9 +44,18 @@ import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-cit
 
 import { LineComponent } from './center/stats/modules/line/line.component';
 import { PieComponent } from './center/stats/modules/pie/pie.component';
-import { RadarComponent } from './center/stats/modules/radar/radar.component';
+import { PolarComponent } from './center/stats/modules/polar/polar.component';
 import { BarsComponent } from './center/stats/modules/bars/bars.component';
 import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
+
+
+import { BigVisualBarsComponent } from './center/stats/modules/big-visual-bars/big-visual-bars.component';
+import { BigVisualLineComponent } from './center/stats/modules/big-visual-line/big-visual-line.component';
+import { BigVisualPolarComponent } from './center/stats/modules/big-visual-polar/big-visual-polar.component';
+import { BigVisualPieComponent } from './center/stats/modules/big-visual-pie/big-visual-pie.component';
+
+
+import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual.component';
 
 
 @NgModule({
@@ -89,9 +98,14 @@ import { AddUsersComponent } from './center/users/modules/add-users/add-users.co
 
     LineComponent,
     PieComponent,
-    RadarComponent,
+    PolarComponent,
     BarsComponent,
-    AddUsersComponent, 
+    AddUsersComponent,
+    BigVisualComponent,
+    BigVisualBarsComponent,
+    BigVisualLineComponent,
+    BigVisualPolarComponent,
+    BigVisualPieComponent, 
 
 
 
@@ -132,10 +146,14 @@ import { AddUsersComponent } from './center/users/modules/add-users/add-users.co
 
       { path: 'bars', component: BarsComponent },
       { path: 'pie', component: PieComponent },
-      { path: 'radar', component: RadarComponent },
+      { path: 'polar', component: PolarComponent },
       { path: 'line', component: LineComponent },
 
-
+      { path: 'big-visual', component: BigVisualComponent },
+      { path: 'big-visual-bars', component: BigVisualBarsComponent },
+      { path: 'big-visual-pie', component: BigVisualPieComponent },
+      { path: 'big-visual-line', component: BigVisualLineComponent },
+      { path: 'big-visual-polar', component: BigVisualPolarComponent },
 
       { path: 'maps', component: MapsComponent },
       { path: 'info', component: InfoComponent },

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VerifyCenterComponent } from './verify-center.component';
+import { BigVisualBarsComponent } from './big-visual-bars.component';
 
-describe('VerifyCenterComponent', () => {
-  let component: VerifyCenterComponent;
-  let fixture: ComponentFixture<VerifyCenterComponent>;
+describe('BigVisualBarsComponent', () => {
+  let component: BigVisualBarsComponent;
+  let fixture: ComponentFixture<BigVisualBarsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VerifyCenterComponent ]
+      declarations: [ BigVisualBarsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VerifyCenterComponent);
+    fixture = TestBed.createComponent(BigVisualBarsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -21,13 +21,20 @@
         <input class="form-control" type="text" id="apellidos" placeholder=" Apellidos" [(ngModel)]="apellidos" name="apellidos" required />
         <input class="form-control" type="number" id="edad" placeholder=" Edad" [(ngModel)]="edad" name="edad" required />
         <input class="form-control" type="text" id="direccion" placeholder=" Dirección" [(ngModel)]="direccion" name="direccion" required />
-        <input class="form-control" type="text" id="cargo" placeholder=" Cargo" [(ngModel)]="cargo" name="cargo" required />
+        <select class="form-control" id="cargo" [(ngModel)]="cargo" name="cargo" required>
+          <option value="1"> Administrador </option>
+          <option value="2"> Trabajador </option>
+          <option value="3"> Voluntario </option>
+        </select>
 
+        <!--
+        <input class="form-control" type="" id="cargo" placeholder=" Cargo" [(ngModel)]="cargo" name="cargo" required />
+        -->
       </div>
 
       <div class="card-footer">
 
-        <input type="submit" class="btn btn-success" onclick="return faltanDatosComponentes()" value="Registrar personal" />
+        <input type="submit" class="btn btn-success" onclick="return faltanDatosPersonal()" value="Registrar personal" />
         <input type="reset" class="btn btn-danger" value="Cancelar" />
         <!--
         <input type="submit" class="btn btn-success" onclick="return confirmarDatos()" value="Ingresar el componente" />
