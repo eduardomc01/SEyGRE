@@ -200,12 +200,12 @@ export class AddCenterComponent implements OnInit {
     iconHeigh: 20
   }
 
+
   iconMapCurrent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/pal4/icon16.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
+    iconHeigh: 100
   }
-
 
 
 

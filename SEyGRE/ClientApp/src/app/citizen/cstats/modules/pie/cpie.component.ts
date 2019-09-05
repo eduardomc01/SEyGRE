@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-pie',
-  templateUrl: './pie.component.html',
-  styleUrls: ['./pie.component.css']
+  selector: 'app-cpie',
+  templateUrl: './cpie.component.html',
+  styleUrls: ['./cpie.component.css']
 })
 
-export class PieComponent implements OnInit {
+export class CPieComponent implements OnInit {
 
   private idUser: string = sessionStorage.getItem("idUser");
 
@@ -25,13 +25,7 @@ export class PieComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {
 
     this.show = false;
-
-    if (sessionStorage.getItem("idUser") == null)
-      this.router.navigate(["/Login"]);
-
-
     this.getPastel();
-
 
   }
 
@@ -60,13 +54,13 @@ export class PieComponent implements OnInit {
 
   public Maximizar(): void {
 
-    this.router.navigate(["/big-visual-pie"]);
+    this.router.navigate(["/c-big-visual-pie"]);
 
   }
 
   public Regresar(): void {
 
-    this.router.navigate(["/stats"]);
+    this.router.navigate(["/c-stats"]);
 
   }
 

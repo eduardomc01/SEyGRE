@@ -58,7 +58,7 @@ export class LoginComponent {
 
       sessionStorage.setItem("idUser", obj[0].id);
       sessionStorage.setItem("nombre", obj[0].nombre);
-      this.router.navigate(["/ihome"]);
+      this.router.navigate(["/i-home"]);
 
     }
 

@@ -22,7 +22,8 @@
               <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>	        
             </div>
 
-            <agm-map [latitude]="latitude"
+            <agm-map (mapReady)="mapaListo()"
+                     [latitude]="latitude"
                      [longitude]="longitude"
                      [zoom]="17">
 
@@ -30,7 +31,8 @@
               <agm-marker *ngFor="let info of d"
                           [latitude]="info.latitud"
                           [longitude]="info.longitud"
-                          [iconUrl]="iconMap.iconUrl">
+                          [iconUrl]="iconMap.iconUrl"
+                          [animation]="animacion">
 
                 <agm-info-window> <strong>  {{ info.nombre }}  </strong> </agm-info-window>
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-recycler-states',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecyclerStatesComponent implements OnInit {
 
-  constructor() { }
+  barra: number=0;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
+
+  obtenerNumeros(barra: number) {
+
+    this.barra = barra;
+
+  }
+
 
 }

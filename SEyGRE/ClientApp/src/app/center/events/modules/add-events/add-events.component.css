@@ -24,7 +24,7 @@ agm-map {
 
   float: right;
   margin: 0 0 0 300px;
-  width: 75%;
-  z-index: -1;
+  width: 72%;
+  z-index: 1;
 
 }

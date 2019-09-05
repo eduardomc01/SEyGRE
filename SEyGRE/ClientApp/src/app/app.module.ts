@@ -40,14 +40,12 @@ import { CHomeComponent } from './citizen/chome/chome.component';
 import { CMapsComponent } from './citizen/cmaps/cmaps.component';
 import { CInfoComponent } from './citizen/cinfo/cinfo.component';
 import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-citizen.component';
-
+import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
 
 import { LineComponent } from './center/stats/modules/line/line.component';
 import { PieComponent } from './center/stats/modules/pie/pie.component';
 import { PolarComponent } from './center/stats/modules/polar/polar.component';
 import { BarsComponent } from './center/stats/modules/bars/bars.component';
-import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
-
 
 import { BigVisualBarsComponent } from './center/stats/modules/big-visual-bars/big-visual-bars.component';
 import { BigVisualLineComponent } from './center/stats/modules/big-visual-line/big-visual-line.component';
@@ -55,7 +53,18 @@ import { BigVisualPolarComponent } from './center/stats/modules/big-visual-polar
 import { BigVisualPieComponent } from './center/stats/modules/big-visual-pie/big-visual-pie.component';
 
 
-import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual.component';
+
+import { CBarsComponent } from './citizen/cstats/modules/bars/cbars.component';
+import { CStatsComponent } from './citizen/cstats/cstats.component';
+import { CLineComponent } from './citizen/cstats/modules/line/cline.component';
+import { CPieComponent } from './citizen/cstats/modules/pie/cpie.component';
+import { CPolarComponent } from './citizen/cstats/modules/polar/cpolar.component';
+
+
+import { CBigVisualBarsComponent } from './citizen/cstats/modules/big-visual-bars/cbig-visual-bars.component';
+import { CBigVisualLineComponent } from './citizen/cstats/modules/big-visual-line/cbig-visual-line.component';
+import { CBigVisualPolarComponent } from './citizen/cstats/modules/big-visual-polar/cbig-visual-polar.component';
+import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/cbig-visual-pie.component';
 
 
 @NgModule({
@@ -100,13 +109,29 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
     PieComponent,
     PolarComponent,
     BarsComponent,
+
+
     AddUsersComponent,
-    BigVisualComponent,
+
     BigVisualBarsComponent,
     BigVisualLineComponent,
     BigVisualPolarComponent,
-    BigVisualPieComponent, 
+    BigVisualPieComponent,
 
+
+    CStatsComponent,
+
+
+    CBarsComponent,
+    CLineComponent,
+    CPieComponent,
+    CPolarComponent,
+
+
+    CBigVisualBarsComponent,
+    CBigVisualLineComponent,
+    CBigVisualPolarComponent,
+    CBigVisualPieComponent,
 
 
   ],
@@ -144,12 +169,7 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
       { path: 'components', component: ComponentsComponent },
       { path: 'stats', component: StatsComponent },
 
-      { path: 'bars', component: BarsComponent },
-      { path: 'pie', component: PieComponent },
-      { path: 'polar', component: PolarComponent },
-      { path: 'line', component: LineComponent },
-
-      { path: 'big-visual', component: BigVisualComponent },
+     
       { path: 'big-visual-bars', component: BigVisualBarsComponent },
       { path: 'big-visual-pie', component: BigVisualPieComponent },
       { path: 'big-visual-line', component: BigVisualLineComponent },
@@ -157,14 +177,23 @@ import { BigVisualComponent } from './center/stats/modules/big-visual/big-visual
 
       { path: 'maps', component: MapsComponent },
       { path: 'info', component: InfoComponent },
-       
-      { path: 'ihome', component: IHomeComponent },
-      { path: 'verify-center', component: VerifyCenterComponent },
-      { path: 'imaps', component: IMapsComponent },
+
+
+
+      { path: 'i-home', component: IHomeComponent },
+      { path: 'i-verify-center', component: VerifyCenterComponent },
+      { path: 'i-maps', component: IMapsComponent },
+
 
       { path: '', component: CHomeComponent, pathMatch: 'full' },
-      { path: 'cmaps', component: CMapsComponent },
-      { path: 'cinfo', component: CInfoComponent },
+      { path: 'c-stats', component: CStatsComponent },
+      { path: 'c-maps', component: CMapsComponent },
+      { path: 'c-info', component: CInfoComponent },
+
+      { path: 'c-big-visual-bars', component: CBigVisualBarsComponent },
+      { path: 'c-big-visual-pie', component: CBigVisualPieComponent },
+      { path: 'c-big-visual-line', component: CBigVisualLineComponent },
+      { path: 'c-big-visual-polar', component: CBigVisualPolarComponent },
 
     ])
   ],

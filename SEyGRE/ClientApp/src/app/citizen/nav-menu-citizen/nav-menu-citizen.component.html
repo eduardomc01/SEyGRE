@@ -20,8 +20,15 @@
         </a>
       </li>
 
+
       <li [routerLinkActive]='["link-active"]'>
-        <a [routerLink]='["/cmaps"]' (click)='collapse()'>
+        <a [routerLink]='["/c-stats"]' (click)='collapse()'>
+          <span class='icon-stats-dots'> </span> <label>  Estadisticas </label>
+        </a>
+      </li>
+
+      <li [routerLinkActive]='["link-active"]'>
+        <a [routerLink]='["/c-maps"]' (click)='collapse()'>
           <span class='icon-map'> </span> <label>  Mapa </label>
         </a>
       </li>
@@ -34,7 +41,7 @@
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
-        <a [routerLink]='["/cinfo"]' (click)='collapse()'>
+        <a [routerLink]='["/c-info"]' (click)='collapse()'>
           <span class='icon-info'> </span> <label> Info </label>
         </a>
       </li>

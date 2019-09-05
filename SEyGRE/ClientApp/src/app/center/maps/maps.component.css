@@ -16,6 +16,14 @@ div [type="text"], [type="button"], [type="number"] {
   width: 100%;
 }
 
+table {
+  padding: 0 0 0 0;
+}
+
+table thead th {
+  text-align:center;
+}
+
 
 agm-map {
   height: 500px;

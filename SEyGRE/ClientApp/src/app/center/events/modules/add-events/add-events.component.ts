@@ -170,11 +170,12 @@ export class AddEventsComponent implements OnInit {
     * http:''maps.google.com/mapfiles/ms/micons/grn-pushpin.png    (es el pin de color verde)
     *http:''maps.google.com/mapfiles/ms/micons/recycle.png         (es el logo de reciclar)
     * http:''maps.google.com/mapfiles/ms/micons/rangerstation.png  (es una casa con bandera chiquita)
+    * http:''maps.google.com/mapfiles/ms/micons/red-pushpin.png (es un pin color rojo)
     */
 
   iconMapCurrent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
     iconHeigh: 100
   }
 

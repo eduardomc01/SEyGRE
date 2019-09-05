@@ -65,8 +65,6 @@ namespace SEyGRE.Controllers
         }
 
 
-        /****************************************************/
-
 
         [HttpPost("[action]")]
         public List<RelacionEventosEstatusCentro> ObtenerBusquedaPersonalizada([FromBody] RelacionEventosEstatusCentro r)
@@ -87,6 +85,8 @@ namespace SEyGRE.Controllers
                             Horario = e.Horario,
                             Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
                             Estatus = l.Titulo,
+                            Latitud = e.Latitud,
+                            Longitud = e.Longitud,
                             IdEstatus = e.IdEstatus
 
                         }).Take(30).ToList();
@@ -94,6 +94,46 @@ namespace SEyGRE.Controllers
             return list;
 
         }
+
+
+
+
+        [HttpGet("[action]")]
+        public List<RelacionEventosEstatusCentro> ObtenerUbicacionEvento(int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Eventos
+
+                        join l in context.Estatus
+                        on e.IdEstatus equals l.Id
+
+                        join g in context.Centrosacopio
+                        on e.IdCentroAcopio equals g.Id
+                        
+
+                        where e.IdCentroAcopio == id
+                        select new RelacionEventosEstatusCentro
+                        {
+
+
+                            Nombre = e.Nombre,
+                            Organizador = e.Organizador,
+                            Horario = e.Horario,
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
+                            Latitud = e.Latitud,
+                            Longitud = e.Longitud,
+                            NombreCentro = g.Nombre,
+                            Estatus = l.Titulo,
+                            
+
+                        }).ToList();
+
+            return list;
+
+        }
+
 
 
 
@@ -136,11 +176,6 @@ namespace SEyGRE.Controllers
 
 
         }
-
-
-        /********************************************/
-
-
 
 
         [HttpPost("[action]")]

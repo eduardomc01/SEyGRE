@@ -5,10 +5,31 @@ body {
 
 .card {
   text-align: center;
-  padding: 10px 10px 10px 10px;
+ /* padding: 10px 10px 10px 10px; */
   margin: 10px 10px 10px 10px;
 }
 
 p {
- padding: 10px 0 0 10px; 
+ padding: 10px 0 0 10px;
+}
+
+
+
+/*  animacion de barras progress */
+
+
+
+
+.inicio{
+  width: 0%;
+}
+
+.final {
+
+  width: 100%;
+
+}
+
+.animacion{
+  transition: all 2s ease .5s;
 }

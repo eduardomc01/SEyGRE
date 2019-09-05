@@ -15,8 +15,13 @@ export class MapsComponent implements OnInit {
   latitude: number;
   longitude: number;
   address: string;
-  public d: datas[];
+  public d: any; //centros
+  public e: any; //eventos
   private geoCoder;
+
+  animacion: any;
+
+  public idUser:string = sessionStorage.getItem("idUser");
 
   @ViewChild('search')
   public searchElementRef: ElementRef;
@@ -26,13 +31,28 @@ export class MapsComponent implements OnInit {
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
-
-      console.log(result);
+    this.http.get<any>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
 
       this.d = result;
 
     });
+
+
+    this.http.get<any>("api/Eventos/ObtenerUbicacionEvento?id=" + this.idUser).subscribe(result => {
+
+      console.log(result);
+
+      this.e = result;
+
+
+    });
+
+
+  }
+
+  public mapaListo():void {
+
+    this.animacion = 'BOUNCE'; /* animacion del marker */
 
   }
 
@@ -108,16 +128,23 @@ export class MapsComponent implements OnInit {
 
   iconMap = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/paddle/grn-stars.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/recycle.png",
+    iconHeigh: 100
   }
 
 
   iconMapCurrent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/pal4/icon16.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
+    iconHeigh: 100
   }
+
+  iconMapEvent = {
+
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
+    iconHeigh: 100
+  }
+
 
 
 }

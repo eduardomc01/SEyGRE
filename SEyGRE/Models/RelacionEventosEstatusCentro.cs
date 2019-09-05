@@ -13,12 +13,15 @@ namespace SEyGRE.Models
         public TimeSpan? Horario { get; set; }
         public string Fecha { get; set; }
         public string Estatus { get; set; }
-//      public string NombreCentro { get; set; }
+        public string NombreCentro { get; set; }
+
+
+        public double? Latitud { get; set; }
+        public double? Longitud { get; set; }
+
 
         public int? IdEstatus { get; set; }
         public int? IdCentroAcopio { get; set; }
-
-
         public string Busqueda { get; set; } /*funcionara ?*/
     }
 }
