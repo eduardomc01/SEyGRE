@@ -13,127 +13,129 @@ import { MapsAPILoader } from '@agm/core';
 export class IMapsComponent implements OnInit {
 
 
-  latitude: number;
-  longitude: number;
-  address: string;
-  public d: datas[];
-  private geoCoder;
+latitude: number;
+longitude: number;
+address: string;
+public d: datas[];
+private geoCoder;
 
-  animacion: any;
+public validate: string;
 
-  @ViewChild('search')
-  public searchElementRef: ElementRef;
+animacion: any;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {
+@ViewChild('search')
+public searchElementRef: ElementRef;
 
-    if (sessionStorage.getItem("idUser") == null)
-      this.router.navigate(["/Login"]);
+constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {
 
-    this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
+  if (sessionStorage.getItem("idUser") == null)
+    this.router.navigate(["/Login"]);
 
-      console.log(result);
+  this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
 
-      this.d = result;
+    console.log(result);
 
+    this.d = result;
+
+  });
+
+}
+
+
+ngOnInit() {
+  //load Places Autocomplete
+  this.mapsAPILoader.load().then(() => {
+    this.setCurrentLocation();
+    this.geoCoder = new google.maps.Geocoder;
+
+    let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+      types: ["address"]
     });
 
-  }
-
-
-  ngOnInit() {
-    //load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      this.setCurrentLocation();
-      this.geoCoder = new google.maps.Geocoder;
-
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
 
 
 
+    autocomplete.addListener("place_changed", () => {
+      this.ngZone.run(() => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-
-        });
-
-      });
-
-
-
-
-    });
-
-  }
-
-  public mapaListo(): void {
-    this.animacion = "BOUNCE";
-  }
-
-
-
-  // Get Current Location Coordinates
-  private setCurrentLocation() {
-    if ("geolocation" in navigator) {
-
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.getAddress(this.latitude, this.longitude);
-
-      });
-    }
-  }
-
-
-  getAddress(latitude, longitude) {
-    this.geoCoder.geocode({ "location": { lat: latitude, lng: longitude } }, (results, status) => {
-
-      if (status === "OK") {
-        if (results[0]) {
-          this.address = results[0].formatted_address;
-        } else {
-          console.log("No se encontrador resultados");
+        //verify result
+        if (place.geometry === undefined || place.geometry === null) {
+          return;
         }
-      } else {
-        console.log("Geocodificacion fallo: " + status);
-      }
+
+        //set latitude, longitude
+        this.latitude = place.geometry.location.lat();
+        this.longitude = place.geometry.location.lng();
+
+      });
+
+    });
+
+
+
+
+  });
+
+}
+
+public mapaListo(): void {
+  this.animacion = "BOUNCE";
+}
+
+
+
+// Get Current Location Coordinates
+private setCurrentLocation() {
+  if ("geolocation" in navigator) {
+
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      this.getAddress(this.latitude, this.longitude);
 
     });
   }
+}
+
+
+getAddress(latitude, longitude) {
+  this.geoCoder.geocode({ "location": { lat: latitude, lng: longitude } }, (results, status) => {
+
+    if (status === "OK") {
+      if (results[0]) {
+        this.address = results[0].formatted_address;
+      } else {
+        console.log("No se encontrador resultados");
+      }
+    } else {
+      console.log("Geocodificacion fallo: " + status);
+    }
+
+  });
+}
 
 
 
-  iconMap = {
+iconMap = {
 
-    iconUrl: "http://maps.google.com/mapfiles/ms/micons/recycle.png",
-    iconHeigh: 100
-  }
+  iconUrl: "http://maps.google.com/mapfiles/ms/micons/recycle.png",
+  iconHeigh: 100
+}
 
 
-  iconMapCurrent = {
+iconMapCurrent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
-    iconHeigh: 100
-  }
+  iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
+  iconHeigh: 100
+}
 
-  iconMapEvent = {
+iconMapEvent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
-    iconHeigh: 100
-  }
+  iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
+  iconHeigh: 100
+}
 
 
 }

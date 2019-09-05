@@ -16,7 +16,7 @@
             <h1> Residuos electrónicos por año </h1>
           </div>
 
-          <div class="card-body" id="bars">
+          <div class="card-body" id="bars" ngNativeValidate>
             <canvas baseChart
                     [datasets]="barChartData"
                     [labels]="barChartLabels"
@@ -29,7 +29,7 @@
 
             <button style="float: right; margin:2%;" class="btn btn-danger" type="button"> <span class="icon-file-pdf"></span> Exportar PDF </button>
 
-            <input type="text"  class="form-control" id="search" #box (keyup)="getBarras(box.value)"  required />
+            <input type="text"  class="form-control" id="search" [(ngModel)]="validate" #box (keyup)="getBarras(box.value)" placeholder="Nombre del Centro de acopio"  required />
 
             <!--
             <button style="float: right; margin:2%" class="btn btn-success" type="button" (click)="getBarras()"><span class="icon-search"></span> Obtener datos </button>

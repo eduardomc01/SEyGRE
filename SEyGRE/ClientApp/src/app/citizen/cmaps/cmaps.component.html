@@ -12,14 +12,14 @@
       </div>
       <div class='col-sm-9 body-content'>
 
-        <div class="card">
+        <div class="card" ngNativeValidate>
           <div class="card-header">
             <h1> Mapa de centros </h1>
           </div>
           <div class="card-body">
 
-            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 70%" ngNativeValidate>
-              <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>	        
+            <div style="z-index: 1; position: absolute; margin:10px 0 0 10px; width: 70%">
+              <input type="text" class="form-control" [(ngModel)]="prueba" placeholder="Buscar dirección" #search autofocus required>	        
             </div>
 
             <agm-map (mapReady)="mapaListo()"
@@ -53,8 +53,7 @@
                   </div>
 
 
-                  <!-- 
-   </strong>-->
+
                 </agm-info-window>
 
               </agm-marker>
@@ -146,9 +145,9 @@
 
           <div class="card-footer">
 
-
-            <input type="text" class="form-control" id="search" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
-
+   
+            <input type="text" class="form-control" id="search" [(ngModel)]="prueba" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
+     
 
           </div>
          

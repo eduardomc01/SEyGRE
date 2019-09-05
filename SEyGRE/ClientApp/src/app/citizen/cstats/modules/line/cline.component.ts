@@ -16,6 +16,8 @@ export class CLineComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
 
+  public validate: string;
+
   public show: boolean;
 
   public lineChartData: ChartDataSets[] = [{ data: [], label: ""}]

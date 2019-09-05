@@ -23,7 +23,9 @@ export class CBarsComponent implements OnInit {
   public ChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
 
   public show: boolean;
-  
+
+  public validate: string;
+
   constructor (private router: Router, private http: HttpClient) {
 
     this.show = false;

@@ -20,6 +20,8 @@ export class CPieComponent implements OnInit {
   public pieChartLegend = true;
   public pieChartColors = [{ backgroundColor: ['rgba(40,180,99,.6)', 'rgba(52, 152, 219,.6)', 'rgba(231, 76, 60,.6)'] }];
 
+  public validate: string;
+
   public show: boolean;
 
   constructor(private router: Router, private http: HttpClient) {

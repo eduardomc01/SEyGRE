@@ -30,14 +30,14 @@ import { Label, Color } from 'ng2-charts';
 
   animacion: any;
 
+  prueba: string;
+
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
   //ObtenerUbicacionCentros
 
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {
-
-    this.showLinear = true;
 
     this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
 
