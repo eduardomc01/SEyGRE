@@ -34,7 +34,28 @@
                           [iconUrl]="iconMap.iconUrl"
                           [animation]="animacion">
 
-                <agm-info-window> <strong>  {{ info.nombre }}  </strong> </agm-info-window>
+                <agm-info-window>
+                  <!--<strong>-->
+                  <!--
+                  <button *ngIf="showLinear" class="btn btn-succees" (mouseover)="getLine(info.id)"></button>
+                  -->
+
+                  <div class="card-body" (click)="getLine(info.id)">
+
+                    {{ info.nombre }}
+
+                    <canvas class="cav" baseChart
+                            [datasets]="lineChartData"
+                            [labels]="lineChartLabels"
+                            [legend]="lineChartLegend"
+                            [colors]="lineChartColors"
+                            [chartType]="lineChartType"></canvas>
+                  </div>
+
+
+                  <!-- 
+   </strong>-->
+                </agm-info-window>
 
               </agm-marker>
 
@@ -126,7 +147,7 @@
           <div class="card-footer">
 
 
-            <input type="text" class="form-control" id="search" #box (keyup)="obtenerEventos(box.value)" required />
+            <input type="text" class="form-control" id="search" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
 
 
           </div>

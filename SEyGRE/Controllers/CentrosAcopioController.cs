@@ -174,7 +174,7 @@ namespace SEyGRE.Controllers
             var list = (from e in context.Centrosacopio where e.IdEstatus.Equals(1)
                         select new Centrosacopio
                         {
-
+                            Id = e.Id,
                             Nombre = e.Nombre,
                             Latitud = e.Latitud,
                             Longitud = e.Longitud

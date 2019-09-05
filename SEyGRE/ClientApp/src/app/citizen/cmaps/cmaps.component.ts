@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, NgZone, ElementRef } from '@angular/core'
 import { HttpClient } from '@angular/common/http';
 import { MapsAPILoader } from '@agm/core';
 import { Router } from '@angular/router';
-
+import { ChartType, ChartDataSets } from 'chart.js';
+import { Label, Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-cmaps',
@@ -11,6 +12,12 @@ import { Router } from '@angular/router';
 })
 
   export class CMapsComponent implements OnInit {
+
+  public lineChartLabels: Label[] = [];
+  public lineChartLegend = true;
+  public lineChartType = 'line';
+  public lineChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
+  public lineChartData: ChartDataSets[] = [{ data: [], label: "" }]
 
   latitude: number;
   longitude: number;
@@ -26,7 +33,11 @@ import { Router } from '@angular/router';
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
+  //ObtenerUbicacionCentros
+
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private http: HttpClient, private router: Router) {
+
+    this.showLinear = true;
 
     this.http.get<datas[]>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
 
@@ -39,6 +50,35 @@ import { Router } from '@angular/router';
 
 
   }
+
+
+
+  /************** SECCION DE GRAFICA *****************/
+
+
+  public getLine(idCentro: number): void {
+
+    this.http.get<number[]>("api/Componentes/ObtenerInformacionLinear?id=" + idCentro).subscribe(result => {
+
+      
+      this.lineChartLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octrubre", "Noviembre", "Diciembre"];
+      this.lineChartData = [{ data: result, label: "Kilogramos" }];
+
+
+    });
+
+  }
+
+
+  /***********************************/
+
+
+
+
+
+
+
+
 
 
  public obtenerEventos(eventos: string): void {
