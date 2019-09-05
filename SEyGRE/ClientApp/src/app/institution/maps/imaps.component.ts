@@ -19,6 +19,8 @@ export class IMapsComponent implements OnInit {
   public d: datas[];
   private geoCoder;
 
+  animacion: any;
+
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -76,6 +78,12 @@ export class IMapsComponent implements OnInit {
 
   }
 
+  public mapaListo(): void {
+    this.animacion = "BOUNCE";
+  }
+
+
+
   // Get Current Location Coordinates
   private setCurrentLocation() {
     if ("geolocation" in navigator) {
@@ -107,16 +115,24 @@ export class IMapsComponent implements OnInit {
   }
 
 
+
   iconMap = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/paddle/grn-stars.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/recycle.png",
+    iconHeigh: 100
   }
+
 
   iconMapCurrent = {
 
-    iconUrl: "http://maps.google.com/mapfiles/kml/pal4/icon16.png",
-    iconHeigh: 20
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/red-pushpin.png",
+    iconHeigh: 100
+  }
+
+  iconMapEvent = {
+
+    iconUrl: "http://maps.google.com/mapfiles/ms/micons/grn-pushpin.png",
+    iconHeigh: 100
   }
 
 

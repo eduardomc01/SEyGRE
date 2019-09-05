@@ -27,12 +27,8 @@ export class CBarsComponent implements OnInit {
   constructor (private router: Router, private http: HttpClient) {
 
     this.show = false;
-/*
-    if (sessionStorage.getItem("idUser") == null)
-      this.router.navigate(["/Login"]);
-*/
 
-    this.getBarras();
+    //this.getBarras();
 
   }
 
@@ -44,10 +40,10 @@ export class CBarsComponent implements OnInit {
   }
 
 
-  public getBarras():void {
+  public getBarras(b: string):void {
 
 
-    this.http.get<number[]>("api/Componentes/ObtenerInformacionBarras?id=" + this.idUser).subscribe(result => {
+    this.http.get<any>("api/Ciudadanos/ObtenerInformacionBarras?busqueda=" + b).subscribe(result => {
 
 
       this.barChartLabels = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"];

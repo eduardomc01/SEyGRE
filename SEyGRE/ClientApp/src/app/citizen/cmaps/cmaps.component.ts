@@ -15,7 +15,10 @@ import { Router } from '@angular/router';
   latitude: number;
   longitude: number;
   address: string;
-  public d: datas[];
+
+  public d: datas[]; //centros
+  public e: datas[]; //eventos
+
   private geoCoder;
 
   animacion: any;
@@ -32,6 +35,25 @@ import { Router } from '@angular/router';
       this.d = result;
 
     });
+
+
+
+  }
+
+
+ public obtenerEventos(eventos: string): void {
+
+
+    this.http.get<datas[]>("api/Ciudadanos/ObtenerUbicacionEventoPersonalizable?busqueda=" + eventos).subscribe(result => {
+
+      console.log(result)
+
+      this.e = result;
+
+
+    });
+
+
 
   }
 

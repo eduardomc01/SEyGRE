@@ -8,9 +8,7 @@ body {
   text-align: center;
 }
 
-div [type="text"], [type="button"], [type="number"] {
-  margin: 10px 0 10px 0;
-}
+
 
 .card {
   width: 100%;
@@ -20,4 +18,15 @@ div [type="text"], [type="button"], [type="number"] {
 agm-map {
   height: 500px;
   z-index:-1;
+}
+
+div [type="text"] {
+  width: 35%;
+  float: left;
+}
+
+
+div [type="button"] {
+  margin: 2%;
+  float: right;
 }

@@ -26,7 +26,7 @@ export class CLineComponent implements OnInit {
 
     this.show = false;
 
-    this.getLine();
+   // this.getLine();
 
   }
 
@@ -38,9 +38,9 @@ export class CLineComponent implements OnInit {
   }
 
 
-  public getLine(): void {
+  public getLine(b: string): void {
 
-    this.http.get<number[]>("api/Componentes/ObtenerInformacionLinear?id=" + this.idUser).subscribe(result => {
+    this.http.get<number[]>("api/Ciudadanos/ObtenerInformacionLinear?busqueda=" + b).subscribe(result => {
 
       
       this.lineChartLabels = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octrubre", "Noviembre", "Diciembre"];

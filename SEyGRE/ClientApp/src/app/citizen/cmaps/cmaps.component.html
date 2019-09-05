@@ -18,7 +18,7 @@
           </div>
           <div class="card-body">
 
-            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
+            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 70%" ngNativeValidate>
               <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>	        
             </div>
 
@@ -38,6 +38,75 @@
 
               </agm-marker>
 
+
+
+              <agm-marker *ngFor="let info of e"
+                          [latitude]="info.latitud"
+                          [longitude]="info.longitud"
+                          [iconUrl]="iconMapEvent.iconUrl">
+
+                <agm-info-window>
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th colspan="2"> Contenido </th>
+                      </tr>
+                    </thead>
+                    <tbody class="thead-dark">
+                      <tr>
+                        <th>Nombre </th>
+                        <td>{{ info.nombre}}</td>
+                      </tr>
+                      <tr>
+                        <th> Organizador(es)</th>
+                        <td>{{ info.organizador }} </td>
+                      </tr>
+                      <tr>
+                        <th> Horario</th>
+                        <td>{{ info.horario}}  </td>
+                      </tr>
+                      <tr>
+                        <th> Fecha </th>
+                        <td>{{ info.fecha}}</td>
+                      </tr>
+                      <tr>
+                        <th> Nombre del centro</th>
+                        <td>{{ info.nombreCentro}}</td>
+                      </tr>
+                      <tr>
+                        <th> Estatus </th>
+                        <td>{{ info.estatus}}</td>
+                      </tr>
+                    </tbody>
+
+                  </table>
+
+                  <!--
+      <strong>
+
+      </strong>
+      <strong>
+
+      </strong><br />
+      <strong>
+        Horario:
+      </strong><br />
+      <strong>
+        Fecha:
+      </strong> <br />
+      <strong>
+        Centro:
+      </strong> <br />
+      <strong>
+        Estatus:
+      </strong> <br />
+       -->
+                </agm-info-window>
+
+              </agm-marker>
+
+
+
               <agm-marker [latitude]="latitude"
                           [longitude]="longitude"
                           [iconUrl]="iconMapCurrent.iconUrl">
@@ -53,6 +122,15 @@
             <div>Longitude: {{longitude}}</div>
                 -->
           </div>
+
+          <div class="card-footer">
+
+
+            <input type="text" class="form-control" id="search" #box (keyup)="obtenerEventos(box.value)" required />
+
+
+          </div>
+         
         </div>
       </div>
     </div>

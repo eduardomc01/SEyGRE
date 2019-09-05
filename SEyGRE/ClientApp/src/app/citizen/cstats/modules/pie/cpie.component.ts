@@ -25,7 +25,7 @@ export class CPieComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient) {
 
     this.show = false;
-    this.getPastel();
+    //this.getPastel();
 
   }
 
@@ -37,11 +37,10 @@ export class CPieComponent implements OnInit {
   }
 
   //"Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio", "Oro", "Plata", "Paladio"
-  //"api/Componentes/ObtenerInformacionRadar"
 
-  public getPastel(): void {
+  public getPastel(b: string): void {
 
-    this.http.get<number[]>("api/Componentes/ObtenerInformacionCircular?id=" + this.idUser).subscribe(result => {
+    this.http.get<number[]>("api/Ciudadanos/ObtenerInformacionCircular?busqueda=" + b).subscribe(result => {
 
       this.pieChartLabels = ["Equipos de informática y telecomunicaciones", "Aparatos electrónicos de bajo consumo", "Juguetes o equipos deportivos y de tiempo libre"];
       this.pieChartData = result;

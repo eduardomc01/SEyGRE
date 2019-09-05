@@ -45,7 +45,7 @@ export class CPolarComponent implements OnInit {
 
   public getPolar(): void {
 
-    this.http.get<number[]>("api/Componentes/ObtenerInformacionPolar").subscribe(result => {
+    this.http.get<number[]>("api/Ciudadanos/ObtenerInformacionPolar").subscribe(result => {
 
       this.polarAreaChartLabels = ["Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio","Oro","Plata","Paladio"];
       this.polarAreaChartData = result;

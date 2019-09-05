@@ -12,3 +12,17 @@ h1 {
   margin-top: 2%;
 }
 
+
+
+
+div [type="text"] {
+  margin: 2%;
+  width: 35%;
+  float: left;
+}
+
+
+div [type="button"] {
+  margin: 2%;
+  float: right;
+}
