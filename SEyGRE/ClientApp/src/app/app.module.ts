@@ -9,9 +9,9 @@ import { ChartsModule, ThemeService } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
 
-import { NavMenuInstitutionComponent } from './institution/nav-menu-institution/nav-menu-institution.component';
-import { IMapsComponent } from './institution/maps/imaps.component';
-import { IHomeComponent } from './institution/home/ihome.component';
+import { NavMenuInstitutionComponent } from './institution/inav-menu-institution/nav-menu-institution.component';
+import { IMapsComponent } from './institution/imaps/imaps.component';
+import { IHomeComponent } from './institution/ihome/ihome.component';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './center/home/home.component';
@@ -22,13 +22,15 @@ import { MapsComponent } from './center/maps/maps.component';
 import { UsersComponent } from './center/users/users.component';
 import { AddComponentsComponent } from './center/components/modules/add-components/add-components.component';
 import { LoginComponent } from './login/login.component';
-import { AddCenterComponent } from './center/add-center/add-center.component';
-import { VerifyCenterComponent } from './institution/verify-center/verify-center.component';
+import { AddCenterComponent } from './register/modules/add-center/add-center.component';
+import { VerifyCenterComponent } from './institution/iverify-center/verify-center.component';
 import { TopComponentsComponent } from './center/components/modules/table-top-components/top-components.component';
 import { TableComponentsComponent } from './center/components/modules/table-components/table-components.component';
 import { NavMenuComponent } from './center/nav-menu/nav-menu.component';
 import { RecyclerStatesComponent } from './center/recycler-states/recycler-states.component';
 import { EventsComponent } from './center/events/events.component';
+
+import { NoticesComponent } from './citizen/chome/modules/notices/notices.component';
 
 import { ProfileComponent } from './center/users/modules/profile/profile.component';
 import { TableUsersComponent } from './center/users/modules/table-users/table-users.component';
@@ -65,6 +67,9 @@ import { CBigVisualBarsComponent } from './citizen/cstats/modules/big-visual-bar
 import { CBigVisualLineComponent } from './citizen/cstats/modules/big-visual-line/cbig-visual-line.component';
 import { CBigVisualPolarComponent } from './citizen/cstats/modules/big-visual-polar/cbig-visual-polar.component';
 import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/cbig-visual-pie.component';
+import { AddNoticesComponent } from './institution/inotices/modules/add-notices/add-notices.component';
+import { CNoticesComponent } from './institution/inotices/cnotices.component';
+
 
 
 @NgModule({
@@ -120,8 +125,6 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
 
 
     CStatsComponent,
-
-
     CBarsComponent,
     CLineComponent,
     CPieComponent,
@@ -132,6 +135,12 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
     CBigVisualLineComponent,
     CBigVisualPolarComponent,
     CBigVisualPieComponent,
+
+    NoticesComponent,
+
+    AddNoticesComponent,
+
+    CNoticesComponent,
 
 
   ],
@@ -183,7 +192,7 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
       { path: 'i-home', component: IHomeComponent },
       { path: 'i-verify-center', component: VerifyCenterComponent },
       { path: 'i-maps', component: IMapsComponent },
-
+      { path: 'add-notices', component: CNoticesComponent },
 
       { path: '', component: CHomeComponent, pathMatch: 'full' },
       { path: 'c-stats', component: CStatsComponent },
@@ -194,6 +203,8 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
       { path: 'c-big-visual-pie', component: CBigVisualPieComponent },
       { path: 'c-big-visual-line', component: CBigVisualLineComponent },
       { path: 'c-big-visual-polar', component: CBigVisualPolarComponent },
+
+
 
     ])
   ],

@@ -88,9 +88,36 @@ function faltanDatosAgregarCentro() {
 
 
 
-function faltanDatosAgregarEvento() {
+function faltanDatosAgregarCentro() {
 
-  if ($('#nombre').val().length === 0 || $('#organizador').val().length === 0 || $('#fecha').val().length === 0 || $('#hora').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
+  if ($('#nombre').val().length === 0 || $('#usuario').val().length === 0 || $('#correo').val().length === 0 || $('#file').val().length === 0 || $('#pass').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
+
+    alertify.error("Faltan datos");
+
+    return false;
+
+  } else {
+
+    alertify.success("Registro completo");
+
+    /*
+      document.getElementById("nombre").value = "";
+      document.getElementById("usuario").value = "";
+      document.getElementById("correo").value = "";
+      document.getElementById("file").value = null;
+      document.getElementById("pass").value = "";
+      document.getElementById("lat").value = null;
+      document.getElementById("long").value = null;
+      */
+  }
+
+}
+
+
+
+function faltanDatosNoticias() {
+
+  if ($('#nombre').val().length === 0 || $('#imagenUrl').val().length === 0 || $('#noticiaUrl').val().length === 0 || $('#descripccion').val().length === 0) {
 
     alertify.error("Faltan datos");
 

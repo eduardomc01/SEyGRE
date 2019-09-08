@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Agregar noticias </title>
+</head>
+<body>
+
+  <form (ngSubmit)="ObtenerDatos()" ngNativeValidate>
+
+    <div class="card">
+
+      <div class="card-header">
+
+        <h1> Registro de noticias </h1>
+
+      </div>
+
+      <div class="card-body">
+
+        <input class="form-control" type="text" id="nombre"     placeholder=" Nombre"                 [(ngModel)]="_nombre" name="_nombre" required />
+        <input class="form-control" type="text" id="imagenUrl" placeholder=" Url de la imagen"       [(ngModel)]="_imagenUrl" name="_imagenUrl" required />
+        <input class="form-control" type="text" id="noticiaUrl" placeholder=" Url de la noticia"      [(ngModel)]="_noticiaUrl" name="_noticiaUrl" required />
+
+        <textarea class="form-control" id="descripccion" placeholder=" Descripccion de la notica" [(ngModel)]="_descripccion" name="_descripccion" maxlength="499" required ></textarea>
+
+      </div>
+
+      <div class="card-footer">
+
+        <input type="submit" class="btn btn-success" onclick="faltanDatosNoticias()" value="Ingresar el componente" />
+        <input type="reset" class="btn btn-danger" value="Cancelar" />
+
+      </div>
+
+    </div>
+
+  </form>
+
+
+
+
+
+
+</body>
+</html>

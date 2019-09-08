@@ -30,7 +30,8 @@ import { Label, Color } from 'ng2-charts';
 
   animacion: any;
 
-  prueba: string;
+  value: string;
+  value2: string;
 
   @ViewChild('search')
   public searchElementRef: ElementRef;

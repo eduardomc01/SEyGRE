@@ -12,38 +12,51 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class ProfileComponent {
 
+  _imagen: string[];
+  _centro: centro[];
 
-  public _centro: centro[] = [];
-  
-  private idUser: string = sessionStorage.getItem("idUser");
-
-  public imagenSRC: string = "";
-
+  idUser: string = sessionStorage.getItem("idUser");
+  show: boolean;
 
   constructor(private http: HttpClient, private router: Router) {
 
     if (this.idUser == null)
       this.router.navigate(["/Login"]);
 
+    this.ObtenerFoto();
+
+  }
+
+  
+  public ObtenerFoto() {
+
 
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
 
-      //console.log(result[0]);
+/*
+      if (result[0].imagen == "") {
+
+        this.show = true;
+
+      } else {
+
+        this.show = false;
+
+      }
+            */
 
       this._centro = result;
 
-      this.imagenSRC = result[0].imagen;
 
     });
-    
+
 
   }
 
 
 
-  public ObtenerImagen(event) {
 
-    //console.log(event);
+  public ObtenerImagen(event) {
 
     let fileList: FileList = event.target[0].files;
 
@@ -56,20 +69,16 @@ export class ProfileComponent {
       formData.append("file", _file, _file.name);
 
 
-      this.http.post<any>("api/CentrosAcopio/GuardarImagenes?id=" + this.idUser, formData).subscribe(result => {
+      this.http.post<centro[]>("api/CentrosAcopio/GuardarImagenes?id=" + this.idUser, formData).subscribe(result => { 
 
-        //console.log(result)
+        console.log(result);
 
-       //this.router.navigate(["/"]);
-
-       // console.log("---->" + result);
-
-       //this.imagenSRC = result;
+        //this.ObtenerFoto();
 
 
       });
-
     }
+
 
   }
 

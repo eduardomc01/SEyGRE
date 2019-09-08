@@ -11,19 +11,18 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class IHomeComponent {
 
-  public nombre: string;
+  idUser: string = sessionStorage.getItem("idUser");
+  nombre: string = sessionStorage.getItem("nombre");
+
+  today: number = Date.now();
 
   constructor(private http: HttpClient, private router: Router) {
 
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    this.nombre = sessionStorage.getItem("nombre");
 
   }
-
-
-
 
 
   public closeSession() {

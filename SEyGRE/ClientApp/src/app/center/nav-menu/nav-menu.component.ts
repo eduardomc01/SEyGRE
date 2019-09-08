@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +10,16 @@ import { Component } from '@angular/core';
 })
 
 export class NavMenuComponent {
+
+  idUser: string = sessionStorage.getItem("idUser");
+  nombre: string = sessionStorage.getItem("nombre");
+  datos: datos[];
+  today: number = Date.now();
+
+
+  constructor(private http: HttpClient, private router: Router) {
+    this.ObtenerFoto();
+  }
 
   isExpanded = false;
 
@@ -21,10 +34,30 @@ export class NavMenuComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  /*
-  close() {
+  
+  closeSession() {
     sessionStorage.clear();
+    this.router.navigate(["/Login"]);
   }
-  */
+  
 
+
+
+  public ObtenerFoto() {
+
+
+    this.http.get<datos[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
+
+      this.datos = result;
+
+    });
+
+
+  }
+
+
+}
+
+interface datos {
+  imagen: string;
 }

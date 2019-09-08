@@ -6,8 +6,13 @@ namespace SEyGRE.Models
 {
     public partial class seygreContext : DbContext
     {
-        public seygreContext()
+
+        private string connectionString;
+
+        public seygreContext(string _connectionString)
         {
+            connectionString = _connectionString;
+
         }
 
         public seygreContext(DbContextOptions<seygreContext> options)
@@ -23,6 +28,7 @@ namespace SEyGRE.Models
         public virtual DbSet<Etapas> Etapas { get; set; }
         public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Modificaciones> Modificaciones { get; set; }
+        public virtual DbSet<Noticias> Noticias { get; set; }
         public virtual DbSet<Personal> Personal { get; set; }
         public virtual DbSet<Procesoreciclado> Procesoreciclado { get; set; }
         public virtual DbSet<Residuos> Residuos { get; set; }
@@ -32,8 +38,7 @@ namespace SEyGRE.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("Server=localhost;Database=seygre;User=root;Password=123456;");
+                optionsBuilder.UseMySql(connectionString);
             }
         }
 
@@ -233,6 +238,31 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Usuario)
                     .HasColumnName("usuario")
                     .HasColumnType("varchar(45)");
+            });
+
+            modelBuilder.Entity<Noticias>(entity =>
+            {
+                entity.ToTable("noticias");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Descripccion)
+                    .HasColumnName("descripccion")
+                    .HasColumnType("varchar(500)");
+
+                entity.Property(e => e.ImagenUrl)
+                    .HasColumnName("imagenURL")
+                    .HasColumnType("varchar(500)");
+
+                entity.Property(e => e.Nombre)
+                    .HasColumnName("nombre")
+                    .HasColumnType("varchar(500)");
+
+                entity.Property(e => e.NoticiaUrl)
+                    .HasColumnName("noticiaURL")
+                    .HasColumnType("varchar(500)");
             });
 
             modelBuilder.Entity<Personal>(entity =>

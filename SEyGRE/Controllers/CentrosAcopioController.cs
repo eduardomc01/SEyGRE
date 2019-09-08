@@ -26,9 +26,9 @@ namespace SEyGRE.Controllers
 
         private readonly IHostingEnvironment _env;
 
-        public CentrosAcopioController(IHostingEnvironment env)
+        public CentrosAcopioController(IHostingEnvironment env, seygreContext _context)
         {
-            context = new seygreContext();
+            context = _context;
             _env = env;
         }
 
@@ -139,7 +139,7 @@ namespace SEyGRE.Controllers
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             var list = (from e in context.Centrosacopio where e.Id == id select e).ToList();
-            
+
             return list;
 
         }
@@ -295,7 +295,7 @@ namespace SEyGRE.Controllers
             context.Centrosacopio.Remove(found);
 
             context.SaveChanges();
-            
+
             /*
             MailMessage m = new MailMessage();
             SmtpClient s = new SmtpClient();
@@ -331,7 +331,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> GuardarDocumento(IFormFile document)
+        public async Task<IActionResult> GuardarDocumento(IFormFile document) /* HACIENDO PRUEBAS */
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -339,17 +339,10 @@ namespace SEyGRE.Controllers
             string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp"
                                                + Path.DirectorySeparatorChar + "src"
                                                + Path.DirectorySeparatorChar + "assets"
-                                               + Path.DirectorySeparatorChar + "documentosCentros";
+                                               + Path.DirectorySeparatorChar + "doc";
 
 
-            //var pathCompleto = Path.Combine(path, i.IFile.FileName);
-
-            //if (!(Directory.Exists(path + Path.DirectorySeparatorChar + i.FileName)))
-           // {
-             //   Directory.CreateDirectory(Path.Combine(path, id.ToString())); /* se crea carpeta por primera vez para ser guardada ahi la imagen */
-           // }
-
-
+            
             if (document.Length > 0)
             {
                 using (var stream = new FileStream(path + Path.DirectorySeparatorChar + document.FileName, FileMode.Create))
@@ -357,12 +350,11 @@ namespace SEyGRE.Controllers
                     await document.CopyToAsync(stream);
                 }
             }
+            
 
             var found = (from e in context.Centrosacopio where e.Documento.Equals(document.FileName) select e).LastOrDefault();
-
-            //var found = context.Centrosacopio.Find(document.FileName);
             
-            found.Documento = "assets/documentosCentros/" + document.FileName;
+            found.Documento = document.FileName;
 
             context.Centrosacopio.Update(found);
 
@@ -379,20 +371,19 @@ namespace SEyGRE.Controllers
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp" 
+            string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp"
                                                + Path.DirectorySeparatorChar + "src"
-                                               + Path.DirectorySeparatorChar + "assets" 
-                                               + Path.DirectorySeparatorChar + "imagenesPerfiles";
+                                               + Path.DirectorySeparatorChar + "assets"
+                                               + Path.DirectorySeparatorChar + "profile";
 
-
-            //var pathCompleto = Path.Combine(path, i.IFile.FileName);
+            
 
             if (!(Directory.Exists(path + Path.DirectorySeparatorChar + file.FileName)))
             {
                 Directory.CreateDirectory(Path.Combine(path, id.ToString())); /* se crea carpeta por primera vez para ser guardada ahi la imagen */
             }
 
-
+            
             if (file.Length > 0)
             {
                 using (var stream = new FileStream(path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + file.FileName, FileMode.Create))
@@ -400,14 +391,12 @@ namespace SEyGRE.Controllers
                     await file.CopyToAsync(stream);
                 }
             }
+            
 
-            //var found = (from e in context.Centrosacopio where e.Id.Equals(id) select e).FirstOrDefault();
-
+            
             var found = context.Centrosacopio.Find(id);
 
-            //found.Imagen = path + Path.DirectorySeparatorChar + id.ToString() + Path.DirectorySeparatorChar + file.FileName;
-
-            found.Imagen = "assets/imagenesPerfiles/" + id.ToString() + "/" + file.FileName;
+            found.Imagen = file.FileName;
 
             context.Centrosacopio.Update(found);
 
@@ -415,13 +404,14 @@ namespace SEyGRE.Controllers
 
             return Ok();
 
-            
 
         }
 
     }
 
 }
+
+//   _env.WebRootPath. -> "C:\Users\eduar\SEyGRE\SEyGRE\wwwroot"
 
 
 

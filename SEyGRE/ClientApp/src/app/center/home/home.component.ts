@@ -12,43 +12,13 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class HomeComponent {
 
-  public showSuccess: boolean;
-  public staticAlertClosed;
-  public nombre: string;
-
   constructor(private http: HttpClient, private router: Router) {
 
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
     
-    this.nombre = sessionStorage.getItem("nombre");
-    this.mensajesAlerts();
 
   }
 
-
-  public mensajesAlerts() {
-
-    this.staticAlertClosed = false;
-    this.showSuccess = true;
-
-  }
-
-
-
-  public close() {
-
-    this.staticAlertClosed = true;
-    this.showSuccess = false;
-    this.closeSession();
-
-  }
-
-  public closeSession() {
-
-    sessionStorage.clear();
-    this.router.navigate(["/Login"]);
-
-  }
 
 }

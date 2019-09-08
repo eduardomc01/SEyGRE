@@ -28,13 +28,14 @@
       </div>
 
       <div class="card-footer">
-        <input class="btn btn-success" type="submit" onclick="return faltanDatosAgregarCentro()" value="Enviar datos" />
+        <!-- return faltanDatosAgregarCentro()" -->
+        <input class="btn btn-success" type="submit" onclick="advertenciaRegistro()" value="Enviar datos" />
         <input class="btn btn-danger" type="reset" value="Cancelar" />
 
         <br />
 
-         <p (click)="login()"> <span class="icon-switch"></span> <b> Regresar </b> </p>
-        
+        <p (click)="login()"> <span class="icon-switch"></span> <b> Regresar </b> </p>
+
       </div>
 
     </div>
@@ -51,26 +52,27 @@
         <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>
       </div>
 
-      <agm-map [latitude]="latitude"
+      <agm-map (mapClick)="mapClicked($event)"
+               [latitude]="latitude"
                [longitude]="longitude"
-               [zoom]="17"
-               (mapClick)="mapClicked($event)">
+               [zoom]="17">
 
+        
 
-        <agm-marker *ngFor="let m of markers"
-                    [latitude]="m.lat"
-                    [longitude]="m.lng"
-                    (markerRightClick)="markerRightClick($event)">
+          <agm-marker *ngFor="let m of markers" 
+                      [latitude]="m.lat"
+                      [longitude]="m.lng"
+                      (markerRightClick)="markerRightClick($event)">
 
-        </agm-marker>
+          </agm-marker>
 
-        <agm-marker [latitude]="latitude"
-                    [longitude]="longitude"
-                    [iconUrl]="iconMapCurrent.iconUrl">
+          <agm-marker [latitude]="latitude"
+                      [longitude]="longitude"
+                      [iconUrl]="iconMapCurrent.iconUrl">
 
-          <agm-info-window><b>Estoy, aquí</b></agm-info-window>
+            <agm-info-window><b>Estoy, aquí</b></agm-info-window>
 
-        </agm-marker>
+          </agm-marker>
 
       </agm-map>
 

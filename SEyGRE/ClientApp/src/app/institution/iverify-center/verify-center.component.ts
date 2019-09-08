@@ -32,8 +32,12 @@ export class VerifyCenterComponent{
 
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
 
-        this._centro = result;
-        this.mensajesAlerts(result.length);
+      console.log(result);
+
+      this._centro = result;
+
+
+      //  this.mensajesAlerts(result.length);
 
     });
 

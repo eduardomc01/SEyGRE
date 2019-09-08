@@ -22,6 +22,21 @@ namespace SEyGRE.Controllers
         }
 
 
+        [HttpGet("[action]")]
+        public List<Noticias> ObtenerNoticias()
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            
+            var list = (from e in context.Noticias select e).ToList();
+
+
+            return list;
+
+        }
+
+
 
         //OBTENER STATS
         [HttpGet("[action]")]
@@ -206,6 +221,8 @@ namespace SEyGRE.Controllers
             return list;
 
         }
+
+
 
 
 

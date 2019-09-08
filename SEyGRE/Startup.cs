@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using SEyGRE.Models;
 
+
 namespace SEyGRE
 {
     public class Startup
@@ -22,6 +23,8 @@ namespace SEyGRE
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -33,10 +36,15 @@ namespace SEyGRE
 
             /***************************** AGREGANDO EL SERVICIO ***************************************/
 
-            services.Add(new ServiceDescriptor(typeof(seygreContext), new seygreContext()));
+           // services.Add(new ServiceDescriptor(typeof(seygreContext), new seygreContext()));
             
             /********************************************************************/
 
+            /***************** SERVICIO PARA OCULTAR LA CONEXION ************************/
+
+             services.Add(new ServiceDescriptor (typeof (seygreContext), new seygreContext (Configuration.GetConnectionString("seygreConnection"))));
+
+            /*****************************************/
 
         }
 
@@ -73,7 +81,7 @@ namespace SEyGRE
 
                 if (env.IsDevelopment())
                 {
-                    spa.Options.StartupTimeout = new System.TimeSpan(0, 0, 80); /* OJO: Agregar este codigo para que el tiempo de espera a aumente a 90 seg */
+                    //spa.Options.StartupTimeout = new System.TimeSpan(0, 0, 80); /* OJO: Agregar este codigo para que el tiempo de espera a aumente a 90 seg */
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });

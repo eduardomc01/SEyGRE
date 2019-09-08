@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -10,6 +10,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+    <UserSecretsId>c58965f9-231f-4d48-84d6-379f87a3835e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,12 +35,9 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\app\center\events\modules\" />
     <Folder Include="ClientApp\src\app\center\stats\modules\line\" />
-    <Folder Include="ClientApp\src\app\center\users\modules\" />
     <Folder Include="ClientApp\src\app\citizen\chome\modules\" />
     <Folder Include="ClientApp\src\app\citizen\cinfo\modules\" />
     <Folder Include="ClientApp\src\app\citizen\cmaps\modules\" />
-    <Folder Include="ClientApp\src\assets\documentosCentros\" />
-    <Folder Include="ClientApp\src\assets\imagenesPerfiles\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,7 +59,7 @@
   <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
-    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build --prod" />
     <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
 
     <!-- Include the newly-built files in the publish output -->

@@ -9,7 +9,7 @@ namespace SEyGRE.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class pruebaaaaaaController : ControllerBase
+    public class OtroController : ControllerBase
     {
         // GET: api/pruebaaaaaa
         [HttpGet]

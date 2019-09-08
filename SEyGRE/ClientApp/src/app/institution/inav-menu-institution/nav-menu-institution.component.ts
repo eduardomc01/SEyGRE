@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-nav-menu-institution',
@@ -7,6 +9,8 @@ import { Component } from '@angular/core';
 })
 
 export class NavMenuInstitutionComponent {
+
+  constructor(private router: Router) {  }
 
   isExpanded = false;
 
@@ -18,10 +22,13 @@ export class NavMenuInstitutionComponent {
     this.isExpanded = !this.isExpanded;
   }
 
-  /*
-  close() {
+
+  closeSession() {
     sessionStorage.clear();
+    this.router.navigate(["/Login"]);
   }
-  */
+
+
+
 
 }

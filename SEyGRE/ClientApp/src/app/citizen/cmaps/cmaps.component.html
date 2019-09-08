@@ -19,7 +19,7 @@
           <div class="card-body">
 
             <div style="z-index: 1; position: absolute; margin:10px 0 0 10px; width: 70%">
-              <input type="text" class="form-control" [(ngModel)]="prueba" placeholder="Buscar dirección" #search autofocus required>	        
+              <input type="text" class="form-control" [(ngModel)]="value" placeholder="Buscar dirección" #search required>	        
             </div>
 
             <agm-map (mapReady)="mapaListo()"
@@ -66,12 +66,15 @@
                           [iconUrl]="iconMapEvent.iconUrl">
 
                 <agm-info-window>
+
                   <table class="table">
+
                     <thead class="thead-dark">
                       <tr>
                         <th colspan="2"> Contenido </th>
                       </tr>
                     </thead>
+
                     <tbody class="thead-dark">
                       <tr>
                         <th>Nombre </th>
@@ -146,7 +149,7 @@
           <div class="card-footer">
 
    
-            <input type="text" class="form-control" id="search" [(ngModel)]="prueba" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
+            <input type="text" class="form-control" id="search" [(ngModel)]="value2" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
      
 
           </div>

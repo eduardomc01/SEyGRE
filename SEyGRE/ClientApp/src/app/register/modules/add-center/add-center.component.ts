@@ -97,6 +97,11 @@ export class AddCenterComponent implements OnInit {
   }
 
 
+  markerDragEnd(m: marker, $event: MouseEvent) {
+    console.log('dragEnd', m, $event);
+  }
+
+
 
   public mapClicked($event: MouseEvent) {
     this.markers.push({

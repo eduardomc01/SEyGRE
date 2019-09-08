@@ -11,10 +11,10 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  z-index:2;
+  z-index: 2;
   border-right: 5px;
   border-right-style: solid;
-  border-right-color: mediumseagreen;
+  border-right-color: orange;
 }
 
 #main-nav ul li {
@@ -31,7 +31,7 @@ list-style: none;
   }
 
 #main-nav ul li a:hover {
-color: mediumspringgreen;
+color: orange;
 transition-duration: .5s;
 }
 
@@ -67,23 +67,13 @@ label {
   bottom: 10px;
   border-radius: 10px;
   background-color: black;
-  z-index: 1;
+  z-index: 10;
 }
 
 .icon-eye:hover {
-  color: mediumspringgreen;
+  color: orange;
 }
 
-
-/*** LOGO EN MENU***/
-
-div table tbody tr td img{
-  border-color: mediumseagreen;
-  border: solid 2px;
-  margin-left: 30px;
-  width: 50px;
-  height: 50px
-}
 
 
 
@@ -101,7 +91,8 @@ div table tbody tr td img{
   transition-duration: 1s;
   border-left-style: solid;
   border-left-width: 5px;
-  border-left-color: mediumseagreen;
+  border-left-color: orange;
+  font-weight: bold;
   z-index: 1;
 }
 
@@ -126,7 +117,7 @@ div table tbody tr td img{
 
 
 p:hover {
-  color: mediumspringgreen;
+  color: orange;
   cursor: pointer;
 }
 
