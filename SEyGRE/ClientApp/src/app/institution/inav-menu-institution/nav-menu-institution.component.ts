@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
 })
 
 export class NavMenuInstitutionComponent {
+
+  nombre: string = sessionStorage.getItem("nombre");
+  today: number = Date.now();
 
   constructor(private router: Router) {  }
 

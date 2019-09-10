@@ -52,12 +52,6 @@ export class MapsComponent implements OnInit {
 
 
 
-
-
-
-
-
-
   public mapaListo():void {
 
     this.animacion = 'BOUNCE'; /* animacion del marker */

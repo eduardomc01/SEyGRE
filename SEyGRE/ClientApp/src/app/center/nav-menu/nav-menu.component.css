@@ -93,7 +93,7 @@ div table tbody tr td img{
   float: right;
   right: 5px;
   position: fixed;
-  margin: 10px -260px 10px 10px;
+  margin: 10px -280px 10px 10px;
   padding: 10px 40px 10px 20px;
   background-color: black;
   border-radius: 10px;
@@ -102,6 +102,7 @@ div table tbody tr td img{
   border-left-style: solid;
   border-left-width: 5px;
   border-left-color: mediumseagreen;
+  font-weight: bold;
   z-index: 1;
 }
 

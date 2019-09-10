@@ -75,13 +75,6 @@ import { Label, Color } from 'ng2-charts';
 
 
 
-
-
-
-
-
-
-
  public obtenerEventos(eventos: string): void {
 
 

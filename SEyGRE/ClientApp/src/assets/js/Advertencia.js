@@ -104,12 +104,11 @@ function advertenciaActualizarDatosCentro() {
       title: "Aviso",
       icon: "success",
       button: true,
-      content: txt,
-      button: "Deacuerdo",
+      content: txt
     });
 
 
-    window.location.replace("/users");
+    //window.location.replace("/users");
 
   } else {
 

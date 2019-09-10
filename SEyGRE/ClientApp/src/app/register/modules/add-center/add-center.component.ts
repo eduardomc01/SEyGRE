@@ -19,7 +19,6 @@ export class AddCenterComponent implements OnInit {
 
   public _direccion: string;
 
-  public title: string = "CENTRO";
   public _lat: Number;
   public _lng: Number;
   public markers: marker[] = [];

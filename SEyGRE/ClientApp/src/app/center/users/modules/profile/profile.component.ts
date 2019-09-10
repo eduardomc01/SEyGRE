@@ -28,7 +28,7 @@ export class ProfileComponent {
   }
 
   
-  public ObtenerFoto() {
+  public ObtenerFoto():void {
 
 
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
@@ -56,7 +56,7 @@ export class ProfileComponent {
 
 
 
-  public ObtenerImagen(event) {
+  public ObtenerImagen(event):void {
 
     let fileList: FileList = event.target[0].files;
 

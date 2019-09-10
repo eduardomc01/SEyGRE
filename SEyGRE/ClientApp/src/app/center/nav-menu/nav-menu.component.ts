@@ -48,6 +48,8 @@ export class NavMenuComponent {
 
     this.http.get<datos[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
 
+      console.log(result);
+
       this.datos = result;
 
     });

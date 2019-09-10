@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PolarComponent implements OnInit {
 
-  private idUser: string = sessionStorage.getItem("idUser");
+
   /*
   public radarChartLabels: Label[] = [];
   public radarChartType: ChartType = 'radar';
@@ -25,8 +25,9 @@ export class PolarComponent implements OnInit {
   public polarAreaLegend = true;
   public polarAreaColors = [{ backgroundColor: ['rgba(40,180,99,.6)', 'rgba(52, 152, 219,.6)', 'rgba(231, 76, 60,.6)', 'rgba(149, 61, 231,.6)', 'rgba(0, 253, 146,.6)', 'rgba(231, 61, 159,.6)', 'rgba(242, 253, 0,.6)', 'rgba(165, 180, 174,.6)','rgba(71, 3, 189,.6)']}];
   public polarAreaChartType: ChartType = 'polarArea';
-
   public show: boolean;
+
+  private idUser: string = sessionStorage.getItem("idUser");
 
   constructor(private router: Router, private http: HttpClient) {
 

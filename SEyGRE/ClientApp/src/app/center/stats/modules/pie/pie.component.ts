@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class PieComponent implements OnInit {
 
-  private idUser: string = sessionStorage.getItem("idUser");
+  public idUser: string = sessionStorage.getItem("idUser");
 
   public pieChartLabels: Label[] = [];
   public pieChartData: number[] = [];
