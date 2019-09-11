@@ -35,60 +35,65 @@ namespace SEyGRE.Controllers
         }
 
 
-
-        [HttpPost("[action]")]
-        public void EliminarPersonal([FromBody] int id)
+        [HttpGet("[action]")]
+        public List<Noticias> ObtenerNoticias()
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var found = context.Personal.Find(id);
+            var list = (from e in context.Noticias select e).ToList();
 
-            context.Personal.Remove(found);
-
-            context.SaveChanges();
+            return list;
 
         }
 
 
 
         [HttpPost("[action]")]
-        public void ModificarPersonal([FromBody] Personal r)
+        public void ModificarNoticia([FromBody] Noticias r)
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            //var found = (from e in context.Personal where e.Id.Equals(r.Id) select e).ToList();
-            var found = context.Personal.Find(r.Id);
+            var found = context.Noticias.Find(r.Id);
 
             if(r.Nombre != null)
             {
                 found.Nombre = r.Nombre;
             }
-            if(r.Apellidos != null)
+            if(r.ImagenUrl != null)
             {
-                found.Apellidos = r.Apellidos;
+                found.ImagenUrl = r.ImagenUrl;
             }
-            if (r.Edad != null)
+            if (r.Descripccion != null)
             {
 
-                found.Edad = r.Edad;
+                found.Descripccion = r.Descripccion;
             }
-            if (r.Direccion != null)
+            if (r.NoticiaUrl != null)
             {
 
-                found.Direccion = r.Direccion;
-            }
-            if (r.IdCargo != null)
-            {
-                found.IdCargo = r.IdCargo;
+                found.NoticiaUrl = r.NoticiaUrl;
             }
 
             context.Update(found);
 
             context.SaveChanges();
 
-           
+        }
+
+
+        [HttpPost("[action]")]
+        public void EliminarNoticia([FromBody] int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var found = context.Noticias.Find(id);
+
+            context.Noticias.Remove(found);
+
+            context.SaveChanges();
 
         }
 

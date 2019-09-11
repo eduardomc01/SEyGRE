@@ -70,6 +70,8 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
 import { AddNoticesComponent } from './institution/inotices/modules/add-notices/add-notices.component';
 import { CNoticesComponent } from './institution/inotices/cnotices.component';
 
+import { TableNoticesComponent } from './institution/inotices/modules/table-notices/table-notices.component';
+
 
 
 @NgModule({
@@ -142,6 +144,8 @@ import { CNoticesComponent } from './institution/inotices/cnotices.component';
 
     CNoticesComponent,
 
+    TableNoticesComponent,
+
 
   ],
   imports: [
@@ -187,8 +191,6 @@ import { CNoticesComponent } from './institution/inotices/cnotices.component';
       { path: 'maps', component: MapsComponent },
       { path: 'info', component: InfoComponent },
 
-
-
       { path: 'i-home', component: IHomeComponent },
       { path: 'i-verify-center', component: VerifyCenterComponent },
       { path: 'i-maps', component: IMapsComponent },
@@ -203,8 +205,6 @@ import { CNoticesComponent } from './institution/inotices/cnotices.component';
       { path: 'c-big-visual-pie', component: CBigVisualPieComponent },
       { path: 'c-big-visual-line', component: CBigVisualLineComponent },
       { path: 'c-big-visual-polar', component: CBigVisualPolarComponent },
-
-
 
     ])
   ],

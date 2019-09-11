@@ -1,0 +1,57 @@
+
+
+<div class="card" ngNativeValidate>
+  <div class="card-header">
+    <h1> Noticias </h1>
+  </div>
+
+  <div class="card-body">
+
+    <table class="table" >
+
+
+      <thead class="thead-dark">
+
+        <tr>
+
+          <th scope="col"> ID </th>
+          <th scope="col"> Imagen </th>
+          <th scope="col"> Titulo </th>
+          <th scope="col"> Imagen URL </th>
+          <th scope="col"> Descripcción </th>
+          <th scope="col"> Noticia </th>
+          <th scope="col" colspan="3"> Acciones </th>
+
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let info of _noticias">
+
+          <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
+
+          <td> <img class="rounded-circle" src={{info.imagenUrl}} /> </td>
+
+          <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled /></td>
+
+          <td> <input type="text" class="form-control" id="Imagen{{info.id}}" value={{info.imagenUrl}} #box2 disabled /> </td>
+
+          <td> <textarea type="text" class="form-control" id="Descripccion{{info.id}}" value={{info.descripccion}} #box3 disabled ></textarea> </td>
+          <td> <input type="text" class="form-control" id="Noticia{{info.id}}" value={{info.noticiaUrl}} #box4 disabled /> </td>
+
+          <td><button class="btn btn-success" (click)="modificarNoticia(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button></td>
+          <td> <button class="btn btn-success" id={{info.id}} onclick="editarNoticia(this.id)"><span class="icon-pencil2"></span></button> </td>
+          <td><button class="btn btn-danger" onclick="eliminarRegistro()" (click)="eliminarNoticia(info.id)"><span class="icon-cross"></span></button></td>
+
+        </tr><!-- onclick="confirmarDatos()" -->
+
+      </tbody>
+    </table>
+
+
+  </div>
+
+</div>
+
+

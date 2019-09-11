@@ -1,0 +1,16 @@
+
+div a img {
+  border-radius:20px;
+  transition:all 1s ease-out;
+  width:99%;
+  transform: scale(0.9);
+}
+
+div a img:hover{
+  transform: scale(1.0);
+}
+
+
+div a img {
+  overflow: hidden;
+}

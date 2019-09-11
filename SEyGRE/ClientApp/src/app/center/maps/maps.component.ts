@@ -31,7 +31,7 @@ export class MapsComponent implements OnInit {
     if (sessionStorage.getItem("idUser") == null)
       this.router.navigate(["/Login"]);
 
-    this.http.get<any>("api/CentrosAcopio/ObtenerUbicacionCentros").subscribe(result => {
+    this.http.get<any>("api/CentrosAcopio/ObtenerCentro?id=" + this.idUser).subscribe(result => {
 
       this.d = result;
 
@@ -39,9 +39,7 @@ export class MapsComponent implements OnInit {
 
 
     this.http.get<any>("api/Eventos/ObtenerUbicacionEvento?id=" + this.idUser).subscribe(result => {
-
-      console.log(result);
-
+      
       this.e = result;
 
 

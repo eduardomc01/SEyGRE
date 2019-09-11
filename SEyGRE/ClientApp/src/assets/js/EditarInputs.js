@@ -30,6 +30,17 @@ function editarEvento(id) {
 
 
 
+function editarNoticia(id) {
+
+  $("#Nombre" + id).prop('disabled', false);
+  $("#Imagen" + id).prop('disabled', false);
+  $("#Noticia" + id).prop('disabled', false);
+  $("#Descripccion" + id).prop('disabled', false);
+}
+
+
+
+
 /*
 $("input").prop('disabled', true);
 $("input").prop('disabled', false);

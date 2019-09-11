@@ -133,12 +133,20 @@ namespace SEyGRE.Controllers
 
 
         [HttpGet("[action]")]
-        public List<Centrosacopio> ObtenerCentro(int id)
+        public List<Centrosacopio> ObtenerCentro(int id) /* obtener centro */
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var list = (from e in context.Centrosacopio where e.Id == id select e).ToList();
+            var list = (from e in context.Centrosacopio where e.Id == id
+                        select new Centrosacopio {
+
+                            Id= e.Id,
+                            Nombre= e.Nombre,
+                            Latitud = e.Latitud,
+                            Longitud = e.Longitud
+
+                        }).ToList();
 
             return list;
 
@@ -166,7 +174,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpGet("[action]")]
-        public List<Centrosacopio> ObtenerUbicacionCentros()
+        public List<Centrosacopio> ObtenerUbicacionCentros() /*obtener ubicacion de los centros */
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
@@ -199,7 +207,7 @@ namespace SEyGRE.Controllers
 
 
         [HttpPost("[action]")]
-        public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r)
+        public List<RelacionCentrosAcopioEstatus> ObtenerUsuario([FromBody] RelacionCentrosAcopioEstatus r) /*login*/
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;

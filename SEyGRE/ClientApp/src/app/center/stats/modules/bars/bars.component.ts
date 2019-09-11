@@ -3,7 +3,8 @@ import { ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import * as jspdf from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-bars',
@@ -39,6 +40,27 @@ export class BarsComponent implements OnInit {
   public ngOnInit(): void {
 
     //this.getBarras();
+
+  }
+
+
+  generarPDF() {
+
+        var data = document.getElementById("bars");
+        
+        html2canvas(data).then(canvas => {
+        // Few necessary setting options  
+        var imgWidth = 200;
+        //var pageHeight = 400;
+        var imgHeight = canvas.height * imgWidth / canvas.width;
+        //var heightLeft = imgHeight;
+
+        const contentDataURL = canvas.toDataURL('image/jpg')
+        let pdf = new jspdf('p', 'mm', 'A4'); // A4 size page of PDF  
+        var position = 0;
+        pdf.addImage(contentDataURL, 'jpg',0, position, imgWidth, imgHeight)
+        pdf.save('barras.pdf'); // Generated PDF   
+      });
 
   }
 

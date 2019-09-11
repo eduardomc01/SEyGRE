@@ -15,8 +15,8 @@
             <h1> Cantidad de residuos electrónicos por mes </h1>
           </div>
 
-          <div class="card-body">
-            <canvas class="cav" baseChart
+          <div class="card-body" id="line">
+            <canvas baseChart
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"
                     [legend]="lineChartLegend"
@@ -25,12 +25,12 @@
           </div>
           <div class="card-footer">
 
-            <button style="float: right; margin:2%;" class="btn btn-danger" type="button"><span class="icon-file-pdf"></span> Exportar PDF </button>
-            <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getLine()"><span class="icon-search"></span> Obtener datos </button>
-            <button style="float: right; margin:2%;" class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> Maximizar </button>
+            <button *ngIf="show" style="float: right; margin:2%;" class="btn btn-danger" type="button" (click)="generarPDF()"><span class="icon-file-pdf"></span> </button>
+            <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getLine()"><span class="icon-search"></span> </button>
+            <button style="float: right; margin:2%;" class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
 
 
-            <button *ngIf="show" style="float: right; margin:2%;" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> Regresar </button>
+            <button *ngIf="show" style="float: right; margin:2%;" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> </button>
 
 
           </div>

@@ -15,8 +15,8 @@
             <h1> Cantidad de residuos electrónicos por mes </h1>
           </div>
 
-          <div class="card-body">
-            <canvas class="cav" baseChart
+          <div class="card-body" id="line">
+            <canvas baseChart
                     [datasets]="lineChartData"
                     [labels]="lineChartLabels"
                     [legend]="lineChartLegend"
@@ -26,17 +26,13 @@
           <div class="card-footer">
 
 
-            <button class="btn btn-danger" type="button"><span class="icon-file-pdf"></span> Exportar PDF </button>
+            <button *ngIf="show" class="btn btn-danger" type="button" (click)="generarPDF()"><span class="icon-file-pdf"></span> </button>
 
             <input type="text" class="form-control" id="search" [(ngModel)]="validate" #box (keyup)="getLine(box.value)" placeholder="Nombre del Centro de acopio" required />
 
-<!--
-            <button style="float: right; margin:2%" class="btn btn-primary" type="button" (click)="getLine()"><span class="icon-search"></span> Obtener datos </button>
-    -->
-            <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> Maximizar </button>
+            <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
 
-
-            <button *ngIf="show" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> Regresar </button>
+            <button *ngIf="show" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> </button>
 
 
           </div>

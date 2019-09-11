@@ -34,11 +34,8 @@
                           [iconUrl]="iconMap.iconUrl"
                           [animation]="animacion">
 
-                <agm-info-window>
-                  <!--<strong>-->
-                  <!--
-                  <button *ngIf="showLinear" class="btn btn-succees" (mouseover)="getLine(info.id)"></button>
-                  -->
+                <agm-info-window [maxWidth]="400">
+    
 
                   <div class="card-body" (click)="getLine(info.id)">
 

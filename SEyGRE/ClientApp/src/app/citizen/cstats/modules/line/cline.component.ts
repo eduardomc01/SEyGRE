@@ -3,6 +3,8 @@ import { ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import * as jspdf from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-cline',
@@ -36,6 +38,27 @@ export class CLineComponent implements OnInit {
 
    // this.getLine();
 
+
+  }
+
+
+
+  generarPDF() {
+
+    var data = document.getElementById("line");
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options  
+      var imgWidth = 300;
+      //var pageHeight = 400;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      //var heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jspdf('l', 'mm', 'A4'); // A4 size page of PDF  
+      var position = 0;
+      pdf.addImage(contentDataURL, 'png', 0, position, imgWidth, imgHeight)
+      pdf.save('c-line.pdf'); // Generated PDF   
+    });
 
   }
 

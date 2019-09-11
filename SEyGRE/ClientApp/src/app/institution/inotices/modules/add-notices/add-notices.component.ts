@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { TableNoticesComponent } from '../table-notices/table-notices.component';
 
 @Component({
   selector: 'app-add-notices',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AddNoticesComponent implements OnInit {
 
+  //@Input() prueba: TableNoticesComponent;
+
   _nombre: string;
   _imagenUrl: string;
   _noticiaUrl: string;
@@ -16,10 +19,9 @@ export class AddNoticesComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() {
-  }
 
 
+ // @HostListener("click")
   ObtenerDatos() {
 
    var json = JSON.stringify({
@@ -34,12 +36,15 @@ export class AddNoticesComponent implements OnInit {
 
     this.http.post<any>('api/Institucion/AgregarNoticia', JSON.parse(json)).subscribe(()=> {
 
-
+    //  this.prueba.obtenerNoticias();
 
    });
 
 
   }
 
+
+  ngOnInit() {
+  }
 
 }

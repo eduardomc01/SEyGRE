@@ -3,6 +3,9 @@ import { ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import * as jspdf from 'jspdf';
+import * as html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-pie',
@@ -44,6 +47,29 @@ export class PieComponent implements OnInit {
 
   //"Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio", "Oro", "Plata", "Paladio"
   //"api/Componentes/ObtenerInformacionRadar"
+
+
+
+  generarPDF() {
+
+    var data = document.getElementById("pie");
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options  
+      var imgWidth = 300;
+      //var pageHeight = 400;
+      var imgHeight = canvas.height * imgWidth / canvas.width;
+      //var heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png')
+      let pdf = new jspdf('l', 'mm', 'A4'); // A4 size page of PDF  
+      var position = 0;
+      pdf.addImage(contentDataURL, 'png', 0, position, imgWidth, imgHeight)
+      pdf.save('pie.pdf'); // Generated PDF   
+    });
+
+  }
+
+
 
   public getPastel(): void {
 
