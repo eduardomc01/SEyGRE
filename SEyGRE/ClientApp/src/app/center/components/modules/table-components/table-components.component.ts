@@ -25,6 +25,8 @@ export class TableComponentsComponent {
   public idUser:string = sessionStorage.getItem("idUser");
   public showSave: boolean = true;
 
+  paginaPrincipal: number = 1;
+
   constructor(private http: HttpClient, private router: Router) {
     this.inexistente = true;
     this.consulta = true;

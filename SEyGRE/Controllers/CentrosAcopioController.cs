@@ -153,6 +153,7 @@ namespace SEyGRE.Controllers
         }
 
 
+
         [HttpGet("[action]")]
         public IQueryable<Centrosacopio> ObtenerPerfil(int id)
         {
@@ -199,7 +200,7 @@ namespace SEyGRE.Controllers
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            var list = (from e in context.Centrosacopio select e).ToList();
+            var list = (from e in context.Centrosacopio where e.IdEstatus.Equals(1) select e).ToList();
 
             return list;
 
@@ -217,7 +218,7 @@ namespace SEyGRE.Controllers
                         on e.IdEstatus equals l.Id
                         join f in context.Tipousuario
                         on e.IdTipoUsuario equals f.Id
-                        where e.Usuario == r.Usuario && e.Password == r.Password && l.Titulo == "activo"
+                        where e.Usuario == r.Usuario && e.Password == r.Password && e.IdEstatus.Equals(1)
                         select new RelacionCentrosAcopioEstatus
                         {
 
@@ -414,6 +415,40 @@ namespace SEyGRE.Controllers
 
 
         }
+
+
+
+        [HttpGet("[action]")]
+        public float [] ObtenerInformacionR(int id)
+        {
+
+            float totalElementos = 0.0f;
+            float totalPesoResiduos = 0.0f;
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var elementos = (from e in context.Elementos select e);
+
+            foreach (var e in elementos)
+            {
+                totalElementos += e.Cantidad;
+            }
+
+            var residuos = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);
+
+
+            foreach (var r in residuos)
+            {
+
+                totalPesoResiduos += r.Peso;
+
+            }
+
+
+            return new float[] { totalPesoResiduos, totalElementos * totalPesoResiduos };
+
+        }
+
 
     }
 

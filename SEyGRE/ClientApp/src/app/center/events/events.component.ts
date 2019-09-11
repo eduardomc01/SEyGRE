@@ -10,6 +10,7 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbAlertConfig]
 })
 export class EventsComponent {
+ 
 
   constructor(private http: HttpClient, private router: Router) {
 

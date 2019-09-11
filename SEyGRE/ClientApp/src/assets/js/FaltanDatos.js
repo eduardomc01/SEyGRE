@@ -142,7 +142,6 @@ function faltanDatosNoticias() {
 
 
 
-
 function eliminarRegistro() {
 
   alertify.error("Registro eliminado");
@@ -153,5 +152,20 @@ function eliminarRegistro() {
 function aceptarRegistro() {
 
   alertify.success("Registro aceptado");
+
+}
+
+
+
+function habilitarCentro() {
+
+  alertify.success("Centro habilitado");
+
+}
+
+
+function deshabilitarCentro() {
+
+  alertify.error("Centro deshabilitado");
 
 }

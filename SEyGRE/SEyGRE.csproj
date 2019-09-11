@@ -42,6 +42,7 @@
     <Folder Include="ClientApp\src\app\citizen\chome\modules\" />
     <Folder Include="ClientApp\src\app\citizen\cinfo\modules\" />
     <Folder Include="ClientApp\src\app\citizen\cmaps\modules\" />
+    <Folder Include="ClientApp\src\assets\doc\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +78,6 @@
     </ItemGroup>
   </Target>
 
-  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties ClientApp_4package_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

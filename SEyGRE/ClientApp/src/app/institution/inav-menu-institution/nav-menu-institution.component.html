@@ -10,7 +10,7 @@
   </label>
   <input type="checkbox" id="hide" checked />
 
-  <div id="main-nav">
+  <div id="main-nav" (mouseover)=obtenerResultados()>
     <div class="panel-session">
       <table>
         <tbody>
@@ -21,7 +21,10 @@
             <td> <p> <span class="icon-clock"></span> Fecha: {{ today | date:"fullDate" }} </p> </td>
           </tr>
           <tr>
-            <td> <p> <span class="icon-flag"></span> Cantidad de centros registrados: </p> </td>
+            <td> <p> <span class="icon-earth"></span> Centros en servicio: {{ onCentros }} </p> </td>
+          </tr>
+          <tr>
+            <td> <p> <span class="icon-eye-blocked"></span> Centros fuera de servicio: {{ offCentros }} </p> </td>
           </tr>
           <tr>
             <td> <p (click)="closeSession()"> <span class="icon-exit"></span> Cerrar sesión </p> </td>

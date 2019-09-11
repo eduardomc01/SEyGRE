@@ -36,7 +36,8 @@ export class TableUsersComponent {
   public inexistente: boolean;
   public showSave: boolean = true;
   public _busqueda: string;
- 
+
+  paginaPrincipal: number = 1;
 
   constructor(private http: HttpClient, private router: Router) {
 

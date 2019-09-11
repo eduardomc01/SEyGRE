@@ -7,7 +7,7 @@
 
   <div class="card-body">
 
-    <table class="table" >
+    <table class="table">
 
 
       <thead class="thead-dark">
@@ -27,7 +27,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let info of _noticias">
+        <tr *ngFor="let info of _noticias | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
 
           <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
 
@@ -37,7 +37,8 @@
 
           <td> <input type="text" class="form-control" id="Imagen{{info.id}}" value={{info.imagenUrl}} #box2 disabled /> </td>
 
-          <td> <textarea type="text" class="form-control" id="Descripccion{{info.id}}" value={{info.descripccion}} #box3 disabled ></textarea> </td>
+          <td> <textarea type="text" class="form-control" id="Descripccion{{info.id}}" value={{info.descripccion}} #box3 disabled></textarea> </td>
+
           <td> <input type="text" class="form-control" id="Noticia{{info.id}}" value={{info.noticiaUrl}} #box4 disabled /> </td>
 
           <td><button class="btn btn-success" (click)="modificarNoticia(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button></td>
@@ -48,6 +49,8 @@
 
       </tbody>
     </table>
+    <pagination-controls (pageChange)="paginaPrincipal = $event"></pagination-controls>
+
 
 
   </div>

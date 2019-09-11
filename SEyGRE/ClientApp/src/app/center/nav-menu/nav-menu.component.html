@@ -11,11 +11,19 @@
   <input type="checkbox" id="hide" checked />
 
   <div id="main-nav">
-    <div class="panel-session">
+    <div class="panel-session" (mouseover)="obtenerInformacionR()">
       <table>
         <tbody>
           <tr>
-            <td> <p> <img *ngFor="let d of datos" src="ClientApp/src/assets/profile/{{idUser}}/{{d.imagen}}" class="rounded-circle imagen" /> <p> </p> </td>
+            <td>
+
+
+              <img *ngIf="showDefault" [src]="rutaImagenD" class="rounded-circle imagen" />
+
+              <img *ngIf="show" [src]="rutaImagen + idUser +'/'+ nombreImagen" class="rounded-circle imagen" />
+
+
+            </td>
           </tr>
           <tr>
             <td> <p> <span class="icon-user"></span> Usuario: {{ nombre }} </p> </td>
@@ -24,7 +32,10 @@
             <td> <p> <span class="icon-clock"></span> Fecha: {{ today | date:"fullDate" }} </p> </td>
           </tr>
           <tr>
-            <td> <p> <span class="icon-flag"></span> Top: </p> </td>
+            <td> <p> <span class="icon-tv"></span> Total RE: {{ totalR }} </p> </td>
+          </tr>
+          <tr>
+            <td> <p> <span class="icon-earth"></span> Total RE x elementos: {{ totalRxE }} </p> </td>
           </tr>
           <tr>
             <td> <p (click)="closeSession()"> <span class="icon-exit"></span> Cerrar sesión </p> </td>

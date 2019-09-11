@@ -33,7 +33,7 @@
 
         <tbody *ngIf="inexistente">
 
-          <tr *ngFor="let info of _personal">
+          <tr *ngFor="let info of _personal | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
 
             <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
             <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled /> </td>
@@ -59,12 +59,13 @@
 
         </tbody>
       </table>
+      <pagination-controls (pageChange)="paginaPrincipal = $event"></pagination-controls>
 
       <!--
-      <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
-        <span class='icon-search'> </span>  !Sin consultas aún¡
-      </p>
-      -->
+  <p *ngIf="consulta" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+    <span class='icon-search'> </span>  !Sin consultas aún¡
+  </p>
+  -->
 
       <p *ngIf="!inexistente" style="font-weight: bolder; font-family:Arial; font-size: 15px">
         <span class='icon-cross'> </span>  !Personal inexistente¡

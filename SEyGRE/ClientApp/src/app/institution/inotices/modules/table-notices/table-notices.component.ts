@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class TableNoticesComponent {
 
   _noticias: any;
+  paginaPrincipal: number = 1;
 
 
   constructor(private http: HttpClient, router: Router) {

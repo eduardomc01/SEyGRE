@@ -50,14 +50,14 @@ export class BarsComponent implements OnInit {
         
         html2canvas(data).then(canvas => {
 
-        var imgWidth = 200;
+        var imgWidth = 300;
 
         var imgHeight = canvas.height * imgWidth / canvas.width;
 
 
         const contentDataURL = canvas.toDataURL('image/jpg')
-        let pdf = new jspdf('p', 'mm', 'A4'); // A4 size page of PDF  
-        var position = 0;
+        let pdf = new jspdf('l', 'mm', 'A4'); // A4 size page of PDF  
+        var position = 10;
         pdf.addImage(contentDataURL, 'jpg',0, position, imgWidth, imgHeight)
         pdf.save('barras.pdf'); // Generated PDF   
       });

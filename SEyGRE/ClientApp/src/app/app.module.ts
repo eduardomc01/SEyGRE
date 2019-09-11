@@ -13,6 +13,9 @@ import { NavMenuInstitutionComponent } from './institution/inav-menu-institution
 import { IMapsComponent } from './institution/imaps/imaps.component';
 import { IHomeComponent } from './institution/ihome/ihome.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './center/home/home.component';
 import { ComponentsComponent } from './center/components/components.component';
@@ -133,7 +136,6 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
     CPieComponent,
     CPolarComponent,
 
-
     CBigVisualBarsComponent,
     CBigVisualLineComponent,
     CBigVisualPolarComponent,
@@ -151,6 +153,8 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ChartsModule,
+    NgxPaginationModule,
+    PdfViewerModule,
     NgbModule,
     FormsModule,
     AgmCoreModule.forRoot({

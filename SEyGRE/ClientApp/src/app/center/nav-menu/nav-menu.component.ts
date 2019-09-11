@@ -11,13 +11,22 @@ import { Time } from '@angular/common';
 
 export class NavMenuComponent {
 
+  rutaImagenD: string = "../../../assets/image/sin-foto.png";
+  rutaImagen: string = "../../../assets/profile/";
   idUser: string = sessionStorage.getItem("idUser");
-  nombre: string = sessionStorage.getItem("nombre");
-  datos: datos[];
-  today: number = Date.now();
 
+  nombre: string = sessionStorage.getItem("nombre");
+  nombreImagen: string;
+
+  today: number = Date.now();
+  showDefault: boolean;
+  show: boolean;
+
+  totalR: number;
+  totalRxE: number;
 
   constructor(private http: HttpClient, private router: Router) {
+
     this.ObtenerFoto();
   }
 
@@ -48,9 +57,38 @@ export class NavMenuComponent {
 
     this.http.get<datos[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
 
-      console.log(result);
+      console.log(result[0].imagen.length);
 
-      this.datos = result;
+      if (result[0].imagen.length == 0) {
+
+        this.show = false;
+        this.showDefault = true;
+        
+      } else {
+
+        this.show = false;
+        this.show = true;
+        
+        this.nombreImagen = result[0].imagen;
+
+      }
+
+
+
+    });
+
+
+  }
+
+
+
+
+  obtenerInformacionR() {
+
+    this.http.get<number[]>("api/CentrosAcopio/ObtenerInformacionR?id=" + this.idUser).subscribe(result => {
+
+      this.totalR = result[0];
+      this.totalRxE = result[1];
 
     });
 
@@ -63,3 +101,4 @@ export class NavMenuComponent {
 interface datos {
   imagen: string;
 }
+

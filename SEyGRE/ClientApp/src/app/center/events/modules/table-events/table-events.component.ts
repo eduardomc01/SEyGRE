@@ -31,6 +31,8 @@ export class TableEventsComponent {
 
   public i: number = 0;
 
+  paginaPrincipal: number = 1;
+
   constructor(private http: HttpClient, private router: Router) {
 
     this.inexistente = true;

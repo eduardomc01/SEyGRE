@@ -31,42 +31,113 @@
               </thead>
               <tbody>
 
-                <tr *ngFor="let info of _centro">
+                <tr *ngFor="let info of _centro | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
                   <td> {{info.id}} </td>
                   <td> {{info.nombre}} </td>
                   <td> {{info.usuario}} </td>
                   <td> {{info.password}} </td>
                   <td> {{info.correo}}</td>
-                  <td> <a href="doc/SEyGRE-actual.docx" target="_blank"> <p class="btn btn-info"> <span class="icon-download"></span> Aceptar </p> </a></td>
+                  <td> <a href="{{ruta + info.documento}}" target="_blank"> <p class="btn btn-info"> <span class="icon-download"></span> Verificar documento </p> </a></td>
+
+                  <!--
+            <pdf-viewer [src]="ruta+info.documento"
+                        [render-text]="true"
+                        style="display: block;"></pdf-viewer>
+                -->
 
                   <td>
-                  <button class="btn btn-success" onclick="aceptarRegistro()" (click)="seleccionarCentro(info.id, true)" > <span class="icon-checkmark"></span> Aceptar </button>
-                  <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="seleccionarCentro(info.id, false)" > <span class="icon-cross"> </span> Eliminar </button>
+                    <button class="btn btn-success" onclick="aceptarRegistro()" (click)="seleccionarCentro(info.id, true)"> <span class="icon-checkmark"></span> </button>
+                    <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="seleccionarCentro(info.id, false)"> <span class="icon-cross"> </span>  </button>
                   </td>
 
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="paginaPrincipal = $event"></pagination-controls>
 
           </div>
 
 
 
-          <div *ngIf="showSuccess">
-            <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
-              <strong> !Exito¡ </strong> Cuentas esperando su respuesta !
-            </ngb-alert>
-          </div>
+          <!--
 
-          <div *ngIf="showDanger">
-            <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
-              <strong> !Aviso¡ </strong> No hay cuentas ha verificar !
-            </ngb-alert>
-          </div>
+    <div *ngIf="showSuccess">
+      <ngb-alert *ngIf="!staticAlertClosed" type="success" class="movimiento" (close)="close()">
+        <strong> !Exito¡ </strong> Cuentas esperando su respuesta !
+      </ngb-alert>
+    </div>
 
+    <div *ngIf="showDanger">
+      <ngb-alert *ngIf="!staticAlertClosed" type="danger" class="movimiento" (close)="close()">
+        <strong> !Aviso¡ </strong> No hay cuentas ha verificar !
+      </ngb-alert>
+    </div>
 
+         -->
 
         </div>
+
+
+
+
+
+
+        <div class="card" style="margin-top:10px;">
+          <div class="card-header"> <h1> Centros aceptados </h1> </div>
+          <div class="card-body">
+
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"> ID </th>
+                  <th scope="col"> Imagen </th>
+                  <th scope="col"> Nombre </th>
+                  <th scope="col"> Usuario </th>
+                  <th scope="col"> Contraseña </th>
+                  <th scope="col"> Correo electronico </th>
+                  <th scope="col"> Documento(s) Adjunto </th>
+                  <th scope="col"> Estatus </th>
+                  <th scope="col"> Acciónes </th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let info of _centro2 | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
+                  <td> {{info.id}} </td>
+
+                  <td>
+                    <img *ngIf="info.imagen == '' " class="rounded-circle" [src]="rutaImagenD" />
+                    <img *ngIf="info.imagen != '' " class="rounded-circle" [src]="ruta2 + info.id +'/'+ info.imagen" />
+                  </td>
+
+                  <td> {{info.nombre}} </td>
+                  <td> {{info.usuario}} </td>
+                  <td> {{info.password}} </td>
+                  <td> {{info.correo}}</td>
+                  <td> <a href="{{ruta + info.documento}}" target="_blank"> <p class="btn btn-info"> <span class="icon-download"></span> Verificar documento </p> </a></td>
+                  <td> {{info.titulo}}</td>
+                  <td>
+                    <button class="btn btn-success" onclick="habilitarCentro()" (click)=" habilitarDeshabilitar(info.id, 1)"> <span class="icon-eye"></span> </button>
+                    <button class="btn btn-success" onclick="deshabilitarCentro()" (click)=" habilitarDeshabilitar(info.id, 2)"> <span class="icon-eye-blocked"> </span>  </button>
+
+                    <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="seleccionarCentro(info.id, false)"> <span class="icon-cross"> </span>  </button>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="paginaPrincipal = $event"></pagination-controls>
+
+          </div>
+        </div>
+
+
+
+
+
+
+
+
 
       </div>
     </div>

@@ -2,7 +2,9 @@
   text-align: center;
 }
 
-
+table {
+  padding: 10px 10px 10px 10px;
+}
 
 div select option {
   text-align: center;

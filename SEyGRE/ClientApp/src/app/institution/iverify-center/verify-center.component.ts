@@ -17,6 +17,16 @@ export class VerifyCenterComponent{
   public staticAlertClosed;
 
   public _centro: centro[]
+  public _centro2: any
+
+  paginaPrincipal: number = 1;
+
+  rutaImagenD: string = "../../../assets/image/sin-foto.png";
+  ruta: string = "../../../assets/doc/"
+  ruta2: string = "../../../assets/profile/"
+
+  showDefault: boolean;
+  show: boolean;
 
   constructor(private http: HttpClient, private router: Router) {
 
@@ -28,13 +38,21 @@ export class VerifyCenterComponent{
   }
 
 
+
   public obtenerPeticiones(): void {
 
-    this.http.get<centro[]>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
-
-      console.log(result);
+    this.http.get<any>("api/CentrosAcopio/ObtenerCentrosPendientes").subscribe(result => {
 
       this._centro = result;
+
+
+      this.http.get<any>("api/Institucion/ObtenerCentrosHabDes").subscribe(result => {
+      
+          this._centro2 = result;
+
+       // this.mensajesAlerts(result.length);
+
+      });
 
 
       //  this.mensajesAlerts(result.length);
@@ -42,6 +60,24 @@ export class VerifyCenterComponent{
     });
 
   }
+
+
+  habilitarDeshabilitar(id: number, estatus: number) {
+
+    let json = JSON.stringify({ id: id, idEstatus: estatus });
+
+    this.http.post<any>('api/institucion/HabilitarDeshabilitar', JSON.parse(json)).subscribe(() => {
+
+      this.obtenerPeticiones();
+
+    });
+
+
+  }
+
+
+
+
 
   public seleccionarCentro(id: number, op: boolean) {
 
