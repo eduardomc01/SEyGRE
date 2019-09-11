@@ -12,11 +12,9 @@ import { HttpClient } from '@angular/common/http';
 export class TableNoticesComponent {
 
   _noticias: any;
-  http: HttpClient;
-  router: Router;
 
 
-  constructor() {
+  constructor(private http: HttpClient, router: Router) {
 
     this.obtenerNoticias();
 
@@ -49,8 +47,6 @@ export class TableNoticesComponent {
 
 
     this.http.post<any>("api/Institucion/ModificarNoticia", JSON.parse(json)).subscribe(result => {
-
-      console.log(result)
 
       //this._noticias = result;
 

@@ -1,0 +1,27 @@
+* {
+  text-align: center;
+}
+
+
+
+div select option {
+  text-align: center;
+}
+
+div [type="text"] {
+border: none;
+}
+
+
+table tbody tr th {
+  background-color:seagreen;
+
+  color: white;
+}
+
+
+table tbody tr th p {
+  padding-top: 10px;
+}
+
+

@@ -49,11 +49,11 @@ export class BarsComponent implements OnInit {
         var data = document.getElementById("bars");
         
         html2canvas(data).then(canvas => {
-        // Few necessary setting options  
+
         var imgWidth = 200;
-        //var pageHeight = 400;
+
         var imgHeight = canvas.height * imgWidth / canvas.width;
-        //var heightLeft = imgHeight;
+
 
         const contentDataURL = canvas.toDataURL('image/jpg')
         let pdf = new jspdf('p', 'mm', 'A4'); // A4 size page of PDF  

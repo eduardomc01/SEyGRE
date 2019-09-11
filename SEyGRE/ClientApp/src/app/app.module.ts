@@ -69,10 +69,11 @@ import { CBigVisualPolarComponent } from './citizen/cstats/modules/big-visual-po
 import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/cbig-visual-pie.component';
 import { AddNoticesComponent } from './institution/inotices/modules/add-notices/add-notices.component';
 import { CNoticesComponent } from './institution/inotices/cnotices.component';
-
 import { TableNoticesComponent } from './institution/inotices/modules/table-notices/table-notices.component';
 
+import { ReportsComponent } from './institution/reports/reports.component';
 
+import { CentersReportsComponent } from './institution/reports/modules/centers-reports.component';
 
 @NgModule({
   declarations:[
@@ -139,13 +140,11 @@ import { TableNoticesComponent } from './institution/inotices/modules/table-noti
     CBigVisualPieComponent,
 
     NoticesComponent,
-
     AddNoticesComponent,
-
     CNoticesComponent,
-
     TableNoticesComponent,
-
+    ReportsComponent,
+    CentersReportsComponent,
 
   ],
   imports: [
@@ -194,6 +193,7 @@ import { TableNoticesComponent } from './institution/inotices/modules/table-noti
       { path: 'i-home', component: IHomeComponent },
       { path: 'i-verify-center', component: VerifyCenterComponent },
       { path: 'i-maps', component: IMapsComponent },
+      { path: 'i-reports', component: ReportsComponent },
       { path: 'add-notices', component: CNoticesComponent },
 
       { path: '', component: CHomeComponent, pathMatch: 'full' },

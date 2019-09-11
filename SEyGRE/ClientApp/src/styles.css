@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+.card {
+  text-align: center;
+  margin: 0 0 0 0;
+  box-shadow: rgba(155,155,155,.5) 2px 2px 5px 2px;
+}
 
 footer {
   background-color: gray;
