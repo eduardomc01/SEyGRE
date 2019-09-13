@@ -11,8 +11,8 @@ import { Time } from '@angular/common';
 
 export class NavMenuComponent {
 
-  rutaImagenD: string = "../../../assets/image/sin-foto.png";
-  rutaImagen: string = "../../../assets/profile/";
+  rutaImagenD: string = "/assets/image/sin-foto.png";
+  rutaImagen: string = "/assets/profile/";
   idUser: string = sessionStorage.getItem("idUser");
 
   nombre: string = sessionStorage.getItem("nombre");

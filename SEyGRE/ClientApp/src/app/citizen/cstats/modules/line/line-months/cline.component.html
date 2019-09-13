@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Estadisticas </title>
+</head>
+<body>
+
+  <div class='container-fluid' ngNativeValidate>
+    <div class='row'>
+      <div class='col-sm-9 body-content'>
+
+        <div class="card" >
+          <div class="card-header">
+            <h1> Cantidad de residuos electrónicos por mes </h1>
+          </div>
+
+          <div class="card-body" id="line">
+            <canvas baseChart
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [legend]="lineChartLegend"
+                    [colors]="lineChartColors"
+                    [chartType]="lineChartType"></canvas>
+          </div>
+          <div class="card-footer">
+
+
+            <button *ngIf="show" class="btn btn-danger" type="button" (click)="generarPDF()"><span class="icon-file-pdf"></span> </button>
+
+            <input type="text" class="form-control" id="search" [(ngModel)]="validate" #box (keyup)="getLine(box.value)" placeholder="Nombre del Centro de acopio" required />
+
+            <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
+
+            <button *ngIf="show" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> </button>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ export class BarsComponent implements OnInit {
   public barChartLabels: Label[] = [];
   public barChartLegend = true;
   public barChartType = 'bar';
-  public barChartData: ChartDataSets[] = [{ data: [], label: "" }];;
+  public barChartData: ChartDataSets[] = [{ data: [], label: "" }];
   public ChartColors: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .6)' }]
 
   public show: boolean;
@@ -68,11 +68,13 @@ export class BarsComponent implements OnInit {
   public getBarras():void {
 
 
-    this.http.get<number[]>("api/Componentes/ObtenerInformacionBarras?id=" + this.idUser).subscribe(result => {
+    this.http.get<any>("api/Componentes/ObtenerInformacionBarras2?id=" + this.idUser).subscribe(result => {
 
 
       this.barChartLabels = ["2019", "2020", "2021", "2022", "2023", "2024", "2025"];
-      this.barChartData = [{ data: result, label: 'Kilogramos' }];
+      this.barChartData = [
+        { data: result[0], label: 'Kilogramos' },
+        { data: result[1], label: 'Toneladas' }];
 
     });
 

@@ -40,13 +40,14 @@ import { TableUsersComponent } from './center/users/modules/table-users/table-us
 import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
 import { AddEventsComponent } from './center/events/modules/add-events/add-events.component';
 
-
+/*ciudadanos*/
 import { CHomeComponent } from './citizen/chome/chome.component';
 import { CMapsComponent } from './citizen/cmaps/cmaps.component';
 import { CInfoComponent } from './citizen/cinfo/cinfo.component';
 import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-citizen.component';
 import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
 
+/*centros*/
 import { LineComponent } from './center/stats/modules/line/line.component';
 import { PieComponent } from './center/stats/modules/pie/pie.component';
 import { PolarComponent } from './center/stats/modules/polar/polar.component';
@@ -58,24 +59,31 @@ import { BigVisualPolarComponent } from './center/stats/modules/big-visual-polar
 import { BigVisualPieComponent } from './center/stats/modules/big-visual-pie/big-visual-pie.component';
 
 
-
-import { CBarsComponent } from './citizen/cstats/modules/bars/cbars.component';
+/*ciudadanos */
 import { CStatsComponent } from './citizen/cstats/cstats.component';
-import { CLineComponent } from './citizen/cstats/modules/line/cline.component';
+import { CBarsComponent } from './citizen/cstats/modules/bars/bars-ewaste/cbars.component';
+import { CBarsEventsComponent } from './citizen/cstats/modules/bars/bars-events/cbars-events.component';
+import { CLineComponent } from './citizen/cstats/modules/line/line-months/cline.component';
+import { CLineWasteComponent } from './citizen/cstats/modules/line/line-waste-centers/cline-waste.component';
 import { CPieComponent } from './citizen/cstats/modules/pie/cpie.component';
 import { CPolarComponent } from './citizen/cstats/modules/polar/cpolar.component';
+import { CBigVisualLineComponent } from './citizen/cstats/modules/big-visual-line/line-months/cbig-visual-line.component';
+import { CBigVisualLineCentersWasteComponent } from './citizen/cstats/modules/big-visual-line/line-waste-centers/cbig-visual-line-centers-waste.component';
+
+import { CBigVisualBarsComponent } from './citizen/cstats/modules/big-visual-bars/bars-ewaste/cbig-visual-bars.component';
+import { CBigVisualBarsEventsComponent } from './citizen/cstats/modules/big-visual-bars/bars-events/cbig-visual-bars-events.component';
 
 
-import { CBigVisualBarsComponent } from './citizen/cstats/modules/big-visual-bars/cbig-visual-bars.component';
-import { CBigVisualLineComponent } from './citizen/cstats/modules/big-visual-line/cbig-visual-line.component';
 import { CBigVisualPolarComponent } from './citizen/cstats/modules/big-visual-polar/cbig-visual-polar.component';
 import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/cbig-visual-pie.component';
+
+
+
+/* intitucion */
 import { AddNoticesComponent } from './institution/inotices/modules/add-notices/add-notices.component';
 import { CNoticesComponent } from './institution/inotices/cnotices.component';
 import { TableNoticesComponent } from './institution/inotices/modules/table-notices/table-notices.component';
-
 import { ReportsComponent } from './institution/reports/reports.component';
-
 import { CentersReportsComponent } from './institution/reports/modules/centers-reports.component';
 
 @NgModule({
@@ -131,13 +139,24 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
 
 
     CStatsComponent,
+
     CBarsComponent,
+    CBarsEventsComponent,
+
     CLineComponent,
+    CLineWasteComponent,
+
     CPieComponent,
     CPolarComponent,
 
     CBigVisualBarsComponent,
+    CBigVisualBarsEventsComponent,
+
     CBigVisualLineComponent,
+
+    CBigVisualLineCentersWasteComponent,
+
+
     CBigVisualPolarComponent,
     CBigVisualPieComponent,
 
@@ -206,8 +225,15 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
       { path: 'c-info', component: CInfoComponent },
 
       { path: 'c-big-visual-bars', component: CBigVisualBarsComponent },
+
+      { path: 'c-big-visual-bars-events', component: CBigVisualBarsEventsComponent },
+
       { path: 'c-big-visual-pie', component: CBigVisualPieComponent },
+
       { path: 'c-big-visual-line', component: CBigVisualLineComponent },
+
+      { path: 'c-big-visual-line-waste-centers', component: CBigVisualLineCentersWasteComponent },
+
       { path: 'c-big-visual-polar', component: CBigVisualPolarComponent },
 
     ])

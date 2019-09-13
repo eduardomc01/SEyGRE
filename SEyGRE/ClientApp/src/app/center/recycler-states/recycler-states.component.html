@@ -11,36 +11,104 @@
         <app-nav-menu></app-nav-menu>
       </div>
 
-        <div class="card">
-          <div class="card-header">
-            <h1> Monitoreo de Reciclaje </h1>
-          </div>
+      <div class="card">
+        <div class="card-header">
+          <h1> Monitoreo de Reciclaje </h1>
+        </div>
 
-          <div class="card-body">
+        <div class="card-body">
 
-            <div>
-              <input id="chk1" type="checkbox" class="form-check" onclick="animar()" />
-            </div>
+          <input type="text" class="form-control" [(ngModel)]="_busqueda" name="_busqueda" id="_busqueda" placeholder="Busqueda universal" (keyup)="obtenerBusquedaComponentes()" required />
 
-            <div class="progress">
-              <div id="b1" class="progress-bar bg-success inicio animacion" role="progressbar" aria-valuemin="0" aria-valuemax="50"> </div>
-            </div>
+          <table class="table">
+
+            <thead class="thead-dark">
+
+              <tr>
+
+                <th scope="col"> ID </th>
+                <th scope="col"> Componente </th>
+                <th scope="col"> Peso (Kg) </th>
+                <!--        <th scope="col"> Clasificación </th>    -->
+                <th scope="col"> Fecha de ingreso </th>
+                <th scope="col"> Fases de reciclado </th>
+                <th scope="col" colspan="5"> Acciones  </th>
+
+              </tr>
+            </thead>
+
+            <tbody *ngIf="inexistente">
+
+              <tr *ngFor="let info of _componentes | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
+
+                <td> <input type="text" class="form-control" placeholder={{info.id}} disabled />  </td>
+                <td> <input type="text" class="form-control" value={{info.nombre}} #box1 disabled /></td>
+                <td> <input type="text" class="form-control" value={{info.peso}} #box2 disabled /> </td>
 
 
 
+                <td> <input type="date" class="form-control" id="Fecha{{info.id}}" name="date" value={{info.fecha}} #box3 disabled /> </td>
 
-          </div>
+                <td> <input type="text" class="form-control" title="{{info.etapa}}" id="etapa{{info.idEtapa}}" value={{info.etapa}} #box4 disabled /> </td>
 
-          <div class="card-footer">
-            <p> Información relacionada con el manejo de los residuos en cuestión </p>
+              <!--  <td>
+
+                  <select class="form-control" id="Etapa{{info.id}}" [(ngModel)]="fase" name="fase" #box3>
+                    <option value="{{info.idEtapa}}" selected disabled> {{ info.etapa }} </option>
+
+                  </select>
+
+                </td>
+                  -->
+
+                <td> <button type="button" class="btn btn-success" (click)="etapaReciclado(info.id, 1)"><span class="icon-tree"></span></button> </td>
+                <td> <button type="button" class="btn btn-primary" (click)="etapaReciclado(info.id, 2)"><span class="icon-wrench"></span></button> </td>
+                <td> <button type="button" class="btn btn-warning" (click)="etapaReciclado(info.id, 3)"><span class="icon-database"></span></button> </td>
+                <td> <button type="button" class="btn btn-danger" (click)="etapaReciclado(info.id, 4)"><span class="icon-lab"></span></button> </td>
+                <td> <button type="button" class="btn btn-success" (click)="etapaReciclado(info.id, 5)"><span class="icon-coin-dollar"></span></button> </td>
+
+
+
+</tbody>
+            </table>
+            <pagination-controls (pageChange)="paginaPrincipal = $event"></pagination-controls>
+
+
+            <p *ngIf="!inexistente" style="font-weight: bolder; font-family:Arial; font-size: 15px">
+              <span class='icon-cross'> </span>  !Residuo electrónico inexistente¡
+            </p>
+
+
           </div>
 
         </div>
+
       </div>
+
     </div>
 
 
-</body>
+  </body>
 
 
-</html>
+  </html>
+
+
+
+
+  <!--
+    <div>
+      <input id="chk1" type="checkbox" class="form-check" onclick="animar()" />
+    </div>
+
+    <div class="progress">
+      <div id="b1" class="progress-bar bg-success inicio animacion" role="progressbar" aria-valuemin="0" aria-valuemax="50"> </div>
+    </div>
+
+  </div>
+
+
+  <div class="card-footer">
+    <p> Información relacionada con el manejo de los residuos en cuestión </p>
+  </div>
+      -->

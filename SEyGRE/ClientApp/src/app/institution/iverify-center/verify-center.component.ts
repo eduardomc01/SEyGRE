@@ -21,9 +21,9 @@ export class VerifyCenterComponent{
 
   paginaPrincipal: number = 1;
 
-  rutaImagenD: string = "../../../assets/image/sin-foto.png";
-  ruta: string = "../../../assets/doc/"
-  ruta2: string = "../../../assets/profile/"
+  rutaImagenD: string = "/assets/image/sin-foto.png";
+  ruta: string = "/assets/doc/";
+  ruta2: string = "/assets/profile/";
 
   showDefault: boolean;
   show: boolean;

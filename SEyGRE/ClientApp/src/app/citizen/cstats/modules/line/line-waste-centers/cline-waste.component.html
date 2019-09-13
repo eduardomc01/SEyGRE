@@ -10,9 +10,9 @@
     <div class='row'>
       <div class='col-sm-9 body-content'>
 
-        <div class="r4 card" >
+        <div class="card" >
           <div class="card-header">
-            <h1> Cantidad de residuos electrónicos por mes </h1>
+            <h1> Comparación centros de acopio (Kg. o T.) </h1>
           </div>
 
           <div class="card-body" id="line">
@@ -23,17 +23,19 @@
                     [colors]="lineChartColors"
                     [chartType]="lineChartType"></canvas>
           </div>
-          <div class="card-footer">
 
-
+    <div class="card-footer">
+    
+          
+            
             <button *ngIf="show" class="btn btn-danger" type="button" (click)="generarPDF()"><span class="icon-file-pdf"></span> </button>
 
-            <input type="text" class="form-control" id="search" [(ngModel)]="validate" #box (keyup)="getLine(box.value)" placeholder="Nombre del Centro de acopio" required />
+            <button type="button" class="btn btn-warning" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
 
-            <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
+            <button type="button" class="btn btn-success" (click)="getLine()"> <span class="icon-search"></span> </button>
 
-            <button *ngIf="show" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> </button>
-
+            <button *ngIf="show"  type="button"  class="btn btn-primary" (click)="Regresar()"><span class="icon-undo"></span> </button>
+                
 
           </div>
         </div>

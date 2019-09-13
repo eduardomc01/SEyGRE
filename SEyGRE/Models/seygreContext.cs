@@ -6,13 +6,11 @@ namespace SEyGRE.Models
 {
     public partial class seygreContext : DbContext
     {
-
-        private string connectionString;
+        private readonly string connectionString;
 
         public seygreContext(string _connectionString)
         {
             connectionString = _connectionString;
-
         }
 
         public seygreContext(DbContextOptions<seygreContext> options)
@@ -342,6 +340,11 @@ namespace SEyGRE.Models
                 entity.Property(e => e.IdClasificacion)
                     .HasColumnName("idClasificacion")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.IdEtapa)
+                    .HasColumnName("idEtapa")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.Nombre)
                     .HasColumnName("nombre")

@@ -218,7 +218,7 @@ namespace SEyGRE.Controllers
 
             foreach(var e in elementos)
             {
-                totalElementos += e.Cantidad;
+                totalElementos += (e.Cantidad / 1000.0f); /*convirtiendo gramos a Kg. 1g. = .001kg */
             }
 
             var residuos = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);

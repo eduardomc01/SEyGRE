@@ -6,15 +6,18 @@ font-size: 20px;
 }
 
 body {
-  background-color: red;
+ /* background-color: red;*/
   float: left;
   left: 0;
+
 }
 
 #main-nav {
   background-color: black;
-  position: fixed;
-  width: 23%;
+  position: fixed; /*fixed */
+
+ padding-right: 5%;
+
   height: 100%;
   left: 0;
   top: 0;
@@ -56,11 +59,13 @@ label {
   display:none;
 }
 
-
+/*
 #hide {
   display: none;
 }
+  */
 
+/* logo esquina inferior derecha  */
 .icon-eye {
   position: fixed;
   color: white;
@@ -79,3 +84,79 @@ label {
   .icon-eye:hover {
     color: mediumturquoise;
   }
+
+#main-nav-horizontal {
+  display: none;
+}
+
+
+  
+
+@media screen and (max-device-width: 480px) {
+  #main-nav {
+  
+    display: none;
+  }
+
+
+  #main-nav-horizontal {
+    height: 5%;
+    position: fixed;
+    z-index: 2;
+    margin-top: -78%;
+    margin-left:-50%;
+    padding: 70%;
+    background-color: black;
+    display: none;
+
+  }
+
+
+
+    #main-nav-horizontal li a {
+      display: block;
+      padding: 8px 16px;
+      text-decoration: none;
+    }
+
+    #main-nav-horizontal ul {
+      list-style-type: none;
+      margin-left: 30%;
+      padding: 0;
+      width: 200%;
+      background-color: black;
+    }
+
+  #hide:checked ~ #main-nav-horizontal {
+    display:block;
+  }
+
+
+
+}
+
+    
+
+  /*
+@media screen and (max-device-width : 480px) {
+
+  #main-nav {
+    text-align: center;
+    width: 100%;
+    background-color: blue;
+  }
+}
+
+    */
+
+/*
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+  #main-nav {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    background-color: brown;
+  }
+
+}
+  */

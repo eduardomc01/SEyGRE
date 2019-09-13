@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Estadisticas </title>
+</head>
+<body>
+
+  <div class='container-fluid'>
+    <div class='row'>
+
+      <div class='col-sm-9 body-content'>
+
+        <div class="card">
+          <div class="card-header">
+            <h1> Cantidad de eventos por centro </h1>
+          </div>
+
+          <div class="card-body" id="bars" ngNativeValidate>
+            <canvas baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [colors]="ChartColors"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"></canvas>
+          </div>
+
+          <div class="card-footer">
+
+
+            <button *ngIf="show" class="btn btn-danger" type="button" (click)="generarPDF()"> <span class="icon-file-pdf"></span> </button>
+
+
+            <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span>  </button>
+            
+            <button type="button" class="btn btn-success" (click)="getBarras()"> <span class="icon-search"></span> </button>
+            
+
+            <button *ngIf="show" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span>  </button>
+
+   
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
+

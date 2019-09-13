@@ -36,57 +36,33 @@ namespace SEyGRE.Controllers
         public int InsertarCentros([FromBody] Centrosacopio r)
         {
 
+
+            string origen = "seygre.veracruz@gmail.com";
+            string destino = "seygre.veracruz@gmail.com";
+            string contraseña = "veracruzrrr";
+
+
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             var register = (from e in context.Centrosacopio select e).ToList();
-            /*
-            foreach (var list in register)
-            {
-                if (list.Nombre.Contains(r.Usuario) == true)
-                {
-                    return 0;
-                }
-                else if (list.Nombre.Contains(r.Nombre) == true)
-                {
-                    return 0;
-                }
-                else if (list.Correo.Contains(r.Correo) == true) {
-                    return 0;
-                }
-                else if(list.Password.Contains(r.Password) == true)
-                {
-                    return 0;
-                }
-            }*/
 
             context.Centrosacopio.Add(r);
 
             context.SaveChanges();
 
 
-            /*
-            string origen = "seygre.veracruz@gmail.com";
-            string destino = "seygre.veracruz@gmail.com";
-            string contraseña = "veracruzrrr";
-            
-
             MailMessage m = new MailMessage();
             SmtpClient s = new SmtpClient();
 
             try
             {
+
                 m.From = new MailAddress(origen);
                 m.To.Add(new MailAddress(destino));
                 m.Subject = "Nuevo Registro de C.A.";
-                m.Body = "Se ha ingresado un NUEVO REGISTRO con los siguientes datos: \n" +
-                    "\nUsuario:" + r.Usuario +
-                    "\nNombre:" + r.Nombre +
-                    "\nContraseña: " + r.Password +
-                    "\nCorreo:" + r.Correo +
-                    "\nLatitud:" + r.Latitud +
-                    "\nLongitud:" + r.Longitud +
-                    "\nDocumento oficial:" + r.Imagen;
-                
+                m.IsBodyHtml = true;
+                m.Body = Formmato1Html(r);
+               
                 s.Host = "smtp.gmail.com";
                 s.Port = 587;
                 s.Credentials = new NetworkCredential(origen, contraseña);
@@ -94,15 +70,62 @@ namespace SEyGRE.Controllers
                 s.Send(m);
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
-
+                
                 throw;
             }
-            */
+            
 
             return 1;
         }
+
+
+        public string Formmato1Html( Centrosacopio r)
+        {
+
+
+            return (@"<html>" +
+                    "<body>" +
+                    "<div style='" +
+                    "padding-bottom: 50px;" +
+                    "text-align: center;" +
+                    "box-shadow: 5px 5px 5px 5px rgba(125,125,125,.8);" +
+                    "border-radius: 10px;'>" +
+
+                    "<h3 style='" +
+                    "padding:5 %;'>" +
+                    "Mensaje de aviso por centro de acopio en espera de nuestra respuesta  </h3>" +
+
+                    "<table style='" +
+                    "padding: 0 5% 0 5%; width:100% '>" +
+                    "<thead> <tr>  <th colspan='2'>" +
+                    "Información del 'posible' centro </th></tr></thead>" +
+
+                    " <tbody>  " +
+                    "  <tr> <th> Usuario </th> " +
+                    "  <td> " + r.Usuario + " </td> " +
+                    "  <tr> <th> Nombre del centro </th> " +
+                    " <td> " + r.Nombre + " </td> " +
+                    " <tr> <th> Correo electrónico </th> " +
+                    " <td> " + r.Correo + " </td> " +
+                    " </tr> " +
+                    "</tbody> " +
+                    "<tfooter> " +
+                    "<tr > " +
+                    " <td colspan='2'>  </td> " +
+                    "	</tr> " +
+                    "</tfooter> " +
+
+                    " </table> " +
+
+                    " </div> " +
+                    " </body>" +
+                    "</html>");
+
+
+        }
+
 
         [HttpGet("[action]")]
         public List<RelacionCentrosAcopioEstatus> ObtenerCentrosPendientes()
@@ -218,7 +241,7 @@ namespace SEyGRE.Controllers
                         on e.IdEstatus equals l.Id
                         join f in context.Tipousuario
                         on e.IdTipoUsuario equals f.Id
-                        where e.Usuario == r.Usuario && e.Password == r.Password && e.IdEstatus.Equals(1)
+                        where e.Usuario == r.Usuario && e.Password == r.Password && e.IdEstatus.Equals(1) /*|| f.Nombre == r.Usuario*//* checar el super usuario */ 
                         select new RelacionCentrosAcopioEstatus
                         {
 
@@ -238,11 +261,11 @@ namespace SEyGRE.Controllers
         [HttpPost("[action]")]
         public int AceptarPeticionCentro([FromBody] int id)
         {
-            /*
+            
             string origen = "seygre.veracruz@gmail.com";
             string destino;
             string contraseña = "veracruzrrr";
-            */
+            
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             var found = context.Centrosacopio.Find(id);
@@ -251,11 +274,11 @@ namespace SEyGRE.Controllers
 
             context.Centrosacopio.Update(found);
 
-            //destino = found.Correo;
+            destino = found.Correo;
 
             context.SaveChanges();
 
-            /*
+            
             MailMessage m = new MailMessage();
             SmtpClient s = new SmtpClient();
 
@@ -264,8 +287,8 @@ namespace SEyGRE.Controllers
                 m.From = new MailAddress(origen);
                 m.To.Add(new MailAddress(destino));
                 m.Subject = "SEyGRE-Aceptado";
-                m.Body = "Felicidades, ya forma parte de este sistema y damos por echo que sera una gran aventura tenerlos aqui con las \n" +
-                    "personas que quieren ver un mundo mas limpio de residuos electronicos, saludos.";
+                m.IsBodyHtml = true;
+                m.Body = Formmato2Html(found);
 
                 s.Host = "smtp.gmail.com";
                 s.Port = 587;
@@ -274,14 +297,65 @@ namespace SEyGRE.Controllers
                 s.Send(m);
 
             }
-            catch (Exception e )
+            catch (Exception  )
             {
 
                 throw;
             }
-            */
+            
 
             return 1;
+
+        }
+
+
+
+        public string Formmato2Html(Centrosacopio r)
+        {
+
+
+            return (@"<html>" +
+                    "<body>" +
+                    "<div style='" +
+                    "padding-bottom: 50px;" +
+                    "text-align: center;" +
+                    "box-shadow: 5px 5px 5px 5px rgba(125,125,125,.8);" +
+                    "border-radius: 10px;'>" +
+
+                    "<h3 style='" +
+                    "padding:5 %;'>" +
+                    "Respuesta al centro de acopio  </h3>" +
+
+                    "<table style='" +
+                    "padding: 0 5% 0 5%; width:100% '>" +
+                    "<thead> <tr>  <th colspan='2'>" +
+                    "Información breve del centro  aceptado </th></tr></thead>" +
+
+                    " <tbody>  " +
+                    "  <tr> <th> Usuario </th> " +
+                    "  <td> " + r.Usuario + " </td> " +
+                    "  <tr> <th> Nombre del centro </th> " +
+                    " <td> " + r.Nombre + " </td> " +
+                    "  <tr> <th> Documentación </th> " +
+                    " <td> Verificada y  <p style='color: green;'> aceptada </p> </td> " +
+                    " </tr> " +
+                    "</tbody> " +
+                    "<tfooter>" +
+                    "<tr > " +
+                    " <td colspan='2'> " +
+                    "<br/>" +
+                    "¡Felicidades!, ya forma parte de este sistema y damos por echo que sera una gran aventura tenerlos aqui con las " +
+                    "personas que quieren ver un mundo más limpio de residuos electronicos. <br/><br/> Saludos cordiales del equipo SEyGRE' " +
+                    "</td> " +
+                    "	</tr> " +
+                    "</tfooter> " +
+
+                    " </table> " +
+
+                    " </div> " +
+                    " </body>" +
+                    "</html>");
+
 
         }
 
@@ -289,23 +363,23 @@ namespace SEyGRE.Controllers
         [HttpPost("[action]")]
         public int EliminarPeticionCentro([FromBody] int id)
         {
-            /*
+         
             string origen = "seygre.veracruz@gmail.com";
             string destino;
             string contraseña = "veracruzrrr";
-            */
+        
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             var found = context.Centrosacopio.Find(id);
 
-            //destino = found.Correo;
+            destino = found.Correo;
 
             context.Centrosacopio.Remove(found);
 
             context.SaveChanges();
 
-            /*
+            
             MailMessage m = new MailMessage();
             SmtpClient s = new SmtpClient();
 
@@ -314,9 +388,8 @@ namespace SEyGRE.Controllers
                 m.From = new MailAddress(origen);
                 m.To.Add(new MailAddress(destino));
                 m.Subject = "SEyGRE-Rechazado";
-                m.Body = "Lo sentimos, no cumplia los requisitos para darse de alta en el sistema, vuelva cuando los documentos requeridos \n " +
-                    "esten a la mano o la información proporcionada sea fidedigna y no haya problema alguno. " +
-                    "\n\nQue tenga un buen dia. Saludos";
+                m.IsBodyHtml = true;
+                m.Body = Formato3Html(found);
 
                 s.Host = "smtp.gmail.com";
                 s.Port = 587;
@@ -325,14 +398,63 @@ namespace SEyGRE.Controllers
                 s.Send(m);
 
             }
-            catch (Exception e)
+            catch (Exception )
             {
 
                 throw;
             }
-            */
+            
 
             return 1;
+
+        }
+
+
+        public string Formato3Html(Centrosacopio r)
+        {
+
+
+            return (@"<html>" +
+                    "<body>" +
+                    "<div style='" +
+                    "padding-bottom: 50px;" +
+                    "text-align: center;" +
+                    "box-shadow: 5px 5px 5px 5px rgba(125,125,125,.8);" +
+                    "border-radius: 10px;'>" +
+
+                    "<h3 style='" +
+                    "padding:5 %;'>" +
+                    "Respuesta al centro de acopio  </h3>" +
+
+                    "<table style='" +
+                    "padding: 0 5% 0 5%; width:100% '>" +
+                    "<thead> <tr>  <th colspan='2'>" +
+                    "Información breve del centro  aceptado </th></tr></thead>" +
+
+                    " <tbody>  " +
+                    "  <tr> <th> Usuario </th> " +
+                    "  <td> " + r.Usuario + " </td> " +
+                    "  <tr> <th> Nombre del centro </th> " +
+                    " <td> " + r.Nombre + " </td> " +
+                    "  <tr> <th> Documentación </th> " +
+                    " <td> Verificada y <p style='color: red;'> rechazada </p> </td> " +
+                    " </tr> " +
+                    "</tbody> " +
+                    "<tfooter style='" +
+                    "padding-top: 50px;'>" +
+                    "<tr > " +
+                    " <td colspan='2'> " +
+                    "<br/>" +
+                    "Lo sentimos, no cumple con los requisitos para darse de alta en el sistema, vuelva cuando los documentos oficiales " +
+                    "esten a la mano o la información proporcionada este en orden antes las autoridades competentes. <br/><br/> Saludos cordiales del equipo SEyGRE" +
+                    "</td> " +
+                    "	</tr> " +
+                    "</tfooter> " +
+                    " </table> " +
+                    " </div> " +
+                    " </body>" +
+                    "</html>");
+
 
         }
 
@@ -431,7 +553,7 @@ namespace SEyGRE.Controllers
 
             foreach (var e in elementos)
             {
-                totalElementos += e.Cantidad;
+                totalElementos += (e.Cantidad / 1000.0f); /*convirtiendo gramos a Kg. 1g. = .001kg */
             }
 
             var residuos = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);

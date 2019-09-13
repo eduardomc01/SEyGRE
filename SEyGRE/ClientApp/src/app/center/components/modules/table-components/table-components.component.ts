@@ -12,7 +12,7 @@ import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class TableComponentsComponent {
 
-  public _componentes: componentes[] = [];
+  public _componentes: any;
   public _busqueda: string;
 
   public showSuccess: boolean;
@@ -44,9 +44,8 @@ export class TableComponentsComponent {
     });
 
    
-    this.http.post<componentes[]>("api/Componentes/ObtenerBusquedaPersonalizada", JSON.parse(json)).subscribe(result => {
+    this.http.post<any>("api/Componentes/ObtenerBusquedaPersonalizada", JSON.parse(json)).subscribe(result => {
 
-      console.log(result);
 
         if (result.length != 0) {
 
@@ -63,6 +62,7 @@ export class TableComponentsComponent {
         
     });
   }
+
 
   public eliminarComponente(id: number):void {
 
@@ -87,7 +87,7 @@ export class TableComponentsComponent {
       
     });
 
-    this.http.post<componentes[]>("api/Componentes/ModificarComponente", JSON.parse(json)).subscribe(result => {
+    this.http.post<any>("api/Componentes/ModificarComponente", JSON.parse(json)).subscribe(result => {
 
       //this._personal = result;
       //this.obtenerPersonal();

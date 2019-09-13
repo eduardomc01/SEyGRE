@@ -32,10 +32,13 @@
             <td> <p> <span class="icon-clock"></span> Fecha: {{ today | date:"fullDate" }} </p> </td>
           </tr>
           <tr>
-            <td> <p> <span class="icon-tv"></span> Total RE: {{ totalR }} </p> </td>
+            <td> <p> <span class="icon-tv"></span> Total RE: {{ totalR }} kg. </p> </td>
           </tr>
           <tr>
-            <td> <p> <span class="icon-earth"></span> Total RE x elementos: {{ totalRxE }} </p> </td>
+            <td> <p> <span class="icon-tv"></span> Total RE: {{ totalR / 1000 }} t. </p> </td>
+          </tr>
+          <tr>
+            <td> <p> <span class="icon-lab"></span> Total RE x elementos: {{ totalRxE }} kg. </p> </td>
           </tr>
           <tr>
             <td> <p (click)="closeSession()"> <span class="icon-exit"></span> Cerrar sesión </p> </td>

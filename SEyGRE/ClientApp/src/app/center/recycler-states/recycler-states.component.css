@@ -1,11 +1,59 @@
 body {
   margin-top: 10px;
-  margin-left: -24%;
+  margin-left: 8%;
 }
+
+* {
+  text-align: center;
+}
+
+
+
+
+.card {
+  position: absolute;
+  width: 88%;
+  text-align: center;
+}
+
+
+div [type="text"] {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+div table thead tr th {
+  text-align: center;
+}
+
+
+
+div #_busqueda {
+  margin: 0 0 10px 0;
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 .card {
   text-align: center;
- /* padding: 10px 10px 10px 10px; */
+
   margin: 10px 10px 10px 10px;
 }
 
@@ -13,12 +61,11 @@ p {
  padding: 10px 0 0 10px;
 }
 
-
+  */
 
 /*  animacion de barras progress */
 
-
-
+/*
 
 .inicio{
   width: 0%;
@@ -33,3 +80,4 @@ p {
 .animacion{
   transition: all 2s ease .5s;
 }
+*/

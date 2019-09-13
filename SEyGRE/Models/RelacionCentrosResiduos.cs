@@ -5,14 +5,16 @@ using System.Threading.Tasks;
 
 namespace SEyGRE.Models
 {
-    public partial class RelacionResiduosClasificacion
+    public partial class RelacionCentrosResiduos
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
+        public string NombreCentro { get; set; }
+        public string NombreResiudo { get; set; }
         public float? Peso { get; set; }
-        public string Clasificacion { get; set; }
-        public int? IdClasificacion { get; set; }
+
         public string Fecha { get; set; }
+
+        public string NombreEvento { get; set; }/* tal vez no se utilice */
 
         public string Etapa { get; set; }
         public int? IdEtapa { get; set; }

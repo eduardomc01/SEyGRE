@@ -62,6 +62,45 @@ namespace SEyGRE.Controllers
 
 
         [HttpGet("[action]")]
+        public List<RelacionResiduosClasificacion> ObtenerResiduos(int id)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var list = (from e in context.Residuos
+
+                        join l in context.Clasificacion
+                        on e.IdClasificacion equals l.Id
+
+                        join f in context.Etapas
+                        on e.IdEtapa equals f.Id
+
+                        where e.IdCentroAcopio == id
+                        orderby e.Id descending
+                        select new RelacionResiduosClasificacion
+                        {
+
+                            Id = e.Id,
+                            Nombre = e.Nombre,
+                            Peso = e.Peso,
+                            Clasificacion = l.Titulo,
+                            IdClasificacion = e.IdClasificacion,
+
+                            IdEtapa = f.Id,
+                            Etapa = f.Nombre,
+
+
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd")
+
+                        }).Take(30).ToList();
+
+            return list;
+
+        }
+
+
+
+        [HttpGet("[action]")]
         public List<RelacionResiduosClasificacion> ObtenerTopResiduos(int id)
         {
 
@@ -97,6 +136,10 @@ namespace SEyGRE.Controllers
             var list = (from e in context.Residuos
                         join l in context.Clasificacion
                         on e.IdClasificacion equals l.Id
+
+                        join f  in context.Etapas
+                        on e.IdEtapa equals f.Id
+
                         where (e.Nombre.Contains(r.Busqueda) || e.Peso.ToString().Contains(r.Busqueda) || e.Fecha.ToString().Contains(r.Busqueda) || l.Titulo.Contains(r.Busqueda)) && e.IdCentroAcopio.Equals(r.Id)
 
                         select new RelacionResiduosClasificacion
@@ -106,10 +149,12 @@ namespace SEyGRE.Controllers
                             Nombre = e.Nombre,
                             Peso = e.Peso,
                             Clasificacion = l.Titulo,
+                            IdEtapa = f.Id,
+                            Etapa = f.Nombre,
                             IdClasificacion = e.IdClasificacion,
-                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd") /* verificando la fecha para el date en el html */
+                            Fecha = e.Fecha.Value.ToString("yyyy-MM-dd") /* verificando la fecha para el date en el html en los input */
 
-                        }).Take(30).ToList();
+                        }).ToList();
 
             return list;
 
@@ -173,6 +218,50 @@ namespace SEyGRE.Controllers
             return datos;
 
         }
+
+
+
+        //OBTENER STATS NUEVO
+        [HttpGet("[action]")]
+        public List<float[]> ObtenerInformacionBarras2(int id)/* obtener solo los toneladas alrrato acuerdate */
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            //int max_year = (from e in context.Residuos select e.Fecha).Distinct().Count();
+
+            int[] year = { 2019, 2020, 2021, 2022, 2023, 2024, 2025 };
+            float[] datosk = new float[7];
+            float[] datost = new float[7];
+            int i = 0;
+
+            //var year = (from e in context.Residuos select e.Fecha.Value.Year);
+
+
+            var result = (from e in context.Residuos where e.IdCentroAcopio.Equals(id) select e);
+            foreach (var y in year)
+            {
+                foreach (var r in result)
+                {
+
+                    if (r.Fecha.Value.Year.Equals(y))
+                    {
+                        datosk[i] += r.Peso;
+                        datost[i] += (r.Peso / 1000); /* el Kg. obtenido lo convierto a t  1kg. = 0.001t */
+                    }
+
+                }
+
+                i += 1;
+
+            }
+
+
+            return new List<float[]> { datosk , datost };
+
+        }
+
+
 
         //OBTENER PIE
         [HttpGet("[action]")]
@@ -300,6 +389,34 @@ namespace SEyGRE.Controllers
 
 
         }
+
+
+
+
+
+        [HttpPost("[action]")]
+        public void ModificarEstadoReciclaje([FromBody] Residuos r)
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            var found = context.Residuos.Find(r.Id);
+
+            if (r.IdEtapa != null)
+            {
+                found.IdEtapa = r.IdEtapa;
+            }
+
+
+            context.Update(found);
+
+            context.SaveChanges();
+
+
+
+        }
+
+
 
     }
 

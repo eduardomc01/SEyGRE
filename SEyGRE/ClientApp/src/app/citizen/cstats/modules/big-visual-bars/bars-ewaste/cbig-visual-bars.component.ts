@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ViewChildren } from '@angular/core';
-import { CBarsComponent } from "../bars/cbars.component";
+import { CBarsComponent } from "../../bars/bars-ewaste/cbars.component";
 
 @Component({
   selector: 'app-cbig-visual-bars',

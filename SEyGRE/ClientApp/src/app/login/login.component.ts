@@ -37,7 +37,9 @@ export class LoginComponent {
 
     this.http.post("api/CentrosAcopio/ObtenerUsuario", JSON.parse(json)).subscribe(result => {
 
-      this.mensajesAlerts(result[0], result);
+      //console.log(result[0]);
+
+     this.mensajesAlerts(result[0], result);
       
     });
 
@@ -45,6 +47,8 @@ export class LoginComponent {
 
 
   public mensajesAlerts(op: string, obj: object) {
+
+
 
     this.staticAlertClosed = false;
 
@@ -69,6 +73,15 @@ export class LoginComponent {
       this.router.navigate(["/home"]);
 
     }
+      /*
+    else if (obj[0].tipoUsuario == "super_usuario01") {
+
+      //sessionStorage.setItem("idUser", obj[0].id);
+      //sessionStorage.setItem("nombre", obj[0].nombre);
+      this.router.navigate(["/ihome"]);
+
+    }*/
+
 
   }
 

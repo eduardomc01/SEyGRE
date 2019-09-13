@@ -15,12 +15,7 @@ import * as html2canvas from 'html2canvas';
 export class CPolarComponent implements OnInit {
 
   private idUser: string = sessionStorage.getItem("idUser");
-  /*
-  public radarChartLabels: Label[] = [];
-  public radarChartType: ChartType = 'radar';
-  public ChartColorsTransparent: Color[] = [{ backgroundColor: 'rgba(40, 180, 99, .1)', borderColor: 'rgb(40, 180, 99)' }]
-  public radarChartData: ChartDataSets[] = [{ data: [], label: ""}];
-  */
+
 
   public polarAreaChartLabels: Label[] = [];
   public polarAreaChartData: SingleDataSet = [];
@@ -34,7 +29,7 @@ export class CPolarComponent implements OnInit {
 
     this.show = false;
 
-    this.getPolar();
+   // this.getPolar();
     
   }
 
@@ -52,10 +47,6 @@ export class CPolarComponent implements OnInit {
       this.polarAreaChartLabels = ["Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio","Oro","Plata","Paladio"];
       this.polarAreaChartData = result;
 
-      /*
-      this.radarChartLabels = ["Cobre", "Hierro", "Niquel", "Estaño", "Plomo", "Aluminio", "Oro", "Plata", "Paladio"];
-      this.radarChartData = [{ data: result, label: "Elemento" }];
-      */
 
     });
 

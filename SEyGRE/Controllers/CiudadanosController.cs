@@ -16,7 +16,7 @@ namespace SEyGRE.Controllers
 
         private seygreContext context;
 
-        public CiudadanosController( seygreContext _context)
+        public CiudadanosController(seygreContext _context)
         {
             context = _context;
         }
@@ -28,7 +28,7 @@ namespace SEyGRE.Controllers
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
-            
+
             var list = (from e in context.Noticias select e).ToList();
 
 
@@ -58,7 +58,7 @@ namespace SEyGRE.Controllers
                          join l in context.Centrosacopio
                          on e.IdCentroAcopio equals l.Id
                          where l.Nombre.Contains(busqueda)
-                         select e ));
+                         select e));
 
             });
 
@@ -102,11 +102,11 @@ namespace SEyGRE.Controllers
 
                 datos[i] = await Task.Run(() =>
                 {
-                return (from e in context.Residuos
-                        join l in context.Centrosacopio
-                        on e.IdCentroAcopio equals l.Id
-                        where e.IdClasificacion.Equals(c) &&  l.Nombre.Contains(busqueda)
-                        select e).Count();
+                    return (from e in context.Residuos
+                            join l in context.Centrosacopio
+                            on e.IdCentroAcopio equals l.Id
+                            where e.IdClasificacion.Equals(c) && l.Nombre.Contains(busqueda)
+                            select e).Count();
                 });
 
                 i += 1;
@@ -120,7 +120,7 @@ namespace SEyGRE.Controllers
 
 
 
-        //OBTENER LINEAR
+        //OBTENER LINEAR 1
         [HttpGet("[action]")]
         public async Task<float[]> ObtenerInformacionLinear(string busqueda)
         {
@@ -162,6 +162,10 @@ namespace SEyGRE.Controllers
             return datos;
 
         }
+
+
+
+
 
 
 
@@ -223,8 +227,174 @@ namespace SEyGRE.Controllers
         }
 
 
+        //OBTENER LINEAR 2 
+        [HttpGet("[action]")]
+        public JsonResult ObtenerInformacionLinear2()
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            List<string> centros = new List<string>();
+            List<float?> kg = new List<float?>();
+            List<float?> t = new List<float?>();
+
+            float? acumulador = 0.0f;
+            float? acumuladorT = 0.0f;
+
+            var query = (from e in context.Centrosacopio where e.Id != 1 select e).ToList();
+
+            foreach (var n in query)
+            {
+
+                centros.Add(n.Nombre);
+
+            }
+
+
+            var ewaste = (from e in context.Centrosacopio
+
+                          join l in context.Residuos
+                          on e.Id equals l.IdCentroAcopio
+
+                          select new RelacionCentrosResiduos
+                          {
+
+                              NombreCentro = e.Nombre,
+                              NombreResiudo = l.Nombre,
+                              Peso = l.Peso,
+                              Fecha = l.Fecha.Value.ToString("yyyy-MM-dd")
+
+                          }).ToList();
+
+
+            foreach (var c in centros)
+            {
+
+                foreach (var e in ewaste)
+                {
+
+                    if (c.Contains(e.NombreCentro))
+                    {
+
+                        acumulador += e.Peso;
+                        acumuladorT += e.Peso / 1000;
+
+                    }
+
+                }
+
+                kg.Add(acumulador);
+                t.Add(acumuladorT);
+
+                acumulador = 0.0f;
+                acumuladorT = 0.0f;
+
+            }
+
+
+            return new JsonResult(new Prueba()
+            {
+
+                Centros = centros,
+                Peso = kg,
+                PesoT = t
+
+
+            });
+
+        }
+
+
+
+
+        //OBTENER LINEAR 2 
+        [HttpGet("[action]")]
+        public JsonResult ObtenerInformacionBarras2()
+        {
+
+            context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+
+            List<int> eventos = new List<int>();
+            List<string> centros = new List<string>();
+
+            int acumulador = 0;
+
+            var query = (from e in context.Centrosacopio where e.Id != 1 select e).ToList();
+
+            foreach (var n in query)
+            {
+
+                centros.Add(n.Nombre);
+
+            }
+
+
+            var query_eventos = (from e in context.Eventos
+
+                                 join l in context.Centrosacopio
+                                 on e.IdCentroAcopio equals l.Id
+
+                                 select new RelacionCentrosAcopioEventos {
+
+                                     Id = e.Id,
+                                     Nombre = l.Nombre,
+                                     idEvento = e.Id,
+                                     NombreEvento = e.Nombre
+
+                                 }).ToList();
+
+
+            foreach (var c in centros)
+            {
+
+                foreach (var e in query_eventos)
+                {
+
+                    if (c.Contains(e.Nombre))
+                    {
+
+                        acumulador += 1;
+
+                    }
+
+                }
+                eventos.Add(acumulador);
+                acumulador = 0;
+
+            }
+
+
+            return new JsonResult(new Prueba()
+            {
+
+                Centros = centros,
+                Eventos = eventos
+
+
+            });
+
+        }
+
 
 
 
     }
+
+
 }
+
+
+
+public class Prueba
+{
+
+    public List<string> Centros;
+    public List<float?> Peso;
+    public List<float?> PesoT;
+
+    public List<int> Eventos;
+
+
+}
+
+

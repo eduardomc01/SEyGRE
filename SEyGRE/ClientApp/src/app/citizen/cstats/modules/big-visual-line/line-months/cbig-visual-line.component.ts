@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { CLineComponent } from "../line/cline.component";
+import { CLineComponent } from "../../line/line-months/cline.component";
 
 
 @Component({

@@ -11,5 +11,6 @@ namespace SEyGRE.Models
         public int? IdClasificacion { get; set; }
         public DateTime? Fecha { get; set; }
         public int? IdCentroAcopio { get; set; }
+        public int? IdEtapa { get; set; }
     }
 }

@@ -11,7 +11,7 @@
     <div class='row'>
       <div class='col-sm-9 body-content'>
 
-        <div class="r2 card">
+        <div class="card">
           <div class="card-header">
             <h1> Elementos de un residuo electrónico </h1>
 
@@ -41,11 +41,15 @@
 
           </div>
 
-          <div class="card-footer" >
+          <div class="card-footer">
 
             <button *ngIf="show" class="btn btn-danger" type="button" (click)="generarPDF()"><span class="icon-file-pdf"></span> </button>
 
             <button class="btn btn-warning" type="button" (click)="Maximizar()"> <span class="icon-zoom-in"></span> </button>
+
+
+            <button type="button" class="btn btn-success" (click)="getPolar()"> <span class="icon-search"></span> </button>
+
 
             <button *ngIf="show" style="float: right; margin:2%;" class="btn btn-primary" type="button" (click)="Regresar()"><span class="icon-undo"></span> </button>
 
