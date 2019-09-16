@@ -7,7 +7,6 @@ namespace SEyGRE.Models
     public partial class seygreContext : DbContext
     {
         private readonly string connectionString;
-
         public seygreContext(string _connectionString)
         {
             connectionString = _connectionString;
@@ -188,8 +187,12 @@ namespace SEyGRE.Models
                     .HasColumnName("fecha")
                     .HasColumnType("date");
 
-                entity.Property(e => e.Horario)
-                    .HasColumnName("horario")
+                entity.Property(e => e.HorarioFinal)
+                    .HasColumnName("horarioFinal")
+                    .HasColumnType("time");
+
+                entity.Property(e => e.HorarioInicio)
+                    .HasColumnName("horarioInicio")
                     .HasColumnType("time");
 
                 entity.Property(e => e.IdCentroAcopio)
@@ -211,6 +214,10 @@ namespace SEyGRE.Models
                 entity.Property(e => e.Organizador)
                     .HasColumnName("organizador")
                     .HasColumnType("varchar(80)");
+
+                entity.Property(e => e.Telefono)
+                    .HasColumnName("telefono")
+                    .HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<Modificaciones>(entity =>

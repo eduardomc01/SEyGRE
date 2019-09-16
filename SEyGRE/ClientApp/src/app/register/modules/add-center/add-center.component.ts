@@ -23,7 +23,11 @@ export class AddCenterComponent implements OnInit {
   public _lng: Number;
   public markers: marker[] = [];
 
+  public nombreDoc: string = "Documento(s)";
+
   public idUser: string;
+
+  public req: string;
 
   latitude: number;
   longitude: number;
@@ -31,6 +35,7 @@ export class AddCenterComponent implements OnInit {
   public d: datas[];
   private geoCoder;
 
+  
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -95,9 +100,28 @@ export class AddCenterComponent implements OnInit {
 
   }
 
+  reset() {
+    this.nombreDoc = "Documento(s)";
+  }
 
-  markerDragEnd(m: marker, $event: MouseEvent) {
-    console.log('dragEnd', m, $event);
+
+  ValidarInput(event) {
+
+    let fileList: FileList = event.target.files[0];
+    let file: File = fileList;
+
+
+   this.nombreDoc = file.name;
+
+
+  }
+
+
+  public markerDragEnd(m: marker, $event: MouseEvent) {
+
+    this._lat = $event.coords.lat;
+    this._lng = $event.coords.lng;
+
   }
 
 
@@ -106,7 +130,8 @@ export class AddCenterComponent implements OnInit {
     this.markers.push({
 
       lat: $event.coords.lat,
-      lng: $event.coords.lng
+      lng: $event.coords.lng,
+      marker: true,
 
     });
 
@@ -118,10 +143,11 @@ export class AddCenterComponent implements OnInit {
 
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = null;
-    this._lng = null;
+    this._lat = "";
+    this._lng = "";
 
   }
+
 
 
 
@@ -220,7 +246,7 @@ interface marker {
 
   lat: number;
   lng: number;
-
+  marker: boolean;
 }
 
 

@@ -11,7 +11,7 @@ import { Time } from '@angular/common';
 
 export class NavMenuComponent {
 
-  rutaImagenD: string = "/assets/image/sin-foto.png";
+  rutaImagenD: string = "/assets/image/sin-foto.jpg";
   rutaImagen: string = "/assets/profile/";
   idUser: string = sessionStorage.getItem("idUser");
 
@@ -19,6 +19,7 @@ export class NavMenuComponent {
   nombreImagen: string;
 
   today: number = Date.now();
+
   showDefault: boolean;
   show: boolean;
 
@@ -61,13 +62,13 @@ export class NavMenuComponent {
 
       if (result[0].imagen.length == 0) {
 
-        this.show = false;
-        this.showDefault = true;
+      // this.show = false;
+      // this.showDefault = true;
         
       } else {
 
-        this.show = false;
-        this.show = true;
+       // this.show = false;
+       // this.show = true;
         
         this.nombreImagen = result[0].imagen;
 

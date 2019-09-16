@@ -14,10 +14,15 @@ export class AddEventsComponent implements OnInit {
   public _nombre: string;
   public _organizador: string;
   public _fecha: Date;
-  public _hora: Time;
+
+  public _horaI: Time;
+  public _horaF: Time;
+  public _tel: number;
 
   public _lat: Number;
   public _lng: Number;
+
+  public req:string;
 
   public markers: marker[] = [];
 
@@ -45,21 +50,29 @@ export class AddEventsComponent implements OnInit {
     this.markers.push({
 
       lat: $event.coords.lat,
-      lng: $event.coords.lng
+      lng: $event.coords.lng,
+      marker: true
 
     });
 
     this._lat = $event.coords.lat;
     this._lng = $event.coords.lng;
-
+    
   }
 
 
+  markerDragEnd(m: marker, $event: MouseEvent) {
+    this._lat = $event.coords.lat;
+    this._lng = $event.coords.lng;
+
+
+  }
+
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = null;
-    this._lng = null;
-
+    this._lat = "";
+    this._lng = "";
+    /*tratar de arreglar esto */
   }
 
   public ObtenerDatos():void {
@@ -69,7 +82,9 @@ export class AddEventsComponent implements OnInit {
       nombre: this._nombre,
       organizador: this._organizador,
       fecha: this._fecha,
-      horario: this._hora,
+      horarioInicio: this._horaI,
+      horarioFinal: this._horaF,
+      telefono: this._tel,
       latitud: this._lat,
       longitud: this._lng,
       idCentroAcopio: this.idUser,
@@ -155,9 +170,7 @@ export class AddEventsComponent implements OnInit {
   }
 
 
-  public login() {
-    this.router.navigate(["/Login"]);
-  }
+
 
   iconMap = {
 
@@ -187,6 +200,7 @@ interface marker {
 
   lat: number;
   lng: number;
+  marker: boolean;
 
 }
 

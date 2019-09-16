@@ -15,6 +15,8 @@ export class ProfileComponent {
   _imagen: string[];
   _centro: centro[];
 
+  imagenPerfil: string = "Imagen de perfil";
+
   idUser: string = sessionStorage.getItem("idUser");
   show: boolean;
 
@@ -33,18 +35,6 @@ export class ProfileComponent {
 
     this.http.get<centro[]>("api/CentrosAcopio/ObtenerPerfil?id=" + this.idUser).subscribe(result => {
 
-/*
-      if (result[0].imagen == "") {
-
-        this.show = true;
-
-      } else {
-
-        this.show = false;
-
-      }
-            */
-
       this._centro = result;
 
 
@@ -56,9 +46,12 @@ export class ProfileComponent {
 
 
 
-  public ObtenerImagen(event):void {
+  public ObtenerImagen(event): void {
 
-    let fileList: FileList = event.target[0].files;
+
+    console.log(event);
+
+    let fileList: FileList = event.target[3].files;
 
     if (fileList.length > 0) {
 
@@ -83,7 +76,26 @@ export class ProfileComponent {
   }
 
 
+  reset() {
+    this.imagenPerfil = "Imagen de perfil";
+  }
+
+
+  ValidarInput(event) {
+
+    let fileList: FileList = event.target.files[0];
+    let file: File = fileList;
+
+
+    this.imagenPerfil = file.name;
+
+
+  }
+
+
+
 }
+
 
 //C:\Users\eduar\SEyGRE\SEyGRE\ClientApp\src\assets\imagenesPerfiles\2\re4.png
 

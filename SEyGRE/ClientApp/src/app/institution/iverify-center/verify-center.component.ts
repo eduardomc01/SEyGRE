@@ -21,7 +21,7 @@ export class VerifyCenterComponent{
 
   paginaPrincipal: number = 1;
 
-  rutaImagenD: string = "/assets/image/sin-foto.png";
+  rutaImagenD: string = "/assets/image/sin-foto.jpg";
   ruta: string = "/assets/doc/";
   ruta2: string = "/assets/profile/";
 
@@ -62,11 +62,11 @@ export class VerifyCenterComponent{
   }
 
 
-  habilitarDeshabilitar(id: number, estatus: number) {
+  habilitarDeshabilitar(_id: number, _estatus: number) {
 
-    let json = JSON.stringify({ id: id, idEstatus: estatus });
+    let json = JSON.stringify({ id: _id, idEstatus: _estatus });
 
-    this.http.post<any>('api/institucion/HabilitarDeshabilitar', JSON.parse(json)).subscribe(() => {
+    this.http.post<any>('api/Institucion/HabilitarDeshabilitar', JSON.parse(json)).subscribe(() => {
 
       this.obtenerPeticiones();
 
@@ -77,13 +77,20 @@ export class VerifyCenterComponent{
 
 
 
+  public respaldo():void {
+
+    this.http.get('api/Seguridad/BackupBaseDatos').subscribe(result => {
+
+      console.log(result);
+
+    });
+
+  }
 
 
   public seleccionarCentro(id: number, op: boolean) {
 
     if (op) {
-
-      console.log(id);
 
       this.http.post("api/CentrosAcopio/AceptarPeticionCentro", id).subscribe(() => {
 
@@ -93,7 +100,7 @@ export class VerifyCenterComponent{
       
     } else {
 
-      console.log(id);
+    
 
       this.http.post("api/CentrosAcopio/EliminarPeticionCentro", id).subscribe(() => {
 

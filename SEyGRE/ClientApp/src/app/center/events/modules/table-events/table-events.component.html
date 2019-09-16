@@ -26,10 +26,12 @@
         <thead class="thead-dark">
 
           <tr>
-            <th scope="col"> ID </th>
+     <!--       <th scope="col"> ID </th>-->
             <th scope="col"> Evento </th>
             <th scope="col"> Organizador </th>
-            <th scope="col"> Horario </th>
+            <th scope="col"> Hr. Inicial </th>
+            <th scope="col"> Hr. Final </th>
+            <th scope="col"> Tel. </th>
             <th scope="col"> Fecha </th>
             <th scope="col"> Estado </th>
             <th scope="col" colspan="3"> Acción </th>
@@ -41,22 +43,26 @@
 
           <tr *ngFor="let info of _eventos| paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
 
-
-            <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
-            <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled />  </td>
+<!-- <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td> -->
+    <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled />  </td>
             <td> <input type="text" class="form-control" id="Organizador{{info.id}}" value={{info.organizador}} #box2 disabled />  </td>
-            <td> <input type="time" class="form-control" id="Horario{{info.id}}" value={{info.horario}} #box3 disabled /> </td>
-            <td> <input type="date" class="form-control" id="Fecha{{info.id}}" value={{info.fecha}} #box4 disabled /> </td>
+
+            <td> <input type="time" class="form-control" id="HorarioI{{info.id}}" value={{info.horarioInicio}} #box3 disabled /> </td>
+            <td> <input type="time" class="form-control" id="HorarioF{{info.id}}" value={{info.horarioFinal}} #box4 disabled /> </td>
+            <td> <input type="number" class="form-control" id="Telefono{{info.id}}" value={{info.telefono}} #box5 disabled /> </td>
+
+
+            <td> <input type="date" class="form-control" id="Fecha{{info.id}}" value={{info.fecha}} #box6 disabled /> </td>
 
             <td>
-              <select class="form-control" id="Estatus{{info.id}}" #box5 disabled>
+              <select class="form-control" id="Estatus{{info.id}}" #box7 disabled>
                 <option value="{{info.idEstatus}}" selected disabled> {{ info.estatus }} </option>
                 <option value="1"> Activo </option>
                 <option value="2"> Desactivado  </option>
               </select>
             </td>
 
-            <td> <button *ngIf="showSave" type="button" class="btn btn-success" onclick="confirmarDatos()" (click)="modificarEvento(info.id, box1.value, box2.value, box3.value, box4.value, box5.value)"><span class="icon-floppy-disk"></span></button> </td>
+            <td> <button *ngIf="showSave" type="button" class="btn btn-success" onclick="confirmarDatos()" (click)="modificarEvento(info.id, box1.value, box2.value, box3.value, box4.value, box5.value, box6.value, box7.value)"><span class="icon-floppy-disk"></span></button> </td>
             <td> <button type="button" class="btn btn-success" id={{info.id}} onclick="editarEvento(this.id)"><span class="icon-pencil2"></span></button> </td>
             <td> <button class="btn btn-danger" onclick="eliminarRegistro()" (click)="eliminarEvento(info.id)"><span class="icon-cross"></span></button> </td>
 

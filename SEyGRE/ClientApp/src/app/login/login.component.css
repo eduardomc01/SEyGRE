@@ -38,3 +38,19 @@ p {
 .regresar {
   text-align: left;
 }
+
+
+
+
+
+@media screen and (max-device-width: 480px) {
+
+  .card{
+    margin: 10% auto auto auto;
+
+    padding: 10px 10px 10px 10px;
+    width: 50%;
+ 
+  }
+
+}

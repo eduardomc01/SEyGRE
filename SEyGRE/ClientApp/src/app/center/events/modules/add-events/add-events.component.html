@@ -16,9 +16,13 @@
         <input class="form-control" type="text" id="nombre" [(ngModel)]="_nombre" name="_nombre" placeholder=" Nombre del evento" required />
         <input class="form-control" type="text" id="organizador" [(ngModel)]="_organizador" name="_organizador" placeholder=" Organizador(es)" required />
         <input class="form-control" type="date" id="fecha" [(ngModel)]="_fecha" name="_fecha" required />
-        <input class="form-control" type="time" id="hora" [(ngModel)]="_hora" name="_hora" required />
-        <input class="form-control" type="number" id="lat" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" disabled required />
-        <input class="form-control" type="number" id="long" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" disabled required />
+        <input class="form-control" type="time" id="horaI" [(ngModel)]="_horaI" name="_horaI" required />
+        <input class="form-control" type="time" id="horaF" [(ngModel)]="_horaF" name="_horaF" required />
+
+        <input class="form-control" type="tel" id="tel" [(ngModel)]="_tel" name="_tel" placeholder="Telefono" maxlength="10" required />
+
+        <input class="form-control" type="number" id="lat" [(ngModel)]="_lat" name="_lat" placeholder=" Latitud" step="any" hidden required />
+        <input class="form-control" type="number" id="long" [(ngModel)]="_lng" name="_lng" placeholder=" Longitud" step="any" hidden required />
 
       </div>
 
@@ -33,15 +37,15 @@
 
   </form>
 
-  <div class="right card">
+  <div class="right card" ngNativeValidate>
     <div class="card-header">
       <h1> Ubicar evento en el mapa </h1>
     </div>
 
     <div class="card-body">
 
-      <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
-        <input type="text" class="form-control" placeholder="Buscar dirección" #search required>
+      <div style="z-index: 1; position: absolute; margin-left: 10px; width: 50%" ngNativeValidate>
+        <input type="text" [(ngModel)]="req" class="form-control" placeholder="Buscar dirección" #search required>
       </div>
 
       <agm-map [latitude]="latitude"
@@ -51,9 +55,11 @@
 
 
         <agm-marker *ngFor="let m of markers"
+                    [markerDraggable]="m.marker"
                     [latitude]="m.lat"
                     [longitude]="m.lng"
-                    (markerRightClick)="markerRightClick($event)">
+                    (markerRightClick)="markerRightClick($event)"
+                    (dragEnd) ="markerDragEnd(m, $event)">
 
         </agm-marker>
 

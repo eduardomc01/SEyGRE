@@ -22,3 +22,32 @@ div [type="text"], [type="submit"], [type="file"] {
 }
 
 
+
+div input[type="file"]#file {
+  width: 0.1px;
+  font-family: Arial;
+  font-weight: normal;
+  height: 0.1px;
+  opacity: 0;
+  color: cornflowerblue;
+  overflow: hidden;
+  position: absolute;
+}
+
+div label[for="file"] {
+  font-size: 12px;
+  background-color: rgba(128, 128, 128,.2);
+  display: inline-block;
+  transition: all .5s;
+  cursor: pointer;
+  border-radius: 5px;
+  border: .5px solid rgba(128, 128, 128,.4);
+  padding: 8px 8px 8px 8px;
+  width: 100%;
+  text-align: center;
+}
+
+  div label[for="file"]:hover {
+    color: white;
+    background-color: mediumseagreen;
+  }

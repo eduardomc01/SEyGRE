@@ -206,13 +206,16 @@ namespace SEyGRE.Controllers
                         on e.IdCentroAcopio equals g.Id
 
 
-                        where e.Nombre.Contains(busqueda)
+                        where e.Nombre.Contains(busqueda) && e.IdEstatus.Equals(1)
                         select new RelacionEventosEstatusCentro
                         {
 
                             Nombre = e.Nombre,
                             Organizador = e.Organizador,
-                            Horario = e.Horario,
+                            HorarioInicio = e.HorarioInicio,
+
+                            HorarioFinal = e.HorarioFinal,
+                            Telefono = e.Telefono,
                             Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
                             Latitud = e.Latitud,
                             Longitud = e.Longitud,

@@ -44,7 +44,7 @@ function advertenciaRegistro() {
 
 
     var txt = document.createElement("txt");
-    txt.innerHTML = "Gracias por aplicar y ser tomado en cuenta como un centro de acopio en Residuos electrónicos (RE) <b style='color:red;'> Se le enviara un correo cuando tu documento(s) hayan sido revisados por la institución y verficado su validez </b> ";
+    txt.innerHTML = "Gracias por aplicar y ser tomado en cuenta como un centro de acopio en residuos electrónicos (RE) <b style='color:red;'> Se le enviará un correo cuando tu(s) documento(s) hayan sido revisados por la institución.</b> ";
 
 
     swal({
@@ -57,7 +57,7 @@ function advertenciaRegistro() {
     });
 
 
-    window.location.replace("/Login");
+    /*window.location.replace("/Login");*/
 
   } else {
 
@@ -65,27 +65,6 @@ function advertenciaRegistro() {
   }
 
 }
-
-
-function faltanDatosAgregarCentro() {
-
-  if ($('#nombre').val().length === 0 || $('#usuario').val().length === 0 || $('#correo').val().length === 0 || $('#file').val().length === 0 || $('#pass').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
-
-    alertify.error("Faltan datos");
-
-    return 0;
-
-  } else {
-
-    alertify.success("Registro completo");
-
-    return 1;
-  }
-
-}
-
-
-
 
 
 
@@ -118,19 +97,3 @@ function advertenciaActualizarDatosCentro() {
 }
 
 
-function faltanDatosActualizarCentro() {
-
-  if ($('#file').val().length === 0 || $('#nombre').val().length === 0 || $('#password').val().length === 0) {
-
-    alertify.error("Faltan datos");
-
-    return 0;
-
-  } else {
-
-    alertify.success("Registro completo");
-
-    return 1;
-  }
-
-}

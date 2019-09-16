@@ -100,14 +100,16 @@ export class TableEventsComponent {
 
 
 
-  public modificarEvento(_id: number, nombre: string, organizador: string, horario: Time, fecha: Date, estatus: number): void {
+  public modificarEvento(_id: number, nombre: string, organizador: string, horarioI: Time, horarioF: Time, telefono: number, fecha: Date, estatus: number): void {
 
     var json = JSON.stringify({
 
       Id: _id,
       Nombre: nombre,
       Organizador: organizador,
-      Horario: horario,
+      HorarioInicio: horarioI,
+      HorarioFinal: horarioF,
+      Telefono: telefono,
       Fecha: fecha,
       IdEstatus: estatus
 

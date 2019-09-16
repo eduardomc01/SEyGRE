@@ -8,23 +8,26 @@ div [type="number"], [type="submit"], [type="reset"], [type="text"], [type="time
 
 
 .card {
-  position: absolute;
-  margin: 0 0 0 0;
-  width: 20%;
+  
+  position: absolute; 
+  width: 28%;
+
 }
 
 
-
-agm-map {
-  height: 500px;
-}
 
 
 .right {
 
   float: right;
-  margin: 0 0 0 300px;
-  width: 72%;
-  z-index: 1;
+  margin: 0 0 0 29%;
+  width: 65%;
+
+}
+
+
+
+agm-map {
+  height: 345px;
 
 }

@@ -52,7 +52,9 @@ namespace SEyGRE.Controllers
                             Id = e.Id,
                             Nombre = e.Nombre,
                             Organizador = e.Organizador,
-                            Horario = e.Horario,
+                            HorarioInicio = e.HorarioInicio,
+                            HorarioFinal = e.HorarioFinal,
+                            Telefono = e.Telefono,
                             Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
                             Estatus= l.Titulo,
                             IdEstatus = e.IdEstatus
@@ -75,14 +77,16 @@ namespace SEyGRE.Controllers
             var list = (from e in context.Eventos
                         join l in context.Estatus
                         on e.IdEstatus equals l.Id
-                        where (e.Nombre.Contains(r.Busqueda) || e.Organizador.Contains(r.Busqueda) || e.Fecha.ToString().Contains(r.Busqueda) || e.Horario.ToString().Contains(r.Busqueda) || l.Titulo.Contains(r.Busqueda)) && e.IdCentroAcopio.Equals(r.Id)
+                        where (e.Nombre.Contains(r.Busqueda) || e.Organizador.Contains(r.Busqueda) || e.Fecha.ToString().Contains(r.Busqueda) || e.Telefono.ToString().Contains(r.Busqueda) || e.HorarioFinal.ToString().Contains(r.Busqueda) || e.HorarioInicio.ToString().Contains(r.Busqueda) || l.Titulo.Contains(r.Busqueda)) && e.IdCentroAcopio.Equals(r.Id)
 
                         select new RelacionEventosEstatusCentro
                         {
                             Id = e.Id,
                             Nombre = e.Nombre,
                             Organizador = e.Organizador,
-                            Horario = e.Horario,
+                            HorarioInicio = e.HorarioInicio,
+                            HorarioFinal = e.HorarioFinal,
+                            Telefono = e.Telefono,
                             Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
                             Estatus = l.Titulo,
                             Latitud = e.Latitud,
@@ -113,14 +117,16 @@ namespace SEyGRE.Controllers
                         on e.IdCentroAcopio equals g.Id
                         
 
-                        where e.IdCentroAcopio == id
+                        where e.IdCentroAcopio == id && e.IdEstatus.Equals(1)
                         select new RelacionEventosEstatusCentro
                         {
 
 
                             Nombre = e.Nombre,
                             Organizador = e.Organizador,
-                            Horario = e.Horario,
+                            HorarioInicio = e.HorarioInicio,
+                            HorarioFinal = e.HorarioFinal,
+                            Telefono = e.Telefono,
                             Fecha = e.Fecha.Value.ToString("yyyy-MM-dd"),
                             Latitud = e.Latitud,
                             Longitud = e.Longitud,
@@ -154,9 +160,17 @@ namespace SEyGRE.Controllers
             {
                 found.Organizador = r.Organizador;
             }
-            if (r.Horario != null)
+            if (r.HorarioInicio != null)
             {
-                found.Horario = r.Horario;
+                found.HorarioInicio = r.HorarioInicio;
+            }
+            if (r.HorarioFinal != null)
+            {
+                found.HorarioFinal = r.HorarioFinal;
+            }
+            if (r.Telefono != null)
+            {
+                found.Telefono = r.Telefono;
             }
             if (r.Fecha != null)
             {

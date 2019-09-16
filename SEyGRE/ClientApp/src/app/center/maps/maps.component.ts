@@ -17,6 +17,7 @@ export class MapsComponent implements OnInit {
   address: string;
   public d: any; //centros
   public e: any; //eventos
+  public req: string;
   private geoCoder;
 
   animacion: any;

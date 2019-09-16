@@ -10,17 +10,19 @@
   </label>
   <input type="checkbox" id="hide" checked />
 
+
+
   <div id="main-nav">
-    <div class="panel-session" (mouseover)="obtenerInformacionR()">
+    <div class="panel-session" id="panel-session" (mouseover)="obtenerInformacionR()">
       <table>
         <tbody>
           <tr>
             <td>
 
 
-              <img *ngIf="showDefault" [src]="rutaImagenD" class="rounded-circle imagen" />
+              <img *ngIf="nombreImagen == Null" [src]="rutaImagenD" class="rounded-circle" />
 
-              <img *ngIf="show" [src]="rutaImagen + idUser +'/'+ nombreImagen" class="rounded-circle imagen" />
+              <img *ngIf="nombreImagen != Null" [src]="rutaImagen + idUser +'/'+ nombreImagen" class="rounded-circle imagen" />
 
 
             </td>
@@ -63,33 +65,37 @@
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/components"]' (click)='collapse()'>
-          <span class='icon-power-cord' > </span> <label> Residuos </label>
+          <span class='icon-power-cord'> </span> <label> Residuos </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/recycler-states"]' (click)='collapse()'>
-          <span class='icon-earth' > </span> <label> Estado de reciclaje </label>
+          <span class='icon-earth'> </span> <label> Estado de reciclaje </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/events"]' (click)='collapse()'>
-          <span class='icon-calendar' > </span> <label> Fechas de reciclado </label>
+          <span class='icon-calendar'> </span> <label> Fechas de reciclado </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/stats"]' (click)='collapse()'>
-          <span class='icon-stats-dots' > </span> <label> Estadisticas </label>
+          <span class='icon-stats-dots'> </span> <label> Estadisticas </label>
         </a>
       </li>
 
       <li [routerLinkActive]='["link-active"]'>
         <a [routerLink]='["/maps"]' (click)='collapse()'>
-          <span class='icon-map' > </span> <label> Mapa </label>
+          <span class='icon-map'> </span> <label> Mapa </label>
         </a>
       </li>
+
+
+
+
 
 
       <li [routerLinkActive]='["link-active"]'>
@@ -97,6 +103,16 @@
           <span class='icon-info'> </span> <label> Información </label>
         </a>
       </li>
+
+
+
+      <li [routerLinkActive]='["link-active"]' id="session">
+        <a (click)='closeSession()'>
+          <span class='icon-exit'> </span> <label> Cerrar sesión </label>
+        </a>
+      </li>
+
+
 
     </ul>
   </div>

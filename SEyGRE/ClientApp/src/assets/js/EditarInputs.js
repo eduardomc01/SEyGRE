@@ -23,7 +23,9 @@ function editarEvento(id) {
 
   $("#Nombre" + id).prop('disabled', false);
   $("#Organizador" + id).prop('disabled', false);
-  $("#Horario" + id).prop('disabled', false);
+  $("#HorarioI" + id).prop('disabled', false);
+  $("#HorarioF" + id).prop('disabled', false);
+  $("#Telefono" + id).prop('disabled', false);
   $("#Fecha" + id).prop('disabled', false);
   $("#Estatus" + id).prop('disabled', false);
 }

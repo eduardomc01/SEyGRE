@@ -28,3 +28,28 @@ div [type="button"] {
   margin: 2%;
   float: right;
 }
+
+
+@media screen and (max-device-width: 480px) {
+
+
+  /* grafica imposible ver en movil */
+  .card-footer #max {
+    display: none;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  .card {
+  
+    margin: 60% 0 0 35%;
+  }
+
+  .card {
+    display: none; /*ocultar grafica */
+  }
+
+
+}

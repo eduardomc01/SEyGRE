@@ -345,7 +345,7 @@ namespace SEyGRE.Controllers
                     " <td colspan='2'> " +
                     "<br/>" +
                     "¡Felicidades!, ya forma parte de este sistema y damos por echo que sera una gran aventura tenerlos aqui con las " +
-                    "personas que quieren ver un mundo más limpio de residuos electronicos. <br/><br/> Saludos cordiales del equipo SEyGRE' " +
+                    "personas que quieren ver un mundo más limpio de residuos electrónicos. <br/><br/> Saludos cordiales del equipo SEyGRE " +
                     "</td> " +
                     "	</tr> " +
                     "</tfooter> " +
@@ -446,7 +446,7 @@ namespace SEyGRE.Controllers
                     " <td colspan='2'> " +
                     "<br/>" +
                     "Lo sentimos, no cumple con los requisitos para darse de alta en el sistema, vuelva cuando los documentos oficiales " +
-                    "esten a la mano o la información proporcionada este en orden antes las autoridades competentes. <br/><br/> Saludos cordiales del equipo SEyGRE" +
+                    "esten a la mano o la información proporcionada este en orden ante las autoridades competentes. <br/><br/> Saludos cordiales del equipo SEyGRE" +
                     "</td> " +
                     "	</tr> " +
                     "</tfooter> " +

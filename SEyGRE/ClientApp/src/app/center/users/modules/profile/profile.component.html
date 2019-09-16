@@ -9,39 +9,37 @@
 
     <div class="card-header"> <h1> Perfil </h1> </div>
 
-    <div *ngFor="let info of _centro" class="card-body">
 
-      <!--"'assets/profile/' + info.id +'/'+ info.imagen"-->
-      <!--      <img src="../../../../../assets/image/sin-foto.png" class="rounded-circle" /> -->
+    <form (ngSubmit)="ObtenerImagen($event)">
 
-      <div>
-        <span style=" position:absolute; margin: 20px 0 0 -110px;" class="icon-leaf"></span>
+
+      <div *ngFor="let info of _centro" class="card-body">
+
+        <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" disabled />
+
+
+        <input class="form-control" id="nombre" type="text" value="{{info.nombre}}" placeholder=" Nombre" disabled />
+
+
+        <input class="form-control" id="password" type="text" value="{{info.password}}" placeholder=" Contraseña" disabled />
+
+
+
+        <span class="file">
+          <input (change)="ValidarInput($event)" class="form-control" id="file" type="file" name="file" accept=".jpg,.png,.jpeg,.gif" formenctype="multipart/form-data" required />
+        </span>
+        <label for="file">
+          <span> {{ imagenPerfil }} </span>
+        </label>
+
       </div>
-      <input class="form-control" type="text" value="{{info.id}}" placeholder=" ID" disabled />
-
-
-      <div>
-        <span style=" position:absolute; margin: 11px 0 0 -110px;" class="icon-user"></span>
-      </div>
-      <input class="form-control" id="nombre" type="text" value="{{info.nombre}}" placeholder=" Nombre" disabled />
-
-
-      <div>
-        <span style=" position:absolute; margin: 12px 0 0 -110px;" class="icon-key"></span>
-      </div>
-      <input class="form-control" id="password" type="text" value="{{info.password}}" placeholder=" Contraseña" disabled />
-
-    </div>
-
 
       <div class="card-footer">
 
-        <form (ngSubmit)="ObtenerImagen($event)">
-          <input type="file" id="file" class="form-control" enctype="multipart/form-data" required />
-          <input type="submit" class="btn btn-success" onclick="advertenciaActualizarDatosCentro()" value="Actualizar imagen" />
-        </form>
-
+        <input type="submit" class="btn btn-success" onclick="advertenciaActualizarDatosCentro()" value="Actualizar imagen" />
       </div>
+
+    </form>
 
     </div>
 

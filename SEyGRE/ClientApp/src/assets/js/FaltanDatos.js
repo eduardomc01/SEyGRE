@@ -1,17 +1,4 @@
-/*
-function faltanDatos() {
 
-  if ($('#_busqueda').val().length === 0) {
-
-    alertify.error("Faltan datos");
-
-    return false;
-
-  }
-
-
-}
-*/
 
 function faltanDatosComponentes() {
 
@@ -25,12 +12,6 @@ function faltanDatosComponentes() {
 
     alertify.success("Registro completo");
 
-    /*
-    document.getElementById("nombre").value = "";
-    document.getElementById("peso").value = "";
-    document.getElementById("clasificacion").value = "";
-    document.getElementById("fecha").value = "";
-    */
 
   }
 
@@ -49,12 +30,6 @@ function faltanDatosPersonal() {
 
     alertify.success("Registro completo");
 
-    /*
-    document.getElementById("nombre").value = "";
-    document.getElementById("peso").value = "";
-    document.getElementById("clasificacion").value = "";
-    document.getElementById("fecha").value = "";
-    */
 
   }
 
@@ -67,30 +42,22 @@ function faltanDatosAgregarCentro() {
 
       alertify.error("Faltan datos");
 
-      return false;
+      return 0;
 
-    } else {
+  } else {
 
       alertify.success("Registro completo");
-
-    /*
-      document.getElementById("nombre").value = "";
-      document.getElementById("usuario").value = "";
-      document.getElementById("correo").value = "";
-      document.getElementById("file").value = null;
-      document.getElementById("pass").value = "";
-      document.getElementById("lat").value = null;
-      document.getElementById("long").value = null;
-      */
-    }
+      return 1;
 
   }
 
+}
 
 
-function faltanDatosAgregarCentro() {
 
-  if ($('#nombre').val().length === 0 || $('#usuario').val().length === 0 || $('#correo').val().length === 0 || $('#file').val().length === 0 || $('#pass').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
+function faltanDatosAgregarEvento() {
+
+  if ($('#nombre').val().length === 0 || $('#organizador').val().length === 0 || $('#fecha').val().length === 0 || $('#horaI').val().length === 0 || $('#horaF').val().length === 0 || $('#tel').val().length === 0 || $('#lat').val().length === 0 || $('#long').val().length === 0) {
 
     alertify.error("Faltan datos");
 
@@ -100,18 +67,10 @@ function faltanDatosAgregarCentro() {
 
     alertify.success("Registro completo");
 
-    /*
-      document.getElementById("nombre").value = "";
-      document.getElementById("usuario").value = "";
-      document.getElementById("correo").value = "";
-      document.getElementById("file").value = null;
-      document.getElementById("pass").value = "";
-      document.getElementById("lat").value = null;
-      document.getElementById("long").value = null;
-      */
   }
 
 }
+
 
 
 
@@ -127,18 +86,38 @@ function faltanDatosNoticias() {
 
     alertify.success("Registro completo");
 
-    /*
-      document.getElementById("nombre").value = "";
-      document.getElementById("usuario").value = "";
-      document.getElementById("correo").value = "";
-      document.getElementById("file").value = null;
-      document.getElementById("pass").value = "";
-      document.getElementById("lat").value = null;
-      document.getElementById("long").value = null;
-      */
   }
 
 }
+
+
+function faltanDatosActualizarCentro() {
+
+  if ($('#file').val().length === 0 || $('#nombre').val().length === 0 || $('#password').val().length === 0) {
+
+    alertify.error("Faltan datos");
+
+    return 0;
+
+  } else {
+
+    alertify.success("Registro completo");
+
+    return 1;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -156,7 +135,6 @@ function aceptarRegistro() {
 }
 
 
-
 function habilitarCentro() {
 
   alertify.success("Centro habilitado");
@@ -169,3 +147,10 @@ function deshabilitarCentro() {
   alertify.error("Centro deshabilitado");
 
 }
+
+function actualizarRegistro() {
+
+  alertify.success("Datos actualizados");
+
+}
+

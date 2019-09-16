@@ -20,7 +20,7 @@
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col"> ID </th>
+            <!--      <th scope="col"> ID </th> -->
                   <th scope="col"> Nombre </th>
                   <th scope="col"> Usuario </th>
                   <th scope="col"> Contraseña </th>
@@ -32,7 +32,7 @@
               <tbody>
 
                 <tr *ngFor="let info of _centro | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
-                  <td> {{info.id}} </td>
+             <!--     <td> {{info.id}} </td > -->
                   <td> {{info.nombre}} </td>
                   <td> {{info.usuario}} </td>
                   <td> {{info.password}} </td>
@@ -83,13 +83,18 @@
 
 
         <div class="card" style="margin-top:10px;">
-          <div class="card-header"> <h1> Centros aceptados </h1> </div>
+          <div class="card-header">
+            <label>
+            <h1> Centros aceptados </h1>
+              </label>
+            <button style=" margin: 2% 4% 0 0; float:right" (click)="respaldo()" class="btn btn-success"> Backup BD </button>
+          </div>
           <div class="card-body">
 
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col"> ID </th>
+              <!--    <th scope="col"> ID </th> -->
                   <th scope="col"> Imagen </th>
                   <th scope="col"> Nombre </th>
                   <th scope="col"> Usuario </th>
@@ -103,11 +108,11 @@
               <tbody>
 
                 <tr *ngFor="let info of _centro2 | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
-                  <td> {{info.id}} </td>
+                  <!-- <td> {{info.id}} </td>-->
 
                   <td>
-                    <img *ngIf="info.imagen == '' " class="rounded-circle" [src]="rutaImagenD" />
-                    <img *ngIf="info.imagen != '' " class="rounded-circle" [src]="ruta2 + info.id +'/'+ info.imagen" />
+                    <img *ngIf="info.imagen == Null " class="rounded-circle" [src]="rutaImagenD" />
+                    <img *ngIf="info.imagen != Null " class="rounded-circle" [src]="ruta2 + info.id +'/'+ info.imagen" />
                   </td>
 
                   <td> {{info.nombre}} </td>

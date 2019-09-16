@@ -28,3 +28,23 @@ div [type="button"] {
   margin: 2%;
   float: right;
 }
+
+
+@media screen and (max-device-width: 480px) {
+
+  div [type="button"] {
+    display: none;
+  }
+
+  div [type="text"] {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  .card {
+    margin: 120% 0 0 35%;
+  }
+}

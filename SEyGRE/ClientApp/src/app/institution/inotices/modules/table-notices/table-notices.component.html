@@ -14,7 +14,7 @@
 
         <tr>
 
-          <th scope="col"> ID </th>
+       <!--   <th scope="col"> ID </th>  -->
           <th scope="col"> Imagen </th>
           <th scope="col"> Titulo </th>
           <th scope="col"> Imagen URL </th>
@@ -29,7 +29,7 @@
       <tbody>
         <tr *ngFor="let info of _noticias | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
 
-          <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
+        <!--  <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td> -->
 
           <td> <img class="rounded-circle" src={{info.imagenUrl}} /> </td>
 
@@ -41,7 +41,7 @@
 
           <td> <input type="text" class="form-control" id="Noticia{{info.id}}" value={{info.noticiaUrl}} #box4 disabled /> </td>
 
-          <td><button class="btn btn-success" (click)="modificarNoticia(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button></td>
+          <td><button class="btn btn-success" onclick="actualizarRegistro()" (click)="modificarNoticia(info.id, box1.value, box2.value, box3.value, box4.value)"><span class="icon-floppy-disk"></span></button></td>
           <td> <button class="btn btn-success" id={{info.id}} onclick="editarNoticia(this.id)"><span class="icon-pencil2"></span></button> </td>
           <td><button class="btn btn-danger" onclick="eliminarRegistro()" (click)="eliminarNoticia(info.id)"><span class="icon-cross"></span></button></td>
 

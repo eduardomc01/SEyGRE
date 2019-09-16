@@ -1,0 +1,63 @@
+body
+{
+  margin-top: 10px;
+  margin-left: -24%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.card {
+  width: 100%;
+
+}
+
+.card .card-body img {
+  width: 20%;
+  padding: 10px 10px 10px 10px;
+}
+
+p {
+  margin-top: 10px;
+}
+
+
+
+
+
+@media screen and (max-device-width: 480px) {
+
+  body {
+    margin-top: 5px;
+    margin-left: 25%;
+    text-align: center;
+  }
+
+
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .card {
+
+    width: 100%;
+  }
+
+    .card .card-body img {
+      width: 50%;
+      padding: 5px 5px 5px 5px;
+    }
+
+
+  p {
+    padding: 5%;
+    font-size: 10px;
+    text-align: justify;
+    margin-top: 5px;
+  }
+
+
+}

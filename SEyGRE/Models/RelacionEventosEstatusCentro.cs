@@ -10,7 +10,11 @@ namespace SEyGRE.Models
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Organizador { get; set; }
-        public TimeSpan? Horario { get; set; }
+
+        public TimeSpan? HorarioInicio { get; set; }
+        public TimeSpan? HorarioFinal { get; set; }
+        public int? Telefono { get; set; }
+
         public string Fecha { get; set; }
         public string Estatus { get; set; }
         public string NombreCentro { get; set; }

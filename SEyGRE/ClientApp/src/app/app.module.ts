@@ -40,14 +40,15 @@ import { TableUsersComponent } from './center/users/modules/table-users/table-us
 import { TableEventsComponent } from './center/events/modules/table-events/table-events.component';
 import { AddEventsComponent } from './center/events/modules/add-events/add-events.component';
 
-/*ciudadanos*/
+
 import { CHomeComponent } from './citizen/chome/chome.component';
 import { CMapsComponent } from './citizen/cmaps/cmaps.component';
+
 import { CInfoComponent } from './citizen/cinfo/cinfo.component';
+
 import { NavMenuCitizenComponent } from './citizen/nav-menu-citizen/nav-menu-citizen.component';
 import { AddUsersComponent } from './center/users/modules/add-users/add-users.component';
 
-/*centros*/
 import { LineComponent } from './center/stats/modules/line/line.component';
 import { PieComponent } from './center/stats/modules/pie/pie.component';
 import { PolarComponent } from './center/stats/modules/polar/polar.component';
@@ -59,7 +60,7 @@ import { BigVisualPolarComponent } from './center/stats/modules/big-visual-polar
 import { BigVisualPieComponent } from './center/stats/modules/big-visual-pie/big-visual-pie.component';
 
 
-/*ciudadanos */
+
 import { CStatsComponent } from './citizen/cstats/cstats.component';
 import { CBarsComponent } from './citizen/cstats/modules/bars/bars-ewaste/cbars.component';
 import { CBarsEventsComponent } from './citizen/cstats/modules/bars/bars-events/cbars-events.component';
@@ -79,12 +80,16 @@ import { CBigVisualPieComponent } from './citizen/cstats/modules/big-visual-pie/
 
 
 
-/* intitucion */
 import { AddNoticesComponent } from './institution/inotices/modules/add-notices/add-notices.component';
 import { CNoticesComponent } from './institution/inotices/cnotices.component';
 import { TableNoticesComponent } from './institution/inotices/modules/table-notices/table-notices.component';
 import { ReportsComponent } from './institution/reports/reports.component';
 import { CentersReportsComponent } from './institution/reports/modules/centers-reports.component';
+
+import { IInfoComponent } from './institution/iinfo/iinfo.component';
+
+
+import { InfoGeneralComponent } from './info/info-general.component';
 
 @NgModule({
   declarations:[
@@ -114,6 +119,7 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
     NavMenuInstitutionComponent,
     IHomeComponent,
     IMapsComponent,
+    IInfoComponent,
     VerifyCenterComponent,
     EventsComponent,
 
@@ -167,6 +173,8 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
     ReportsComponent,
     CentersReportsComponent,
 
+    InfoGeneralComponent,
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -217,6 +225,7 @@ import { CentersReportsComponent } from './institution/reports/modules/centers-r
       { path: 'i-verify-center', component: VerifyCenterComponent },
       { path: 'i-maps', component: IMapsComponent },
       { path: 'i-reports', component: ReportsComponent },
+      { path: 'i-info', component: IInfoComponent },
       { path: 'add-notices', component: CNoticesComponent },
 
       { path: '', component: CHomeComponent, pathMatch: 'full' },

@@ -12,15 +12,15 @@
       </div>
       <div class='col-sm-9 body-content'>
       
-        <div class="card">
+        <div class="card" ngNativeValidate>
           <div class="card-header">
             <h1> Mapa de centros </h1>
 
           </div>
           <div class="card-body">
 
-            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" ngNativeValidate>
-              <input type="text" class="form-control" placeholder="Buscar dirección" #search autofocus required>
+            <div style="z-index: 1; position: absolute; margin-left: 10px; width: 30%" >
+              <input type="text" class="form-control" [(ngModel)]="req" placeholder="Buscar dirección" #search autofocus required>
             </div>
 
             <agm-map (mapReady)="mapaListo()"
@@ -44,7 +44,7 @@
                           [longitude]="info.longitud"
                           [iconUrl]="iconMapEvent.iconUrl">
 
-                <agm-info-window [maxWidth]="400">
+                <agm-info-window [maxWidth]="500">
                   <table class="table">
                     <thead class="thead-dark">
                       <tr>
@@ -61,8 +61,16 @@
                         <td>{{ info.organizador }} </td>
                       </tr>
                       <tr>
-                        <th> Horario</th>
-                        <td>{{ info.horario}}  </td>
+                        <th> Inicio</th>
+                        <td>{{ info.horarioInicio}}  </td>
+                      </tr>
+                      <tr>
+                        <th> Cierre </th>
+                        <td>{{ info.horarioFinal}}</td>
+                      </tr>
+                      <tr>
+                        <th> Telefono </th>
+                        <td>{{ info.telefono}}</td>
                       </tr>
                       <tr>
                         <th> Fecha </th>

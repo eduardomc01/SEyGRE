@@ -17,16 +17,18 @@
 
       <div class="card-body">
 
-        <input class="form-control" type="text" id="nombre" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" required />
-        <input class="form-control" type="number" id="peso" placeholder=" Peso (kg)" step="0.01" [(ngModel)]="peso" name="peso" required />
+        <input class="form-control" type="text" id="nombre" placeholder=" Nombre" [(ngModel)]="nombre" name="nombre" maxlength="20" required />
+        <input class="form-control" type="number" id="peso" placeholder=" Peso (kg)"  step="any" [(ngModel)]="peso" name="peso" required />
         
         <!--<input class="form-control" type="number" id="clasificacion" placeholder=" Clasificación" [(ngModel)]="clasificacion" name="clasificacion" required />-->
 
         <select class="form-control" id="clasificacion" placeholder=" Clasificación" [(ngModel)]="clasificacion" name="clasificacion" required>
           <option value="" selected disabled> Clasificación </option>
           <option value="1"> Equipos de informática y telecomunicaciones </option>
-          <option value="2"> Aparatos electrónicos de consumo </option>
+          <option value="2"> Aparatos electrónicos de alto consumo </option>
           <option value="3"> Juguetes o equipos deportivos y de tiempo libre </option>
+          <option value="4"> Componentes de bajo consumo </option>
+
         </select>
 
         <input class="form-control" type="date" id="fecha" placeholder=" Fecha de ingreso" [(ngModel)]="fecha" name="fecha" required />

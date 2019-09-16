@@ -12,14 +12,14 @@
       </div>
       <div class='col-sm-9 body-content'>
 
-        <div class="card" ngNativeValidate>
+        <div class="card" id="normal" ngNativeValidate>
           <div class="card-header">
             <h1> Mapa de centros </h1>
           </div>
           <div class="card-body">
 
             <div style="z-index: 1; position: absolute; margin:10px 0 0 10px; width: 70%">
-              <input type="text" class="form-control" [(ngModel)]="value" placeholder="Buscar dirección" #search required>	        
+              <input type="text" class="form-control" [(ngModel)]="value" placeholder="Buscar dirección" #search required>
             </div>
 
             <agm-map (mapReady)="mapaListo()"
@@ -35,7 +35,7 @@
                           [animation]="animacion">
 
                 <agm-info-window [maxWidth]="400">
-    
+
 
                   <div class="card-body" (click)="getLine(info.id)">
 
@@ -62,7 +62,7 @@
                           [longitude]="info.longitud"
                           [iconUrl]="iconMapEvent.iconUrl">
 
-                <agm-info-window>
+                <agm-info-window  [maxWidth]="400">
 
                   <table class="table">
 
@@ -82,8 +82,16 @@
                         <td>{{ info.organizador }} </td>
                       </tr>
                       <tr>
-                        <th> Horario</th>
-                        <td>{{ info.horario}}  </td>
+                        <th> Inicio</th>
+                        <td>{{ info.horarioInicio}}  </td>
+                      </tr>
+                      <tr>
+                        <th> Cierre </th>
+                        <td>{{ info.horarioFinal}}</td>
+                      </tr>
+                      <tr>
+                        <th> Telefono </th>
+                        <td>{{ info.telefono}}</td>
                       </tr>
                       <tr>
                         <th> Fecha </th>
@@ -93,34 +101,36 @@
                         <th> Nombre del centro</th>
                         <td>{{ info.nombreCentro}}</td>
                       </tr>
-                      <tr>
-                        <th> Estatus </th>
-                        <td>{{ info.estatus}}</td>
-                      </tr>
+                      <!--
+                <tr>
+                  <th> Estatus </th>
+                  <td>{{ info.estatus}}</td>
+                </tr>
+                    -->
                     </tbody>
 
                   </table>
 
                   <!--
-      <strong>
+            <strong>
 
-      </strong>
-      <strong>
+            </strong>
+            <strong>
 
-      </strong><br />
-      <strong>
-        Horario:
-      </strong><br />
-      <strong>
-        Fecha:
-      </strong> <br />
-      <strong>
-        Centro:
-      </strong> <br />
-      <strong>
-        Estatus:
-      </strong> <br />
-       -->
+            </strong><br />
+            <strong>
+              Horario:
+            </strong><br />
+            <strong>
+              Fecha:
+            </strong> <br />
+            <strong>
+              Centro:
+            </strong> <br />
+            <strong>
+              Estatus:
+            </strong> <br />
+             -->
                 </agm-info-window>
 
               </agm-marker>
@@ -137,22 +147,135 @@
 
             </agm-map>
             <!--
-            <h5>Address: {{address}}</h5>
-            <div>Latitude: {{latitude}}</div>
-            <div>Longitude: {{longitude}}</div>
-                -->
+      <h5>Address: {{address}}</h5>
+      <div>Latitude: {{latitude}}</div>
+      <div>Longitude: {{longitude}}</div>
+          -->
           </div>
 
           <div class="card-footer">
 
-   
+
             <input type="text" class="form-control" id="search" [(ngModel)]="value2" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
-     
+
 
           </div>
-         
+
+        </div> <!-- aqui termina el contenedor total del CARD -->
+
+        <div class="movil" id="movil">
+
+
+          <agm-map (mapReady)="mapaListo()"
+                   [latitude]="latitude"
+                   [longitude]="longitude"
+                   [zoom]="15">
+
+
+            <agm-marker *ngFor="let info of d"
+                        [latitude]="info.latitud"
+                        [longitude]="info.longitud"
+                        [iconUrl]="iconMap.iconUrl"
+                        [animation]="animacion">
+
+              <agm-info-window [maxWidth]="400">
+
+
+                <div class="card-body" (click)="getLine(info.id)">
+
+                  {{ info.nombre }}
+
+                  <canvas class="cav" baseChart
+                          [datasets]="lineChartData"
+                          [labels]="lineChartLabels"
+                          [legend]="lineChartLegend"
+                          [colors]="lineChartColors"
+                          [chartType]="lineChartType"></canvas>
+                </div>
+
+
+
+              </agm-info-window>
+
+            </agm-marker>
+
+
+
+            <agm-marker *ngFor="let info of e"
+                        [latitude]="info.latitud"
+                        [longitude]="info.longitud"
+                        [iconUrl]="iconMapEvent.iconUrl">
+
+              <agm-info-window  [maxWidth]="250">
+
+                <table class="table">
+
+                  <thead class="thead-dark">
+                    <tr>
+                      <th colspan="2"> Contenido </th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="thead-dark">
+                    <tr>
+                      <th>Nombre </th>
+                      <td>{{ info.nombre}}</td>
+                    </tr>
+                    <tr>
+                      <th> Organizador(es)</th>
+                      <td>{{ info.organizador }} </td>
+                    </tr>
+                    <tr>
+                      <th> Inicio</th>
+                      <td>{{ info.horarioInicio}}  </td>
+                    </tr>
+                    <tr>
+                      <th> Cierre </th>
+                      <td>{{ info.horarioFinal}}</td>
+                    </tr>
+                    <tr>
+                      <th> Telefono </th>
+                      <td>{{ info.telefono}}</td>
+                    </tr>
+                    <tr>
+                      <th> Fecha </th>
+                      <td>{{ info.fecha}}</td>
+                    </tr>
+                    <tr>
+                      <th> Nombre del centro</th>
+                      <td>{{ info.nombreCentro}}</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </agm-info-window>
+
+            </agm-marker>
+
+
+
+            <agm-marker [latitude]="latitude"
+                        [longitude]="longitude"
+                        [iconUrl]="iconMapCurrent.iconUrl">
+
+              <agm-info-window><b>Estoy, aquí</b></agm-info-window>
+
+            </agm-marker>
+
+          </agm-map>
+
+          <div>
+          
+            <input type="text" class="form-control" id="search" [(ngModel)]="value2" #box (keyup)="obtenerEventos(box.value)" placeholder="Buqueda de eventos - Ingrese el nombre del centro" required />
+          
+            </div>
+
         </div>
-      </div>
+
+
+        </div>
     </div>
   </div>
 

@@ -9,8 +9,10 @@
   <div class="card">
     <div class="card-header">
       <h1> Personal </h1>
+      <!--
       <input style="margin: -25px 10px 0 0; float: right; position:page" type="button" class="btn btn-primary" (click)="obtenerPersonal()" value="Actualizar" />
-    </div>
+          -->
+          </div>
 
     <div class="card-body">
 
@@ -20,7 +22,7 @@
 
         <thead class="thead-dark">
           <tr>
-            <th scope="col"> ID </th>
+           <!-- <th scope="col"> ID </th> -->
             <th scope="col"> Nombre </th>
             <th scope="col"> Apellidos </th>
             <th scope="col"> Edad </th>
@@ -35,7 +37,7 @@
 
           <tr *ngFor="let info of _personal | paginate: { itemsPerPage : 5, currentPage: paginaPrincipal }">
 
-            <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>
+        <!--    <td> <input type="text" class="form-control" id="Id" placeholder={{info.id}} disabled />  </td>-->
             <td> <input type="text" class="form-control" id="Nombre{{info.id}}" value={{info.nombre}} #box1 disabled /> </td>
             <td> <input type="text" class="form-control" id="Apellidos{{info.id}}" value={{info.apellidos}} #box2 disabled /> </td>
             <td> <input type="number" class="form-control" id="Edad{{info.id}}" value={{info.edad}} #box3 disabled /> </td>
