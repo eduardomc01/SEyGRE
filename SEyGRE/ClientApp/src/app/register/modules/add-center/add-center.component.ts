@@ -108,10 +108,10 @@ export class AddCenterComponent implements OnInit {
   ValidarInput(event) {
 
     let fileList: FileList = event.target.files[0];
-    let file: File = fileList;
+  //  let file: File = fileList;
 
 
-   this.nombreDoc = file.name;
+  // this.nombreDoc = file.name;
 
 
   }
@@ -143,8 +143,8 @@ export class AddCenterComponent implements OnInit {
 
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = "";
-    this._lng = "";
+    this._lat = 0; /* "" */
+    this._lng = 0;
 
   }
 

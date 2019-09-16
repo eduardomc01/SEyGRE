@@ -70,8 +70,8 @@ export class AddEventsComponent implements OnInit {
 
   public markerRightClick($event: MouseEvent) {
     this.markers.pop();
-    this._lat = "";
-    this._lng = "";
+    this._lat = 0; /* "" */
+    this._lng = 0;
     /*tratar de arreglar esto */
   }
 

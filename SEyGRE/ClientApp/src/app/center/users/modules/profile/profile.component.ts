@@ -84,10 +84,10 @@ export class ProfileComponent {
   ValidarInput(event) {
 
     let fileList: FileList = event.target.files[0];
-    let file: File = fileList;
+    //let file: File = fileList;
 
 
-    this.imagenPerfil = file.name;
+    //this.imagenPerfil = file.name;
 
 
   }

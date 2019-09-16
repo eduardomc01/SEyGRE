@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using MySql.Data.MySqlClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SEyGRE.Models;
@@ -35,16 +36,12 @@ namespace SEyGRE.Controllers
                                                + Path.DirectorySeparatorChar + "assets"
                                                + Path.DirectorySeparatorChar + "respaldo";
 
+                return new JsonResult(new InfoJson()
+                {
 
-            
-
-
-            return new JsonResult (new InfoJson()
-            { 
-
-                info = "Eduardo"
-
-            });
+                    info = "Eduardo",
+                    ruta = path
+                });
         }
 
 
@@ -56,4 +53,5 @@ namespace SEyGRE.Controllers
 public class InfoJson
 {
     public string info;
+    public string ruta;
 }
