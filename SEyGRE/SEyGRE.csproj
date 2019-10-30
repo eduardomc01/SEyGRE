@@ -43,11 +43,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\dist\assets\profile\" />
     <Folder Include="ClientApp\src\app\center\events\modules\" />
     <Folder Include="ClientApp\src\app\center\stats\modules\line\" />
     <Folder Include="ClientApp\src\app\citizen\chome\modules\" />
     <Folder Include="ClientApp\src\app\citizen\cmaps\modules\" />
-    <Folder Include="ClientApp\src\assets\doc\" />
     <Folder Include="ClientApp\src\assets\respaldo\" />
   </ItemGroup>
 

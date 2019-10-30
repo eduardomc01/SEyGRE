@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-using MySql.Data.MySqlClient;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SEyGRE.Models;
+using MySql.Data.MySqlClient;
 
 namespace SEyGRE.Controllers
 {
@@ -15,22 +15,66 @@ namespace SEyGRE.Controllers
     [ApiController]
     public class SeguridadController : ControllerBase
     {
-        private seygreContext context;
-        private readonly string connectionString;
+
         private readonly IHostingEnvironment env;
 
-        public SeguridadController (seygreContext _context, string _connectionString, IHostingEnvironment _env)
+        public SeguridadController (IHostingEnvironment _env)
         {
-            context = _context;
-            connectionString = _connectionString;
             env = _env;
 
         }
 
         [HttpGet("[action]")]
-        public JsonResult BackupBaseDatos()
+        public int BackupBaseDatos()
         {
 
+
+            using (MySqlDatabase conn = new MySqlDatabase())
+            {
+
+
+
+                    using (MySqlBackup bac = new MySqlBackup())
+                    {
+
+                        bac.ExportToFile("PRUEBA-CHIDA.sql");
+                    }
+
+              
+
+
+            }
+            
+
+
+            /*
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+
+
+                    using (MySqlBackup bac = new MySqlBackup(cmd)) {
+
+                        bac.ExportToFile("C:\\Users\\eduar\\Desktop\\PRUEBA-CHIDA.sql");
+                    }
+                    
+                }
+                
+
+            }*/
+
+            return 1;
+
+        }
+
+    }
+
+}
+
+
+/*
             string path = env.WebRootPath + Path.DirectorySeparatorChar + "ClientApp"
                                                + Path.DirectorySeparatorChar + "src"
                                                + Path.DirectorySeparatorChar + "assets"
@@ -42,14 +86,11 @@ namespace SEyGRE.Controllers
                     info = "Eduardo",
                     ruta = path
                 });
-        }
+
+    */
 
 
-    }
 
-}
-
-    
 public class InfoJson
 {
     public string info;

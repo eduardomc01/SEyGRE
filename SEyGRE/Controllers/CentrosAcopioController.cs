@@ -16,6 +16,8 @@ using System.Net.Mail;
 using System.Net;
 using System.Web;
 
+using Microsoft.EntityFrameworkCore;
+
 namespace SEyGRE.Controllers
 {
     [Route("api/[controller]")]
@@ -75,8 +77,8 @@ namespace SEyGRE.Controllers
                 
                 throw;
             }
-            
 
+            //context.Database.ExecuteSqlCommand("call procedimiento (\"ruta\")");
             return 1;
         }
 
@@ -222,6 +224,7 @@ namespace SEyGRE.Controllers
         {
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+            
 
             var list = (from e in context.Centrosacopio where e.IdEstatus.Equals(1) select e).ToList();
 
@@ -468,7 +471,8 @@ namespace SEyGRE.Controllers
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp"
-                                               + Path.DirectorySeparatorChar + "src"
+                                               + Path.DirectorySeparatorChar + "dist" /*se agrego para ver en AZURE su trabajo*/
+                                        /*     + Path.DirectorySeparatorChar + "src" se omite para ver en AZURE su trabajo */
                                                + Path.DirectorySeparatorChar + "assets"
                                                + Path.DirectorySeparatorChar + "doc";
 
@@ -503,7 +507,8 @@ namespace SEyGRE.Controllers
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
 
             string path = _env.ContentRootPath + Path.DirectorySeparatorChar + "ClientApp"
-                                               + Path.DirectorySeparatorChar + "src"
+                                               + Path.DirectorySeparatorChar + "dist" /*se agrego para ver en AZURE su trabajo*/
+                                          /*     + Path.DirectorySeparatorChar + "src" se omite para ver en AZURE su trabajo */
                                                + Path.DirectorySeparatorChar + "assets"
                                                + Path.DirectorySeparatorChar + "profile";
 
@@ -548,6 +553,7 @@ namespace SEyGRE.Controllers
             float totalPesoResiduos = 0.0f;
 
             context = HttpContext.RequestServices.GetService(typeof(seygreContext)) as seygreContext;
+            
 
             var elementos = (from e in context.Elementos select e);
 

@@ -21,9 +21,9 @@ export class VerifyCenterComponent{
 
   paginaPrincipal: number = 1;
 
-  rutaImagenD: string = "/assets/image/sin-foto.jpg";
+  rutaImagenD: string = "/assets/image/sin-foto.jpg"; /* cambios para ver la ruta en AZURE AQUI FUNCIONA ESTA--> "/assets/image/sin-foto.jpg"; */
   ruta: string = "/assets/doc/";
-  ruta2: string = "/assets/profile/";
+  ruta2: string = "/assets/profile/"; /* cambios para ver la ruta en AZURE AQUI FUNCIONA ESTA--> "/assets/profile.jpg"; */
 
   showDefault: boolean;
   show: boolean;
@@ -79,10 +79,7 @@ export class VerifyCenterComponent{
 
   public respaldo():void {
 
-    this.http.get('api/Seguridad/BackupBaseDatos').subscribe(result => {
-
-      console.log(result);
-
+    this.http.get('api/Seguridad/BackupBaseDatos').subscribe(() => {
     });
 
   }
